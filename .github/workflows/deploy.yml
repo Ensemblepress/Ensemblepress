@@ -21,3 +21,11 @@ jobs:
             sleep 5;
             shopify theme pull --theme 140280135974;
             echo "theme pull over"
+            # stash any component changes, keeping layout changes
+            git --no-pager diff
+            git stash
+            # stash everything that's not a .json file
+            git --no-pager diff
+            # remove cached files from '*.gitignore'
+            git rm -r --cached .
+            shopify theme push --theme ${SHOPIFY_THEME_ID}
