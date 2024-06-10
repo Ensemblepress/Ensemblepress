@@ -15,3 +15,9 @@ jobs:
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
           THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
           THEMEKIT_FLAGS: --ignored-file=config/settings_data.json --ignored-file=locales/*
+          run: |
+            echo "Starting theme PULL"
+            shopify theme list;
+            sleep 5;
+            shopify theme pull --theme 140280135974;
+            echo "theme pull over"
