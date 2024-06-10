@@ -19,7 +19,10 @@ jobs:
         run: npm install -g @shopify/cli @shopify/theme
       - name: Deploy
         env:
-          SHOPIFY_FLAG_STORE: '${{ secrets.SHOPIFY_STORE_URL }}'
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_CLI_TTY: 0
-        run: shopify theme pull --theme 136796045463 --verbose
+          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_API_PASSWORD }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE_URL }}
+          THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+        run: |
+          echo "Deploying theme to Shopify store: $SHOPIFY_STORE"
+          theme deploy --password=$SHOPIFY_PASSWORD --store=$SHOPIFY_STORE --themeid=$THEME_ID --dir=.
+          echo "Deployment completed"
