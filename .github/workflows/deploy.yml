@@ -1,23 +1,25 @@
-name: Deploy Shopify Theme
-on:
-  push:
-    branches:
-      - main  # or the branch you want to deploy from
+name: Theme deploy
+
+on: [push]
+
 jobs:
   deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install Theme Kit
-        run: |
-          curl -s https://shopify.dev/themekit-bash | sudo bash
-          theme version  # Check the installed version of Theme Kit
-      - name: Deploy to Shopify
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler: 'latest'
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+      - name: Deploy
         env:
-          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_API_PASSWORD }}
-          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE_URL }}
-          THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-        run: |
-          echo "Deploying theme to Shopify"
-          theme deploy --password=$SHOPIFY_PASSWORD --store=$SHOPIFY_STORE --themeid=$THEME_ID --dir=.
+          SHOPIFY_FLAG_STORE: '${{ secrets.SHOPIFY_STORE_URL }}'
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_CLI_TTY: 0
+        run: shopify theme pull --theme 136796045463 --verbose
