@@ -16,16 +16,4 @@ jobs:
           THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
           THEMEKIT_FLAGS: --ignored-file=config/settings_data.json --ignored-file=locales/*
           run: |
-            echo "Starting theme PULL"
-            shopify theme list;
-            sleep 5;
-            shopify theme pull --theme 136506867863;
-            echo "theme pull over"
-            # stash any component changes, keeping layout changes
-            git --no-pager diff
-            git stash
-            # stash everything that's not a .json file
-            git --no-pager diff
-            # remove cached files from '*.gitignore'
-            git rm -r --cached .
-            shopify theme push --theme ${SHOPIFY_THEME_ID}
+             shopify theme push --store https://8b47fd-7d.myshopify.com --theme 136506867863 --path=./
