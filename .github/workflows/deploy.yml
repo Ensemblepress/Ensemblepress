@@ -19,7 +19,7 @@ jobs:
             echo "Starting theme PULL"
             shopify theme list;
             sleep 5;
-            shopify theme pull --theme 140280135974;
+            shopify theme pull --theme 136506867863;
             echo "theme pull over"
             # stash any component changes, keeping layout changes
             git --no-pager diff
