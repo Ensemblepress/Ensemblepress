@@ -16,4 +16,4 @@ jobs:
           THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
           THEMEKIT_FLAGS: --ignored-file=config/settings_data.json --ignored-file=locales/*
           run: |
-             shopify theme pull --store https://8b47fd-7d.myshopify.com --theme 136506867863
+             shopify theme push --store https://8b47fd-7d.myshopify.com --theme 136506867863
