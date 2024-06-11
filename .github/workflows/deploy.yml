@@ -24,7 +24,7 @@ jobs:
     - name: Authenticate Shopify CLI
       env:
         SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
-      run: shopify login --store ${{ secrets.SHOPIFY_STORE_URL }}
+      run: shopify login --store ${{ secrets.SHOPIFY_STORE_URL }} --password ${{ secrets.SHOPIFY_PASSWORD }}
 
     - name: Deploy theme
       env:
