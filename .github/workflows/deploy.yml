@@ -16,18 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'
-
-    - name: Install Ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: '3.1'  # Specify the Ruby v
-
-    - name: Install Bundler
-      run: gem install bundler
-
-    - name: Install Dependencies
-      run: bundle install
+        node-version: '16'
 
     - name: Install Shopify CLI
       run: npm install -g @shopify/cli @shopify/theme
@@ -40,4 +29,4 @@ jobs:
         SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
       run: |
         echo "Shopify Store URL: $SHOPIFY_STORE_URL"
-        shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_PASSWORD --theme ${{ secrets.SHOPIFY_THEME_ID }}
+        shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_PASSWORD --theme-id ${{ secrets.SHOPIFY_THEME_ID }}
