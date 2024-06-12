@@ -16,10 +16,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '16'
 
       - name: Install Theme Kit
-        run: curl -s https://shopify.dev/themekit/scripts/install | sudo bash
+        run: |
+          THEMEKIT_VERSION="1.1.6" # Replace with the latest version
+          curl -sLO https://github.com/Shopify/themekit/releases/download/v$THEMEKIT_VERSION/themekit_$THEMEKIT_VERSION_linux_amd64.tar.gz
+          tar -xzf themekit_$THEMEKIT_VERSION_linux_amd64.tar.gz
+          sudo mv theme /usr/local/bin
+          rm themekit_$THEMEKIT_VERSION_linux_amd64.tar.gz
 
       - name: Authenticate and Deploy Theme
         env:
@@ -27,4 +32,4 @@ jobs:
           SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
         run: |
-          theme deploy --password=$SHOPIFY_PASSWORD --store=$SHOPIFY_STORE_URL --theme=$SHOPIFY_THEME_ID
+          theme deploy --password=$SHOPIFY_PASSWORD --store=$SHOPIFY_STORE_URL --themeid=$SHOPIFY_THEME_ID
