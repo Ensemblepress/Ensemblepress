@@ -1,8 +1,10 @@
 name: Deploy Shopify Theme
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,7 +21,12 @@ jobs:
     - name: Install Shopify CLI
       run: npm install -g @shopify/cli @shopify/theme
 
+    - name: Authenticate Shopify CLI
+      env:
+        SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
+      run: shopify login --store ${{ secrets.SHOPIFY_STORE_URL }} --password ${{ secrets.SHOPIFY_PASSWORD }}
+
     - name: Deploy theme
       env:
         SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-        run: shopify theme push --theme-id ${{ secrets.SHOPIFY_THEME_ID }}
+      run: shopify theme push --theme-id ${{ secrets.SHOPIFY_THEME_ID }}
