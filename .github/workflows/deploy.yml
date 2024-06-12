@@ -20,11 +20,11 @@ jobs:
 
       - name: Install Theme Kit
         run: |
-          THEMEKIT_VERSION="1.1.6" # Replace with the latest version
-          curl -sLO https://github.com/Shopify/themekit/releases/download/v$THEMEKIT_VERSION/themekit_$THEMEKIT_VERSION_linux_amd64.tar.gz
-          tar -xzf themekit_$THEMEKIT_VERSION_linux_amd64.tar.gz
+          THEMEKIT_VERSION="1.3.1" # Update to the latest version if necessary
+          curl -sLO https://github.com/Shopify/themekit/releases/download/v${THEMEKIT_VERSION}/themekit_${THEMEKIT_VERSION}_linux_amd64.tar.gz
+          tar -xzf themekit_${THEMEKIT_VERSION}_linux_amd64.tar.gz
           sudo mv theme /usr/local/bin
-          rm themekit_$THEMEKIT_VERSION_linux_amd64.tar.gz
+          rm themekit_${THEMEKIT_VERSION}_linux_amd64.tar.gz
 
       - name: Authenticate and Deploy Theme
         env:
