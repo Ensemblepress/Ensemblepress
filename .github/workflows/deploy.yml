@@ -16,20 +16,34 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '20'
 
-      - name: Install Theme Kit
-        run: |
-          THEMEKIT_VERSION="1.3.1" # Update to the latest version if necessary
-          curl -sLO https://github.com/Shopify/themekit/releases/download/v${THEMEKIT_VERSION}/themekit_${THEMEKIT_VERSION}_linux_amd64.tar.gz
-          tar -xzf themekit_${THEMEKIT_VERSION}_linux_amd64.tar.gz
-          sudo mv theme /usr/local/bin
-          rm themekit_${THEMEKIT_VERSION}_linux_amd64.tar.gz
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Specify the Ruby version
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install Ruby Dependencies
+        run: bundle install
+        working-directory: ./  # Change this if your Gemfile is not in the root directory
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
 
       - name: Authenticate and Deploy Theme
         env:
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
-          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
+          SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
         run: |
-          theme deploy --password=$SHOPIFY_PASSWORD --store=$SHOPIFY_STORE_URL --themeid=$SHOPIFY_THEME_ID
+          # Configure Shopify CLI to use the API token
+          mkdir -p ~/.config/shopify
+          echo "shop:" > ~/.config/shopify/config
+          echo "  ${SHOPIFY_STORE_URL}:" >> ~/.config/shopify/config
+          echo "    password: ${SHOPIFY_ADMIN_API_PASSWORD}" >> ~/.config/shopify/config
+
+          # Deploy the theme
+          shopify login --store $SHOPIFY_STORE_URL
