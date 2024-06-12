@@ -21,12 +21,12 @@ jobs:
     - name: Install Shopify CLI
       run: npm install -g @shopify/cli @shopify/theme
 
-    - name: Authenticate Shopify CLI
+    - name: Authenticate and Deploy Theme
       env:
+        SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
+        SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
+        SHOPIFY_API_SECRET: ${{ secrets.SHOPIFY_API_SECRET }}
         SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
-      run: shopify login --store ${{ secrets.SHOPIFY_STORE_URL }} --password ${{ secrets.SHOPIFY_PASSWORD }}
-
-    - name: Deploy theme
-      env:
-        SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-      run: shopify theme push --theme-id ${{ secrets.SHOPIFY_THEME_ID }}
+      run: |
+        echo "Shopify Store URL: $SHOPIFY_STORE_URL"
+        shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_PASSWORD --theme-id ${{ secrets.SHOPIFY_THEME_ID }}
