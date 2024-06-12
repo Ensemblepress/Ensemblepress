@@ -29,4 +29,4 @@ jobs:
         SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
       run: |
         echo "Shopify Store URL: $SHOPIFY_STORE_URL"
-        shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_PASSWORD --theme-id ${{ secrets.SHOPIFY_THEME_ID }}
+        shopify theme push --store $SHOPIFY_STORE_URL --password $SHOPIFY_PASSWORD --theme ${{ secrets.SHOPIFY_THEME_ID }}
