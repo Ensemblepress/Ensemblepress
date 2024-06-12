@@ -18,6 +18,14 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Install Ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '3.1'  # Specify the Ruby version
+
+    - name: Install Bundler
+      run: gem install bundler
+
     - name: Install Shopify CLI
       run: npm install -g @shopify/cli @shopify/theme
 
