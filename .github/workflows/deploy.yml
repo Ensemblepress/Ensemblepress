@@ -46,4 +46,4 @@ jobs:
           echo "    password: ${SHOPIFY_ADMIN_API_PASSWORD}" >> ~/.config/shopify/config
 
           # Deploy the theme
-          shopify theme push --password $SHOPIFY_ADMIN_API_PASSWORD --theme $SHOPIFY_THEME_ID
+          shopify theme push --theme-id $SHOPIFY_THEME_ID
