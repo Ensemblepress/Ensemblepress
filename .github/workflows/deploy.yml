@@ -33,7 +33,8 @@ jobs:
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli@latest @shopify/theme
 
-      - name: Authenticate and Deploy Theme
+      - name: shopify-pipeline
+        repository: Ensemblepress/shopify-pipeline
         env:
           CI: 1
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
