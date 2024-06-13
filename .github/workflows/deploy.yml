@@ -15,3 +15,7 @@ jobs:
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
           THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
           THEMEKIT_FLAGS: --ignored-file=config/settings_data.json --ignored-file=locales/*
+        run: | 
+          # Deploy the theme
+          shopify login --store $SHOPIFY_STORE_URL
+
