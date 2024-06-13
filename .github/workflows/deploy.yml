@@ -41,4 +41,4 @@ jobs:
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
         run: |
           # Deploy the theme
-          shopify login
+          shopify theme push
