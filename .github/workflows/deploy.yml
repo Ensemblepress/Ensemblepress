@@ -37,8 +37,16 @@ jobs:
         env:
           CI: 1
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
+          SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
           SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
         run: |
+          # Set Shopify environment variables for authentication
+          export SHOPIFY_API_KEY=$SHOPIFY_API_KEY
+          export SHOPIFY_PASSWORD=$SHOPIFY_PASSWORD
+          export SHOPIFY_STORE_URL=$SHOPIFY_STORE_URL
+          export SHOPIFY_THEME_ID=$SHOPIFY_THEME_ID
+          
           # Deploy the theme
           shopify theme dev --store https://8b47fd-7d.myshopify.com hot-reload
