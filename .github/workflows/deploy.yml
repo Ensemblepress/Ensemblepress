@@ -40,49 +40,5 @@ jobs:
           SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
         run: |
-          name: Deploy Shopify Theme
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '3.1'  # Specify the Ruby version
-
-      - name: Install Bundler
-        run: gem install bundler
-
-      - name: Install Ruby Dependencies
-        run: bundle install
-        working-directory: ./  # Change this if your Gemfile is not in the root directory
-
-      - name: Install Shopify CLI
-        run: npm install -g @shopify/cli@latest @shopify/theme
-
-      - name: Authenticate and Deploy Theme
-        env:
-          CI: 1
-          SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
-          SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
-          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-        run: |
-        
           # Deploy the theme
-          shopify theme dev --store https://8b47fd-7d.myshopify.com hot-reload
-
+          shopify login --store $SHOPIFY_STORE_URL
