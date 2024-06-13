@@ -41,4 +41,4 @@ jobs:
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
         run: |
           # Deploy the theme
-          shopify login --store https://8b47fd-7d.myshopify.com/admin
+          shopify theme dev --store https://8b47fd-7d.myshopify.com hot-reload
