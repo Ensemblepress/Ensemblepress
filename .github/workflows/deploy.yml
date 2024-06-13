@@ -21,7 +21,7 @@ jobs:
       - name: Install Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: '3.1'  # Specify the Ruby version
 
       - name: Install Bundler
         run: gem install bundler
@@ -31,17 +31,14 @@ jobs:
         working-directory: ./  # Change this if your Gemfile is not in the root directory
 
       - name: Install Shopify CLI
-        run: npm install -g @shopify/cli@latest
+        run: npm install -g @shopify/cli@latest @shopify/theme
 
-      - name: Deploy to Shopify
+      - name: Authenticate and Deploy Theme
         env:
           CI: 1
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
-          SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
           SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
         run: |
-          # Authenticate with Shopify
-          shopify login --store $SHOPIFY_STORE_URL --password $SHOPIFY_ADMIN_API_PASSWORD
           # Deploy the theme
-          shopify theme push --theme-id $SHOPIFY_THEME_ID --allow-live --env=production
+          shopify theme dev --store https://8b47fd-7d.myshopify.com hot-reload
