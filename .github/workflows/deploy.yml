@@ -44,4 +44,4 @@ jobs:
       - name: Deploy to Shopify
         env:
           SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
-        run: shopify theme push --allow-live --password=${{ secrets.SHOPIFY_ACCESS_TOKEN }} --store your-store.myshopify.com
+        run: shopify theme push --allow-live --store https://8b47fd-7d.myshopify.com
