@@ -9,9 +9,13 @@ jobs:
         uses: actions/checkout@main
       - name: Deploy theme
         uses: actions/checkout@v2
+      - name: Authenticate and Deploy Theme
         env:
           SHOPIFY_APP_API_PASSWORD: ${{ secrets.SHOPIFY_APP_API_PASSWORD }}
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
           THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
           THEMEKIT_FLAGS: --ignored-file=config/settings_data.json --ignored-file=locales/*
+        run: |
+         shopify theme push
+           
