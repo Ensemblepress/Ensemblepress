@@ -1,36 +1,43 @@
-name: CI/CD Pipeline
+name: Deploy Shopify Theme
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Specify the Ruby version
 
-    - name: Run tests
-      run: npm test
+      - name: Install Bundler
+        run: gem install bundler
 
-    - name: Authenticate Shopify CLI
-      run: shopify login --store your-store-name
-      env:
-        SHOPIFY_CLI_AUTH_TOKEN: ${{ secrets.SHOPIFY_CLI_AUTH_TOKEN }}
+      - name: Install Ruby Dependencies
+        run: bundle install
+        working-directory: ./  # Change this if your Gemfile is not in the root directory
 
-    - name: Deploy to Shopify
-      run: shopify theme push --allow-live
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest @shopify/theme
+
+      - name: Authenticate Shopify CLI
+        run: shopify login --store https://8b47fd-7d.myshopify.com
+        env:
+            SHOPIFY_CLI_AUTH_TOKEN: ${{ secrets.SHOPIFY_CLI_AUTH_TOKEN }}
+
+      - name: Deploy to Shopify
+        run: shopify theme push --allow-live
