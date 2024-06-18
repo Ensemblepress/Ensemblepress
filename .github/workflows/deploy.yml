@@ -1,21 +1,45 @@
-name: Deploy theme
-on: [push]
+name: Deploy Shopify Theme
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  build:
-    name: Deploy theme
+  deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
-      - name: Deploy theme
+      - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Specify the Ruby version
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install Ruby Dependencies
+        run: bundle install
+        working-directory: ./  # Change this if your Gemfile is not in the root directory
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest @shopify/theme
+
       - name: Authenticate and Deploy Theme
         env:
-          SHOPIFY_APP_API_PASSWORD: ${{ secrets.SHOPIFY_APP_API_PASSWORD }}
+          CI: 1
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
+          SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
           SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-          THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
-          THEMEKIT_FLAGS: --ignored-file=config/settings_data.json --ignored-file=locales/*
         run: |
-         shopify theme push
-           
+          # Deploy the theme
+          shopify theme push
