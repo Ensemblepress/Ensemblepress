@@ -44,4 +44,4 @@ jobs:
       env:
         SHOPIFY_AUTH_TOKEN: ${{ secrets.SHOPIFY_AUTH_TOKEN }}
       run: |
-        shopify theme push --env=production
+        shopify theme push --allow-live
