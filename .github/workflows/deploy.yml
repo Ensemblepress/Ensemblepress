@@ -35,12 +35,9 @@ jobs:
         run: npm install -g @shopify/cli@latest @shopify/theme
 
       - name: Authenticate Shopify CLI
-        env:
-          SHOPIFY_STORE: https://8b47fd-7d.myshopify.com  # Replace with your store URL
-
         run: shopify login --store https://8b47fd-7d.myshopify.com
         env:
             SHOPIFY_CLI_AUTH_TOKEN: ${{ secrets.SHOPIFY_CLI_AUTH_TOKEN }}
 
       - name: Deploy to Shopify
-        run: shopify theme push --allow-live    
+        run: shopify theme push --allow-live
