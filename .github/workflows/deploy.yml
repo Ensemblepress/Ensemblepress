@@ -34,11 +34,12 @@ jobs:
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli@latest @shopify/theme
 
-      - name: Configure Shopify CLI Authentication
-        run: |
-          SHOPIFY_FLAG_STORE: https://8b47fd-7d.myshopify.com
+      - name: Authenticate Shopify CLI
+        run: shopify login --store https://8b47fd-7d.myshopify.com
+        env:
+            SHOPIFY_CLI_AUTH_TOKEN: ${{ secrets.SHOPIFY_CLI_AUTH_TOKEN }}
 
-      - name: Deploy to Shopify
+      name: Deploy to Shopify
         run: shopify theme push --allow-live
         env:
           SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
