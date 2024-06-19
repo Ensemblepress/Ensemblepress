@@ -19,25 +19,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '3.1'  # Specify the Ruby version
-
-      - name: Install Bundler
-        run: gem install bundler
-
-      - name: Install Ruby Dependencies
-        run: bundle install
-        working-directory: ./  # Change this if your Gemfile is not in the root directory
-
       - name: Install Shopify CLI
-        run: npm install -g @shopify/cli@latest @shopify/theme
+        run: npm install -g @shopify/cli @shopify/theme
 
-      - name: Authenticate Shopify CLI
-        run: shopify login --store https://8b47fd-7d.myshopify.com
+      - name: Configure Shopify CLI Authentication
         env:
-            SHOPIFY_CLI_AUTH_TOKEN: ${{ secrets.SHOPIFY_CLI_AUTH_TOKEN }}
+          SHOPIFY_STORE: your-store.myshopify.com  # Replace with your store URL
+          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+        run: |
+          mkdir -p ~/.shopify-cli
+          SHOPIFY_STORE=${{ env.SHOPIFY_STORE }}" > ~/.shopify-cli/.env
+          SHOPIFY_PASSWORD=${{ secrets.SHOPIFY_ACCESS_TOKEN }}" >> ~/.shopify-cli/.env
 
       - name: Deploy to Shopify
-        run: shopify theme push --allow-live
+        run: shopify theme push --store https://8b47fd-7d.myshopify.com --allow-live
+        env:
+          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
