@@ -37,9 +37,9 @@ jobs:
       - name: Authenticate and Deploy Theme
         env:
           CI: 1
-          SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
-          SHOPIFY_ADMIN_API_PASSWORD: ${{ secrets.SHOPIFY_ADMIN_API_PASSWORD }}
-          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+          SHOPIFY_STORE_URL: https://8b47fd-7d.myshopify.com
+          SHOPIFY_ADMIN_API_PASSWORD: nowyoh
+          SHOPIFY_THEME_ID: 136949760151
         run: |
           # Deploy the theme
           echo $SHOPIFY_STORE_URL
