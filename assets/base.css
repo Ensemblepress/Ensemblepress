@@ -1989,7 +1989,7 @@ input[type='checkbox'] {
   position: relative;
 }
 
-.product__info-container .loading__spinner:not(.hidden) ~ *,
+product-info .loading__spinner:not(.hidden) ~ *,
 .quantity__rules-cart .loading__spinner:not(.hidden) ~ * {
   visibility: hidden;
 }
@@ -3257,7 +3257,6 @@ details-disclosure > details {
     opacity: 1;
     animation: none;
     transition: none;
-    transform: none;
   }
 
   .scroll-trigger.scroll-trigger--design-mode.animate--slide-in {

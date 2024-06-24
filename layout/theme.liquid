@@ -1,4 +1,4 @@
-	<!doctype html>
+<!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
@@ -294,13 +294,20 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-  {% sections 'header-group' %}   
+    {% sections 'header-group' %}
+
 	
 	<main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       		{{ content_for_layout }}
     	</main>
 
+<<<<<<< Updated upstream
   {% sections 'footer-group' %}
+=======
+      {% sections 'footer-group' %}
+	
+	
+>>>>>>> Stashed changes
     	
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

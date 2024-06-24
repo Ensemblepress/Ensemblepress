@@ -155,6 +155,10 @@
         "image_available": "Bilde {{ index }} er nå tilgjengelig i gallerivisning"
       },
       "view_full_details": "Vis alle detaljer",
+<<<<<<< Updated upstream
+=======
+      "include_taxes": "Avgift inkludert.",
+>>>>>>> Stashed changes
       "shipping_policy_html": "<a href=\"{{ link }}\">Frakt<\/a> beregnes ved kassen.",
       "choose_options": "Velg alternativer",
       "choose_product_options": "Velg alternativer for {{ product_name }}",
@@ -174,10 +178,7 @@
         "price_at_each": "til {{ price }}\/pr. stk",
         "price_range": "{{ minimum }}–{{ maximum }}"
       },
-      "product_variants": "Produktvarianter",
-      "taxes_included": "Inkludert avgifter.",
-      "duties_included": "Inkluder tollplikter.",
-      "duties_and_taxes_included": "Inkludert tollplikter og avgifter."
+      "product_variants": "Produktvarianter"
     },
     "modal": {
       "label": "Mediegalleri"
@@ -282,6 +283,10 @@
       "empty": "Handlekurven din er tom",
       "cart_error": "Det oppstod en feil under oppdateringen av handlekurven din. Prøv på nytt.",
       "cart_quantity_error_html": "Du kan bare legge {{ quantity }} av denne varen i handlekurven.",
+      "taxes_and_shipping_policy_at_checkout_html": "Avgifter, rabatter og <a href=\"{{ link }}\">frakt<\/a> beregnes i kassen",
+      "taxes_included_but_shipping_at_checkout": "Inkluderte avgifter, frakt og rabatter beregnes i kassen",
+      "taxes_included_and_shipping_policy_html": "Inkluderte avgifter. <a href=\"{{ link }}\">Frakt<\/a> og rabatter beregnes i kassen.",
+      "taxes_and_shipping_at_checkout": "Avgifter, rabatter og frakt beregnes i kassen",
       "headings": {
         "product": "Produkt",
         "price": "Pris",
@@ -295,6 +300,7 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logg på<\/a> for å betale raskere."
       },
       "estimated_total": "Estimert totalsum",
+<<<<<<< Updated upstream
       "new_estimated_total": "Ny estimert totalsum",
       "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Inkludert tollplikter og avgifter. Rabatter og <a href=\"{{ link }}\">frakt<\/a> beregnes i kassen.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "Inkludert tollplikter og avgifter. Rabatter og frakt beregnes i kassen.",
@@ -304,6 +310,9 @@
       "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Inkluder tollplikter. Avgifter, rabatter og frakt beregnes i kassen.",
       "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Avgifter, rabatter og <a href=\"{{ link }}\">frakt<\/a> beregnes i kassen.",
       "taxes_at_checkout_shipping_at_checkout_without_policy": "Avgifter, rabatter og frakt beregnes i kassen."
+=======
+      "new_estimated_total": "Ny estimert totalsum"
+>>>>>>> Stashed changes
     },
     "footer": {
       "payment": "Betalingsmåter"

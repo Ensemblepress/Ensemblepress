@@ -12,14 +12,15 @@
         },
         "title": {
           "type": "title",
+<<<<<<< Updated upstream
           "settings": {
           }
         },
         "caption": {
           "type": "text",
+=======
+>>>>>>> Stashed changes
           "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
           }
         },
         "price": {
@@ -30,7 +31,8 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button"
+            "picker_type": "button",
+            "swatch_shape": "circle"
           }
         },
         "quantity_selector": {
@@ -47,43 +49,15 @@
         },
         "description": {
           "type": "description",
+<<<<<<< Updated upstream
           "settings": {
           }
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
+=======
+>>>>>>> Stashed changes
           "settings": {
-            "heading": "Materials",
-            "icon": "leather",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Shipping & Returns",
-            "icon": "truck",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-2": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Dimensions",
-            "icon": "ruler",
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
-            "page": ""
           }
         },
         "share": {
@@ -96,23 +70,28 @@
       "block_order": [
         "vendor",
         "title",
-        "caption",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
-        "collapsible-row-0",
-        "collapsible-row-1",
-        "collapsible-row-2",
-        "collapsible-row-3",
         "share"
       ],
       "settings": {
         "enable_sticky_info": true,
+<<<<<<< Updated upstream
         "media_size": "large",
         "constrain_to_viewport": true,
         "gallery_layout": "stacked",
+=======
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+>>>>>>> Stashed changes
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
@@ -120,6 +99,7 @@
         "padding_bottom": 12
       }
     },
+<<<<<<< Updated upstream
     "image-with-text": {
       "type": "image-with-text",
       "blocks": {
@@ -198,14 +178,18 @@
         "padding_bottom": 36
       }
     },
+=======
+>>>>>>> Stashed changes
     "related-products": {
       "type": "related-products",
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
+        "products_to_show": 4,
         "columns_desktop": 4,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
@@ -217,8 +201,6 @@
   },
   "order": [
     "main",
-    "image-with-text",
-    "multicolumn",
     "related-products"
   ]
 }

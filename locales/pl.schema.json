@@ -451,8 +451,7 @@
           "name": "Ogłoszenie",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Witamy w naszym sklepie"
+              "label": "Tekst"
             },
             "text_alignment": {
               "label": "Wyrównanie tekstu",
@@ -512,8 +511,7 @@
       "name": "Kolaż",
       "settings": {
         "heading": {
-          "label": "Nagłówek",
-          "default": "Kolaż multimedialny"
+          "label": "Nagłówek"
         },
         "desktop_layout": {
           "label": "Układ pulpitu",
@@ -588,8 +586,12 @@
             },
             "description": {
               "label": "Alternatywny tekst filmu",
+<<<<<<< Updated upstream
               "info": "Opisz film dla klientów korzystających z czytników ekranu. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
               "default": "Opisz wideo"
+=======
+              "info": "Opisz film dla klientów korzystających z czytników ekranu. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)"
+>>>>>>> Stashed changes
             }
           }
         }
@@ -602,8 +604,7 @@
       "name": "Lista kolekcji",
       "settings": {
         "title": {
-          "label": "Nagłówek",
-          "default": "Kolekcje"
+          "label": "Nagłówek"
         },
         "image_ratio": {
           "label": "Proporcja obrazu",
@@ -658,12 +659,6 @@
       "name": "Formularz kontaktowy",
       "presets": {
         "name": "Formularz kontaktowy"
-      },
-      "settings": {
-        "title": {
-          "default": "Formularz kontaktowy",
-          "label": "Nagłówek"
-        }
       }
     },
     "custom-liquid": {
@@ -682,8 +677,7 @@
       "name": "Posty na blogu",
       "settings": {
         "heading": {
-          "label": "Nagłówek",
-          "default": "Posty na blogu"
+          "label": "Nagłówek"
         },
         "blog": {
           "label": "Blog"
@@ -716,8 +710,7 @@
       "name": "Polecana kolekcja",
       "settings": {
         "title": {
-          "label": "Nagłówek",
-          "default": "Polecana kolekcja"
+          "label": "Nagłówek"
         },
         "collection": {
           "label": "Kolekcja"
@@ -823,8 +816,7 @@
           "name": "Menu",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Szybkie linki"
+              "label": "Nagłówek"
             },
             "menu": {
               "label": "Menu",
@@ -836,12 +828,15 @@
           "name": "Tekst",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Nagłówek"
+              "label": "Nagłówek"
             },
             "subtext": {
+<<<<<<< Updated upstream
               "label": "Tekst podrzędny",
               "default": "<p>Udostępniaj klientom informacje kontaktowe, dane sklepu i treści związane z marką.<\/p>"
+=======
+              "label": "Tekst podrzędny"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -866,8 +861,7 @@
           "label": "Pokaż rejestrację w celu otrzymywania e-maili."
         },
         "newsletter_heading": {
-          "label": "Nagłówek",
-          "default": "Subskrybuj nasze wiadomości e-mail"
+          "label": "Nagłówek"
         },
         "header__1": {
           "content": "Osoba zarejestrowana w celu otrzymywania e-maili",
@@ -1119,8 +1113,7 @@
           "name": "Nagłówek",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Baner z obrazem"
+              "label": "Nagłówek"
             }
           }
         },
@@ -1128,8 +1121,7 @@
           "name": "Tekst",
           "settings": {
             "text": {
-              "label": "Opis",
-              "default": "Podaj klientom szczegóły dotyczące obrazów banerów lub treści w szablonie."
+              "label": "Opis"
             },
             "text_style": {
               "options__1": {
@@ -1150,8 +1142,7 @@
           "settings": {
             "button_label_1": {
               "label": "Pierwszy przycisk z etykietą",
-              "info": "Pozostaw etykietę pustą, aby ukryć przycisk.",
-              "default": "Przycisk z etykietą"
+              "info": "Pozostaw etykietę pustą, aby ukryć przycisk."
             },
             "button_link_1": {
               "label": "Pierwszy link przycisku"
@@ -1161,8 +1152,7 @@
             },
             "button_label_2": {
               "label": "Drugi przycisk z etykietą",
-              "info": "Pozostaw etykietę pustą, aby ukryć przycisk.",
-              "default": "Przycisk z etykietą"
+              "info": "Pozostaw etykietę pustą, aby ukryć przycisk."
             },
             "button_link_2": {
               "label": "Drugi link przycisku"
@@ -1272,8 +1262,7 @@
           "name": "Nagłówek",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Obraz z tekstem"
+              "label": "Nagłówek"
             }
           }
         },
@@ -1281,8 +1270,12 @@
           "name": "Tekst",
           "settings": {
             "text": {
+<<<<<<< Updated upstream
               "label": "Treść",
               "default": "<p>Połącz tekst z obrazem, aby skierować uwagę na wybrany produkt, kolekcję lub wpis na blogu. Dodaj szczegóły dotyczące dostępności, stylu lub dołącz recenzję.<\/p>"
+=======
+              "label": "Treść"
+>>>>>>> Stashed changes
             },
             "text_style": {
               "label": "Styl tekstu",
@@ -1300,8 +1293,7 @@
           "settings": {
             "button_label": {
               "label": "Przycisk z etykietą",
-              "info": "Pozostaw etykietę pustą, aby ukryć przycisk.",
-              "default": "Przycisk z etykietą"
+              "info": "Pozostaw etykietę pustą, aby ukryć przycisk."
             },
             "button_link": {
               "label": "Link przycisku"
@@ -1315,8 +1307,7 @@
           "name": "Napisy",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Dodaj slogan"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "Styl tekstu",
@@ -1394,8 +1385,7 @@
               "content": "Tytuł i opis strony są dodawane wraz z obrazem podglądu. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Tekst",
-              "default": "Udostępnij"
+              "label": "Tekst"
             }
           }
         }
@@ -1564,8 +1554,7 @@
       "name": "Strona listy kolekcji",
       "settings": {
         "title": {
-          "label": "Nagłówek",
-          "default": "Kolekcje"
+          "label": "Nagłówek"
         },
         "sort": {
           "label": "Sortuj kolekcje według:",
@@ -1642,8 +1631,7 @@
           "name": "Tekst",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Blok tekstowy"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "Text style",
@@ -1724,8 +1712,7 @@
               "content": "Tytuł i opis strony są dodawane wraz z obrazem podglądu. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Tekst",
-              "default": "Udostępnij"
+              "label": "Tekst"
             }
           }
         },
@@ -1734,8 +1721,7 @@
           "settings": {
             "heading": {
               "info": "Dołącz nagłówek, który wyjaśnia treść.",
-              "label": "Nagłówek",
-              "default": "Zwijany wiersz"
+              "label": "Nagłówek"
             },
             "content": {
               "label": "Treść wiersza"
@@ -1884,8 +1870,7 @@
           "name": "Wyskakujące okienko",
           "settings": {
             "link_label": {
-              "label": "Etykieta linku",
-              "default": "Wyskakujące okienko tekstowe"
+              "label": "Etykieta linku"
             },
             "page": {
               "label": "Strona"
@@ -1907,8 +1892,7 @@
               "content": "Aby wybrać produkty uzupełniające, dodaj aplikację Search & Discovery. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
             },
             "heading": {
-              "label": "Nagłówek",
-              "default": "Pasuje do"
+              "label": "Nagłówek"
             },
             "make_collapsible_row": {
               "label": "Pokaż jako zwijany wiersz"
@@ -1971,8 +1955,7 @@
               "label": "Pierwszy obraz"
             },
             "heading_1": {
-              "label": "Pierwszy nagłówek",
-              "default": "Nagłówek"
+              "label": "Pierwszy nagłówek"
             },
             "icon_2": {
               "label": "Druga ikona"
@@ -1981,8 +1964,7 @@
               "label": "Drugi obraz"
             },
             "heading_2": {
-              "label": "Drugi nagłówek",
-              "default": "Nagłówek"
+              "label": "Drugi nagłówek"
             },
             "icon_3": {
               "label": "Trzecia ikona"
@@ -1991,8 +1973,7 @@
               "label": "Trzeci obraz"
             },
             "heading_3": {
-              "label": "Trzeci nagłówek",
-              "default": "Nagłówek"
+              "label": "Trzeci nagłówek"
             }
           }
         },
@@ -2188,8 +2169,7 @@
       "name": "Wielokolumnowy",
       "settings": {
         "title": {
-          "label": "Nagłówek",
-          "default": "Wielokolumnowy"
+          "label": "Nagłówek"
         },
         "image_width": {
           "label": "Szerokość obrazu",
@@ -2237,8 +2217,7 @@
           }
         },
         "button_label": {
-          "label": "Przycisk z etykietą",
-          "default": "Przycisk z etykietą"
+          "label": "Przycisk z etykietą"
         },
         "button_link": {
           "label": "Link przycisku"
@@ -2270,12 +2249,15 @@
               "label": "Obraz"
             },
             "title": {
-              "label": "Nagłówek",
-              "default": "Kolumna"
+              "label": "Nagłówek"
             },
             "text": {
+<<<<<<< Updated upstream
               "label": "Opis",
               "default": "<p>Połącz tekst z obrazem, aby skierować uwagę na wybrany produkt, kolekcję lub wpis na blogu. Dodaj szczegóły dotyczące dostępności, stylu lub dołącz recenzję.<\/p>"
+=======
+              "label": "Opis"
+>>>>>>> Stashed changes
             },
             "link_label": {
               "label": "Etykieta linku"
@@ -2305,8 +2287,7 @@
           "name": "Nagłówek",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Subskrybuj nasze wiadomości e-mail"
+              "label": "Nagłówek"
             }
           }
         },
@@ -2314,8 +2295,12 @@
           "name": "Nagłówek podrzędny",
           "settings": {
             "paragraph": {
+<<<<<<< Updated upstream
               "label": "Opis",
               "default": "<p>Dowiedz się jako pierwszy o nowych kolekcjach i ekskluzywnych ofertach.<\/p>"
+=======
+              "label": "Opis"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -2375,8 +2360,7 @@
           "name": "Nagłówek",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Opowiedz o swojej marce"
+              "label": "Nagłówek"
             }
           }
         },
@@ -2384,8 +2368,12 @@
           "name": "Tekst",
           "settings": {
             "text": {
+<<<<<<< Updated upstream
               "label": "Opis",
               "default": "<p>Udostępnij klientom informacje o swojej marce. Opisz produkt, udostępnij ogłoszenia lub przywitaj klientów w swoim sklepie.<\/p>"
+=======
+              "label": "Opis"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -2394,8 +2382,7 @@
           "settings": {
             "button_label_1": {
               "label": "Pierwszy przycisk z etykietą",
-              "info": "Pozostaw etykietę pustą, aby ukryć przycisk.",
-              "default": "Przycisk z etykietą"
+              "info": "Pozostaw etykietę pustą, aby ukryć przycisk."
             },
             "button_link_1": {
               "label": "Pierwszy link przycisku"
@@ -2419,8 +2406,7 @@
           "name": "Napisy",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Dodaj slogan"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "Styl tekstu",
@@ -2465,8 +2451,7 @@
       "name": "Film",
       "settings": {
         "heading": {
-          "label": "Nagłówek",
-          "default": "Film"
+          "label": "Nagłówek"
         },
         "cover_image": {
           "label": "Obraz w tle"
@@ -2516,8 +2501,7 @@
           "name": "Tekst",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Blok tekstowy"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "Styl tekstu",
@@ -2591,8 +2575,7 @@
               "content": "Tytuł i opis strony są dodawane wraz z obrazem podglądu. [Dowiedz się więcej](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Tekst",
-              "default": "Udostępnij"
+              "label": "Tekst"
             }
           }
         },
@@ -2758,8 +2741,7 @@
           "name": "Nagłówek",
           "settings": {
             "heading": {
-              "label": "Nagłówek",
-              "default": "Wkrótce otwarcie"
+              "label": "Nagłówek"
             }
           }
         },
@@ -2767,8 +2749,12 @@
           "name": "Akapit",
           "settings": {
             "paragraph": {
+<<<<<<< Updated upstream
               "label": "Opis",
               "default": "<p>Bądź pierwszą osobą, która dowie się, kiedy wystartujemy.<\/p>"
+=======
+              "label": "Opis"
+>>>>>>> Stashed changes
             },
             "text_style": {
               "options__1": {
@@ -2843,8 +2829,7 @@
         "accessibility": {
           "content": "Dostępność",
           "label": "Opis pokazu slajdów",
-          "info": "Opisz pokaz slajdów dla klientów korzystających z czytników ekranu.",
-          "default": "Pokaz slajdów na temat naszej marki"
+          "info": "Opisz pokaz slajdów dla klientów korzystających z czytników ekranu."
         }
       },
       "blocks": {
@@ -2855,17 +2840,14 @@
               "label": "Obraz"
             },
             "heading": {
-              "label": "Nagłówek",
-              "default": "Slajd obrazu"
+              "label": "Nagłówek"
             },
             "subheading": {
-              "label": "Nagłówek podrzędny",
-              "default": "Opowiedz historię swojej marki za pomocą obrazów"
+              "label": "Nagłówek podrzędny"
             },
             "button_label": {
               "label": "Przycisk z etykietą",
-              "info": "Pozostaw etykietę pustą, aby ukryć przycisk.",
-              "default": "Przycisk z etykietą"
+              "info": "Pozostaw etykietę pustą, aby ukryć przycisk."
             },
             "link": {
               "label": "Link przycisku"
@@ -2948,8 +2930,7 @@
           "label": "Napisy"
         },
         "heading": {
-          "label": "Nagłówek",
-          "default": "Zwijana treść"
+          "label": "Nagłówek"
         },
         "heading_alignment": {
           "label": "Wyrównanie nagłówka",
@@ -3017,8 +2998,7 @@
           "settings": {
             "heading": {
               "info": "Dołącz nagłówek, który wyjaśnia treść.",
-              "label": "Nagłówek",
-              "default": "Zwijany wiersz"
+              "label": "Nagłówek"
             },
             "row_content": {
               "label": "Treść wiersza"
@@ -3205,8 +3185,12 @@
           "label": "Liczba kolumn na komputerze"
         },
         "paragraph__1": {
+<<<<<<< Updated upstream
           "content": "Dynamiczne rekomendacje wykorzystują informacje o zamówieniach i produktach do ciągłego zmieniania i ulepszania. [Dowiedz się więcej](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "Może Ci się spodobać również"
+=======
+          "content": "Dynamiczne rekomendacje wykorzystują informacje o zamówieniach i produktach do ciągłego zmieniania i ulepszania. [Dowiedz się więcej](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
+>>>>>>> Stashed changes
         },
         "header__2": {
           "content": "Karta produktów"
@@ -3379,20 +3363,21 @@
               "label": "Obraz"
             },
             "caption": {
-              "label": "Napisy",
-              "default": "Napis"
+              "label": "Napisy"
             },
             "heading": {
-              "label": "Nagłówek",
-              "default": "Wiersz"
+              "label": "Nagłówek"
             },
             "text": {
+<<<<<<< Updated upstream
               "label": "Tekst",
               "default": "<p>Połącz tekst z obrazem, aby skierować uwagę na wybrany produkt, kolekcję lub wpis na blogu. Dodaj szczegóły dotyczące dostępności, stylu lub dołącz recenzję.<\/p>"
+=======
+              "label": "Tekst"
+>>>>>>> Stashed changes
             },
             "button_label": {
-              "label": "Przycisk z etykietą",
-              "default": "Przycisk z etykietą"
+              "label": "Przycisk z etykietą"
             },
             "button_link": {
               "label": "Link przycisku"

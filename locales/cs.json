@@ -157,6 +157,10 @@
         "image_available": "Obrázek {{ index }} je nyní k dispozici v zobrazení galerie"
       },
       "view_full_details": "Zobrazit veškeré podrobnosti",
+<<<<<<< Updated upstream
+=======
+      "include_taxes": "Včetně daní.",
+>>>>>>> Stashed changes
       "shipping_policy_html": "<a href=\"{{ link }}\">Poštovné<\/a> se vypočítá na pokladně.",
       "choose_options": "Výběr možností",
       "choose_product_options": "Zvolte možnosti pro: {{ product_name }}",
@@ -176,10 +180,7 @@
         "price_at_each": "{{ price }} \/ ks",
         "price_range": "{{ minimum }}–{{ maximum }}"
       },
-      "product_variants": "Varianty produktu",
-      "taxes_included": "Včetně daní.",
-      "duties_included": "Včetně cla.",
-      "duties_and_taxes_included": "Včetně cla a daní."
+      "product_variants": "Varianty produktu"
     },
     "modal": {
       "label": "Galerie multimédií"
@@ -302,6 +303,10 @@
       "empty": "Košík je prázdný",
       "cart_error": "Při aktualizaci vašeho košíku došlo k chybě. Zkuste to prosím znovu.",
       "cart_quantity_error_html": "Do košíku můžete přidat jen následující množství dané položky: {{ quantity }}.",
+      "taxes_and_shipping_policy_at_checkout_html": "Daně, slevy a <a href=\"{{ link }}\">poštovné<\/a> se vypočítají na pokladně.",
+      "taxes_included_but_shipping_at_checkout": "Příslušná daň, poštovné a slevy se vypočítají na pokladně.",
+      "taxes_included_and_shipping_policy_html": "Včetně daní. <a href=\"{{ link }}\">Poštovné<\/a> a slevy se vypočítají na pokladně.",
+      "taxes_and_shipping_at_checkout": "Daně, slevy a poštovné se vypočítají na pokladně.",
       "update": "Aktualizovat",
       "headings": {
         "product": "Produkt",
@@ -315,6 +320,7 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Přihlaste se<\/a>, abyste si urychlili proces pokladny."
       },
       "estimated_total": "Odhadovaný součet",
+<<<<<<< Updated upstream
       "new_estimated_total": "Nový odhadovaný součet",
       "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Včetně cla a daní. Slevy a <a href=\"{{ link }}\">poštovné<\/a> se vypočítají na pokladně.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "Včetně cla a daní. Slevy a poštovné se vypočítají na pokladně.",
@@ -324,6 +330,9 @@
       "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Včetně cla. Daně, slevy a poštovné se vypočítají na pokladně.",
       "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Daně, slevy a <a href=\"{{ link }}\">poštovné<\/a> se vypočítají na pokladně.",
       "taxes_at_checkout_shipping_at_checkout_without_policy": "Daně, slevy a poštovné se vypočítají na pokladně."
+=======
+      "new_estimated_total": "Nový odhadovaný součet"
+>>>>>>> Stashed changes
     },
     "footer": {
       "payment": "Platební metody"

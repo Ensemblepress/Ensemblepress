@@ -451,8 +451,7 @@
           "name": "Ilmoitus",
           "settings": {
             "text": {
-              "label": "Teksti",
-              "default": "Tervetuloa kauppaamme"
+              "label": "Teksti"
             },
             "text_alignment": {
               "label": "Tekstin tasaus",
@@ -512,8 +511,7 @@
       "name": "Kollaasi",
       "settings": {
         "heading": {
-          "label": "Otsikko",
-          "default": "Multimediakollaasi"
+          "label": "Otsikko"
         },
         "desktop_layout": {
           "label": "Työpöytäasettelu",
@@ -588,8 +586,12 @@
             },
             "description": {
               "label": "Videon vaihtoehtoinen teksti",
+<<<<<<< Updated upstream
               "info": "Kuvaile videota näytönlukijoita käyttäviä asiakkaita varten. [Lisätietoja](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
               "default": "Kuvaile videota"
+=======
+              "info": "Kuvaile videota näytönlukijoita käyttäviä asiakkaita varten. [Lisätietoja](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)"
+>>>>>>> Stashed changes
             }
           }
         }
@@ -602,8 +604,7 @@
       "name": "Kokoelmaluettelo",
       "settings": {
         "title": {
-          "label": "Otsikko",
-          "default": "Kokoelmat"
+          "label": "Otsikko"
         },
         "image_ratio": {
           "label": "Kuvasuhde",
@@ -658,12 +659,6 @@
       "name": "Yhteydenottolomake",
       "presets": {
         "name": "Yhteydenottolomake"
-      },
-      "settings": {
-        "title": {
-          "default": "Yhteydenottolomake",
-          "label": "Otsikko"
-        }
       }
     },
     "custom-liquid": {
@@ -682,8 +677,7 @@
       "name": "Blogipostaukset",
       "settings": {
         "heading": {
-          "label": "Otsikko",
-          "default": "Blogipostaukset"
+          "label": "Otsikko"
         },
         "blog": {
           "label": "Blogi"
@@ -716,8 +710,7 @@
       "name": "Esittelykokoelma",
       "settings": {
         "title": {
-          "label": "Otsikko",
-          "default": "Esittelykokoelma"
+          "label": "Otsikko"
         },
         "collection": {
           "label": "Kokoelma"
@@ -823,8 +816,7 @@
           "name": "Valikko",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Pikalinkit"
+              "label": "Otsikko"
             },
             "menu": {
               "label": "Valikko",
@@ -836,12 +828,15 @@
           "name": "Teksti",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Otsikko"
+              "label": "Otsikko"
             },
             "subtext": {
+<<<<<<< Updated upstream
               "label": "Alateksti",
               "default": "<p>Jaa asiakkaillesi yhteystiedot, kaupan tiedot ja brändin sisältöä.<\/p>"
+=======
+              "label": "Alateksti"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -866,8 +861,7 @@
           "label": "Näytä sähköpostirekisteröityminen"
         },
         "newsletter_heading": {
-          "label": "Otsikko",
-          "default": "Tilaa sähköpostiviestejämme"
+          "label": "Otsikko"
         },
         "header__1": {
           "content": "Sähköpostitilaaja",
@@ -1119,8 +1113,7 @@
           "name": "Otsikko",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Kuvabanneri"
+              "label": "Otsikko"
             }
           }
         },
@@ -1128,8 +1121,7 @@
           "name": "Teksti",
           "settings": {
             "text": {
-              "label": "Kuvaus",
-              "default": "Anna asiakkaille tietoa bannerin kuvista tai sisällöstä mallissa."
+              "label": "Kuvaus"
             },
             "text_style": {
               "options__1": {
@@ -1150,8 +1142,7 @@
           "settings": {
             "button_label_1": {
               "label": "Ensimmäinen tekstipainike",
-              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi.",
-              "default": "Tekstipainike"
+              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi."
             },
             "button_link_1": {
               "label": "Ensimmäinen painikelinkki"
@@ -1161,8 +1152,7 @@
             },
             "button_label_2": {
               "label": "Toinen tekstipainike",
-              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi.",
-              "default": "Tekstipainike"
+              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi."
             },
             "button_link_2": {
               "label": "Toinen painikelinkki"
@@ -1272,8 +1262,7 @@
           "name": "Otsikko",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Kuva tekstillä"
+              "label": "Otsikko"
             }
           }
         },
@@ -1281,8 +1270,12 @@
           "name": "Teksti",
           "settings": {
             "text": {
+<<<<<<< Updated upstream
               "label": "Sisältö",
               "default": "<p>Korosta valitsemaasi tuotetta, kokoelmaa tai blogipostausta lisäämällä kuvaan teksti. Lisää tietoa saatavuudesta tai tyylistä tai näytä vaikkapa arvostelu.<\/p>"
+=======
+              "label": "Sisältö"
+>>>>>>> Stashed changes
             },
             "text_style": {
               "label": "Tekstityyli",
@@ -1300,8 +1293,7 @@
           "settings": {
             "button_label": {
               "label": "Tekstipainike",
-              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi.",
-              "default": "Tekstipainike"
+              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi."
             },
             "button_link": {
               "label": "Painikelinkki"
@@ -1315,8 +1307,7 @@
           "name": "Kuvateksti",
           "settings": {
             "text": {
-              "label": "Teksti",
-              "default": "Lisää iskulause"
+              "label": "Teksti"
             },
             "text_style": {
               "label": "Tekstityyli",
@@ -1394,8 +1385,7 @@
               "content": "Esikatselukuvassa näkyy kaupan nimi ja kuvaus. [Lisätietoja](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Teksti",
-              "default": "Jaa"
+              "label": "Teksti"
             }
           }
         }
@@ -1564,8 +1554,7 @@
       "name": "Kokoelmaluettelosivu",
       "settings": {
         "title": {
-          "label": "Otsikko",
-          "default": "Kokoelmat"
+          "label": "Otsikko"
         },
         "sort": {
           "label": "Lajittele kokoelmat seuraavasti:",
@@ -1641,8 +1630,7 @@
           "name": "Teksti",
           "settings": {
             "text": {
-              "label": "Teksti",
-              "default": "Tekstilohko"
+              "label": "Teksti"
             },
             "text_style": {
               "label": "Tekstityyli",
@@ -1723,8 +1711,7 @@
               "content": "Esikatselukuvassa näkyy kaupan nimi ja kuvaus. [Lisätietoja](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Teksti",
-              "default": "Jaa"
+              "label": "Teksti"
             }
           }
         },
@@ -1733,8 +1720,7 @@
           "settings": {
             "heading": {
               "info": "Lisää sisältöä kuvaava otsikko.",
-              "label": "Otsikko",
-              "default": "Pienenettävä rivi"
+              "label": "Otsikko"
             },
             "content": {
               "label": "Rivin sisältö"
@@ -1883,8 +1869,7 @@
           "name": "Ponnahdusikkuna",
           "settings": {
             "link_label": {
-              "label": "Linkin teksti",
-              "default": "Ponnahduslinkin teksti"
+              "label": "Linkin teksti"
             },
             "page": {
               "label": "Sivu"
@@ -1906,8 +1891,7 @@
               "content": "Lisää Search & Discovery -sovellus, jotta voit valita täydentäviä tuotteita. [Lisätietoja](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
             },
             "heading": {
-              "label": "Otsikko",
-              "default": "Sopii yhteen seuraavien kanssa"
+              "label": "Otsikko"
             },
             "make_collapsible_row": {
               "label": "Näytä pienennettävänä rivinä"
@@ -1970,8 +1954,7 @@
               "label": "Ensimmäinen kuva"
             },
             "heading_1": {
-              "label": "Ensimmäinen otsikko",
-              "default": "Otsikko"
+              "label": "Ensimmäinen otsikko"
             },
             "icon_2": {
               "label": "Toinen kuvake"
@@ -1980,8 +1963,7 @@
               "label": "Toinen kuva"
             },
             "heading_2": {
-              "label": "Toinen otsikko",
-              "default": "Otsikko"
+              "label": "Toinen otsikko"
             },
             "icon_3": {
               "label": "Kolmas kuvake"
@@ -1990,8 +1972,7 @@
               "label": "Kolmas kuva"
             },
             "heading_3": {
-              "label": "Kolmas otsikko",
-              "default": "Otsikko"
+              "label": "Kolmas otsikko"
             }
           }
         },
@@ -2188,8 +2169,7 @@
       "name": "Monisarakkeinen",
       "settings": {
         "title": {
-          "label": "Otsikko",
-          "default": "Monisarakkeinen"
+          "label": "Otsikko"
         },
         "image_width": {
           "label": "Kuvan leveys",
@@ -2237,8 +2217,7 @@
           }
         },
         "button_label": {
-          "label": "Tekstipainike",
-          "default": "Tekstipainike"
+          "label": "Tekstipainike"
         },
         "button_link": {
           "label": "Painikelinkki"
@@ -2270,12 +2249,15 @@
               "label": "Kuva"
             },
             "title": {
-              "label": "Otsikko",
-              "default": "Sarake"
+              "label": "Otsikko"
             },
             "text": {
+<<<<<<< Updated upstream
               "label": "Kuvaus",
               "default": "<p>Korosta valitsemaasi tuotetta, kokoelmaa tai blogipostausta lisäämällä kuvaan teksti. Lisää tietoa saatavuudesta tai tyylistä tai näytä vaikkapa arvostelu.<\/p>"
+=======
+              "label": "Kuvaus"
+>>>>>>> Stashed changes
             },
             "link_label": {
               "label": "Linkin teksti"
@@ -2305,8 +2287,7 @@
           "name": "Otsikko",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Tilaa sähköpostiviestejämme"
+              "label": "Otsikko"
             }
           }
         },
@@ -2314,8 +2295,12 @@
           "name": "Alaotsikko",
           "settings": {
             "paragraph": {
+<<<<<<< Updated upstream
               "label": "Kuvaus",
               "default": "<p>Saa ensimmäisten joukossa tietoa uusista kokoelmista ja ainutlaatuisista tarjouksista.<\/p>"
+=======
+              "label": "Kuvaus"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -2375,8 +2360,7 @@
           "name": "Otsikko",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Kerro brändistäsi"
+              "label": "Otsikko"
             }
           }
         },
@@ -2384,8 +2368,12 @@
           "name": "Teksti",
           "settings": {
             "text": {
+<<<<<<< Updated upstream
               "label": "Kuvaus",
               "default": "<p>Kerro brändiäsi koskevia tietoja asiakkaillesi. Kuvaile tuotetta, jaa ilmoituksia tai toivota asiakkaat tervetulleiksi kauppaasi.<\/p>"
+=======
+              "label": "Kuvaus"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -2394,8 +2382,7 @@
           "settings": {
             "button_label_1": {
               "label": "Ensimmäinen tekstipainike",
-              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi.",
-              "default": "Tekstipainike"
+              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi."
             },
             "button_link_1": {
               "label": "Ensimmäinen painikelinkki"
@@ -2419,8 +2406,7 @@
           "name": "Kuvateksti",
           "settings": {
             "text": {
-              "label": "Teksti",
-              "default": "Lisää iskulause"
+              "label": "Teksti"
             },
             "text_style": {
               "label": "Tekstityyli",
@@ -2465,8 +2451,7 @@
       "name": "Video",
       "settings": {
         "heading": {
-          "label": "Otsikko",
-          "default": "Video"
+          "label": "Otsikko"
         },
         "cover_image": {
           "label": "Kansikuva"
@@ -2516,8 +2501,7 @@
           "name": "Teksti",
           "settings": {
             "text": {
-              "label": "Teksti",
-              "default": "Tekstilohko"
+              "label": "Teksti"
             },
             "text_style": {
               "label": "Tekstityyli",
@@ -2591,8 +2575,7 @@
               "content": "Esikatselukuvassa näkyy kaupan nimi ja kuvaus. [Lisätietoja](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Teksti",
-              "default": "Jaa"
+              "label": "Teksti"
             }
           }
         },
@@ -2758,8 +2741,7 @@
           "name": "Otsikko",
           "settings": {
             "heading": {
-              "label": "Otsikko",
-              "default": "Avataan pian"
+              "label": "Otsikko"
             }
           }
         },
@@ -2767,8 +2749,12 @@
           "name": "Kohta",
           "settings": {
             "paragraph": {
+<<<<<<< Updated upstream
               "label": "Kuvaus",
               "default": "<p>Saa tietoa avaamisesta ensimmäisten joukossa.<\/p>"
+=======
+              "label": "Kuvaus"
+>>>>>>> Stashed changes
             },
             "text_style": {
               "options__1": {
@@ -2843,8 +2829,7 @@
         "accessibility": {
           "content": "Käytettävyys",
           "label": "Diaesityksen kuvaus",
-          "info": "Kuvaile diaesitystä näytönlukijoita käyttäviä asiakkaita varten.",
-          "default": "Diaesitys brändistäsi"
+          "info": "Kuvaile diaesitystä näytönlukijoita käyttäviä asiakkaita varten."
         }
       },
       "blocks": {
@@ -2855,17 +2840,14 @@
               "label": "Kuva"
             },
             "heading": {
-              "label": "Otsikko",
-              "default": "Kuvadia"
+              "label": "Otsikko"
             },
             "subheading": {
-              "label": "Alaotsikko",
-              "default": "Kerro brändisi tarina kuvilla"
+              "label": "Alaotsikko"
             },
             "button_label": {
               "label": "Tekstipainike",
-              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi.",
-              "default": "Tekstipainike"
+              "info": "Jos haluat piilottaa painikkeen, jätä painikkeen teksti tyhjäksi."
             },
             "link": {
               "label": "Painikelinkki"
@@ -2948,8 +2930,7 @@
           "label": "Kuvateksti"
         },
         "heading": {
-          "label": "Otsikko",
-          "default": "Pienenettävä sisältö"
+          "label": "Otsikko"
         },
         "heading_alignment": {
           "label": "Otsikon tasaus",
@@ -3017,8 +2998,7 @@
           "settings": {
             "heading": {
               "info": "Lisää sisältöä kuvaava otsikko.",
-              "label": "Otsikko",
-              "default": "Pienenettävä rivi"
+              "label": "Otsikko"
             },
             "row_content": {
               "label": "Rivin sisältö"
@@ -3205,8 +3185,12 @@
           "label": "Sarakkeiden määrä työpöydällä"
         },
         "paragraph__1": {
+<<<<<<< Updated upstream
           "content": "Dynaamisissa suosituksissa käytetään tilaus- ja tuotetietoja, jotta suositukset muuttuvat ja paranevat ajan myötä. [Lisätietoja](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "Saatat pitää myös näistä"
+=======
+          "content": "Dynaamisissa suosituksissa käytetään tilaus- ja tuotetietoja, jotta suositukset muuttuvat ja paranevat ajan myötä. [Lisätietoja](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
+>>>>>>> Stashed changes
         },
         "header__2": {
           "content": "Tuotekortti"
@@ -3379,20 +3363,21 @@
               "label": "Kuva"
             },
             "caption": {
-              "label": "Kuvateksti",
-              "default": "Kuvateksti"
+              "label": "Kuvateksti"
             },
             "heading": {
-              "label": "Otsikko",
-              "default": "Rivi"
+              "label": "Otsikko"
             },
             "text": {
+<<<<<<< Updated upstream
               "label": "Teksti",
               "default": "<p>Korosta valitsemaasi tuotetta, kokoelmaa tai blogipostausta lisäämällä kuvaan teksti. Lisää tietoa saatavuudesta tai tyylistä tai näytä vaikkapa arvostelu.<\/p>"
+=======
+              "label": "Teksti"
+>>>>>>> Stashed changes
             },
             "button_label": {
-              "label": "Tekstipainike",
-              "default": "Tekstipainike"
+              "label": "Tekstipainike"
             },
             "button_link": {
               "label": "Painikelinkki"

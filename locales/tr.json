@@ -155,6 +155,10 @@
         "image_available": "Görsel {{ index }} artık galeri görüntüleyicide kullanılabilir"
       },
       "view_full_details": "Tüm ayrıntıları görüntüle",
+<<<<<<< Updated upstream
+=======
+      "include_taxes": "Vergi dahildir.",
+>>>>>>> Stashed changes
       "shipping_policy_html": "<a href=\"{{ link }}\">Kargo<\/a>, ödeme sayfasında hesaplanır.",
       "choose_options": "Seçenekleri belirle",
       "choose_product_options": "{{ product_name }} için seçenekleri belirle",
@@ -174,10 +178,7 @@
         "price_at_each": "{{ price }}\/adet",
         "price_range": "{{ minimum }} - {{ maximum }}"
       },
-      "product_variants": "Ürün varyasyonları",
-      "taxes_included": "Vergiler dahil.",
-      "duties_included": "Gümrük vergileri dahil.",
-      "duties_and_taxes_included": "Vergiler ve gümrük vergileri dahil."
+      "product_variants": "Ürün varyasyonları"
     },
     "modal": {
       "label": "Medya galerisi"
@@ -282,6 +283,10 @@
       "empty": "Sepetiniz boş",
       "cart_error": "Sepetiniz güncellenirken bir hata oluştu. Lütfen tekrar deneyin.",
       "cart_quantity_error_html": "Sepetinize bu üründen yalnızca {{ quantity }} adet ekleyebilirsiniz.",
+      "taxes_and_shipping_policy_at_checkout_html": "Vergiler, indirimler ve <a href=\"{{ link }}\">kargo<\/a>, ödeme sayfasında hesaplanır",
+      "taxes_included_but_shipping_at_checkout": "Vergi dahildir ve kargo ile indirimler, ödeme sayfasında hesaplanır",
+      "taxes_included_and_shipping_policy_html": "Vergi dahildir. <a href=\"{{ link }}\">Kargo<\/a> ve indirimler, ödeme sayfasında hesaplanır.",
+      "taxes_and_shipping_at_checkout": "Vergiler, indirimler ve kargo, ödeme sayfasında hesaplanır",
       "headings": {
         "product": "Ürün",
         "price": "Fiyat",
@@ -295,6 +300,7 @@
         "paragraph_html": "Daha hızlı ödeme yapmak için <a href=\"{{ link }}\" class=\"link underlined-link\">oturum açın<\/a>."
       },
       "estimated_total": "Tahmini toplam",
+<<<<<<< Updated upstream
       "new_estimated_total": "Yeni tahmini toplam",
       "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Vergiler ve gümrük vergileri dahil. İndirimler ve <a href=\"{{ link }}\">kargo<\/a>, ödeme sırasında hesaplanır.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "Vergiler ve gümrük vergileri dahil. İndirimler ve kargo, ödeme sırasında hesaplanır.",
@@ -304,6 +310,9 @@
       "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Gümrük vergileri dahil. Vergiler, indirimler ve kargo, ödeme sayfasında hesaplanır.",
       "taxes_at_checkout_shipping_at_checkout_with_policy_html": "Vergiler, indirimler ve <a href=\"{{ link }}\">kargo<\/a>, ödeme sayfasında hesaplanır.",
       "taxes_at_checkout_shipping_at_checkout_without_policy": "Vergiler, indirimler ve kargo, ödeme sayfasında hesaplanır."
+=======
+      "new_estimated_total": "Yeni tahmini toplam"
+>>>>>>> Stashed changes
     },
     "footer": {
       "payment": "Ödeme yöntemleri"

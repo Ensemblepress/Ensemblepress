@@ -451,8 +451,7 @@
           "name": "Aankondiging",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Welkom in onze winkel"
+              "label": "Tekst"
             },
             "text_alignment": {
               "label": "Tekstuitlijning",
@@ -512,8 +511,7 @@
       "name": "Collage",
       "settings": {
         "heading": {
-          "label": "Opschrift",
-          "default": "Multimediacollage"
+          "label": "Opschrift"
         },
         "desktop_layout": {
           "label": "Opmaak bureaublad",
@@ -588,8 +586,12 @@
             },
             "description": {
               "label": "Alt-tekst video",
+<<<<<<< Updated upstream
               "info": "Geef een beschrijving van de video voor klanten die schermlezers gebruiken. [Meer informatie](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
               "default": "Beschrijf de video"
+=======
+              "info": "Geef een beschrijving van de video voor klanten die schermlezers gebruiken. [Meer informatie](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)"
+>>>>>>> Stashed changes
             }
           }
         }
@@ -602,8 +604,7 @@
       "name": "Collectielijst",
       "settings": {
         "title": {
-          "label": "Opschrift",
-          "default": "Collecties"
+          "label": "Opschrift"
         },
         "image_ratio": {
           "label": "Breedte-\/hoogteverhouding van afbeeldingen",
@@ -614,7 +615,7 @@
             "label": "Portret"
           },
           "options__3": {
-            "label": "Vierkant"
+            "label": "Square"
           },
           "info": "Voeg afbeeldingen toe door je collecties bij te werken. [Meer informatie](https:\/\/help.shopify.com\/manual\/products\/collections)"
         },
@@ -658,12 +659,6 @@
       "name": "Contactformulier",
       "presets": {
         "name": "Contactformulier"
-      },
-      "settings": {
-        "title": {
-          "default": "Contactformulier",
-          "label": "Koptekst"
-        }
       }
     },
     "custom-liquid": {
@@ -682,8 +677,7 @@
       "name": "Blogberichten",
       "settings": {
         "heading": {
-          "label": "Opschrift",
-          "default": "Blogposts"
+          "label": "Opschrift"
         },
         "blog": {
           "label": "Blog"
@@ -716,8 +710,7 @@
       "name": "Uitgelichte collectie",
       "settings": {
         "title": {
-          "label": "Opschrift",
-          "default": "Uitgelichte collectie"
+          "label": "Opschrift"
         },
         "collection": {
           "label": "Collectie"
@@ -740,7 +733,7 @@
             "label": "Portret"
           },
           "options__3": {
-            "label": "Vierkant"
+            "label": "Square"
           }
         },
         "show_secondary_image": {
@@ -823,8 +816,7 @@
           "name": "Menu",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Snelle links"
+              "label": "Opschrift"
             },
             "menu": {
               "label": "Menu",
@@ -836,12 +828,15 @@
           "name": "Tekst",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Koptekst"
+              "label": "Opschrift"
             },
             "subtext": {
+<<<<<<< Updated upstream
               "label": "Subtekst",
               "default": "<p>Deel contactgegevens, winkelgegevens en merkcontent met klanten.<\/p>"
+=======
+              "label": "Subtekst"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -866,8 +861,7 @@
           "label": "Aanmelding voor het ontvangen van e-mail weergeven"
         },
         "newsletter_heading": {
-          "label": "Opschrift",
-          "default": "Abonneren op onze e-mails"
+          "label": "Opschrift"
         },
         "header__1": {
           "content": "Aanmelding voor het ontvangen van e-mail",
@@ -1119,8 +1113,7 @@
           "name": "Opschrift",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Banner voor afbeeldingen"
+              "label": "Opschrift"
             }
           }
         },
@@ -1128,8 +1121,7 @@
           "name": "Tekstkleur",
           "settings": {
             "text": {
-              "label": "Beschrijving",
-              "default": "Geef klanten details over de bannerafbeelding(en) of content op de template."
+              "label": "Beschrijving"
             },
             "text_style": {
               "options__1": {
@@ -1150,8 +1142,7 @@
           "settings": {
             "button_label_1": {
               "label": "Eerste knoplabel",
-              "info": "Laat het label leeg om de knop te verbergen.",
-              "default": "Knoplabel"
+              "info": "Laat het label leeg om de knop te verbergen."
             },
             "button_link_1": {
               "label": "Eerste knoplink"
@@ -1161,8 +1152,7 @@
             },
             "button_label_2": {
               "label": "Tweede knoplabel",
-              "info": "Laat het label leeg om de knop te verbergen.",
-              "default": "Knoplabel"
+              "info": "Laat het label leeg om de knop te verbergen."
             },
             "button_link_2": {
               "label": "Tweede knoplink"
@@ -1272,8 +1262,7 @@
           "name": "Opschrift",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Afbeelding met tekst"
+              "label": "Opschrift"
             }
           }
         },
@@ -1281,8 +1270,12 @@
           "name": "Tekst",
           "settings": {
             "text": {
+<<<<<<< Updated upstream
               "label": "Content",
               "default": "<p>Plaats een afbeelding bij stukken tekst om de aandacht op je gekozen product, collectie of blogpost te richten. Voeg details over beschikbaarheid en stijl toe of plaats een productrecensie.<\/p>"
+=======
+              "label": "Content"
+>>>>>>> Stashed changes
             },
             "text_style": {
               "label": "Tekststijl",
@@ -1300,8 +1293,7 @@
           "settings": {
             "button_label": {
               "label": "Knop met tekstlabel",
-              "info": "Laat het label leeg om de knop te verbergen.",
-              "default": "Knoplabel"
+              "info": "Laat het label leeg om de knop te verbergen."
             },
             "button_link": {
               "label": "Knop met link"
@@ -1315,8 +1307,7 @@
           "name": "Bijschrift",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Voeg een tagline toe"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "Tekststijl",
@@ -1394,8 +1385,7 @@
               "content": "Een winkelnaam en beschrijving worden weergegeven in de voorbeeldafbeelding. [Meer informatie](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Tekst",
-              "default": "Delen"
+              "label": "Tekst"
             }
           }
         }
@@ -1491,7 +1481,7 @@
             "label": "Portret"
           },
           "options__3": {
-            "label": "Vierkant"
+            "label": "Square"
           }
         },
         "show_secondary_image": {
@@ -1564,8 +1554,7 @@
       "name": "Pagina collectielijst",
       "settings": {
         "title": {
-          "label": "Opschrift",
-          "default": "Collecties"
+          "label": "Opschrift"
         },
         "sort": {
           "label": "Collecties sorteren op:",
@@ -1597,7 +1586,7 @@
             "label": "Portret"
           },
           "options__3": {
-            "label": "Vierkant"
+            "label": "Square"
           },
           "info": "Voeg afbeeldingen toe door je collecties bij te werken. [Meer informatie](https:\/\/help.shopify.com\/manual\/products\/collections)"
         },
@@ -1642,8 +1631,7 @@
           "name": "Tekst",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Tekstblok"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "TextStyle",
@@ -1724,8 +1712,7 @@
               "content": "Een winkelnaam en beschrijving worden weergegeven in de voorbeeldafbeelding. [Meer informatie](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Tekst",
-              "default": "Delen"
+              "label": "Tekst"
             }
           }
         },
@@ -1734,8 +1721,7 @@
           "settings": {
             "heading": {
               "info": "Gebruik een kop die de content verklaart.",
-              "label": "Opschrift",
-              "default": "Inklapbare rij"
+              "label": "Opschrift"
             },
             "content": {
               "label": "Content rij"
@@ -1884,8 +1870,7 @@
           "name": "Pop-up",
           "settings": {
             "link_label": {
-              "label": "Link-label",
-              "default": "Tekst voor pop-uplink"
+              "label": "Link-label"
             },
             "page": {
               "label": "Pagina"
@@ -1907,8 +1892,7 @@
               "content": "Als je aanvullende producten wilt selecteren, voeg je de Search en Zichtbaarheid-app toe. [Meer informatie](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
             },
             "heading": {
-              "label": "Koptekst",
-              "default": "Gaat goed samen met"
+              "label": "Koptekst"
             },
             "make_collapsible_row": {
               "label": "Weergeven als inklapbare rij"
@@ -1971,8 +1955,7 @@
               "label": "Eerste afbeelding"
             },
             "heading_1": {
-              "label": "Eerste opschrift",
-              "default": "Koptekst"
+              "label": "Eerste opschrift"
             },
             "icon_2": {
               "label": "Tweede pictogram"
@@ -1981,8 +1964,7 @@
               "label": "Tweede afbeelding"
             },
             "heading_2": {
-              "label": "Tweede opschrift",
-              "default": "Koptekst"
+              "label": "Tweede opschrift"
             },
             "icon_3": {
               "label": "Derde pictogram"
@@ -1991,8 +1973,7 @@
               "label": "Derde afbeelding"
             },
             "heading_3": {
-              "label": "Derde opschrift",
-              "default": "Koptekst"
+              "label": "Derde opschrift"
             }
           }
         },
@@ -2141,7 +2122,7 @@
             "label": "Portret"
           },
           "options__3": {
-            "label": "Vierkant"
+            "label": "Square"
           }
         },
         "show_secondary_image": {
@@ -2188,8 +2169,7 @@
       "name": "Meerdere kolommen",
       "settings": {
         "title": {
-          "label": "Opschrift",
-          "default": "Meerdere kolommen"
+          "label": "Opschrift"
         },
         "image_width": {
           "label": "Breedte afbeelding",
@@ -2212,7 +2192,7 @@
             "label": "Portret"
           },
           "options__3": {
-            "label": "Vierkant"
+            "label": "Square"
           },
           "options__4": {
             "label": "Cirkel"
@@ -2237,8 +2217,7 @@
           }
         },
         "button_label": {
-          "label": "Knop met tekstlabel",
-          "default": "Knoplabel"
+          "label": "Knop met tekstlabel"
         },
         "button_link": {
           "label": "Knop met link"
@@ -2270,12 +2249,15 @@
               "label": "Afbeelding"
             },
             "title": {
-              "label": "Opschrift",
-              "default": "Kolom"
+              "label": "Opschrift"
             },
             "text": {
+<<<<<<< Updated upstream
               "label": "Beschrijving",
               "default": "<p>Plaats een afbeelding bij stukken tekst om de aandacht op je gekozen product, collectie of blogpost te richten. Voeg details over beschikbaarheid en stijl toe of plaats een productrecensie.<\/p>"
+=======
+              "label": "Beschrijving"
+>>>>>>> Stashed changes
             },
             "link_label": {
               "label": "Link-label"
@@ -2305,8 +2287,7 @@
           "name": "Opschrift",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Abonneren op onze e-mails"
+              "label": "Opschrift"
             }
           }
         },
@@ -2314,8 +2295,12 @@
           "name": "Subkop",
           "settings": {
             "paragraph": {
+<<<<<<< Updated upstream
               "label": "Beschrijving",
               "default": "<p>Kom als eerste te weten als er nieuwe collecties en exclusieve aanbiedingen zijn.<\/p>"
+=======
+              "label": "Beschrijving"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -2375,8 +2360,7 @@
           "name": "Opschrift",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Vertel over je merk"
+              "label": "Opschrift"
             }
           }
         },
@@ -2384,8 +2368,12 @@
           "name": "Tekstkleur",
           "settings": {
             "text": {
+<<<<<<< Updated upstream
               "label": "Beschrijving",
               "default": "<p>Deel informatie over je merk met klanten. Beschrijf een product, doe aankondigingen of verwelkom klanten in je winkel.<\/p>"
+=======
+              "label": "Beschrijving"
+>>>>>>> Stashed changes
             }
           }
         },
@@ -2394,8 +2382,7 @@
           "settings": {
             "button_label_1": {
               "label": "Eerste knoplabel",
-              "info": "Laat het label leeg om de knop te verbergen.",
-              "default": "Knoplabel"
+              "info": "Laat het label leeg om de knop te verbergen."
             },
             "button_link_1": {
               "label": "Eerste knoplink"
@@ -2419,8 +2406,7 @@
           "name": "Bijschrift",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Voeg een tagline toe"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "Tekststijl",
@@ -2465,8 +2451,7 @@
       "name": "Video",
       "settings": {
         "heading": {
-          "label": "Opschrift",
-          "default": "Video"
+          "label": "Opschrift"
         },
         "cover_image": {
           "label": "Coverafbeelding"
@@ -2516,8 +2501,7 @@
           "name": "Tekst",
           "settings": {
             "text": {
-              "label": "Tekst",
-              "default": "Tekstblok"
+              "label": "Tekst"
             },
             "text_style": {
               "label": "TextStyle",
@@ -2591,8 +2575,7 @@
               "content": "Een winkelnaam en beschrijving worden weergegeven in de voorbeeldafbeelding. [Meer informatie](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Tekstkleur",
-              "default": "Delen"
+              "label": "Tekstkleur"
             }
           }
         },
@@ -2758,8 +2741,7 @@
           "name": "Opschrift",
           "settings": {
             "heading": {
-              "label": "Opschrift",
-              "default": "Opent binnenkort"
+              "label": "Opschrift"
             }
           }
         },
@@ -2767,8 +2749,12 @@
           "name": "Paragraaf",
           "settings": {
             "paragraph": {
+<<<<<<< Updated upstream
               "label": "Beschrijving",
               "default": "<p>Kom als eerste te weten wanneer we van start gaan.<\/p>"
+=======
+              "label": "Beschrijving"
+>>>>>>> Stashed changes
             },
             "text_style": {
               "options__1": {
@@ -2843,8 +2829,7 @@
         "accessibility": {
           "content": "Toegankelijkheid",
           "label": "Beschrijving van diavoorstelling",
-          "info": "Geef een beschrijving van de diavoorstelling voor klanten die schermlezers gebruiken.",
-          "default": "Diavoorstelling over ons merk"
+          "info": "Geef een beschrijving van de diavoorstelling voor klanten die schermlezers gebruiken."
         }
       },
       "blocks": {
@@ -2855,17 +2840,14 @@
               "label": "Afbeelding"
             },
             "heading": {
-              "label": "Kop",
-              "default": "Afbeelding dia"
+              "label": "Kop"
             },
             "subheading": {
-              "label": "Subkop",
-              "default": "Vertel met afbeeldingen het verhaal van je merk"
+              "label": "Subkop"
             },
             "button_label": {
               "label": "Knoplabel",
-              "info": "Laat het label leeg om de knop te verbergen.",
-              "default": "Knoplabel"
+              "info": "Laat het label leeg om de knop te verbergen."
             },
             "link": {
               "label": "Knoplink"
@@ -2948,8 +2930,7 @@
           "label": "Bijschrift"
         },
         "heading": {
-          "label": "Kop",
-          "default": "Inklapbare content"
+          "label": "Kop"
         },
         "heading_alignment": {
           "label": "Uitlijning kop",
@@ -3017,8 +2998,7 @@
           "settings": {
             "heading": {
               "info": "Gebruik een kop die de content verklaart.",
-              "label": "Kop",
-              "default": "Inklapbare rij"
+              "label": "Kop"
             },
             "row_content": {
               "label": "Content rij"
@@ -3205,8 +3185,12 @@
           "label": "Aantal kolommen op desktopcomputers"
         },
         "paragraph__1": {
+<<<<<<< Updated upstream
           "content": "In de loop van de tijd worden veranderingen en verbeteringen doorgevoerd dankzij dynamische aanbevelingen, waarbij gebruik wordt gemaakt van informatie over bestellingen en producten. [Meer informatie](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "Wellicht vind je dit ook leuk"
+=======
+          "content": "In de loop van de tijd worden veranderingen en verbeteringen doorgevoerd dankzij dynamische aanbevelingen, waarbij gebruik wordt gemaakt van informatie over bestellingen en producten. [Meer informatie](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
+>>>>>>> Stashed changes
         },
         "header__2": {
           "content": "Productkaart"
@@ -3379,20 +3363,21 @@
               "label": "Afbeelding"
             },
             "caption": {
-              "label": "Bijschrift",
-              "default": "Bijschrift"
+              "label": "Bijschrift"
             },
             "heading": {
-              "label": "Koptekst",
-              "default": "Rij"
+              "label": "Koptekst"
             },
             "text": {
+<<<<<<< Updated upstream
               "label": "Tekst",
               "default": "<p>Plaats een afbeelding bij stukken tekst om de aandacht op je gekozen product, collectie of blogpost te richten. Voeg details over beschikbaarheid en stijl toe of plaats een productrecensie.<\/p>"
+=======
+              "label": "Tekst"
+>>>>>>> Stashed changes
             },
             "button_label": {
-              "label": "Knoplabel",
-              "default": "Knoplabel"
+              "label": "Knoplabel"
             },
             "button_link": {
               "label": "Knoplink"
