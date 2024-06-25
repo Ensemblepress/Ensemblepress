@@ -29,7 +29,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
             "picker_type": "dropdown",
             "swatch_shape": "square"
           }
