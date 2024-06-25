@@ -1,9 +1,64 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "slideshow_Wtfe8m": {
+      "type": "slideshow",
       "blocks": {
-        "heading": {
+        "slide_xBncEq": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/home-1-slider-1.webp",
+            "heading": "Paperback",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Shop Paperback",
+            "link": "shopify:\/\/collections\/book",
+            "button_style_secondary": false,
+            "box_align": "bottom-left",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 20,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_M6zqeT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/home-1-slider-2.webp",
+            "heading": "Ebooks",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Shop Ebooks",
+            "link": "shopify:\/\/collections\/ebooks",
+            "button_style_secondary": false,
+            "box_align": "bottom-left",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 20,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_xBncEq",
+        "slide_M6zqeT"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "small",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "rich_text_cCtKNf": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_pWbNXW": {
           "type": "heading",
           "settings": {
             "heading": "Browse our latest products",
@@ -12,10 +67,22 @@
         },
         "button": {
           "type": "buttons",
+            "heading": "<strong>Why<\/strong> <strong>become a membership ?<\/strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_jxG74F": {
+          "type": "text",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
+            "text": "<p>For $14 a Year, get 24-hour advance access to sales and special invitations to monthly promotions.<\/p>"
+          }
+        },
+        "button_bbdemD": {
+          "type": "button",
+          "settings": {
+            "button_label": "Join Now",
+            "button_link": "shopify:\/\/collections\/membership",
+            "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -25,58 +92,65 @@
       "block_order": [
         "heading",
         "button"
+        "heading_pWbNXW",
+        "text_jxG74F",
+        "button_bbdemD"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
-<<<<<<< Updated upstream
     "rich_text": {
       "type": "rich-text",
+    "collection_list_63Rwcc": {
+      "type": "collection-list",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "featured_collection_dfkrky": {
+          "type": "featured_collection",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "collection": "hardcover"
           }
         },
-        "text": {
-          "type": "text",
+        "featured_collection_djKXM8": {
+          "type": "featured_collection",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "collection": "products"
+          }
+        },
+        "featured_collection_TfjjNb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "book"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "featured_collection_dfkrky",
+        "featured_collection_djKXM8",
+        "featured_collection_TfjjNb"
       ],
-      "disabled": true,
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "title": "Books Category",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-=======
->>>>>>> Stashed changes
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "title": "Member Favorites",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -85,15 +159,12 @@
         "products_to_show": 8,
         "columns_desktop": 4,
         "full_width": false,
-<<<<<<< Updated upstream
         "show_view_all": false,
-=======
         "show_view_all": true,
->>>>>>> Stashed changes
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -101,120 +172,39 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-<<<<<<< Updated upstream
+        "quick_add": "standard",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
         "padding_top": 28,
         "padding_bottom": 36
       }
     },
-    "collage": {
-      "type": "collage",
-      "blocks": {
-        "collection-0": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
-      ],
-      "disabled": true,
+    "featured_collection_MnxekR": {
+      "type": "featured-collection",
       "settings": {
-        "heading": "Multimedia collage",
+        "title": "New Arrivals",
         "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "card_styles": "product-card-wrapper",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "video": {
-      "type": "video",
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
         "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
         "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
-=======
         "padding_top": 44,
->>>>>>> Stashed changes
         "padding_bottom": 36
       }
     }
@@ -222,5 +212,10 @@
   "order": [
     "image_banner",
     "featured_collection"
+    "slideshow_Wtfe8m",
+    "rich_text_cCtKNf",
+    "collection_list_63Rwcc",
+    "featured_collection",
+    "featured_collection_MnxekR"
   ]
 }

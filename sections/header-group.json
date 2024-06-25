@@ -8,11 +8,9 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-<<<<<<< Updated upstream
             "text": "Welcome to our store demo",
-=======
             "text": "Welcome to our store",
->>>>>>> Stashed changes
+            "text": "20% Off! Code: LOSTREVER20",
             "link": ""
           }
         }
@@ -35,15 +33,12 @@
       "settings": {
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "scheme-1",
-<<<<<<< Updated upstream
         "menu_color_scheme": "",
-=======
         "menu_color_scheme": "scheme-1",
->>>>>>> Stashed changes
         "enable_country_selector": true,
         "enable_language_selector": true,
         "mobile_logo_position": "center",
