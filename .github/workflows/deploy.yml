@@ -35,17 +35,14 @@ jobs:
         run: npm install -g @shopify/cli@latest @shopify/theme
 
       - name: Authenticate and Deploy Theme
-        env:
-          CI: 1
+        env:         
           SHOPIFY_STORE_URL: https://8b47fd-7d.myshopify.com
           SHOPIFY_ADMIN_API_PASSWORD: nowyoh
           SHOPIFY_THEME_ID: 136949760151
-        run: |
-          # Deploy the theme
-          echo $SHOPIFY_STORE_URL
-          echo $SHOPIFY_ADMIN_API_PASSWORD
-          echo $SHOPIFY_THEME_ID
-          shopify login --store $SHOPIFY_STORE_URL
+          THEME_PATH: ./
+        with: 
+          args: --ignored-file=sections/* --timeout=30         
+        
 
           
          
