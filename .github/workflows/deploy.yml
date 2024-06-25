@@ -42,5 +42,5 @@ jobs:
           SHOPIFY_THEME_ID: 136949760151
           THEME_PATH: ./
         with: 
-          args: --ignored-file=sections/* --timeout=30  
+          args: --ignored-file=sections/*  
          
