@@ -34,7 +34,7 @@ jobs:
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli@latest @shopify/theme
 
-      - name: Authenticate and Deploy Theme
+      - name: Authenticate and Deploy Theme shopify
         env:         
           SHOPIFY_STORE_URL: https://8b47fd-7d.myshopify.com
           SHOPIFY_ADMIN_API_PASSWORD: nowyoh
