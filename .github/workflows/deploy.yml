@@ -42,5 +42,4 @@ jobs:
           SHOPIFY_THEME_ID: 136949760151
           THEME_PATH: ./
         with: 
-          args: --ignored-file=locales/*  
-         
+          args: --ignored-file=locales/* templates/*
