@@ -64,12 +64,12 @@
 			"color_scheme": "scheme-1",
 			"padding_top": 20,
 			"padding_bottom": 40
-		 }
-	  }
-    }
+		}
+	 }
   },
   "order": [
     "cart-items",
     "cart-footer"
-  ] 
+  ]
+ }
 }

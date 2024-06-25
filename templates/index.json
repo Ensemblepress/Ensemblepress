@@ -91,7 +91,7 @@
       },
       "block_order": [
         "heading",
-        "button"
+        "button",
         "heading_pWbNXW",
         "text_jxG74F",
         "button_bbdemD"
@@ -211,7 +211,7 @@
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
     "slideshow_Wtfe8m",
     "rich_text_cCtKNf",
     "collection_list_63Rwcc",
