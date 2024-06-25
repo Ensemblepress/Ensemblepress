@@ -38,7 +38,7 @@ jobs:
         uses: pgrimaud/action-shopify@master
         env:         
           SHOPIFY_STORE_URL: https://8b47fd-7d.myshopify.com
-          SHOPIFY_ADMIN_API_PASSWORD: nowyoh
+          SHOPIFY_PASSWORD: nowyoh
           SHOPIFY_THEME_ID: 136949760151
           THEME_PATH: ./
         with: 
