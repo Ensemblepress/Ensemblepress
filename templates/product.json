@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
@@ -18,6 +27,8 @@
         "caption": {
           "type": "text",
           "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
           }
         },
         "price": {
@@ -28,8 +39,6 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle",
             "picker_type": "dropdown",
             "swatch_shape": "square"
           }
@@ -53,7 +62,6 @@
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
-          "settings": {
           "disabled": true,
           "settings": {
             "heading": "Materials",
@@ -102,34 +110,19 @@
         "custom_liquid_8KCAcT": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<iframe style=\"border-radius:12px\" src=\"https:\/\/open.spotify.com\/embed\/track\/06KyNuuMOX1ROXRhj787tj?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"><\/iframe>"
+            "custom_liquid": "<iframe style=\"border-radius:12px\" src=\"https:\/\/open.spotify.com\/embed\/track\/09CtPGIpYB4BrO8qb1RGsF?utm_source=generator\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"><\/iframe>"
           }
         }
       },
       "block_order": [
         "vendor",
         "title",
+        "caption",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
-      ],
-      "settings": {
-        "enable_sticky_info": true,
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "gallery_layout": "stacked",
-        "color_scheme": "scheme-1",
-        "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "media_position": "left",
-        "image_zoom": "lightbox",
-        "mobile_thumbnails": "hide",
-        "hide_variants": true,
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
@@ -257,6 +250,8 @@
   },
   "order": [
     "main",
+    "image-with-text",
+    "multicolumn",
     "related-products"
   ]
 }
