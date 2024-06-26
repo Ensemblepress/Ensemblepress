@@ -139,7 +139,7 @@
           "label": "Povolit návrhy hledaných výrazů"
         },
         "predictive_search_show_vendor": {
-          "label": "Zobrazit dodavatele produktu",
+          "label": "Zobrazit vendora produktu",
           "info": "Zobrazuje se v případě, že jsou povoleny návrhy hledaných výrazů."
         },
         "predictive_search_show_price": {
@@ -451,7 +451,8 @@
           "name": "Oznámení",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Vítejte v našem obchodě"
             },
             "text_alignment": {
               "label": "Zarovnání textu",
@@ -511,7 +512,8 @@
       "name": "Koláž",
       "settings": {
         "heading": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Multimediální koláž"
         },
         "desktop_layout": {
           "label": "Desktopové rozvržení",
@@ -586,12 +588,8 @@
             },
             "description": {
               "label": "Alternativní text videa",
-<<<<<<< Updated upstream
               "info": "Popište video pro zákazníky používající čtečky obrazovky. [Zjistit více](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
               "default": "Popište video"
-=======
-              "info": "Popište video pro zákazníky používající čtečky obrazovky. [Zjistit více](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)"
->>>>>>> Stashed changes
             }
           }
         }
@@ -604,7 +602,8 @@
       "name": "Seznam kolekcí",
       "settings": {
         "title": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Kolekce"
         },
         "image_ratio": {
           "label": "Poměr obrázku",
@@ -659,6 +658,12 @@
       "name": "Kontaktní formulář",
       "presets": {
         "name": "Kontaktní formulář"
+      },
+      "settings": {
+        "title": {
+          "default": "Kontaktní formulář",
+          "label": "Nadpis"
+        }
       }
     },
     "custom-liquid": {
@@ -677,7 +682,8 @@
       "name": "Blogové příspěvky",
       "settings": {
         "heading": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Blogové příspěvky"
         },
         "blog": {
           "label": "Blog"
@@ -710,7 +716,8 @@
       "name": "Propagovaná kolekce",
       "settings": {
         "title": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Propagovaná kolekce"
         },
         "collection": {
           "label": "Kolekce"
@@ -816,7 +823,8 @@
           "name": "Nabídka",
           "settings": {
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Rychlé odkazy"
             },
             "menu": {
               "label": "Nabídka",
@@ -828,15 +836,12 @@
           "name": "Text",
           "settings": {
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Nadpis"
             },
             "subtext": {
-<<<<<<< Updated upstream
               "label": "Text nižší úrovně",
               "default": "<p>Uveďte pro zákazníky kontaktní informace a popište jim podrobně svůj obchod a značky nabízeného zboží.<\/p>"
-=======
-              "label": "Text nižší úrovně"
->>>>>>> Stashed changes
             }
           }
         },
@@ -861,7 +866,8 @@
           "label": "Zobrazit přihlášení k odběru e-mailů"
         },
         "newsletter_heading": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Přihlaste se k odběru našich e-mailů"
         },
         "header__1": {
           "content": "Přihlášení k odběru e-mailů",
@@ -1113,7 +1119,8 @@
           "name": "Nadpis",
           "settings": {
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Obrázkový banner"
             }
           }
         },
@@ -1121,7 +1128,8 @@
           "name": "Text",
           "settings": {
             "text": {
-              "label": "Popis"
+              "label": "Popis",
+              "default": "Poskytněte zákazníkům podrobnosti o obrázcích banneru nebo obsahu v šabloně."
             },
             "text_style": {
               "options__1": {
@@ -1142,7 +1150,8 @@
           "settings": {
             "button_label_1": {
               "label": "První text tlačítka",
-              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text."
+              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text.",
+              "default": "Text tlačítka"
             },
             "button_link_1": {
               "label": "První tlačítkový odkaz"
@@ -1152,7 +1161,8 @@
             },
             "button_label_2": {
               "label": "Druhý text tlačítka",
-              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text."
+              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text.",
+              "default": "Text tlačítka"
             },
             "button_link_2": {
               "label": "Druhý tlačítkový odkaz"
@@ -1262,7 +1272,8 @@
           "name": "Nadpis",
           "settings": {
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Obrázek s textem"
             }
           }
         },
@@ -1270,12 +1281,8 @@
           "name": "Text",
           "settings": {
             "text": {
-<<<<<<< Updated upstream
               "label": "Obsah",
               "default": "<p>Zkombinujte text a obrázek, abyste zaměřili pozornost návštěvníků na zvolený produkt, kolekci či blogový příspěvek. Pak můžete připojit podrobnosti o dostupnosti a stylu, nebo dokonce recenzi.<\/p>"
-=======
-              "label": "Obsah"
->>>>>>> Stashed changes
             },
             "text_style": {
               "label": "Textový styl",
@@ -1293,7 +1300,8 @@
           "settings": {
             "button_label": {
               "label": "Text tlačítka",
-              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text."
+              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text.",
+              "default": "Text tlačítka"
             },
             "button_link": {
               "label": "Tlačítkový odkaz"
@@ -1307,7 +1315,8 @@
           "name": "Titulek",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Přidejte slogan"
             },
             "text_style": {
               "label": "Textový styl",
@@ -1385,7 +1394,8 @@
               "content": "U náhledového obrázku je uveden také název a popis obchodu. [Zjistit více](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Sdílet"
             }
           }
         }
@@ -1554,7 +1564,8 @@
       "name": "Stránka se seznamem kolekcí",
       "settings": {
         "title": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Kolekce"
         },
         "sort": {
           "label": "Seřadit kolekce:",
@@ -1631,7 +1642,8 @@
           "name": "Text",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Textový blok"
             },
             "text_style": {
               "label": "Textový styl",
@@ -1712,7 +1724,8 @@
               "content": "U náhledového obrázku je uveden také název a popis obchodu. [Zjistit více](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Sdílet"
             }
           }
         },
@@ -1721,7 +1734,8 @@
           "settings": {
             "heading": {
               "info": "Připojte nadpis, který popíše obsah.",
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Sbalitelný řádek"
             },
             "content": {
               "label": "Obsah řádku"
@@ -1870,7 +1884,8 @@
           "name": "Automaticky otevírané okno",
           "settings": {
             "link_label": {
-              "label": "Text odkazu"
+              "label": "Text odkazu",
+              "default": "Text odkazu automaticky otevíraného okna"
             },
             "page": {
               "label": "Stránka"
@@ -1892,7 +1907,8 @@
               "content": "Pokud chcete vybrat doplňkové produkty, přidejte si aplikaci Search & Discovery. [Zjistit více](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
             },
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Vhodná kombinace:"
             },
             "make_collapsible_row": {
               "label": "Zobrazit jako sbalitelný řádek"
@@ -1955,7 +1971,8 @@
               "label": "První obrázek"
             },
             "heading_1": {
-              "label": "První nadpis"
+              "label": "První nadpis",
+              "default": "Nadpis"
             },
             "icon_2": {
               "label": "Druhá ikona"
@@ -1964,7 +1981,8 @@
               "label": "Druhý obrázek"
             },
             "heading_2": {
-              "label": "Druhý nadpis"
+              "label": "Druhý nadpis",
+              "default": "Nadpis"
             },
             "icon_3": {
               "label": "Třetí ikona"
@@ -1973,7 +1991,8 @@
               "label": "Třetí obrázek"
             },
             "heading_3": {
-              "label": "Třetí nadpis"
+              "label": "Třetí nadpis",
+              "default": "Nadpis"
             }
           }
         },
@@ -2169,7 +2188,8 @@
       "name": "Více sloupců",
       "settings": {
         "title": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Více sloupců"
         },
         "image_width": {
           "label": "Šířka obrázku",
@@ -2217,7 +2237,8 @@
           }
         },
         "button_label": {
-          "label": "Text tlačítka"
+          "label": "Text tlačítka",
+          "default": "Text tlačítka"
         },
         "button_link": {
           "label": "Tlačítkový odkaz"
@@ -2249,15 +2270,12 @@
               "label": "Obrázek"
             },
             "title": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Sloupec"
             },
             "text": {
-<<<<<<< Updated upstream
               "label": "Popis",
               "default": "<p>Zkombinujte text a obrázek, abyste zaměřili pozornost návštěvníků na zvolený produkt, kolekci či blogový příspěvek. Pak můžete připojit podrobnosti o dostupnosti a stylu, nebo dokonce recenzi.<\/p>"
-=======
-              "label": "Popis"
->>>>>>> Stashed changes
             },
             "link_label": {
               "label": "Text odkazu"
@@ -2287,7 +2305,8 @@
           "name": "Nadpis",
           "settings": {
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Přihlaste se k odběru našich e-mailů"
             }
           }
         },
@@ -2295,12 +2314,8 @@
           "name": "Podnadpis",
           "settings": {
             "paragraph": {
-<<<<<<< Updated upstream
               "label": "Popis",
               "default": "<p>Získejte jako první informace o nových kolekcích a exkluzivních nabídkách.<\/p>"
-=======
-              "label": "Popis"
->>>>>>> Stashed changes
             }
           }
         },
@@ -2360,7 +2375,8 @@
           "name": "Nadpis",
           "settings": {
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Informujte o své značce"
             }
           }
         },
@@ -2368,12 +2384,8 @@
           "name": "Text",
           "settings": {
             "text": {
-<<<<<<< Updated upstream
               "label": "Popis",
               "default": "<p>Informujte zákazníky o své značce. Zároveň můžete popsat některý z produktů, oznámit důležité informace nebo přivítat zákazníky ve svém obchodě.<\/p>"
-=======
-              "label": "Popis"
->>>>>>> Stashed changes
             }
           }
         },
@@ -2382,7 +2394,8 @@
           "settings": {
             "button_label_1": {
               "label": "První text tlačítka",
-              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text."
+              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text.",
+              "default": "Text tlačítka"
             },
             "button_link_1": {
               "label": "První tlačítkový odkaz"
@@ -2406,7 +2419,8 @@
           "name": "Titulek",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Přidejte slogan"
             },
             "text_style": {
               "label": "Textový styl",
@@ -2451,7 +2465,8 @@
       "name": "Video",
       "settings": {
         "heading": {
-          "label": "Záhlaví"
+          "label": "Záhlaví",
+          "default": "Video"
         },
         "cover_image": {
           "label": "Titulní obrázek"
@@ -2501,7 +2516,8 @@
           "name": "Text",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Textový blok"
             },
             "text_style": {
               "label": "Textový styl",
@@ -2575,7 +2591,8 @@
               "content": "U náhledového obrázku je uveden také název a popis obchodu. [Zjistit více](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Sdílet"
             }
           }
         },
@@ -2741,7 +2758,8 @@
           "name": "Záhlaví",
           "settings": {
             "heading": {
-              "label": "Záhlaví"
+              "label": "Záhlaví",
+              "default": "Brzy otevíráme"
             }
           }
         },
@@ -2749,12 +2767,8 @@
           "name": "Odstavec",
           "settings": {
             "paragraph": {
-<<<<<<< Updated upstream
               "label": "Popis",
               "default": "<p>Zjistěte jako první, kdy začínáme prodávat.<\/p>"
-=======
-              "label": "Popis"
->>>>>>> Stashed changes
             },
             "text_style": {
               "options__1": {
@@ -2829,7 +2843,8 @@
         "accessibility": {
           "content": "Přístupnost",
           "label": "Popis prezentace",
-          "info": "Popište prezentaci pro zákazníky používající čtečky obrazovky."
+          "info": "Popište prezentaci pro zákazníky používající čtečky obrazovky.",
+          "default": "Prezentace o značce"
         }
       },
       "blocks": {
@@ -2840,14 +2855,17 @@
               "label": "Obrázek"
             },
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Obrázkový snímek"
             },
             "subheading": {
-              "label": "Podnadpis"
+              "label": "Podnadpis",
+              "default": "Představte příběh své značky prostřednictvím obrázků"
             },
             "button_label": {
               "label": "Text tlačítka",
-              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text."
+              "info": "Pokud chcete tlačítko skrýt, nezadávejte žádný text.",
+              "default": "Text tlačítka"
             },
             "link": {
               "label": "Tlačítkový odkaz"
@@ -2930,7 +2948,8 @@
           "label": "Titulek"
         },
         "heading": {
-          "label": "Nadpis"
+          "label": "Nadpis",
+          "default": "Sbalitelný obsah"
         },
         "heading_alignment": {
           "label": "Zarovnání nadpisu",
@@ -2998,7 +3017,8 @@
           "settings": {
             "heading": {
               "info": "Připojte nadpis, který popíše obsah.",
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Sbalitelný řádek"
             },
             "row_content": {
               "label": "Obsah řádku"
@@ -3185,12 +3205,8 @@
           "label": "Počet sloupců v počítači"
         },
         "paragraph__1": {
-<<<<<<< Updated upstream
           "content": "Dynamická doporučení využívají informace o objednávkách a produktech, aby se postupem času měnila a vylepšovala. [Zjistit více](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "Mohlo by se vám také líbit"
-=======
-          "content": "Dynamická doporučení využívají informace o objednávkách a produktech, aby se postupem času měnila a vylepšovala. [Zjistit více](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
->>>>>>> Stashed changes
         },
         "header__2": {
           "content": "Karta produktu"
@@ -3363,21 +3379,20 @@
               "label": "Obrázek"
             },
             "caption": {
-              "label": "Titulek"
+              "label": "Titulek",
+              "default": "Titulek"
             },
             "heading": {
-              "label": "Nadpis"
+              "label": "Nadpis",
+              "default": "Řádek"
             },
             "text": {
-<<<<<<< Updated upstream
               "label": "Text",
               "default": "<p>Zkombinujte text a obrázek, abyste zaměřili pozornost návštěvníků na zvolený produkt, kolekci či blogový příspěvek. Pak můžete připojit podrobnosti o dostupnosti a stylu, nebo dokonce recenzi.<\/p>"
-=======
-              "label": "Text"
->>>>>>> Stashed changes
             },
             "button_label": {
-              "label": "Text tlačítka"
+              "label": "Text tlačítka",
+              "default": "Text tlačítka"
             },
             "button_link": {
               "label": "Tlačítkový odkaz"

@@ -451,7 +451,8 @@
           "name": "Comunicado",
           "settings": {
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Boas-vindas à nossa loja"
             },
             "text_alignment": {
               "label": "Alinhamento do texto",
@@ -511,7 +512,8 @@
       "name": "Colagem",
       "settings": {
         "heading": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Colagem multimídia"
         },
         "desktop_layout": {
           "label": "Layout para desktop",
@@ -586,12 +588,8 @@
             },
             "description": {
               "label": "Texto alternativo do vídeo",
-<<<<<<< Updated upstream
               "info": "Descreva o vídeo para clientes que usam leitores de tela. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
               "default": "Descreva o vídeo"
-=======
-              "info": "Descreva o vídeo para clientes que usam leitores de tela. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)"
->>>>>>> Stashed changes
             }
           }
         }
@@ -604,7 +602,8 @@
       "name": "Lista de coleções",
       "settings": {
         "title": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Coleções"
         },
         "image_ratio": {
           "label": "Proporção da imagem",
@@ -659,6 +658,12 @@
       "name": "Formulário de contato",
       "presets": {
         "name": "Formulário de contato"
+      },
+      "settings": {
+        "title": {
+          "default": "Formulário de contato",
+          "label": "Título"
+        }
       }
     },
     "custom-liquid": {
@@ -677,7 +682,8 @@
       "name": "Posts do blog",
       "settings": {
         "heading": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Posts do blog"
         },
         "blog": {
           "label": "Blog"
@@ -710,7 +716,8 @@
       "name": "Coleção em destaque",
       "settings": {
         "title": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Coleção em destaque"
         },
         "collection": {
           "label": "Coleção"
@@ -816,7 +823,8 @@
           "name": "Menu",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Links rápidos"
             },
             "menu": {
               "label": "Menu",
@@ -828,15 +836,12 @@
           "name": "Texto",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Título"
             },
             "subtext": {
-<<<<<<< Updated upstream
               "label": "Subtexto",
               "default": "<p>Compartilhe informações de contato, detalhes da loja e conteúdo de marca com clientes.<\/p>"
-=======
-              "label": "Subtexto"
->>>>>>> Stashed changes
             }
           }
         },
@@ -861,7 +866,8 @@
           "label": "Exibir assinante de e-mail"
         },
         "newsletter_heading": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Assine nossos e-mails"
         },
         "header__1": {
           "content": "Assinante de e-mail",
@@ -1113,7 +1119,8 @@
           "name": "Título",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Banner gráfico"
             }
           }
         },
@@ -1121,7 +1128,8 @@
           "name": "Texto",
           "settings": {
             "text": {
-              "label": "Descrição"
+              "label": "Descrição",
+              "default": "Dê informações a clientes sobre as imagens ou o conteúdo do banner no modelo."
             },
             "text_style": {
               "options__1": {
@@ -1142,7 +1150,8 @@
           "settings": {
             "button_label_1": {
               "label": "Primeira etiqueta de botão",
-              "info": "Deixe a etiqueta em branco para ocultar o botão."
+              "info": "Deixe a etiqueta em branco para ocultar o botão.",
+              "default": "Etiqueta de botão"
             },
             "button_link_1": {
               "label": "Primeiro link de botão"
@@ -1152,7 +1161,8 @@
             },
             "button_label_2": {
               "label": "Segunda etiqueta de botão",
-              "info": "Deixe a etiqueta em branco para ocultar o botão."
+              "info": "Deixe a etiqueta em branco para ocultar o botão.",
+              "default": "Etiqueta de botão"
             },
             "button_link_2": {
               "label": "Segundo link de botão"
@@ -1262,7 +1272,8 @@
           "name": "Título",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Imagem com texto"
             }
           }
         },
@@ -1270,12 +1281,8 @@
           "name": "Texto",
           "settings": {
             "text": {
-<<<<<<< Updated upstream
               "label": "Conteúdo",
               "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.<\/p>"
-=======
-              "label": "Conteúdo"
->>>>>>> Stashed changes
             },
             "text_style": {
               "label": "Estilo de texto",
@@ -1293,7 +1300,8 @@
           "settings": {
             "button_label": {
               "label": "Etiqueta de botão",
-              "info": "Deixe a etiqueta em branco para ocultar o botão."
+              "info": "Deixe a etiqueta em branco para ocultar o botão.",
+              "default": "Etiqueta de botão"
             },
             "button_link": {
               "label": "Link de botão"
@@ -1307,7 +1315,8 @@
           "name": "Legenda",
           "settings": {
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Adicione um slogan"
             },
             "text_style": {
               "label": "Estilo de texto",
@@ -1385,7 +1394,8 @@
               "content": "Um título e uma descrição da loja estão incluídos na prévia da imagem. [Saiba mais](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Compartilhar"
             }
           }
         }
@@ -1554,7 +1564,8 @@
       "name": "Página da lista de coleções",
       "settings": {
         "title": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Coleções"
         },
         "sort": {
           "label": "Ordenar coleções por:",
@@ -1630,7 +1641,8 @@
           "name": "Texto",
           "settings": {
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Bloco de texto"
             },
             "text_style": {
               "label": "Estilo de texto",
@@ -1711,7 +1723,8 @@
               "content": "Um título e uma descrição da loja estão incluídos na prévia da imagem. [Saiba mais](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Compartilhar"
             }
           }
         },
@@ -1720,7 +1733,8 @@
           "settings": {
             "heading": {
               "info": "Inclua um título que explique o conteúdo.",
-              "label": "Título"
+              "label": "Título",
+              "default": "Linha recolhível"
             },
             "content": {
               "label": "Conteúdo da linha"
@@ -1869,7 +1883,8 @@
           "name": "Pop-up",
           "settings": {
             "link_label": {
-              "label": "Etiqueta de link"
+              "label": "Etiqueta de link",
+              "default": "Texto do link pop-up"
             },
             "page": {
               "label": "Página"
@@ -1891,7 +1906,8 @@
               "content": "Para selecionar produtos complementares, adicione o app Search & Discovery. [Saiba mais](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
             },
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Combina bem com"
             },
             "make_collapsible_row": {
               "label": "Exibir como linha recolhível"
@@ -1954,7 +1970,8 @@
               "label": "Primeira imagem"
             },
             "heading_1": {
-              "label": "Primeiro título"
+              "label": "Primeiro título",
+              "default": "Título"
             },
             "icon_2": {
               "label": "Segundo ícone"
@@ -1963,7 +1980,8 @@
               "label": "Segunda imagem"
             },
             "heading_2": {
-              "label": "Segundo título"
+              "label": "Segundo título",
+              "default": "Título"
             },
             "icon_3": {
               "label": "Terceiro ícone"
@@ -1972,7 +1990,8 @@
               "label": "Terceira imagem"
             },
             "heading_3": {
-              "label": "Terceiro título"
+              "label": "Terceiro título",
+              "default": "Título"
             }
           }
         },
@@ -2169,7 +2188,8 @@
       "name": "Multicoluna",
       "settings": {
         "title": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Várias colunas"
         },
         "image_width": {
           "label": "Largura da imagem",
@@ -2217,7 +2237,8 @@
           }
         },
         "button_label": {
-          "label": "Etiqueta de botão"
+          "label": "Etiqueta de botão",
+          "default": "Etiqueta de botão"
         },
         "button_link": {
           "label": "Link de botão"
@@ -2249,15 +2270,12 @@
               "label": "Imagem"
             },
             "title": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Coluna"
             },
             "text": {
-<<<<<<< Updated upstream
               "label": "Descrição",
               "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.<\/p>"
-=======
-              "label": "Descrição"
->>>>>>> Stashed changes
             },
             "link_label": {
               "label": "Etiqueta de link"
@@ -2287,7 +2305,8 @@
           "name": "Título",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Assine nossos e-mails"
             }
           }
         },
@@ -2295,12 +2314,8 @@
           "name": "Subtítulo",
           "settings": {
             "paragraph": {
-<<<<<<< Updated upstream
               "label": "Descrição",
               "default": "<p>Seja a primeira pessoa a saber sobre novas coleções e ofertas exclusivas.<\/p>"
-=======
-              "label": "Descrição"
->>>>>>> Stashed changes
             }
           }
         },
@@ -2360,7 +2375,8 @@
           "name": "Título",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Fale sobre a marca"
             }
           }
         },
@@ -2368,12 +2384,8 @@
           "name": "Texto",
           "settings": {
             "text": {
-<<<<<<< Updated upstream
               "label": "Descrição",
               "default": "<p>Compartilhe informações sobre a marca com clientes. Descreva um produto, faça comunicados ou dê as boas-vindas aos clientes na loja.<\/p>"
-=======
-              "label": "Descrição"
->>>>>>> Stashed changes
             }
           }
         },
@@ -2382,7 +2394,8 @@
           "settings": {
             "button_label_1": {
               "label": "Primeira etiqueta de botão",
-              "info": "Deixar a etiqueta em branco para ocultar o botão."
+              "info": "Deixar a etiqueta em branco para ocultar o botão.",
+              "default": "Etiqueta de botão"
             },
             "button_link_1": {
               "label": "Primeiro link de botão"
@@ -2406,7 +2419,8 @@
           "name": "Legenda",
           "settings": {
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Adicione um slogan"
             },
             "text_style": {
               "label": "Estilo de texto",
@@ -2451,7 +2465,8 @@
       "name": "Vídeo",
       "settings": {
         "heading": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Vídeo"
         },
         "cover_image": {
           "label": "Imagem de capa"
@@ -2501,7 +2516,8 @@
           "name": "Texto",
           "settings": {
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Bloco de texto"
             },
             "text_style": {
               "label": "Estilo de texto",
@@ -2575,7 +2591,8 @@
               "content": "O título e a descrição da loja estão incluídos na prévia da imagem. [Saiba mais](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Texto"
+              "label": "Texto",
+              "default": "Compartilhar"
             }
           }
         },
@@ -2741,7 +2758,8 @@
           "name": "Título",
           "settings": {
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Abertura em breve"
             }
           }
         },
@@ -2749,12 +2767,8 @@
           "name": "Parágrafo",
           "settings": {
             "paragraph": {
-<<<<<<< Updated upstream
               "label": "Descrição",
               "default": "<p>Seja a primeira pessoa a saber quando lançarmos.<\/p>"
-=======
-              "label": "Descrição"
->>>>>>> Stashed changes
             },
             "text_style": {
               "options__1": {
@@ -2829,7 +2843,8 @@
         "accessibility": {
           "content": "Acessibilidade",
           "label": "Descrição da apresentação de slides",
-          "info": "Descreva a apresentação de slides para clientes que usam leitores de tela."
+          "info": "Descreva a apresentação de slides para clientes que usam leitores de tela.",
+          "default": "Apresentação de slides sobre nossa marca"
         }
       },
       "blocks": {
@@ -2840,14 +2855,17 @@
               "label": "Imagem"
             },
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Slide de imagem"
             },
             "subheading": {
-              "label": "Subtítulo"
+              "label": "Subtítulo",
+              "default": "Conte a história de sua marca com vídeos e imagens"
             },
             "button_label": {
               "label": "Etiqueta de botão",
-              "info": "Deixe a etiqueta em branco para ocultar o botão."
+              "info": "Deixe a etiqueta em branco para ocultar o botão.",
+              "default": "Etiqueta de botão"
             },
             "link": {
               "label": "Link de botão"
@@ -2930,7 +2948,8 @@
           "label": "Legenda"
         },
         "heading": {
-          "label": "Título"
+          "label": "Título",
+          "default": "Conteúdo recolhível"
         },
         "heading_alignment": {
           "label": "Alinhamento do título",
@@ -2998,7 +3017,8 @@
           "settings": {
             "heading": {
               "info": "Inclua um título que explique o conteúdo.",
-              "label": "Título"
+              "label": "Título",
+              "default": "Linha recolhível"
             },
             "row_content": {
               "label": "Conteúdo da linha"
@@ -3185,12 +3205,8 @@
           "label": "Número de colunas no desktop"
         },
         "paragraph__1": {
-<<<<<<< Updated upstream
           "content": "As recomendações dinâmicas usam informações sobre pedidos e produtos para mudar e melhorar com o tempo. [Saiba mais](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "Talvez você também goste de"
-=======
-          "content": "As recomendações dinâmicas usam informações sobre pedidos e produtos para mudar e melhorar com o tempo. [Saiba mais](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
->>>>>>> Stashed changes
         },
         "header__2": {
           "content": "Cartão de produto"
@@ -3204,7 +3220,7 @@
             "label": "Retrato"
           },
           "options__3": {
-            "label": "Square"
+            "label": "Quadrada"
           }
         },
         "show_secondary_image": {
@@ -3363,21 +3379,20 @@
               "label": "Imagem"
             },
             "caption": {
-              "label": "Legenda"
+              "label": "Legenda",
+              "default": "Legenda"
             },
             "heading": {
-              "label": "Título"
+              "label": "Título",
+              "default": "Linha"
             },
             "text": {
-<<<<<<< Updated upstream
               "label": "Texto",
               "default": "<p>Combine um texto com uma imagem para destacar o produto, a coleção ou o post do blog escolhido. Adicione informações sobre disponibilidade, estilo ou até mesmo uma avaliação.<\/p>"
-=======
-              "label": "Texto"
->>>>>>> Stashed changes
             },
             "button_label": {
-              "label": "Etiqueta de botão"
+              "label": "Etiqueta de botão",
+              "default": "Etiqueta de botão"
             },
             "button_link": {
               "label": "Link de botão"

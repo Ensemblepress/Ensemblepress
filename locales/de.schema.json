@@ -451,7 +451,8 @@
           "name": "Ankündigung",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Willkommen in unserem Shop"
             },
             "link": {
               "label": "Link"
@@ -511,7 +512,8 @@
       "name": "Collage",
       "settings": {
         "heading": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Multimedia-Collage"
         },
         "desktop_layout": {
           "label": "Desktop-Layout",
@@ -586,12 +588,8 @@
             },
             "description": {
               "label": "Video-Alt-Text",
-<<<<<<< Updated upstream
               "info": "Beschreibe das Video für Kunden, die Bildschirmlesegeräte benutzen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)",
               "default": "Beschreibe das Video"
-=======
-              "info": "Beschreibe das Video für Kunden, die Bildschirmlesegeräte benutzen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/online-store\/themes\/theme-structure\/theme-features#video-block)"
->>>>>>> Stashed changes
             }
           }
         }
@@ -604,7 +602,8 @@
       "name": "Kollektionsliste",
       "settings": {
         "title": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Kollektionen"
         },
         "image_ratio": {
           "label": "Bildverhältnis",
@@ -615,7 +614,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           },
           "info": "Bearbeite deine Kollektionen, um Bilder hinzuzufügen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/products\/collections)"
         },
@@ -659,6 +658,12 @@
       "name": "Kontaktformular",
       "presets": {
         "name": "Kontaktformular"
+      },
+      "settings": {
+        "title": {
+          "default": "Kontaktformular",
+          "label": "Titel"
+        }
       }
     },
     "custom-liquid": {
@@ -677,7 +682,8 @@
       "name": "Blog-Beiträge",
       "settings": {
         "heading": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Blog-Beiträge"
         },
         "blog": {
           "label": "Blog"
@@ -710,7 +716,8 @@
       "name": "Vorgestellte Kollektion",
       "settings": {
         "title": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Vorgestellte Kollektion"
         },
         "collection": {
           "label": "Kategorie"
@@ -733,7 +740,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -816,7 +823,8 @@
           "name": "Menü",
           "settings": {
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Quick-Links"
             },
             "menu": {
               "label": "Menü",
@@ -828,15 +836,12 @@
           "name": "Text",
           "settings": {
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Titel"
             },
             "subtext": {
-<<<<<<< Updated upstream
               "label": "Subtext",
               "default": "<p>Teile Kontaktinformationen, Shop-Details und Markeninhalte mit deinen Kunden.<\/p>"
-=======
-              "label": "Subtext"
->>>>>>> Stashed changes
             }
           }
         },
@@ -861,7 +866,8 @@
           "label": "E-Mail-Anmeldung anzeigen"
         },
         "newsletter_heading": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Abonniere unsere E-Mails"
         },
         "header__1": {
           "content": "E-Mail-Anmeldung",
@@ -1113,7 +1119,8 @@
           "name": "Titel",
           "settings": {
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Bild-Banner"
             }
           }
         },
@@ -1121,7 +1128,8 @@
           "name": "Text",
           "settings": {
             "text": {
-              "label": "Beschreibung"
+              "label": "Beschreibung",
+              "default": "Stelle Kunden Details zu Banner-Bildern oder Inhalt auf der Vorlage zur Verfügung."
             },
             "text_style": {
               "options__1": {
@@ -1142,7 +1150,8 @@
           "settings": {
             "button_label_1": {
               "label": "Erste Beschriftung der Schaltfläche",
-              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden."
+              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden.",
+              "default": "Schaltflächenbeschriftung"
             },
             "button_link_1": {
               "label": "Erster Link der Schaltfläche"
@@ -1152,7 +1161,8 @@
             },
             "button_label_2": {
               "label": "Zweite Beschriftung der Schaltfläche",
-              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden."
+              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden.",
+              "default": "Schaltflächenbeschriftung"
             },
             "button_link_2": {
               "label": "Zweiter Link der Schaltfläche"
@@ -1262,7 +1272,8 @@
           "name": "Titel",
           "settings": {
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Bild mit Text"
             }
           }
         },
@@ -1270,12 +1281,8 @@
           "name": "Text",
           "settings": {
             "text": {
-<<<<<<< Updated upstream
               "label": "Inhalt",
               "default": "<p>Kombiniere Text mit einem Bild, um den Fokus auf dein Produkt, deine Kollektion oder deinen Blog-Beitrag zu richten. Du kannst außerdem weitere Details über die Verfügbarkeit oder den Stil und sogar eine Bewertung hinzufügen.<\/p>"
-=======
-              "label": "Inhalt"
->>>>>>> Stashed changes
             },
             "text_style": {
               "label": "Textstil",
@@ -1293,7 +1300,8 @@
           "settings": {
             "button_label": {
               "label": "Schaltflächenbeschriftung",
-              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden."
+              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden.",
+              "default": "Schaltflächenbeschriftung"
             },
             "button_link": {
               "label": "Schaltflächenlink"
@@ -1307,7 +1315,8 @@
           "name": "Bildtext",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Tagline hinzufügen"
             },
             "text_style": {
               "label": "Textstil",
@@ -1385,7 +1394,8 @@
               "content": "Ein Titel und eine Beschreibung des Shops sind im Vorschaubild enthalten. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Teilen"
             }
           }
         }
@@ -1488,7 +1498,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -1554,7 +1564,8 @@
       "name": "Listenseite für Kollektionen",
       "settings": {
         "title": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Kollektionen"
         },
         "sort": {
           "label": "Kollektionen sortieren nach:",
@@ -1586,7 +1597,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           },
           "info": "Bearbeite deine Kollektionen, um Bilder hinzuzufügen. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/products\/collections)"
         },
@@ -1630,7 +1641,8 @@
           "name": "Text",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Textblock"
             },
             "text_style": {
               "label": "Textstil",
@@ -1711,7 +1723,8 @@
               "content": "Ein Titel und eine Beschreibung des Shops sind im Vorschaubild enthalten. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)."
             },
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Teilen"
             }
           }
         },
@@ -1720,7 +1733,8 @@
           "settings": {
             "heading": {
               "info": "Füge eine Überschrift ein, die den Inhalt erklärt.",
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Einklappbare Reihe"
             },
             "content": {
               "label": "Reiheninhalt"
@@ -1869,7 +1883,8 @@
           "name": "Pop-up",
           "settings": {
             "link_label": {
-              "label": "Link-Label"
+              "label": "Link-Label",
+              "default": "Pop-up-Linktext"
             },
             "page": {
               "label": "Seite"
@@ -1891,7 +1906,8 @@
               "content": "Um ergänzende Produkte auszuwählen, füge die Search & Discovery-App hinzu. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/online-store\/search-and-discovery\/product-recommendations)"
             },
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Passt gut zu"
             },
             "make_collapsible_row": {
               "label": "Als einklappbare Reihe anzeigen"
@@ -1920,7 +1936,7 @@
               "label": "Bildverhältnis",
               "options": {
                 "option_1": "Hochformat",
-                "option_2": "Quadratisch"
+                "option_2": "Quadrat"
               }
             },
             "enable_quick_add": {
@@ -1954,7 +1970,8 @@
               "label": "Erstes Bild"
             },
             "heading_1": {
-              "label": "Erste Überschrift"
+              "label": "Erste Überschrift",
+              "default": "Titel"
             },
             "icon_2": {
               "label": "Zweites Symbol"
@@ -1963,7 +1980,8 @@
               "label": "Zweites Bild"
             },
             "heading_2": {
-              "label": "Zweite Überschrift"
+              "label": "Zweite Überschrift",
+              "default": "Titel"
             },
             "icon_3": {
               "label": "Drittes Symbol"
@@ -1972,7 +1990,8 @@
               "label": "Drittes Bild"
             },
             "heading_3": {
-              "label": "Dritte Überschrift"
+              "label": "Dritte Überschrift",
+              "default": "Titel"
             }
           }
         },
@@ -2122,7 +2141,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -2169,7 +2188,8 @@
       "name": "Mit mehreren Spalten",
       "settings": {
         "title": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Mit mehreren Spalten"
         },
         "image_width": {
           "label": "Bildbreite",
@@ -2192,7 +2212,7 @@
             "label": "Porträt"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           },
           "options__4": {
             "label": "Kreis"
@@ -2217,7 +2237,8 @@
           }
         },
         "button_label": {
-          "label": "Schaltflächenbeschriftung"
+          "label": "Schaltflächenbeschriftung",
+          "default": "Schaltflächenbeschriftung"
         },
         "button_link": {
           "label": "Schaltflächenlink"
@@ -2249,15 +2270,12 @@
               "label": "Bild"
             },
             "title": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Spalte"
             },
             "text": {
-<<<<<<< Updated upstream
               "label": "Beschreibung",
               "default": "<p>Kombiniere Text mit einem Bild, um den Fokus auf dein Produkt, deine Kollektion oder deinen Blog-Beitrag zu richten. Du kannst außerdem weitere Details über die Verfügbarkeit oder den Stil und sogar eine Bewertung hinzufügen.<\/p>"
-=======
-              "label": "Beschreibung"
->>>>>>> Stashed changes
             },
             "link_label": {
               "label": "Link-Label"
@@ -2287,7 +2305,8 @@
           "name": "Titel",
           "settings": {
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Abonniere unsere E-Mails"
             }
           }
         },
@@ -2295,12 +2314,8 @@
           "name": "Unter-Überschrift",
           "settings": {
             "paragraph": {
-<<<<<<< Updated upstream
               "label": "Beschreibung",
               "default": "<p>Erfahre als Erster von neuen Kollektionen und exklusiven Angeboten.<\/p>"
-=======
-              "label": "Beschreibung"
->>>>>>> Stashed changes
             }
           }
         },
@@ -2360,7 +2375,8 @@
           "name": "Titel",
           "settings": {
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Erzähle etwas über deine Marke"
             }
           }
         },
@@ -2368,12 +2384,8 @@
           "name": "Text",
           "settings": {
             "text": {
-<<<<<<< Updated upstream
               "label": "Beschreibung",
               "default": "<p>Teile Infos über deine Marke mit deinen Kunden. Beschreibe ein Produkt, kündige etwas an oder heiße Kunden willkommen.<\/p>"
-=======
-              "label": "Beschreibung"
->>>>>>> Stashed changes
             }
           }
         },
@@ -2382,7 +2394,8 @@
           "settings": {
             "button_label_1": {
               "label": "Erste Schaltflächenbeschriftung",
-              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden."
+              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden.",
+              "default": "Schaltflächenbeschriftung"
             },
             "button_link_1": {
               "label": "Erster Schaltflächenlink"
@@ -2406,7 +2419,8 @@
           "name": "Bildtext",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Tagline hinzufügen"
             },
             "text_style": {
               "label": "Textstil",
@@ -2451,7 +2465,8 @@
       "name": "Video",
       "settings": {
         "heading": {
-          "label": "Titel"
+          "label": "Titel",
+          "default": "Video"
         },
         "cover_image": {
           "label": "Titelbild"
@@ -2501,7 +2516,8 @@
           "name": "Text",
           "settings": {
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Textblock"
             },
             "text_style": {
               "label": "Textstil",
@@ -2575,7 +2591,8 @@
               "content": "Ein Titel und eine Beschreibung des Shops sind im Vorschaubild enthalten. [Mehr Informationen](https:\/\/help.shopify.com\/manual\/promoting-marketing\/seo\/adding-keywords#set-a-title-and-description-for-your-online-store)"
             },
             "text": {
-              "label": "Text"
+              "label": "Text",
+              "default": "Teilen"
             }
           }
         },
@@ -2741,7 +2758,8 @@
           "name": "Titel",
           "settings": {
             "heading": {
-              "label": "Titel"
+              "label": "Titel",
+              "default": "Eröffnet demnächst"
             }
           }
         },
@@ -2749,12 +2767,8 @@
           "name": "Absatz",
           "settings": {
             "paragraph": {
-<<<<<<< Updated upstream
               "label": "Beschreibung",
               "default": "<p>Erfahre als Erster von unserem Launch.<\/p>"
-=======
-              "label": "Beschreibung"
->>>>>>> Stashed changes
             },
             "text_style": {
               "options__1": {
@@ -2829,7 +2843,8 @@
         "accessibility": {
           "content": "Barrierefreiheit",
           "label": "Slideshow-Beschreibung",
-          "info": "Beschreibe die Slideshow für Kunden, die Bildschirmlesegeräte benutzen."
+          "info": "Beschreibe die Slideshow für Kunden, die Bildschirmlesegeräte benutzen.",
+          "default": "Slideshow zu deiner Marke"
         }
       },
       "blocks": {
@@ -2840,14 +2855,17 @@
               "label": "Bild"
             },
             "heading": {
-              "label": "Titel"
+              "label": "Titel",
+              "default": "Slideshow"
             },
             "subheading": {
-              "label": "Unter-Überschrift"
+              "label": "Unter-Überschrift",
+              "default": "Erzähle deine Geschichte mit Fotos"
             },
             "button_label": {
               "label": "Schaltflächenbeschriftung",
-              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden."
+              "info": "Lasse die Beschriftung leer, um die Schaltfläche auszublenden.",
+              "default": "Schaltflächenbeschriftung"
             },
             "link": {
               "label": "Schaltflächenlink"
@@ -2930,7 +2948,8 @@
           "label": "Bildtext"
         },
         "heading": {
-          "label": "Überschrift"
+          "label": "Überschrift",
+          "default": "Einklappbarer Inhalt"
         },
         "heading_alignment": {
           "label": "Ausrichtung der Überschrift",
@@ -2998,7 +3017,8 @@
           "settings": {
             "heading": {
               "info": "Füge eine Überschrift ein, die den Inhalt erklärt.",
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Einklappbare Reihe"
             },
             "row_content": {
               "label": "Reiheninhalt"
@@ -3185,12 +3205,8 @@
           "label": "Anzahl der Spalten auf dem Desktop"
         },
         "paragraph__1": {
-<<<<<<< Updated upstream
           "content": "Dynamische Empfehlungen nutzen Bestell- und Produktinformationen, um sich mit der Zeit zu verändern und zu verbessern. [Mehr Informationen](https:\/\/help.shopify.com\/themes\/development\/recommended-products)",
           "default": "Das könnte dir auch gefallen"
-=======
-          "content": "Dynamische Empfehlungen nutzen Bestell- und Produktinformationen, um sich mit der Zeit zu verändern und zu verbessern. [Mehr Informationen](https:\/\/help.shopify.com\/themes\/development\/recommended-products)"
->>>>>>> Stashed changes
         },
         "header__2": {
           "content": "Produktkarte"
@@ -3204,7 +3220,7 @@
             "label": "Hochformat"
           },
           "options__3": {
-            "label": "Quadratisch"
+            "label": "Quadrat"
           }
         },
         "show_secondary_image": {
@@ -3363,21 +3379,20 @@
               "label": "Bild"
             },
             "caption": {
-              "label": "Bildtext"
+              "label": "Bildtext",
+              "default": "Bildtext"
             },
             "heading": {
-              "label": "Überschrift"
+              "label": "Überschrift",
+              "default": "Reihe"
             },
             "text": {
-<<<<<<< Updated upstream
               "label": "Text",
               "default": "<p>Kombiniere Text mit einem Bild, um den Fokus auf dein Produkt, deine Kollektion oder deinen Blog-Beitrag zu richten. Du kannst außerdem weitere Details über die Verfügbarkeit oder den Stil und sogar eine Bewertung hinzufügen.<\/p>"
-=======
-              "label": "Text"
->>>>>>> Stashed changes
             },
             "button_label": {
-              "label": "Schaltflächenbeschriftung"
+              "label": "Schaltflächenbeschriftung",
+              "default": "Schaltflächenbeschriftung"
             },
             "button_link": {
               "label": "Schaltflächenlink"
