@@ -36,10 +36,10 @@ jobs:
 
       - name: Authenticate and Deploy Theme shopify
         uses: pgrimaud/action-shopify@master
-        env:         
-          SHOPIFY_STORE_URL: https://8b47fd-7d.myshopify.com
+        env:
           SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
-          SHOPIFY_THEME_ID: 136949760151
-          THEME_PATH: ./
-        with: 
-          args: --ignored-file=locales/* templates/*
+          SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
+          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+          THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
+        with:
+          args: --ignored-file=config/settings_data.json --ignored-file=locales/*
