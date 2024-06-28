@@ -1,2 +1,0 @@
-# Ensemblepress
- shopify theme 
