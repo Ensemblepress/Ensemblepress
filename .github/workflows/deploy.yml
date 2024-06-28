@@ -34,7 +34,7 @@ jobs:
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli@latest @shopify/theme
 
-      - name: Authenticate and Deploy shopify Theme 
+      - name: Authenticate and Deploy Theme shopify 
         uses: pgrimaud/action-shopify@master
         env:
           SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
