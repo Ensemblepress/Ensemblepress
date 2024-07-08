@@ -296,11 +296,14 @@
   
    Test Here  
   {% sections 'header-group' %}   
+   			
+	{% sections 'header-group' %} 
 	
 	<main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      		{{ content_for_layout }}
-    	</main>
- {% sections 'footer-group' %}
+    	{{ content_for_layout }}
+    </main>
+ 
+	{% sections 'footer-group' %}
    
     	
     <ul hidden>
