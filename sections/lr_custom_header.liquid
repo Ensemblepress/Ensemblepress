@@ -1,0 +1,98 @@
+<section class="custom-header">
+  <div class="container">
+    <h1>{{ section.settings.header_text }}</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<style>
+  .custom-header {
+    background-color: {{ section.settings.background_color }};
+    padding: 20px 0;
+    text-align: center;
+  }
+  .custom-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .custom-header nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  .custom-header nav ul li {
+    display: inline;
+    margin: 0 15px;
+  }
+  .custom-header nav ul li a {
+    text-decoration: none;
+    color: {{ section.settings.link_color }};
+  }
+</style>
+
+{% schema %}
+{
+  "name": "lr_custom_header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header Text",
+      "default": "My Custom Header"
+    },
+    {
+      "type": "url",
+      "id": "link_1_url",
+      "label": "Link 1 URL",
+      "default": "/"
+    },
+    {
+      "type": "text",
+      "id": "link_1_text",
+      "label": "Link 1 Text",
+      "default": "Home"
+    },
+    {
+      "type": "url",
+      "id": "link_2_url",
+      "label": "Link 2 URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "link_2_text",
+      "label": "Link 2 Text",
+      "default": "Shop"
+    },
+    {
+      "type": "url",
+      "id": "link_3_url",
+      "label": "Link 3 URL",
+      "default": "/pages/contact"
+    },
+    {
+      "type": "text",
+      "id": "link_3_text",
+      "label": "Link 3 Text",
+      "default": "Contact"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#333"
+    }
+  ]
+}
+{% endschema %}

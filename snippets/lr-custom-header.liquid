@@ -1,0 +1,222 @@
+{% comment %}
+{%- for link in section.settings.menu.links -%}
+	{{ link.title }}
+	{%- for childlink in link.links -%}
+		{{ childlink.title }}
+	{%- endfor -%}
+{%- endfor -%}
+{% endcomment %}
+<div class="header-background ">
+    <div class="header-background-close"></div>
+    <div class="header-background-bg"></div>
+</div>
+<div class="headroom-wrapper" style="height: 54px;">
+    <div class="headroom headroom--unfixed headroom-disable-animation" style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);">
+        <header>
+            <div class="header-close-button ">Close</div>
+            <div class="header-mobile  ">
+                <ul class="header-mobile-icons">
+                    <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
+                    <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
+                    <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+                    <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount">0</span></li>
+                </ul>
+            </div>
+            <div id="menu" class="">
+                <div class="menu-inner">
+                    <ul class="header-primary">
+						<a class="header-item header-item-brand" href="/">
+							<span>Lost River</span>
+						</a>
+						{%- for link in section.settings.menu.links -%}	
+							<li class="header-item header-item-{{ link.title | downcase }}">
+								<a class="header-item header-item-brand" href="{{ link.url }}">
+									<span>{{- link.title | escape -}}</span>
+								</a>	
+							</li>
+						{%- endfor -%}	
+						</ul>
+						<ul class="header-secondary">
+							<li class="header-item header-item-search">
+								<span>Search</span>
+							</li>
+							<li class="header-item header-item-clean header-item-account ">
+								<span>Account</span>
+							</li>
+							<li class="header-item header-item-bag  false false" id="menu-link-bag">
+								<span>Bag <span class="amount">0</span></span>
+							</li>
+						</ul>
+                </div>
+            </div>
+            <div id="search-form" class="header-search ">
+                <div class="header-search-inner">
+                    <input type="text" class="input-search-display" placeholder="Enter search term..." fdprocessedid="oy9mr">
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+	<div class="header-logo header-logo-difference ">
+		<a href="/">
+			<span class="logotype logotype-default">
+				<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 119.1 232.4"><rect class="cls-1" x="5.7" y="62.4" width="107.7" height="51" rx="1.4" ry="1.4" fill="#fff"></rect><rect class="cls-1" x="5.7" y="5.7" width="51" height="51" rx="1.4" ry="1.4" fill="#fff"></rect><path class="cls-1" d="M87,119.1H7.1c-.8,0-1.4.6-1.4,1.4v48.2c0,.8.6,1.4,1.4,1.4h80.8c14.2,0,25.8-11.7,25.5-26-.3-14-12.3-25-26.4-25Z" fill="#fff"></path><path class="cls-1" d="M5.7,177.2v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L7.7,175.9c-.9-.4-2,.3-2,1.3Z" fill="#fff"></path></svg></span><span class="logotype logotype-horizontal logotype-pdp"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 402.5 62.4"><rect class="cls-1" x="62.4" y="5.7" width="107.7" height="51" rx="1.4" ry="1.4" fill="#000"></rect><rect class="cls-1" x="5.7" y="5.7" width="51" height="51" rx="1.4" ry="1.4" fill="#000"></rect><path class="cls-1" d="M257.1,5.7h-79.9c-.8,0-1.4.6-1.4,1.4v48.2c0,.8.6,1.4,1.4,1.4h80.8c14.2,0,25.8-11.7,25.5-26-.3-14-12.3-25-26.4-25Z" fill="#000"></path><path class="cls-1" d="M289.1,7.1v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L291.1,5.8c-.9-.4-2,.3-2,1.3Z" fill="#000"></path></svg>
+			</span>
+			<span class="brand">Lost River</span>
+		</a>
+	</div>
+		{%- for link in section.settings.menu.links -%}
+		<nav id="nav-{{ link.title | downcase }}" class="nav nav-primary">
+			<a class="nav-logo" href="/"></a>
+			{%- for link in section.settings.menu.links -%}
+			<div class="nav-layout nav-layout-horizontal">
+				<div class="nav-layout-item">
+					<ul class="nav-menu">
+					  {%- for childlink in link.links -%}
+							<li>
+							  <a
+								id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+								href="{{ childlink.url }}"
+								class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+								{% if childlink.current %}
+								  aria-current="page"
+								{% endif %}
+							  >
+								{{ childlink.title | escape }}
+							  </a>
+							</li>
+						{%- endfor -%}					  
+												
+					</ul>
+				</div>
+				<div class="nav-icon-back">
+					<svg viewBox="0 0 210 210">
+						<path class="path" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L200,105"></path>
+						<path class="path path-b" fill="transparent" stroke="black" stroke-width="10" d="M 105,10 L10,105"></path>
+						<path class="path path-c" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L105,200"></path>
+					</svg>
+				</div>
+			</div>
+			{%- endfor -%}
+		</nav>
+		{%- endfor -%}
+		
+		{% assign right_menu = menus.lr_header_top_right_menu %}
+		{{ right_menu.title }}
+		{% if right_menu %}
+		<nav id="nav-account" class="nav nav-secondary    ">
+			<div class="nav-layout nav-layout-horizontal nav-layout-secondary">
+				<div class="nav-layout-item">
+					<ul class="nav-menu">
+						<li><a href="/login"><span>Sign in</span></a></li>
+						<li><a href="/register"><span>Register</span></a></li>
+					</ul>
+				</div>
+				<div class="nav-layout-item">
+					<ul class="nav-menu">
+						{%- for childlink in menus.lr_header_top_right_men -%}
+							<li>
+							  <a
+								id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+								href="{{ childlink.url }}"
+								class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+								{% if childlink.current %}
+								  aria-current="page"
+								{% endif %}
+							  >
+								{{ childlink.title | escape }}
+							  </a>
+							</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+				<div class="nav-icon-back">
+					<svg viewBox="0 0 210 210">
+						<path class="path" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L200,105"></path>
+						<path class="path path-b" fill="transparent" stroke="black" stroke-width="10" d="M 105,10 L10,105"></path>
+						<path class="path path-c" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L105,200"></path>
+					</svg>
+				</div>
+			</div>
+		</nav>
+		{%- endif -%}
+		<nav id="nav-bag" class="nav nav-secondary">
+			<div class="nav-layout">
+				<div class="site-system site-system-minibag">
+					<div class="item item-product item-product-minibag ">
+						<div class="image">
+							<a href="/pdp"><img src="/uploads/products/default/3-a.jpg"></a>
+						</div>
+						<div class="info">
+							<div class="caption">
+								<div class="title"><span class="title-inner"><span class="title-author">Georges Simenon</span><span class="title-title">Letter to my Mother</span></span><span class="title-favorite">Favorite</span></div>
+								<div class="values"><span class="value-material">Paperback</span></div>
+								<div class="info-price">USD 12.00 × 1</div>
+								<div class="tools">
+									<div class="tool tool-quantity">
+										<div class="quantity">× <span class="quantity-value">1</span></div>
+										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">2</span><span class="icon-quantity icon-quantity-plus"></span></div>
+									</div>
+									<div class="tool tool-remove"><a href="#" class="link-remove"><span></span></a></div>
+								</div>
+							</div>
+							<div class="price">
+								<div class="tools">
+									<div class="tool tool-quantity">
+										<div class="quantity">× <span class="quantity-value">1</span></div>
+										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">1</span><span class="icon-quantity icon-quantity-plus"></span></div>
+									</div>
+								</div>
+								<div class="price-amount">1 ×</div>
+								<div class="price-price">USD 12.00</div>
+							</div>
+						</div>
+					</div>
+					<div class="item item-product item-product-minibag">
+						<div class="image">
+							<a href="/pdp"><img src="/uploads/products/default/8-a.jpg"></a>
+						</div>
+						<div class="info">
+							<div class="caption">
+								<div class="title"><span class="title-inner"><span class="title-author">J. D. Salinger</span><span class="title-title">Franny and Zoe</span></span><span class="title-favorite">Favorite</span></div>
+								<div class="values"><span class="value-material">Electronic</span></div>
+								<div class="info-price">USD 10.00 × 2</div>
+								<div class="tools">
+									<div class="tool tool-quantity">
+										<div class="quantity">× <span class="quantity-value">2</span></div>
+										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">2</span><span class="icon-quantity icon-quantity-plus"></span></div>
+									</div>
+									<div class="tool tool-remove"><a href="#" class="link-remove"><span></span></a></div>
+								</div>
+							</div>
+							<div class="price">
+								<div class="tools">
+									<div class="tool tool-quantity">
+										<div class="quantity">× <span class="quantity-value">2</span></div>
+										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">2</span><span class="icon-quantity icon-quantity-plus"></span></div>
+									</div>
+								</div>
+								<div class="price-amount">2 ×</div>
+								<div class="price-price">USD 10.00</div>
+							</div>
+						</div>
+					</div>
+					<div class="item item-total item-total-first item-total-promo">
+						<div class="caption">
+							<div class="caption-option "><span class="icon-promo"></span> Add promotion code</div>
+							<div class="caption-option is-off">
+								<input type="text" placeholder="Enter promotion code" class="input-promo">
+								<button class="button-promo">OK</button>
+							</div>
+						</div>
+					</div>
+					<div class="item item-total item-total-final">
+						<div class="caption">Total <span class="note">Taxes and duties incl.</span></div>
+						<div class="price">USD 22.00</div>
+					</div>
+					<div class="item item-button item-button-sticky item-button-checkout"><a class="button button-xlarge button-inverted button-orange" href="/checkout">Checkout</a>
+						<button class="button button-xlarge is-off">Continue shopping</button>
+					</div>
+				</div>
+			</div>
+		</nav>

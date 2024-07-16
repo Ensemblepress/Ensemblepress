@@ -157,7 +157,12 @@
         render 'header-search', input_id: 'Search-In-Modal-1'
       endif
     -%}
-
+	
+	{%- liquid
+	  render 'lr-custom-header'
+    %}
+	
+	{% comment %}
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
@@ -188,6 +193,7 @@
       {%- endif -%}
     {%- endif -%}
 
+	
     {%- liquid
       if section.settings.menu != blank
         if section.settings.menu_type_desktop == 'dropdown'
@@ -197,8 +203,8 @@
         endif
       endif
     %}
-
-    {%- if section.settings.logo_position == 'middle-center' -%}
+   
+   {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
@@ -227,7 +233,7 @@
         </h1>
       {%- endif -%}
     {%- endif -%}
-
+	
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -301,6 +307,9 @@
         {%- endif -%}
       </a>
     </div>
+	
+	{% endcomment %}
+
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
