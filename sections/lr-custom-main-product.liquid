@@ -73,28 +73,6 @@
             </ul>
           </div>
           
-          <div class="pdp-info-header-tertiary">
-            <div class="pdp-product-variants ">
-              <div class="pdp-product-variants-list is-on">
-                <div class="pdp-product-variants-list-scroll">
-                  <ul>
-                    {% for variant in product.variants %} 
-                        <li class="variant_li {% if forloop.first %}is-active selected{% endif %}" data-id="{{ variant.id }}">
-                            <a href="javascript:void(0)">
-                              {% unless variant.title == "Default Title" %}
-                                <div class="variant" name="variant" >{{ variant.title }}</div>               
-                                {% else %}
-                                <div class="variant" name="variant"></div>     
-                              {% endunless %}  
-                                <div class="price">{{ variant.price | money }}</div>
-                            </a>
-                        </li>                          
-                      {% endfor %} 
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="pdp-info-body-secondary">
             <div class="pdp-buttons-triangle">
               <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
