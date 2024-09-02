@@ -1,213 +1,108 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "sections": {
-    "slideshow_Wtfe8m": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_xBncEq": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/home-1-slider-1.webp",
-            "heading": "Paperback",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Shop Paperback",
-            "link": "shopify:\/\/collections\/paperbook",
-            "button_style_secondary": false,
-            "box_align": "bottom-left",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 20,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_M6zqeT": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/home-1-slider-2.webp",
-            "heading": "Ebooks",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Shop Ebooks",
-            "link": "shopify:\/\/collections\/ebooks",
-            "button_style_secondary": false,
-            "box_align": "bottom-left",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 20,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_xBncEq",
-        "slide_M6zqeT"
-      ],
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "small",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "rich_text_cCtKNf": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_pWbNXW": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Why<\/strong> <strong>become a membership ?<\/strong>",
-            "heading_size": "h2"
-          }
-        },
-        "text_jxG74F": {
-          "type": "text",
-          "settings": {
-            "text": "<p>For $14 a Year, get 24-hour advance access to sales and special invitations to monthly promotions.<\/p>"
-          }
-        },
-        "button_bbdemD": {
-          "type": "button",
-          "settings": {
-            "button_label": "Join Now",
-            "button_link": "shopify:\/\/pages\/membership",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_pWbNXW",
-        "text_jxG74F",
-        "button_bbdemD"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
-    },
-    "collection_list_63Rwcc": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_dfkrky": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "hardcover"
-          }
-        },
-        "featured_collection_djKXM8": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "keychain"
-          }
-        },
-        "featured_collection_TfjjNb": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "paperbook"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_dfkrky",
-        "featured_collection_djKXM8",
-        "featured_collection_TfjjNb"
-      ],
-      "settings": {
-        "title": "Books Category",
-        "heading_size": "h2",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Member Favorites",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": false,
-        "view_all_style": "link",
-        "enable_desktop_slider": true,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
     "featured_collection_MnxekR": {
-      "type": "featured-collection",
+      "type": "lr-custom-banner-section",
       "settings": {
-        "title": "New Arrivals",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
+        "image": "shopify:\/\/shop_images\/banner-image.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/home-1-m.jpg",
+        "heading_label": "Joanna is reading",
+        "sub_heading": "Shop now",
+        "button_link": "shopify:\/\/collections\/paperbook"
+      }
+    },
+    "lr_custom_rich_text_XU7dzW": {
+      "type": "lr-custom-rich-text",
+      "settings": {
+        "heading_label": "Lost River",
+        "sub_heading": "is a new type of book business: a publishing house and an online bookstore. We publish original, thought-provoking, imaginative fiction and nonfiction—books to talk about and to share."
+      }
+    },
+    "custom_video_section_JbFXpi": {
+      "type": "lr-custom-video-section",
+      "settings": {
+        "video": "shopify:\/\/files\/videos\/home-3.mp4",
+        "heading_label": "Summer Books",
+        "sub_heading": "Watch now",
+        "button_link": "shopify:\/\/collections\/summer-books"
+      }
+    },
+    "custom_newarrivals_HYqQCr": {
+      "type": "lr-custom-newarrivals",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/new-arrival.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/home-2-m.jpg",
+        "heading_label": "New Arrivals",
+        "sub_heading": "Shop now",
+        "button_link": "shopify:\/\/collections\/new-arrivals"
+      }
+    },
+    "custom_newsletter_d7A3cV": {
+      "type": "lr-custom-newsletter",
+      "settings": {
+      }
+    },
+    "custom_grid_8q4x6V": {
+      "type": "lr-custom-grid",
+      "blocks": {
+        "image_eWfBQ8": {
+          "type": "image",
+          "settings": {
+            "vertical_alignment": "none",
+            "image": "shopify:\/\/shop_images\/andrea-smith-4.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/andrea-smith-4_899b1fb7-0ff0-437d-ac32-6e324c16f727.jpg",
+            "heading_label": "Andrea Smith",
+            "sub_heading": "Read now",
+            "button_link": "#"
+          }
+        },
+        "image_FtwAtd": {
+          "type": "image",
+          "settings": {
+            "vertical_alignment": "caption-sticky-white",
+            "image": "shopify:\/\/shop_images\/andrea-smith-17.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/andrea-smith-17_40317cbb-3fa1-47bf-8e93-077bc397e44a.jpg",
+            "heading_label": "Favourites",
+            "sub_heading": "Shop now",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "image_eWfBQ8",
+        "image_FtwAtd"
+      ],
+      "settings": {
+      }
+    },
+    "lr_custom_feature_product_7EyQF3": {
+      "type": "lr-custom-feature-product",
+      "settings": {
+        "title": "Nicoles favorite books",
+        "collection": "nicole-s-favorites",
         "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "show_secondary_image": true,
+        "show_vendor": true
+      }
+    },
+    "custom_our_library_tTMfJR": {
+      "type": "lr-custom-our-library",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/home-4.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/home-4-m.jpg",
+        "heading_label": "Our Library",
+        "sub_heading": "View now",
+        "button_link": "#"
       }
     }
   },
   "order": [
-    "slideshow_Wtfe8m",
-    "rich_text_cCtKNf",
-    "collection_list_63Rwcc",
-    "featured_collection",
-    "featured_collection_MnxekR"
+    "featured_collection_MnxekR",
+    "lr_custom_rich_text_XU7dzW",
+    "custom_video_section_JbFXpi",
+    "custom_newarrivals_HYqQCr",
+    "custom_newsletter_d7A3cV",
+    "custom_grid_8q4x6V",
+    "lr_custom_feature_product_7EyQF3",
+    "custom_our_library_tTMfJR"
   ]
 }

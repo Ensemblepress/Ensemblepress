@@ -1,0 +1,123 @@
+
+<div class="product-grid product-grid-4col product-grid-background product-grid-gap" id="product-list">
+   
+  
+  {%- paginate collection.products by section.settings.products_per_page -%}
+
+    {%- if collection.products.size == 0 -%}
+      <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+        <div class="loading-overlay gradient"></div>
+        <div class="title-wrapper center">
+          <h2 class="title title--primary">
+            {{ 'sections.collection_template.empty' | t -}}
+            <br>
+            {{
+              'sections.collection_template.use_fewer_filters_html'
+              | t: link: collection.url, class: 'underlined-link link'
+            }}
+          </h2>
+        </div>
+      </div>
+    {%- else -%}
+      {%- for product in collection.products -%}  
+        <a class="product item" href="{{ product.url }}"  data-name="{{ product.title | escape }}" data-price="{{ product.price }}" data-date="{{ product.created_at }}">
+          {%- if product.featured_media -%}
+            <div class="image ">
+              <svg viewBox="0 0 1500 2000"></svg>
+              <img src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt | escape }}" class="img-default undefined">
+              {%- if product.media[1] != null and section.settings.show_secondary_image -%}
+                <img src="{{ product.media[1] | img_url: 'master' }}" alt="{{ product.title }}" class="img-alt">
+              {% endif %}  
+          </div>
+          {% endif %}  
+          <div class="caption">
+              <div class="caption-default">
+                <div class="name">
+                  {% assign author_name = product.metafields.custom.author_name %}  
+                  {% if section.settings.show_vendor %} 
+                      <div class="name-author">{{ author_name }}</div>
+                    {% else %}                      
+                      <div class="name-author">{{ product.vendor }}</div>                    
+                    {% endif %}
+                    <div class="name-title">{{ product.title }}</div>
+                  </div>
+                  
+                  <div class="price">
+                    {% if product.compare_at_price !=blank %}
+                      <span class="price-sale-original">{{ product.compare_at_price | money }}</span>
+                    {% endif %}
+                    
+                    {{ product.price | money }}
+                    {% comment %}
+                    {% if product.price > 0 %}
+                    {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                    {% endcomment %}
+                  </div>
+              </div>
+              <div class="caption-additional">
+                  <div class="caption-additional-default">
+                      <div class="label">Runway</div>
+                  </div>
+                  <div class="caption-additional-hover">
+                      <div class="cta">Add to bag</div>
+                  </div>
+              </div>
+          </div>
+        </a>
+      {% endfor %}
+      
+    {% endif %}  
+  {% endpaginate %}  
+</div>
+
+{% schema %}
+  {
+    "name": "Custom Product Grid",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "min": 8,
+        "max": 36,
+        "step": 4,
+        "default": 16,
+        "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "default": false,
+        "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": false,
+        "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+      },
+      {
+        "type": "select",
+        "id": "filter_type",
+        "options": [
+          {
+            "value": "horizontal",
+            "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
+          },
+          {
+            "value": "vertical",
+            "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+          },
+          {
+            "value": "drawer",
+            "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+          }
+        ],
+        "default": "horizontal",
+        "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
+        "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
+      }
+    ]
+  }
+{% endschema %}

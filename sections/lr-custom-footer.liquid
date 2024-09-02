@@ -1,0 +1,82 @@
+<footer>
+  <div class="links links-secondary">
+    <ul class="links-4col links-copyright">
+      <li class="links-title links-title-copyright">Copyright {{ 'now' | date: '%Y' }}  {{ shop.name | link_to: routes.root_url -}}</li>
+    </ul>
+    <ul class="links-6col links-horizontal links-legal is-only-desktop">
+      {%- assign link = section.settings.menu.links -%}
+      {% for links in link %}
+        <li>
+          <a href="{{ links.url | default:"#" }}">
+            <span>{{ links.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {%- if section.settings.show_social -%}
+      <ul class="links-2col links-horizontal links-social">
+        {%- if settings.social_tiktok_link != blank -%}
+        <li>
+          <a href="{{ settings.social_tiktok_link | default:"#" }}" class="icon-social icon-social-tiktok" target="_blank">
+            <span></span>
+          </a>
+        </li>
+        {% endif %}  
+        {%- if settings.social_facebook_link != blank -%}
+          <li>
+            <a href="{{ settings.social_facebook_link }}" class="icon-social icon-social-facebook" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        {%- if settings.social_instagram_link != blank -%}
+          <li>
+            <a href="{{ settings.social_instagram_link }}" class="icon-social icon-social-instagram" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        {%- if settings.social_pinterest_link != blank -%}
+          <li>
+            <a href="{{ settings.social_pinterest_link }}" class="icon-social icon-social-pinterest" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        {%- if settings.icon_social_threads != blank -%}
+          <li>
+            <a
+              href="{{ settings.icon_social_threads }}"
+              class="icon-social icon-social-threads"
+              target="_blank"
+            >
+              <span></span>
+            </a>
+          </li>  
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.blocks.brand_information.settings.show_social.label",
+      "info": "t:sections.footer.blocks.brand_information.settings.show_social.info"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "footer",
+      "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+      "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+    }
+
+  ]
+}
+{% endschema %}

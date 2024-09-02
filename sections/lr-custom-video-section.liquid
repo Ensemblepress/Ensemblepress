@@ -1,0 +1,68 @@
+{% if section.settings.video != blank %}
+<a class="item" href="{{ section.settings.button_link | default:"#" }}">
+    <div class="item-inner">
+        <div class="image is-sm is-sm-translate">
+            <div class="caption-sticky caption-sticky-bottom">
+                <div class="caption-sticky-inner">
+                  <div class="caption-primary">{{ section.settings.heading_label }}</div>
+                  <div class="caption-secondary">{{ section.settings.sub_heading }}</div>
+                </div>
+            </div>
+          {% if section.settings.video != blank %}
+
+          <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+          <source src="{{ section.settings.video.sources[1].url }}">
+          </video>
+         {% endif %}   
+        </div>
+    </div>
+</a>
+{% endif %}  
+
+<script>
+  window.onload = function() {
+    var video = document.getElementById("myVideo");
+    video.autoplay = true;
+    video.muted = true; // This is necessary for autoplay to work in some browsers
+    video.play();
+    // Stop the video after 5 seconds
+    setTimeout(function() {
+      video.pause();
+    }, 5000); // 5000 milliseconds = 5 seconds
+  };
+</script>
+
+{% schema %}
+{
+  "name": "LR Custom Video",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "text",
+      "id": "heading_label",
+      "label": "Heading",
+      "default": "Summer Books"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading",
+      "default": "Watch now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LR Custom Video"
+    }
+  ]
+}
+{% endschema %}

@@ -82,6 +82,7 @@
       id="{{ input_id }}"
       name="{{ input_name }}"
       value="{{ value | escape }}"
+      variants_id="{{ value.id }}"
       form="{{ product_form_id }}"
       {% if value.selected %}
         checked
@@ -91,6 +92,7 @@
       {% endif %}
       {{ input_dataset }}
     >
+
     <label for="{{ input_id }}">
       {{ value -}}
       {{ label_unavailable }}

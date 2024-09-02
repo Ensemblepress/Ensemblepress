@@ -36,7 +36,9 @@
 }
 
 .collection-hero__title {
-  margin: 2.5rem 0;
+  margin: 1.5rem 2rem;
+    color: #000;
+    padding: 8px 0 8px 100px;
 }
 
 .collection-hero__title + .collection-hero__description {

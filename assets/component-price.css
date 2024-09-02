@@ -1,32 +1,26 @@
 .price {
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   letter-spacing: 0.1rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   color: rgb(var(--color-foreground));
 }
-
 .price > * {
   display: inline-block;
   vertical-align: top;
 }
-
 .price.price--unavailable {
   visibility: hidden;
 }
-
 .price--end {
   text-align: right;
 }
-
 .price .price-item {
   display: inline-block;
   margin: 0 1rem 0 0;
 }
-
 .price__regular .price-item--regular {
   margin-right: 0;
 }
-
 .price:not(.price--show-badge) .price-item--last:last-of-type {
   margin: 0;
 }

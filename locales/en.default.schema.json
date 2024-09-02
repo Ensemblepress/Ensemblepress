@@ -284,6 +284,10 @@
         "social_vimeo_link": {
           "label": "Vimeo",
           "info": "https:\/\/vimeo.com\/shopify"
+        },
+        "icon_social_threads": {
+          "label": "threads",
+          "info": "https:\/\/threads.com\/shopify"
         }
       }
     },
@@ -332,7 +336,7 @@
           }
         },
         "show_vendor": {
-          "label": "Show vendor"
+          "label": "Author Name Or Product vendor"
         },
         "show_cart_note": {
           "label": "Enable cart note"
@@ -797,7 +801,7 @@
           "label": "Show second image on hover"
         },
         "show_vendor": {
-          "label": "Show vendor"
+          "label": "Author Name Or Product vendor"
         },
         "show_rating": {
           "label": "Show product rating",
@@ -1843,7 +1847,7 @@
           "label": "Show second image on hover"
         },
         "show_vendor": {
-          "label": "Show vendor"
+          "label": "Author Name Or Product vendor"
         },
         "show_rating": {
           "label": "Show product rating",
@@ -2488,7 +2492,7 @@
           "label": "Show second image on hover"
         },
         "show_vendor": {
-          "label": "Show vendor"
+          "label": "Author Name Or Product vendor"
         },
         "show_rating": {
           "label": "Show product rating",
@@ -2859,7 +2863,7 @@
           "label": "Show second image on hover"
         },
         "show_vendor": {
-          "label": "Show vendor"
+          "label": "Author Name Or Product vendor"
         },
         "show_rating": {
           "label": "Show product rating",

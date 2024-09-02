@@ -1,0 +1,29 @@
+<div class="item item-text">
+    <div class="item-inner">{{ section.settings.heading_label }}
+        <br>{{ section.settings.sub_heading }}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "LR Custom Rich Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading_label",
+        "label": "Heading",
+        "default": "Lost River"
+      },
+      {
+        "type": "textarea",
+        "id": "sub_heading",
+        "label": "Sub Heading",
+        "default": "is a new type of book business: a publishing house and an online bookstore. We publish original, thought-provoking, imaginative fiction and nonfiction—books to talk about and to share."
+      },
+    ],
+    "presets": [
+      {
+        "name": "LR Custom Rich Text"
+      }
+    ]
+  }
+{% endschema %}

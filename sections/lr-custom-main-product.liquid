@@ -1,0 +1,480 @@
+<div class="pdp-container" id="pdp">
+  <div class="pdp-main">
+    <div class="pdp-main-visuals">
+      <div class="pdp-image-set">
+        <div class="pdp-image-set-grid ">
+          {% for media in product.media %}
+            <div class="pdp-image-set-img">
+              <a
+                href="{{ media.src | img_url:'master' }}"
+                data-pswp-width="3000"
+                data-pswp-height="2000"
+                target="_blank"
+                class="image-zoomable">
+                <img src="{{ media.src | img_url:'master' }}">
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="Plx Plx--below Plx-effect-pdp" style="">
+      <div class="pdp-scroller"></div>
+    </div>
+    <div class="pdp-main-info">
+      <div class="pdp-info-container">
+        <div class="pdp-info">
+          <div class="pdp-info-swiper pdp-main-swiper">
+            <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-pdp">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                {% for media in product.media %}
+                  <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4">
+                    <a
+                      href="{{ media.src | img_url:'master' }}"
+                      data-pswp-width="2400"
+                      data-pswp-height="3000"
+                      target="_blank"
+                      class="image-zoomable">
+                      <img src="{{ media.src | img_url:'master' }}">
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="pdp-info-header">
+            <div class="pdp-info-header-inner">
+              <div class="pdp-brow">Book</div>
+               <div class="pdp-headline">
+                {% assign author_name = product.metafields.custom.author_name %}  
+                <div class="pdp-headline-author" id="get_author_name">{{ author_name }}</div>
+                <div class="pdp-headline-title">{{ product.title }}</div>
+              </div>
+              <div class="pdp-labels"></div>
+            </div>
+          </div>
+          <div class="pdp-info-header-secondary">
+            <div class="pdp-description">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+            </div>
+            <ul class="pdp-keywords">
+              <li>Ut enim ad minim veniam.</li>
+              <li>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li>Duis aute irure dolor in reprehenderit in voluptate velit esse.</li>
+              <li>Velit esse cillum dolore eu fugiat nulla pariatur.</li>
+              <li>Excepteur sint occaecat.</li>
+              <li>Cupidatat non proident, sunt.</li>
+              <li>In culpa qui officia deserunt mollit anim id est laborum.</li>
+              <li class="pdp-details">
+                <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="pdp-info-header-tertiary">
+            <div class="pdp-product-variants ">
+              <div class="pdp-product-variants-list is-on">
+                <div class="pdp-product-variants-list-scroll">
+                  <ul>
+                    {% for variant in product.variants %} 
+                        <li class="variant_li {% if forloop.first %}is-active selected{% endif %}" data-id="{{ variant.id }}">
+                            <a href="javascript:void(0)">
+                              {% unless variant.title == "Default Title" %}
+                                <div class="variant" name="variant" >{{ variant.title }}</div>               
+                                {% else %}
+                                <div class="variant" name="variant"></div>     
+                              {% endunless %}  
+                                <div class="price">{{ variant.price | money }}</div>
+                            </a>
+                        </li>                          
+                      {% endfor %} 
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pdp-info-body-secondary">
+            <div class="pdp-buttons-triangle">
+              <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
+            </div>
+            <div class="pdp-buttons " id="pdp-button-addtobag">
+              <button class="button-addtobag  Xis-disabled" id="add-to-bag">
+                <span class="button-addtobag-cta"
+                  ><span class="button-addtobag-cta-title">Add to bag</span
+                  ><span class="button-addtobag-cta-price">USD 22.00</span></span
+                ><span class="button-addtobag-help">Select a variant</span>
+              </button>
+            </div>
+            <div class="pdp-buttons is-off" id="pdp-button-notifyme">
+              <button class="button-italic button-xlarge button-notifyme">Notify me when available</button>
+            </div>
+          </div>
+          <div class="pdp-info-body-tertiary"></div>
+        </div>
+        <div class="pdp-info-footer">
+          <ul class="pdp-keywords pdp-keywords-blank">
+            <li class="pdp-storeavailability ">
+              <span class="pdp-link pdp-link-chevron"><span>Store availablity</span></span>
+            </li>
+            <li class="pdp-shipping ">
+              <span class="pdp-link pdp-link-chevron"><span>Delivery &amp; returns</span></span>
+            </li>
+          </ul>
+          <ul class="pdp-info-footer-links">
+            <li class="pdp-info-footer-links-back ">
+              <a href="/woman/outerwear"><span>Back to outerwear</span></a>
+            </li>
+            <li class="pdp-info-footer-links-assistance"><span>Questions?</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="pdp-main-buttons-mobile">
+      <div class="pdp-buttons " id="pdp-button-addtobag">
+        <button class="button-addtobag  Xis-disabled  ">
+          <span class="button-addtobag-cta"
+            ><span class="button-addtobag-cta-title">Add to bag</span
+            ><span class="button-addtobag-cta-price">USD 22.00</span></span
+          ><span class="button-addtobag-help">Select a variant</span>
+        </button>
+      </div>
+      <div class="pdp-buttons is-off" id="pdp-button-notifyme">
+        <button class="button-italic button-xlarge button-notifyme">Notify me when available</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+.pdp-product-variants .pdp-product-variants-list ul li.is-active {
+    border: 2px solid #000;
+    border-radius: 2px 19px 19px 2px;
+}
+</style>
+<script>
+  window.productMetafields = {
+    {% for item in cart.items %}
+      "{{ item.product_id }}": {
+        "author_name": "{{ item.product.metafields.custom.author_name }}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>  
+<script>
+  $(document).ready(function() {
+
+     $('.variant_li').on('click', function() {
+        $('.variant_li').removeClass("is-active");
+        $('.variant_li').removeClass("selected");
+       $(this).addClass("is-active");
+       $(this).addClass("selected");
+    });
+    
+    $('#add-to-bag').on('click', function() {
+        
+        // Your existing code logic here
+        var selectedVariantId = $('.variant_li.selected').data('id');
+        
+        // Example AJAX call to add to cart
+        if (selectedVariantId) {
+            $.ajax({
+                type: 'POST',
+                url: '/cart/add.js',
+                data: {
+                    id: selectedVariantId,
+                    quantity: 1
+                },
+                dataType: 'json',
+                success: function(response) {
+                  updateCartDrawer();  
+                },
+                error: function(error) {
+                    console.error('Error:', error);
+                }
+            });
+        } else {
+            console.log('Please select a variant.');
+        }
+    });
+});
+
+function updateCartDrawer() {
+  
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        var cartDrawerBody = document.querySelector('.cart-drawer-body');
+        if (cartDrawerBody) {
+        cartDrawerBody.innerHTML = '';
+  
+        cart.items.forEach((item, index) => {
+          const product = item.product;
+          const productName = item.product_title;
+          let variantName = item.variant_title;
+          if (variantName === null || variantName === undefined || variantName.trim() === '') {
+              variantName = ''; 
+          } else {
+              variantName = variantName;
+          }
+         
+          //console.log(productName);
+           //var authorName = $('#get_author_name').text();          
+           //var authorName = document.getElementById('get_author_name').text();          
+           var authorName = window.productMetafields[item.product_id]?.author_name || 'Unknown Author';
+          // Use authorName and other details to build the cart item HTML
+          //console.log(authorName);
+           if(authorName == 'Unknown Author'){
+             var authorName_title = $('#get_author_name').text();
+             authorName = authorName_title;
+           }             
+          var cartItem = `  
+          <div class="cart-item item item-product item-product-minibag " data-line="${index + 1}">
+            <div class="image">
+              <a href="${ item.url }">
+                <img src="${ item.image }" alt="${ productName }">
+              </a>
+            </div>
+            <div class="info">
+              <div class="caption">
+                <div class="title">
+                  <span class="title-inner">
+                   
+                    <span class="title-author" author-title="">${ authorName }</span>
+                    <span class="title-title">${ productName }</span>
+                  </span>
+                  <span class="title-favorite">Favorite </span>
+                </div>
+                <div class="values"><span class="value-material">${ variantName }</span></div>
+                <div class="tools">
+                   <div class="tool tool-quantity">
+                      <div class="quantity">× <span class="quantity-value">1</span></div>
+                        <div class="quantity-modifiers quantity-controls">
+                          <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                          <span class="icon-quantity icon-quantity-amount quantity_upd">${item.quantity}</span>
+                          <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                        </div>
+                   </div> 
+                    <div class="tool tool-remove">
+                        <a href="javascript:void(0)" class="link-remove remove-item" data-line="${index + 1}"><span></span></a>
+                    </div>
+                </div>
+           </div>   
+           <div class="price">
+            <div class="tools">
+              <div class="tool tool-quantity">
+                <div class="quantity">× <span class="quantity-value">1</span></div>
+                <div class="quantity-modifiers quantity-controls">
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                  <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                </div>
+              </div>
+            </div>
+            <div class="price-amount">1 ×</div>
+              <div class="price-price" id="price_${ item.id }">${formatMoney(item.original_line_price, cart.currency)}</div> 
+            </div>
+           </div>
+          </div>`;
+
+          cartDrawerBody.insertAdjacentHTML('beforeend', cartItem);
+        });
+        
+         var totalQuantity = calculateTotalQuantity(cart.items);
+        var discount_code;
+        if(totalQuantity != 0){
+          if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
+               discount_code = cart.items[0].discounts[0].title; 
+               var class_add = '';
+               var code_apply = 'is-off';
+               var add_disc = '';
+          }else{
+                discount_code = '';
+                var class_add = 'is-off';
+                var code_apply = '';
+                 var add_disc = 'item-total';
+          }
+        }else{
+           discount_code = "";
+        }
+        
+        var cart_footer = ` <div id="cart_footer"> 
+            <div class="item item-total item-total-first item-total-promo" id="item-total-promo">
+              <div class="caption" id="caption">
+                <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+                <div class="caption-option promo_input is-off" id="promo_input">
+                  <input type="text" id="promo-code-input" placeholder="Enter promotion code" class="input-promo">
+                  <button class="button-promo" id="apply-promo-code">Ok</button>
+                </div>
+              </div>
+            </div>
+            <div class="item item-total item-total-final is-discount ${ class_add }">
+              <div class="caption"><span id="promo_code_text">Discount Promo Code : ${ discount_code }</span><span class="note"><div id="discount-message"></div></span></div>
+              <button id="remove-discount" class="remove-discount-button"></button>
+              <div class="price" id="cart_total_discount"> ${formatMoney(cart.total_discount, cart.currency)}</div>
+            </div>
+            <div class="item item-total item-total-final">
+              <div class="caption">Total <span class="note">Taxes and duties incl.</span></div>
+              <div class="price cart-drawer-footer"></div>
+            </div>
+            <div class="item item-button item-button-sticky item-button-checkout">
+              <a class="button button-xlarge button-inverted button-orange" href="/checkout">Checkout</a>
+              <button class="button button-xlarge is-off">Continue shopping</button>
+            </div>
+        </div>
+        </div>`;
+      
+        cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
+
+        var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
+                    <a href="/collections/all" class="button">Continue </a>   
+        </div>`;
+
+        cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
+      
+        document.querySelector('.cart-drawer-footer').textContent = `${formatMoney(cart.total_price, cart.currency)}`;
+        var totalQuantity = calculateTotalQuantity(cart.items);
+        document.getElementById('total-quantity').textContent = totalQuantity;
+        var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        totalCartQuantityElement.textContent = totalQuantity;
+        if(totalQuantity == 0){  
+          document.getElementById('cart_footer').style.display = 'none';
+          document.getElementById('cart-empty-message').style.display = 'flex';
+        } 
+        }
+        $("#nav-bag").addClass('is-on');
+        attachCartItemEvents();  
+        
+      });
+  }
+
+  function attachCartItemEvents() {
+    var increaseButtons = document.querySelectorAll('.increase-quantity');
+    var decreaseButtons = document.querySelectorAll('.decrease-quantity');
+    var removeButtons = document.querySelectorAll('.remove-item');
+    
+    increaseButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        updateCartItemQuantity(button.dataset.line, 1);
+      });
+    });
+
+    decreaseButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        updateCartItemQuantity(button.dataset.line, -1);
+      });
+    });
+
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        removeCartItem(button.dataset.line);
+      });
+    });
+  }
+
+  function updateCartItemQuantity(line, delta) {
+    var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
+    var newQuantity = parseInt(quantityElement.textContent) + delta;
+
+    if (newQuantity < 1) {
+      removeCartItem(line);
+    } else {
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ line: parseInt(line), quantity: newQuantity })
+      })
+      .then(response => response.json())
+      .then(cart => {
+        //updateCartDrawer();
+        // Update the quantity
+        //console.log(cart);
+        quantityElement.textContent = newQuantity;
+
+        // Get the specific item based on the line number
+        var cartItem = cart.items[line - 1];  // line is 1-indexed
+        //console.log(cartItem);
+        
+        // Update the price for the specific item qty
+        var itemPriceElement = document.querySelector(`#qty_${cartItem.id}`);
+        if (itemPriceElement) {
+          itemPriceElement.textContent = cartItem.quantity;
+        }
+        
+        // Update the price for the specific item price
+        var itemPriceElement = document.querySelector(`#price_${cartItem.id}`);
+        if (itemPriceElement) {
+          itemPriceElement.textContent = formatMoney(cartItem.original_line_price, cart.currency);
+        }
+        //console.log(cart);
+         quantityElement.textContent = newQuantity;
+         var cart_total_price_value = cart.original_total_price - cart.total_discount;   
+         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
+         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
+         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+      });
+    }
+  }
+
+  function removeCartItem(line) {
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ line: parseInt(line), quantity: 0 })
+    })
+    .then(response => response.json())
+    .then(cart => {
+      //console.log(cart);
+      //updateCartDrawer();
+        document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        var cart_total_price_value = cart.original_total_price - cart.total_discount;
+        document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
+        document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
+        var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        if (cart.item_count == 0) {
+            document.getElementById('cart_footer').style.display = 'none';
+            document.getElementById('cart-empty-message').style.display = 'flex';
+        }        
+    });
+  }
+    function formatMoney(cents, currency) {
+      let money = (cents / 100).toFixed(2);
+      switch (currency) {
+        case 'USD':
+          return `$${money}`;
+        case 'EUR':
+          return `€${money}`;
+        case 'GBP':
+          return `£${money}`;
+        // Add more currency cases as needed
+        default:
+          return `${money} ${currency}`;
+      }
+  }
+
+  function calculateTotalQuantity(items) {
+    return items.reduce((total, item) => total + item.quantity, 0);
+  }
+
+  document.addEventListener('cart:updated', updateCartDrawer);
+  // Call updateCartDrawer initially to load the cart contents
+  updateCartDrawer();
+  
+</script>
+{% schema %}
+{
+  "name": "Custom Product Page",
+  "settings": []
+}
+{% endschema %}

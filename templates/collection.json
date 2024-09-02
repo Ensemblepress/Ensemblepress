@@ -1,26 +1,17 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "lr_custom_collection_banner_BXXjHx": {
+      "type": "lr-custom-collection-banner",
       "settings": {
-        "show_collection_description": true,
         "show_collection_image": true,
-        "color_scheme": "scheme-3"
+        "enable_sorting": true
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
-        "products_per_page": 8,
+        "products_per_page": 16,
         "columns_desktop": 4,
         "color_scheme": "",
         "image_ratio": "portrait",
@@ -28,18 +19,108 @@
         "show_secondary_image": true,
         "show_vendor": true,
         "show_rating": false,
-        "quick_add": "standard",
-        "enable_filtering": true,
-        "filter_type": "vertical",
-        "enable_sorting": true,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "drawer",
+        "enable_sorting": false,
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "lr_custom_product_grid_q7qdyj": {
+      "type": "lr-custom-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "filter_type": "horizontal"
+      }
+    },
+    "lr_scroll_animation_V89j8Q": {
+      "type": "lr-scroll-animation",
+      "blocks": {
+        "auto_slider_HYBMpa": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_YAVdM3": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_B9Rbeg": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_hPFa9T": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_pe3VLi": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_Ya4nxy": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_MijegF": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_T9dQYU": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_C8Cnaa": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        },
+        "auto_slider_3LK7b9": {
+          "type": "auto_slider",
+          "settings": {
+            "heading": "Next category: Non-Fiction"
+          }
+        }
+      },
+      "block_order": [
+        "auto_slider_HYBMpa",
+        "auto_slider_YAVdM3",
+        "auto_slider_B9Rbeg",
+        "auto_slider_hPFa9T",
+        "auto_slider_pe3VLi",
+        "auto_slider_Ya4nxy",
+        "auto_slider_MijegF",
+        "auto_slider_T9dQYU",
+        "auto_slider_C8Cnaa",
+        "auto_slider_3LK7b9"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
-    "banner",
-    "product-grid"
+    "lr_custom_collection_banner_BXXjHx",
+    "product-grid",
+    "lr_custom_product_grid_q7qdyj",
+    "lr_scroll_animation_V89j8Q"
   ]
 }

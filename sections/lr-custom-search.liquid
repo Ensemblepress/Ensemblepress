@@ -1,0 +1,73 @@
+{% paginate search.results by 24 %}
+   {%- if search.results_count == 0 -%}
+    <div class="plp-container plp-container-search">
+      <div class="search-message-noresult">
+        {{ 'templates.search.no_resultss' | t }}
+      </div>
+    </div>
+ {% endif %}
+<div class="plp-container">
+  <div class="product-grid product-grid-4col product-grid-background product-grid-gap product-grid-search" id="myUL">
+      {%- for item in search.results -%}
+      <a class="item" href="{{ item.url }}">
+        {%- if item.featured_media -%}
+          <div class="image ">
+              <svg viewBox="0 0 1500 2000"></svg>
+              <img src="{{ item.featured_media | img_url: 'master' }}" alt="{{ item.featured_media.alt | escape }}" class="img-default undefined">
+              {%- if item.media[1] != null and section.settings.show_secondary_image -%}
+              <img src="{{ item.media[1] | img_url: 'master' }}" alt="{{ item.title }}" class="img-alt">
+             {% endif %}   
+          </div>
+        {% endif %}      
+        <div class="caption">
+          <div class="caption-default">
+              <div class="name">
+                  {% assign author_name = item.metafields.custom.author_name %}  
+                  {% if section.settings.show_vendor %} 
+                      <div class="name-author">{{ author_name }}</div>
+                    {% else %}                      
+                      <div class="name-author">{{ item.vendor }}</div>                    
+                    {% endif %}
+                    <div class="name-title">{{ item.title }}</div>
+                </div>
+              <div class="price">
+                {% if item.compare_at_price !=blank %}
+                <span class="price-sale-original">{{ item.compare_at_price | money }}</span>
+                {% endif %}
+                {{ item.price | money }}
+              </div>
+          </div>
+          <div class="caption-additional">
+              <div class="caption-additional-default">
+                  <div class="label"></div>
+              </div>
+              <div class="caption-additional-hover">
+                  <div class="cta">Add to bag</div>
+              </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+    
+  </div>
+</div>
+{% endpaginate %}  
+{% schema %}
+  {
+    "name": "Search results",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_secondary_image",
+        "default": false,
+        "label": "t:sections.main-search.settings.show_secondary_image.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": false,
+        "label": "t:sections.main-search.settings.show_vendor.label"
+      },
+    ]
+  }
+{% endschema %}

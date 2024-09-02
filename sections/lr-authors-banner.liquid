@@ -1,0 +1,35 @@
+<div class="plp-header">
+  <div class="plp-header-primary">
+      {% assign banner_mobile_image = collection.metafields.custom.banner_mobile_image %}
+      {%- if section.settings.show_collection_image and collection.image -%}
+        <picture>
+          <source media="(min-width:835px)" srcset="{{ collection.image | img_url:"master" }}" alt="{{ collection.title }}">
+          <img src="{{ banner_mobile_image | img_url :'master'}}" alt="{{ collection.title }}">
+        </picture>
+        {% else %}
+        <picture>
+          <source media="(min-width:835px)" srcset="https://cdn.shopify.com/s/files/1/0645/7563/5607/files/hd-paperbacks-2.svg?v=1722428149">
+          <img src="https://cdn.shopify.com/s/files/1/0645/7563/5607/files/hd-paperbacks-2-m.svg?v=1722428149">
+        </picture> 
+      {%- endif -%}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Authors",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "default": false,
+        "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+        "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Lr Custom Authors"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,192 @@
+<div class="ReactModal__Overlay ReactModal__Overlay--after-open overlay overlay-filters">
+  <div class="ReactModal__Content ReactModal__Content--after-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="overlay-close"><span>×</span></div>
+    <div class="overlay-panel-inner">
+      <div class="overlay-outer-title">{{ 'products.facets.sort_by_label' | t }}</div>
+      <div class="filter-panel">
+        <div class="filter-items">
+          <div class="filter-item">
+            <div class="filter-item-title">{{ 'products.facets.sort_by_label' | t }}</div>
+             <div class="filter-item-options">
+               <ul class="filter-selector">
+                 <!--<li>
+                    <div class="filter-option ">
+                      <span><input type="radio" name="sort" value="default" checked> Default</span>
+                    </div>
+                 </li>-->
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="az">Title A-Z</span>
+                    </div>
+                 </li>
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="za">Title Z-A</span>
+                    </div>
+                 </li>
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="lowprice">Price ascending</span>
+                    </div>
+                 </li>
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="highprice">Price descendeing</span>
+                    </div>
+                 </li>
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="newold">Newest</span>
+                    </div>
+                 </li>
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="oldnew">Oldest</span>
+                      </div>
+                 </li>
+               </ul>
+               {% comment %}
+                <ul class="filter-selector">
+                {%- for option in collection.sort_options -%}
+                  <li>
+                    <div class="filter-option ">
+                      <span class="filter-option-input"></span>
+                      <span class="filter-option-title">{{ option.name | escape }}</span>
+                    </div>
+                  </li>
+                {% endfor %} 
+                <li>
+                    <div class="filter-option ">
+                      <span class="filter-option-input"></span>
+                      <span class="filter-option-title">Newest</span>
+                    </div>
+                </li>
+                <li>
+                  <div class="filter-option ">
+                      <span class="filter-option-input"></span>
+                      <span class="filter-option-title">Title A-Z</span>
+                    </div>
+                </li>
+                <li>
+                  <div class="filter-option ">
+                    <span class="filter-option-input"></span>
+                    <span class="filter-option-title">Title Z-A</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="filter-option ">
+                    <span class="filter-option-input"></span>
+                    <span class="filter-option-title">Price ascending</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="filter-option ">
+                    <span class="filter-option-input"></span>
+                    <span class="filter-option-title">Price descendeing</span>
+                  </div>
+                </li>
+                <li>
+                    <div class="filter-option ">
+                      <span class="filter-option-input"></span>
+                      <span class="filter-option-title">In Stock</span>
+                    </div>
+                  </li>
+              </ul>
+              {% endcomment %}  
+            </div>
+          </div>
+        </div>
+        <div class="filter-button">
+          <button id="apply-sort" class="button button-inverted">{{ 'products.facets.apply' | t }}</button>
+          <button id="clear-sort" class="button button-filters-clearall">{{- 'products.facets.clear' | t -}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  const sortRadios = document.querySelectorAll('input[name="sort"]');
+  const applyButton = document.getElementById('apply-sort');
+  const clearButton = document.getElementById('clear-sort');
+  const productList = document.getElementById('product-list');
+  const products = Array.from(document.querySelectorAll('.product'));
+
+  function sortProducts(sortValue) {
+    let sortedProducts;
+
+    switch (sortValue) {
+      case 'az':
+        sortedProducts = products.sort((a, b) => {
+          const nameA = a.dataset.name || '';
+          const nameB = b.dataset.name || '';
+          return nameA.localeCompare(nameB);
+        });
+        break;
+      case 'za':
+        sortedProducts = products.sort((a, b) => {
+          const nameA = a.dataset.name || '';
+          const nameB = b.dataset.name || '';
+          return nameB.localeCompare(nameA);
+        });
+        break;
+      case 'lowprice':
+        sortedProducts = products.sort((a, b) => {
+          const priceA = parseFloat(a.dataset.price) || 0;
+          const priceB = parseFloat(b.dataset.price) || 0;
+          return priceA - priceB;
+        });
+        break;
+      case 'highprice':
+        sortedProducts = products.sort((a, b) => {
+          const priceA = parseFloat(a.dataset.price) || 0;
+          const priceB = parseFloat(b.dataset.price) || 0;
+          return priceB - priceA;
+        });
+        break;
+      case 'oldnew':
+        sortedProducts = products.sort((a, b) => {
+          const dateA = new Date(a.dataset.date) || new Date(0);
+          const dateB = new Date(b.dataset.date) || new Date(0);
+          return dateA - dateB;
+        });
+        break;
+      case 'newold':
+        sortedProducts = products.sort((a, b) => {
+          const dateA = new Date(a.dataset.date) || new Date(0);
+          const dateB = new Date(b.dataset.date) || new Date(0);
+          return dateB - dateA;
+        });
+        break;
+      default:
+        sortedProducts = products;
+        break;
+    }
+
+    productList.innerHTML = '';
+    sortedProducts.forEach(product => productList.appendChild(product));
+  }
+
+  applyButton.addEventListener('click', function() {
+    const selectedSort = document.querySelector('input[name="sort"]:checked').value;
+    sortProducts(selectedSort);
+    const element = document.getElementById('sort_by_filter');
+    element.style.display='none';
+    jQuery('body').css('overflow-y', 'visible');
+  });
+
+  clearButton.addEventListener('click', function() {
+    document.querySelector('input[name="sort"][value="default"]').checked = true;
+    sortProducts('default');
+  });
+});
+
+  $(document).on("click", function(e) {
+     //console.log(e.target);
+      if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input") === false) {
+        $("#sort_by_filter").hide();
+        jQuery('body').css('overflow-y', 'visible');
+        //console.log('aaa');
+      }
+  });
+  
+</script>
