@@ -1,0 +1,90 @@
+{{ 'lr-author-detail.css' | asset_url | stylesheet_tag }}
+<div class="page-authors">  
+{% assign products = collections['all'].products %}
+{% assign authors = "" %}
+{% assign authors_products = "" %}
+
+{% for product in products %}
+  {% assign author_name = product.metafields.custom.author_name %}
+  {% unless authors contains author_name %}
+    {% if authors == "" %}
+      {% assign authors = author_name %}
+      {% assign authors_products = author_name | append: "|" | append: product.created_at | append: "|" | append: product.url %}
+    {% else %}
+      {% assign authors = authors | append: "," | append: author_name %}
+      {% assign authors_products = authors_products | append: "," | append: author_name | append: "|" | append: product.created_at | append: "|" | append: product.url %}
+    {% endif %}
+  {% else %}
+    {% assign authors_products = authors_products | append: "," | append: author_name | append: "|" | append: product.created_at | append: "|" | append: product.url %}
+  {% endunless %}
+{% endfor %}
+
+{% assign authors_array = authors | split: "," %}
+{% assign authors_with_last_names = "" %}
+
+{% for author in authors_array %}
+  {% assign name_parts = author | split: ' ' %}
+  {% assign last_name = name_parts | last | downcase %}
+  {% assign authors_with_last_names = authors_with_last_names | append: last_name | append: ":" | append: author | append: "," %}
+{% endfor %}
+
+{% assign authors_with_last_names = authors_with_last_names | split: "," %}
+{% assign sorted_authors_with_last_names = authors_with_last_names | sort %}
+
+<ul class="authors-az">
+  {% assign current_letter = "" %}
+  
+  {% for author_with_last_name in sorted_authors_with_last_names %}
+    {% assign split_author = author_with_last_name | split: ":" %}
+    {% assign last_name = split_author[0] %}
+    {% assign author = split_author[1] %}
+    {% assign first_letter = last_name | slice: 0, 1 | upcase %}
+
+    {% if first_letter != current_letter %}
+      {% if current_letter != "" %}
+        </ul>
+      {% endif %}
+      <li>
+        <div class="authors-az-letter">{{ first_letter }}</div>
+        <ul class="authors-az-authors">
+      {% assign current_letter = first_letter %}
+    {% endif %}
+
+    {% assign author_products = authors_products | split: "," %}
+    {% assign latest_product = "" %}
+    {% assign latest_date = "" %}
+    
+    {% for product_info in author_products %}
+      {% assign product_details = product_info | split: "|" %}
+      {% assign product_author = product_details[0] %}
+      {% assign product_date = product_details[1] %}
+      
+      {% if product_author == author %}
+        {% if latest_date == "" or product_date > latest_date %}
+          {% assign latest_date = product_date %}
+          {% assign latest_product = product_details[2] %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if latest_product != "" %}
+      <li><a href="{{ latest_product }}">{{ author }}</a></li>
+    {% endif %}
+  {% endfor %}
+  
+  {% if current_letter != "" %}
+    </ul>
+  {% endif %}
+</ul>
+</div>
+{% schema %}
+  {
+    "name": "lr-author-detail",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Lr Author Detail"
+      }
+    ]
+  }
+{% endschema %}

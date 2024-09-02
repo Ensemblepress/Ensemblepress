@@ -1,0 +1,60 @@
+{% if section.settings.image != blank %}
+  <a class="item" href="{{ section.settings.button_link | default:'#' }}">
+    <div class="item-inner">
+      <div class="image Ximage-viewport-crop is-sm is-sm-translate">
+        <div class="caption-sticky caption-sticky-bottom">
+          <div class="caption-primary">{{ section.settings.heading_label }}</div>
+          <div class="caption-secondary">{{ section.settings.sub_heading }}</div>
+        </div>
+        {% if section.settings.image != blank %}
+          <picture>
+            <source
+              media="(min-width:835px)"
+              srcset="{{ section.settings.image | img_url:'master' }}" alt="{{ section.settings.image.alt }}"
+            >
+            <img src="{{ section.settings.mobile_image | img_url:'master' }}" alt="{{ section.settings.mobile_image.alt }}">
+          </picture>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+{% endif %}
+{% schema %}
+  {
+  "name": "LR Custom New Arrivals",
+  "settings": [
+   {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "heading_label",
+      "label": "Heading",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "label": "Sub Heading",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "LR Custom New Arrivals"
+    }
+  ]
+}
+{% endschema %}

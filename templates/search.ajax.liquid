@@ -1,0 +1,22 @@
+{% layout none %}
+{% capture json_output %}
+{
+  "results": [
+    {% for item in search.results %}
+      {
+        "title": {{ item.title | json }},
+        "url": {{ item.url | within: search.collections | json }}
+        {% if item.object_type == 'product' %}
+          , "image": {{ item.featured_image | img_url: '100x100' | json }},
+          "price": {{ item.price | money | json }}
+        {% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ],
+  "pagination": {
+    "current_page": {{ search.current_page }},
+    "pages": {{ search.pages }}
+  }
+}
+{% endcapture %}
+{{ json_output | strip_newlines }}

@@ -1,0 +1,84 @@
+<section class="custom_scroll">
+  <div class="auto_scroll">
+    {% assign count = 0 %}
+    {% for block in section.blocks %}
+      {% assign count = count | plus: 1 %}
+    {% endfor %}
+    <section class="news-message {% if count > 5 %}custom-class{% endif %}">
+      {% for block in section.blocks %}
+        {% if block.settings.heading != blank %}
+          <div class="content">{{ block.settings.heading }}</div>
+        {% endif %}
+      {% endfor %}
+    </section>
+  </div>
+</section>
+
+<style>
+  .custom_scroll{
+    background-color: #fff;
+    color: #030303;
+    font-family: helvetica;
+    /* text-transform: uppercase; */
+    overflow-x: clip;
+  }
+    .auto_scroll{
+      display:flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      min-width: 100%;
+    }
+  .news-message.custom-class {
+      animation: slide-left 100s linear infinite;
+    }
+    .news-message{
+      display : flex;
+      flex-shrink: 0;
+      height: 50px;
+      align-items: center;
+      /* animation: slide-left 100s linear infinite; */
+    .content{
+      font-weight: 100;
+      padding-left: 2.5em;
+    }
+
+  }
+    @keyframes slide-left {
+    from {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    to {
+      -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Auto Slider",
+  "settings": [
+
+  ],
+  "blocks": [
+    {
+      "type": "auto_slider",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading Label",
+          "default":"Next category: Non-Fiction"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name":"Auto Slide"
+    }
+  ]
+}
+{% endschema %}

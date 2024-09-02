@@ -87,6 +87,7 @@
               {%- when '@app' -%}
                 {% render block %}
               {%- when 'text' -%}
+                <div class="pdp-brow">{{ block.settings.custom_text }}</div>
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                   {{ block.shopify_attributes }}
@@ -94,9 +95,9 @@
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
-              {% comment %}
-              {{ product.published_at }}
-              {% endcomment %}
+                {% comment %}
+                  {{ product.published_at }}
+                {% endcomment %}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
@@ -197,9 +198,24 @@
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <div class="pdp-description product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
                   </div>
+
+                  <ul class="pdp-keywords" data-variant-id="{{ variant.id }}">
+                    <li>Ut enim ad minim veniam.</li>
+                    <li>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse.</li>
+                    <li>Velit esse cillum dolore eu fugiat nulla pariatur.</li>
+                    <li>Excepteur sint occaecat.</li>
+                    <li>Cupidatat non proident, sunt.</li>
+                    <li>In culpa qui officia deserunt mollit anim id est laborum.</li>
+                    <li class="pdp-details">
+                      <span class="pdp-link pdp-link-chevron">
+                        <span>Details</span>
+                      </span>
+                    </li>
+                  </ul>
                 {%- endif -%}
               {%- when 'sku' -%}
                 <p
@@ -730,6 +746,12 @@
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "custom_text",
+          "default": "Book",
+          "label": "Custom Heading Label"
+        },
         {
           "type": "inline_richtext",
           "id": "text",

@@ -1,0 +1,14 @@
+{% paginate search.results by 20 %}
+{
+  "results": [
+    {% for result in search.results %}
+      {
+        "title": "{{ result.title | json }}",
+        "url": "{{ result.url | json }}",
+        "featured_image": "{{ result.featured_image | img_url: 'medium' | json }}",
+        "price": "{{ result.price | money | json }}"
+      }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ]
+}
+{% endpaginate %}

@@ -82,4 +82,14 @@
       </a>
     </li>
   {%- endif -%}
+  {%- if settings.icon_social_threads != blank -%}
+          
+    <li>
+      <a href="{{ settings.icon_social_threads | default: "#" }}" 
+        class="icon-social icon-social-threads" 
+        target="_blank">
+        <span></span>
+      </a>
+    </li>
+   {% endif %} 
 </ul>

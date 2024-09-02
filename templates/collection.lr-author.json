@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "lr_custom_collection_banner_BXXjHx": {
+      "type": "lr-authors-banner",
+      "settings": {
+        "show_collection_image": true
+      }
+    },
+    "product-grid": {
+      "type": "lr-author-detail",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "lr_custom_collection_banner_BXXjHx",
+    "product-grid"
+  ]
+}
