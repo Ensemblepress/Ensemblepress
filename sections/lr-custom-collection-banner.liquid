@@ -1,17 +1,6 @@
 <div class="plp-header">
     <div class="plp-header-primary">
-      {% assign banner_mobile_image = collection.metafields.custom.banner_mobile_image %}
-      {%- if section.settings.show_collection_image and collection.image -%}
-        <picture>
-          <source media="(min-width:835px)" srcset="{{ collection.image | img_url:"master" }}" alt="{{ collection.title }}">
-          <img src="{{ banner_mobile_image | img_url :'master'}}" alt="{{ collection.title }}">
-        </picture>
-        {% else %}
-        <picture>
-          <source media="(min-width:835px)" srcset="https://cdn.shopify.com/s/files/1/0645/7563/5607/files/hd-paperbacks-2.svg?v=1722428149">
-          <img src="https://cdn.shopify.com/s/files/1/0645/7563/5607/files/hd-paperbacks-2-m.svg?v=1722428149">
-        </picture> 
-      {%- endif -%}
+      
     </div>
   {%- if section.settings.enable_sorting -%}
     <div class="plp-header-secondary">
