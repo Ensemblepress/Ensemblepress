@@ -1,9 +1,46 @@
 <footer>
   <div class="links links-secondary">
+    {% comment %}
     <ul class="links-4col links-copyright">
       <li class="links-title links-title-copyright">Copyright {{ 'now' | date: '%Y' }}  {{ shop.name | link_to: routes.root_url -}}</li>
     </ul>
-    <ul class="links-6col links-horizontal links-legal is-only-desktop">
+    {% endcomment %}
+    <ul class="links-6col links-copyright">
+      <li>
+        <div class="widget-newsletter widget-newsletter-footer  ">
+            <div class="hd">
+              <span class="hd-intro">
+                <span class="hd-intro-title">Newsletter</span>
+              </span>
+              <span class="cancel ">Cancel</span>\
+            </div>
+            <div class="form">
+              <div class="form-field is-on">
+                <input type="email" class="input-email" id="email" placeholder="Enter your email" style="outline:none;">
+                <button class="button-next ">Sign up</button>
+              </div>
+              <div class="form-field ">
+                  <input type="checkbox" class="checkbox-single" id="widget-newsletter-footer-newsletter-confirm">
+                  <label for="widget-newsletter-footer-newsletter-confirm">
+                    Yes, I have read, understood and accepted the 
+                    <a href="/legal/termsofuse">terms and conditions</a> and the <a href="/legal/privacy">privacy policy</a>
+                  </label>
+              </div>
+              <div class="form-field form-field-padding ">
+                  <button class="button button-newsletter-submit">Submit</button>
+              </div>
+              
+              <div class="form-field form-field-copy form-field-padding newsletter-success ">
+                  <p>Thank you. You have successfully been subscribed to the newsletter. We will email you shortly.</p>
+                  <p>
+                      <button class="button">Close</button>
+                  </p>
+              </div>
+            </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="links-4col links-horizontal links-legal is-only-desktop">
       {%- assign link = section.settings.menu.links -%}
       {% for links in link %}
         <li>
