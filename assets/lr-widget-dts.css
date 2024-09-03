@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "LR-A";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/LostRiverLR-A-Regular-240821.otf?v=1725300804") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LR-B";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/LostRiverLR-B-Regular-240821.otf?v=1725301068") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LR-C";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/LostRiverLR-C-Regular-240821.otf?v=1725301560") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LR-D";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/LostRiverLR-D-Regular-240821.otf?v=1725301561") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LR-E";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/LostRiverLR-E-Regular-240821.otf?v=1725301560") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "LR-F";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/LostRiverLR-F-Regular-240821.otf?v=1725301560") format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+/* DTS DYNAMIC TYPOGRAPHY SYSTEM */
+.widget-dts {
+  position: relative;
+  min-height: 122px;
+  margin-top: -1px;
+  @include screen-m {
+    margin-top: -1px;
+  }
+  .widget-dts-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 55px;
+    line-height: 40px;
+    mix-blend-mode: multiply;
+
+    @include screen-below-s {
+      word-break: break-all;
+    }
+  }
+  .widget-dts-text-ghost {
+    font-family: "LR-A";
+    position: initial;
+    opacity: 0;
+  }
+  .widget-dts-typeface-0 {
+    font-family: "LR-B";
+  }
+  .widget-dts-typeface-1 {
+    font-family: "LR-C";
+  }
+  .widget-dts-typeface-2 {
+    font-family: "LR-D";
+    text-transform: uppercase;
+  }
+  .widget-dts-typeface-3 {
+    font-family: "LR-E";
+    text-transform: uppercase;
+  }
+  .widget-dts-typeface-4 {
+    font-family: "LR-F";
+  }
+  .widget-dts-color-background-0 {
+    color: #ffafaf;
+  }
+  .widget-dts-color-background-1 {
+    color: #fcffaf;
+  }
+  .widget-dts-color-background-2 {
+    color: #afffda;
+  }
+  .widget-dts-color-background-3 {
+    color: #ffaff1;
+  }
+  .widget-dts-color-background-4 {
+    color: #baafff;
+  }
+  .widget-dts-color-middleground-0 {
+    color: #3fff7e;
+  }
+  .widget-dts-color-middleground-1 {
+    color: #ffe23f;
+  }
+  .widget-dts-color-middleground-2 {
+    color: #ff633f;
+  }
+  .widget-dts-color-middleground-3 {
+    color: #513fff;
+  }
+  .widget-dts-color-middleground-4 {
+    color: #ff3feb;
+  }
+  .widget-dts-color-foreground-0 {
+    color: #000;
+  }
+  .widget-dts-color-foreground-1 {
+    color: #d70098;
+  }
+  .widget-dts-color-foreground-2 {
+    color: #d76a00;
+  }
+  .widget-dts-color-foreground-3 {
+    color: #00950b;
+  }
+  .widget-dts-color-foreground-4 {
+    color: #0600f5;
+  }
+  .widget-dts .widget-dts-typeface-undefined,
+  .widget-dts .widget-dts-text-hidden {
+    display: none !important;
+  }
+}
