@@ -3491,12 +3491,14 @@ textarea.has-error {
   justify-content: flex-start;
   align-items: center;
   min-height: calc(100vh - 220px);
-  padding: 50px 24px 0;
+  /* padding: 50px 24px 0; */
+  padding: 0 0 0;
 }
 @media (min-width: 576px) {
   .page {
     justify-content: center;
-    padding-top: 96px;
+    /* padding-top: 96px; */
+    padding-top: 0px;
   }
 }
 .page .inner {
@@ -5210,6 +5212,78 @@ footer {
   flex-direction: column;
   justify-content: flex-start;
   font-size: 14px;
+}
+.footer-newsletter-success {
+  padding-top: 2px !important;
+  position: absolute !important;
+  width: calc(100% - 80px);
+  pointer-events: none !important;
+  flex-direction: column !important;
+  top: 0;
+}
+.footer-message-close {
+  position: relative;
+  z-index: 1000;
+  pointer-events: auto;
+}
+.widget-newsletter.widget-newsletter-footer.is-active
+  .form-field
+  button.button-next-footer {
+  opacity: 0;
+}
+.widget-newsletter.widget-newsletter-footer
+  .form-field
+  button.button-next-footer {
+  opacity: 1;
+}
+.widget-newsletter .form-field button.button-next-footer {
+  width: auto;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+@media (min-width: 835px) {
+  button.button-next-footer,
+  .button.button-next-footer {
+    background-position: 2px 9px;
+    background-size: 10px;
+    padding-left: 26px;
+    border: none;
+  }
+}
+button.button-next,
+.button.button-next-footer {
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  background-color: transparent;
+  text-transform: none;
+  color: #000;
+  border: none;
+  padding: 6px 0 6px 11px;
+  background-image: url(/static/img/icon-arrow-closed-stem-right-4px.svg);
+  background-position: 3px 11px;
+  background-size: 12px;
+  padding-left: 21px;
+  background-repeat: no-repeat;
+}
+
+button.button-next-footer:before,
+.button.button-next-footer:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  background-image: url(https://8b47fd-7d.myshopify.com/cdn/shop/files/8c71dcebfb09d11d6aee77db0223406b.svg?v=1722615891);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 @media (min-width: 576px) {
   footer {
@@ -7010,7 +7084,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   justify-content: space-between;
 }
 .plp-header .plp-header-primary {
-  padding: 0px 0 0 60px;
+  padding: 6px 0 0 60px;
 }
 .plp-header .plp-header-primary img {
   width: 301px;
@@ -12807,7 +12881,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     top: 10px;
   }
   .site-system .item-product-minibag .info .price {
-    padding-top: 8.4rem;
+    padding-top: 6.4rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -12855,7 +12929,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     text-transform: none;
   }
   .site-system .item-total .remove-discount-button {
-    margin-right: 4rem !important;
+    margin-right: 0rem !important;
     height: 20px;
     width: 6%;
   }
