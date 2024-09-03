@@ -50,7 +50,7 @@
     line-height: 40px;
     mix-blend-mode: multiply;
 
-    @include screen-below-s {
+    @media (max-width: calc(575px)) {
       word-break: break-all;
     }
   }
