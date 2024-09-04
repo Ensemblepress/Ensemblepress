@@ -5260,6 +5260,7 @@ footer {
   }
   footer .widget-newsletter.widget-newsletter-footer .cancel.is-on {
     margin-left: -45px;
+    margin-top: 5px;
   }
 }
 button.button-next,
