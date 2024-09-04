@@ -1,4 +1,5 @@
 <div class="pdp-divider">{{ section.settings.heading }}</div>
+
 <div class="pdp-product-slider pdp-product-slider-recommended" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related">
   <div class="product-grid product-grid-4col product-grid-background product-grid-recommended">
     {%- for product in recommendations.products -%}
@@ -13,6 +14,7 @@
           </div>
         {% endif %}  
         <div class="caption">
+		
             <div class="caption-default">
                 <div class="name">
                    {% assign author_name = product.metafields.custom.author_name %}  
@@ -30,6 +32,7 @@
                   {{ product.price | money }}
                 </div>
             </div>
+			
             <div class="caption-additional">
                 <div class="caption-additional-default">
                     <div class="label"></div>
@@ -43,6 +46,7 @@
     {% endfor %}
   </div>
 </div>
+
 
 {% javascript %}
   const handleIntersection = (entries, observer) => {
