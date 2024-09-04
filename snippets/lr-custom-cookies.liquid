@@ -1,0 +1,60 @@
+<script src="{{ 'lr-custom-cookies.js' | asset_url }}" defer></script>
+{{ 'lr-custom-cookies.css' | asset_url | stylesheet_tag }}
+<div class="ReactModalPortal" id="cookie-consent-popup">
+    <div class="ReactModal__Overlay ReactModal__Overlay--after-open overlay overlay-cookiemessage">
+        <div class="ReactModal__Content ReactModal__Content--after-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
+            <div class="overlay-close" id="close-popup"><span>×</span></div>
+            <div class="overlay-panel-inner">
+                <div class="site-system">
+                    <div class="item item-hd">We value your privacy</div>
+                    <div class="item item-copy item-copy-longtext spacer-larger">
+                        <p>We use cookies and other technologies to personalize your experience, perform marketing, and collect analytics. Learn more in our <a href="/">Privacy Policy</a> </p>
+                    </div>
+                    <div class="item item-button item-button-right spacer-larger">
+                        <button class="button" id="manage-preferences">Manage preferences</button>
+                        <button class="button" id="decline-cookies">Decline</button>
+                        <button class="button button-inverted" id="accept-cookies">Accept cookies</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+  $('#manage-preferences').click(function(){
+      //Some code      
+      var new_html =`<div class="item item-hd">Cookie preferences</div>
+      <form id="preferences-form">
+      <div class="item item-checkbox item-input-spaced item-copy item-copy-longtext spacer-larger">
+          <input type="checkbox" class="checkbox-single" id="cookie-Required" value="cookie-Required" checked>
+          <label for="cookie-Required"><strong>Required</strong>
+              <br>These cookies are necessary for the site to function properly, including capabilities like logging in and adding items to the cart.</label>
+      </div>
+      <div class="item item-checkbox item-input-spaced item-copy item-copy-longtext divider">
+          <input type="checkbox" class="checkbox-single" id="cookie-personalization" value="cookie-prsonalization" checked>
+          <label for="cookie-personalization"><strong>Personalization</strong>
+              <br>These cookies store details about vour actions to personalize our next visit to the website.</label>
+      </div>
+      <div class="item item-checkbox item-input-spaced item-copy item-copy-longtext divider">
+          <input type="checkbox" class="checkbox-single" id="cookie-marketing" value="cookie-marketing" checked>
+          <label for="cookie-marketing"><strong>Marketing</strong>
+              <br>These cookies are used to optimize marketing communications and show vou ads on other sites.</label>
+      </div>
+      <div class="item item-checkbox item-input-spaced item-copy item-copy-longtext divider">
+          <input type="checkbox" class="checkbox-single" id="cookie-analytics" vaue="cookie-analytics" checked>
+          <label for="cookie-analytics"><strong>Analytics</strong>
+              <br>These cookies help us understand how you interact with the site. We use this data to identifv areas to improve.</label>
+      </div>
+      <div class="item item-button item-button-right spacer-larger">
+          <button class="button" id="accept-all">Accept all</button>
+          <button class="button" id="decline-all">Decline all</button>
+          <button type="submit" class="button button-inverted"  id="save_my_choices">Save my choices</button>
+      </div> 
+      </form>`;
+     $(".site-system").html("");
+     $(".site-system").html(new_html);
+  });
+});      
+</script>
+
