@@ -5248,7 +5248,6 @@ footer {
   top: 11px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  border: none;
 }
 @media (min-width: 835px) {
   button.button-next-footer,
@@ -5285,7 +5284,6 @@ button.button-next-footer:before,
   content: "";
   position: absolute;
   left: 0;
-  top: 6px;
   width: 18px;
   height: 18px;
   border: 1px solid #000;
@@ -11005,7 +11003,6 @@ ul.toolbar-categories li.li-category {
 @media (min-width: 576px) {
   .widget-newsletter.widget-newsletter-footer {
     margin-right: 24px;
-    /* height: 42px; */
   }
 }
 @media (min-width: 835px) {
