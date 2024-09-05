@@ -32,41 +32,126 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = 'none';
     });
 
-     // Handle preferences form submission
+    // Handle preferences form submission cookie-personalization
     document.addEventListener('click', function(event) {
-    // Attach a submit event handler to the newly added form
+      //cookie-personalization click
+      if (event.target && event.target.id === 'cookie-personalization') {
+        const checkbox = document.getElementById('cookie-personalization');
+         // Toggle the checkbox state
+        checkbox.checked = !checkbox.checked;  
+        if (checkbox.checked) {
+            checkbox.checked = true;
+            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
+        } else {
+            checkbox.checked = false;
+            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
+        }
+     }
+     // end click
+
+      //cookie-marketing click
+      if (event.target && event.target.id === 'cookie-marketing') {
+        const checkbox = document.getElementById('cookie-marketing');
+         // Toggle the checkbox state
+        checkbox.checked = !checkbox.checked;  
+        if (checkbox.checked) {
+            checkbox.checked = true;
+            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
+            
+        } else {
+            checkbox.checked = false;
+            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
+        }
+     }
+     // end click
+
+      //cookie-analytics click
+      if (event.target && event.target.id === 'cookie-analytics') {
+        const checkbox = document.getElementById('cookie-analytics');
+         // Toggle the checkbox state
+        checkbox.checked = !checkbox.checked;  
+        if (checkbox.checked) {
+            checkbox.checked = true;
+            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
+            
+        } else {
+            checkbox.checked = false;
+            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
+        }
+     }
+     // end click
+
+     // Attach a submit event handler to the newly added form
      if (event.target && event.target.id === 'save_my_choices') {
         // Prevent the default form submission
         event.preventDefault();
         var form = document.getElementById('preferences-form');
         var formData = new FormData(form);
-       //console.log(formData);
+        console.log(formData);
         var preferences = {};
-          formData.forEach(function(value, key) {
-              preferences[key] = value === 'on';
-          });
-          //console.log('Saved Preferences:', preferences);
-          setCookie('cookiePreferences', JSON.stringify(preferences), 365);
-          var modal = document.getElementById('cookie-consent-popup');
-          modal.style.display = 'none';
-          cookiePopup.style.display = 'none';
-        // You can add your own code here to process the form data
+        formData.forEach(function(value, key) {
+            preferences[key] = value;
+        });
+
+        // Manually add unchecked checkboxes
+        var checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            preferences[checkbox.id] = checkbox.checked;
+        });
+        console.log('Saved Preferences:', preferences);
+
+      // Set cookie (make sure to define setCookie function)
+      setCookie('cookiePreferences', JSON.stringify(preferences), 365);
+      var modal = document.getElementById('cookie-consent-popup');
+      modal.style.display = 'none';
+      cookiePopup.style.display = 'none';
+        
       }
-   }); 
-   
-  /*
-      document.getElementById('accept-all').addEventListener('click', function() {
-        document.querySelectorAll('#preferences-form input[type="checkbox"]').forEach(function(checkbox) {
-            checkbox.checked = true;
+
+     // click on accept-all
+     if (event.target && event.target.id === 'accept-all') {
+       // Prevent the default form submission
+        event.preventDefault();
+        
+        const checkboxes = document.querySelectorAll('.cookie-preferences');
+        var preferences = {};
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = true;
+          preferences[checkbox.id] = checkbox.checked;
         });
-      });
-      document.getElementById('decline-all').addEventListener('click', function() {
-        document.querySelectorAll('#preferences-form input[type="checkbox"]').forEach(function(checkbox) {
+       console.log('Saved Preferences:', preferences);
+
+       // Set cookie (make sure to define setCookie function)
+       setCookie('cookiePreferences', JSON.stringify(preferences), 365);
+       var modal = document.getElementById('cookie-consent-popup');
+       modal.style.display = 'none';
+       cookiePopup.style.display = 'none';
+        
+     }
+
+     // click on decline-all
+     if (event.target && event.target.id === 'decline-all') {
+        // Prevent the default form submission
+        event.preventDefault();
+        
+        const checkboxes = document.querySelectorAll('.cookie-preferences');
+        var preferences = {};
+        checkboxes.forEach(function(checkbox) {
           checkbox.checked = false;
+          preferences[checkbox.id] = checkbox.checked;
         });
-      });  
-       
-*/
+       console.log('Saved Preferences:', preferences);
+
+       // Set cookie (make sure to define setCookie function)
+       setCookie('cookiePreferences', JSON.stringify(preferences), 365);
+       var modal = document.getElementById('cookie-consent-popup');
+       modal.style.display = 'none';
+       cookiePopup.style.display = 'none';
+     
+     }
+
+  }); 
+   
     // Set cookie function
     function setCookie(name, value, days) {
         var expires = "";
