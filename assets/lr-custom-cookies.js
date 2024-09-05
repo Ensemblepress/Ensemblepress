@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         var form = document.getElementById('preferences-form');
         var formData = new FormData(form);
-        console.log(formData);
+        //console.log(formData);
         var preferences = {};
         formData.forEach(function(value, key) {
             preferences[key] = value;
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         checkboxes.forEach(function(checkbox) {
             preferences[checkbox.id] = checkbox.checked;
         });
-        console.log('Saved Preferences:', preferences);
+        //console.log('Saved Preferences:', preferences);
 
       // Set cookie (make sure to define setCookie function)
       setCookie('cookiePreferences', JSON.stringify(preferences), 365);
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
           checkbox.checked = true;
           preferences[checkbox.id] = checkbox.checked;
         });
-       console.log('Saved Preferences:', preferences);
+       //console.log('Saved Preferences:', preferences);
 
        // Set cookie (make sure to define setCookie function)
        setCookie('cookiePreferences', JSON.stringify(preferences), 365);
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
           checkbox.checked = false;
           preferences[checkbox.id] = checkbox.checked;
         });
-       console.log('Saved Preferences:', preferences);
+       //console.log('Saved Preferences:', preferences);
 
        // Set cookie (make sure to define setCookie function)
        setCookie('cookiePreferences', JSON.stringify(preferences), 365);
