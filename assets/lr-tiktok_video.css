@@ -1,0 +1,50 @@
+.pdp-main-visuals .pdp-image-set-grid .pdp-image-set-tiktok {
+  display: flex;
+  background-color: #f5f5f5;
+}
+.pdp-main-visuals
+  .pdp-image-set-grid
+  .pdp-image-set-tiktok
+  .pdp-image-set-tiktok-content {
+  font-size: 18px;
+  line-height: 1.3em;
+  font-weight: 400;
+  text-align: left;
+  text-transform: none;
+  text-align: left;
+  padding: 20px 40px;
+  box-sizing: border-box;
+}
+.pdp-main-visuals
+  .pdp-image-set-grid
+  .pdp-image-set-tiktok
+  .pdp-image-set-tiktok-content,
+.pdp-main-visuals
+  .pdp-image-set-grid
+  .pdp-image-set-tiktok
+  .pdp-image-set-tiktok-video {
+  width: 50%;
+}
+.pdp-main-visuals
+  .pdp-image-set-grid
+  .pdp-image-set-tiktok
+  .pdp-image-set-tiktok-content
+  strong {
+  font-weight: 600;
+}
+.pdp-main-visuals
+  .pdp-image-set-grid
+  .pdp-image-set-tiktok
+  .pdp-image-set-tiktok-video
+  video {
+  display: block;
+}
+@media (min-width: 994px) {
+  .pdp-main-visuals
+    .pdp-image-set-grid
+    .pdp-image-set-tiktok
+    .pdp-image-set-tiktok-content {
+    font-size: 20px;
+    line-height: 1.3em;
+  }
+}

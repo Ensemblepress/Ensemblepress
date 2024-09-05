@@ -1,3 +1,6 @@
+
+{{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
+
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
@@ -182,6 +185,23 @@
     border-radius: 2px 19px 19px 2px;
 }
 </style>
+
+<!---- Video Start --->
+<script>
+  window.onload = function() {
+    var video = document.getElementById("myVideo");
+    video.autoplay = true;
+    video.muted = true; // This is necessary for autoplay to work in some browsers
+    video.play();
+    // Stop the video after 5 seconds
+    // setTimeout(function() {
+    //   video.pause();
+    // }, 5000); // 5000 milliseconds = 5 seconds
+  };
+</script>
+
+<!---- Video End --->
+
 <script>
   window.productMetafields = {
     {% for item in cart.items %}
