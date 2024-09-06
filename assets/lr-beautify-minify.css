@@ -378,9 +378,8 @@ button,
   border: 1px solid #000;
   border-radius: 2px;
   font-family: "LR-Geigy", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
-  font-weight: 400;
   text-align: left;
   text-transform: none;
   font-weight: 500;
@@ -1803,7 +1802,7 @@ textarea.has-error {
 }
 .site-system .item-button-right button,
 .site-system .item-button-right .button {
-  margin-left: 10px;
+  margin-left: -2px;
 }
 @media (min-width: 576px) {
   .site-system .item-button-horizontal {
@@ -2567,10 +2566,11 @@ textarea.has-error {
   content: "";
   position: absolute;
   top: 4px;
+  left: 5px;
   left: 4px;
   background-color: #000;
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   display: block;
 }
 @media (min-width: 576px) {
@@ -3491,7 +3491,7 @@ textarea.has-error {
   z-index: 5;
 }
 .page {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -4290,13 +4290,6 @@ ul.nav-menu li .tooltip {
   }
 }
 @media (min-width: 835px) {
-  body .headroom {
-    position: fixed !important;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    transform: translate3d(0, 0, 0) !important;
-  }
   .nav-logo {
     display: block;
   }
@@ -5093,7 +5086,7 @@ body.is-search-open .header-mobile:before {
   }
 }
 @media (min-width: 835px) {
-  body .headroom {
+  body.index .headroom {
     position: fixed !important;
     top: 0px;
     left: 0px;
@@ -5231,6 +5224,9 @@ footer {
   z-index: 1000;
   pointer-events: auto;
 }
+button.button-next-footer.pos_class {
+    position: unset !important;
+}
 .widget-newsletter.widget-newsletter-footer.is-active
   .form-field
   button.button-next-footer {
@@ -5245,7 +5241,7 @@ footer {
   width: auto;
   position: absolute;
   right: 0;
-  top: 11px;
+  top: 10px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   border: none;
@@ -5259,9 +5255,18 @@ footer {
     border: none;
   }
   footer .widget-newsletter.widget-newsletter-footer .cancel.is-on {
-    margin-left: -45px;
+    margin-left: -12rem;
     margin-top: 5px;
   }
+  div#footer_fiels_row_1 {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  div#footer_fiels_row_0 {
+      padding-bottom: 0px;
+      padding-top: 10px;
+  }
+
 }
 button.button-next,
 .button.button-next-footer {
@@ -5388,14 +5393,13 @@ footer .links {
   line-height: 1em;
   padding-top: 26px;
 }
-footer .links:last-child {
-  padding-bottom: 22px;
-}
+
 @media (min-width: 576px) {
   footer .links {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 0 15px;
+    padding-bottom: 22px;
   }
 }
 footer .links ul {
@@ -7622,7 +7626,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   margin: 0;
 }
 .pdp-container {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -7803,6 +7807,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   .pdp-main-info {
     width: 25%;
     padding: 0;
+    min-width: 420px;
   }
 }
 @media (min-width: 576px) {
@@ -7882,6 +7887,9 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 @media (max-width: calc(576px - 1px)) {
   .pdp-info-thumbnail .pdp-product-thumbnail {
     display: none;
+  }
+  .pdp-info .pdp-buttons-triangle {
+     order: 5;
   }
 }
 .pdp-info-header {
@@ -8306,6 +8314,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 }
 .pdp-product-variants .pdp-product-variants-list ul li.is-active a {
   border: 2px solid #000;
+  padding: 7px 11px;
 }
 .pdp-info .pdp-tools {
   margin-top: 10px;
@@ -9071,7 +9080,7 @@ ul.payment-icons li.payment-icon-paypal {
     order: 6;
   }
   .pdp-info .pdp-info-header-secondary {
-    order: 7;
+    order: 8;
   }
 }
 .pdp-info-header {
@@ -9595,7 +9604,7 @@ body.ReactModal__Body--open {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -9742,8 +9751,8 @@ body.ReactModal__Body--open {
 }
 @media (min-width: 576px) {
   .overlay-pdp .overlay-close {
-    right: 20px;
-    top: 35px;
+    right: 0px;
+    top: 0px;
   }
 }
 .overlay-pdp .overlay-panel {
@@ -9755,16 +9764,17 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel {
     transform: translate3d(100%, 0, 0);
     transition: transform 0.8s steps(4);
-    width: 32.5%;
+    width: 25%;
     height: 100%;
     align-items: flex-start;
+    min-width: 420px;
   }
   .overlay-pdp .overlay-panel.ReactModal__Content--before-close {
     transform: translate3d(100%, 0, 0);
   }
 }
 .overlay-pdp .overlay-panel-inner {
-  padding: 40px;
+  padding: 20px 40px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9773,7 +9783,7 @@ body.ReactModal__Body--open {
 }
 @media (min-width: 576px) {
   .overlay-pdp .overlay-panel-inner {
-    padding: 50px 70px 55px 45px;
+    padding: 20px 40px 40px;
     justify-content: space-between;
     min-height: 100%;
   }
@@ -9811,10 +9821,12 @@ body.ReactModal__Body--open {
   position: relative;
 }
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing li:before {
-  content: "–";
+  content: ".";
   position: absolute;
   left: -12px;
-  top: 0;
+  top: -4px;
+  font-size: 15px;
+  font-weight: 600;
 }
 .overlay-pdp-left {
   flex-direction: row;
@@ -10735,7 +10747,7 @@ ul.toolbar-categories li.li-category {
   font-style: italic;
 }
 .widget-newsletter {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -11025,7 +11037,7 @@ ul.toolbar-categories li.li-category {
 }
 @media (min-width: 835px) {
   .widget-newsletter.widget-newsletter-footer.is-active {
-    height: 320px;
+    height: 200px;
   }
 }
 .widget-newsletter.widget-newsletter-footer.is-active
@@ -12962,6 +12974,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     .form-field
     button.button-next-footer {
     padding: 3px 0 15px 26px;
+    margin-left: -8.5rem;
   }
   footer
     .widget-newsletter.widget-newsletter-footer
@@ -12972,6 +12985,10 @@ body.collection .header-logo .logotype svg .cls-1 {
   }
   footer .widget-newsletter.widget-newsletter-footer .form-field-padding {
     margin: 30px 0;
+  }
+
+  footer div#footer_fiels_row_1 {
+    margin-bottom: -31px;
   }
 }
 

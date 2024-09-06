@@ -108,6 +108,7 @@
        jQuery(".cancel").addClass('is-on');
        jQuery("#footer-signup-cancel").show();
        //jQuery("#footer-signup").css('position', 'unset');
+       jQuery("#footer-signup").addClass('pos_class');
        //console.log('footer news latter click');
     });
     
@@ -119,6 +120,7 @@
        jQuery("#footer_fiels_row_0").addClass('is-on');
        jQuery("#footer-signup-cancel").hide();
        jQuery("#footer-signup").css('position', 'absolute');  
+       jQuery("#footer-signup").removeClass('pos_class');
        //console.log('footer news latter cancel click');
     });
 
@@ -130,6 +132,10 @@
        jQuery("#footer-signup-cancel").hide();
        jQuery("#footer-signup").css('position', 'absolute');  
        jQuery('#footer_email').val('');
+       jQuery(".widget-newsletter-footer").removeClass('is-active');
+       jQuery(".widget-newsletter-footer").removeClass('is-focus');
+       jQuery("#footer-signup").removeClass('pos_class');
+       
        //console.log('footer news latter message cancel click');
     });
 });
