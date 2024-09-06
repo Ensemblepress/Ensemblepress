@@ -2567,6 +2567,7 @@ textarea.has-error {
   position: absolute;
   top: 4px;
   left: 5px;
+  left: 4px;
   background-color: #000;
   width: 7px;
   height: 7px;
@@ -5265,6 +5266,7 @@ button.button-next-footer.pos_class {
       padding-bottom: 0px;
       padding-top: 10px;
   }
+
 }
 button.button-next,
 .button.button-next-footer {
@@ -12984,6 +12986,7 @@ body.collection .header-logo .logotype svg .cls-1 {
   footer .widget-newsletter.widget-newsletter-footer .form-field-padding {
     margin: 30px 0;
   }
+
   footer div#footer_fiels_row_1 {
     margin-bottom: -31px;
   }
