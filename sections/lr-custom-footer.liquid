@@ -64,13 +64,6 @@
           </a>
         </li>
         {% endif %}  
-        {%- if settings.social_facebook_link != blank -%}
-          <li>
-            <a href="{{ settings.social_facebook_link }}" class="icon-social icon-social-facebook" target="_blank">
-              <span></span>
-            </a>
-          </li>
-        {% endif %}
         {%- if settings.social_instagram_link != blank -%}
           <li>
             <a href="{{ settings.social_instagram_link }}" class="icon-social icon-social-instagram" target="_blank">
@@ -78,6 +71,15 @@
             </a>
           </li>
         {% endif %}
+        {%- if settings.social_facebook_link != blank -%}
+          <li>
+            <a href="{{ settings.social_facebook_link }}" class="icon-social icon-social-facebook" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        
+        {% comment %}
         {%- if settings.social_pinterest_link != blank -%}
           <li>
             <a href="{{ settings.social_pinterest_link }}" class="icon-social icon-social-pinterest" target="_blank">
@@ -85,6 +87,7 @@
             </a>
           </li>
         {% endif %}
+        {% endcomment %}
         {%- if settings.icon_social_threads != blank -%}
           <li>
             <a
