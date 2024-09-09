@@ -11,7 +11,7 @@
         <div class="widget-newsletter widget-newsletter-footer  ">
             <div class="hd">
               <span class="hd-intro">
-                <span class="hd-intro-title">Newsletter</span>
+                <span class="hd-intro-title">Newsletter<span class="dot">•</span></span>
               </span>
             </div>
             <div class="form">
@@ -50,7 +50,15 @@
       {% for links in link %}
         <li>
           <a href="{{ links.url | default:"#" }}">
+          {% if links.title == 'Terms & conditions' %}
+            <!-- Do something if the title is exactly "Terms & conditions" -->
+            <span class="text">Terms</span>
+            <span class="dot">•</span>
+            <span class="text">conditions</span>
+          {% else %}
+            <!-- Do something else if the title is different -->
             <span>{{ links.title }}</span>
+          {% endif %}
           </a>
         </li>
       {% endfor %}
@@ -64,13 +72,6 @@
           </a>
         </li>
         {% endif %}  
-        {%- if settings.social_facebook_link != blank -%}
-          <li>
-            <a href="{{ settings.social_facebook_link }}" class="icon-social icon-social-facebook" target="_blank">
-              <span></span>
-            </a>
-          </li>
-        {% endif %}
         {%- if settings.social_instagram_link != blank -%}
           <li>
             <a href="{{ settings.social_instagram_link }}" class="icon-social icon-social-instagram" target="_blank">
@@ -78,6 +79,15 @@
             </a>
           </li>
         {% endif %}
+        {%- if settings.social_facebook_link != blank -%}
+          <li>
+            <a href="{{ settings.social_facebook_link }}" class="icon-social icon-social-facebook" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        
+        {% comment %}
         {%- if settings.social_pinterest_link != blank -%}
           <li>
             <a href="{{ settings.social_pinterest_link }}" class="icon-social icon-social-pinterest" target="_blank">
@@ -85,6 +95,7 @@
             </a>
           </li>
         {% endif %}
+        {% endcomment %}
         {%- if settings.icon_social_threads != blank -%}
           <li>
             <a
@@ -107,7 +118,8 @@
        jQuery(".footer-form-field").addClass('is-on');
        jQuery(".cancel").addClass('is-on');
        jQuery("#footer-signup-cancel").show();
-       jQuery("#footer-signup").css('position', 'unset');
+       //jQuery("#footer-signup").css('position', 'unset');
+       jQuery("#footer-signup").addClass('pos_class');
        //console.log('footer news latter click');
     });
     
@@ -119,6 +131,7 @@
        jQuery("#footer_fiels_row_0").addClass('is-on');
        jQuery("#footer-signup-cancel").hide();
        jQuery("#footer-signup").css('position', 'absolute');  
+       jQuery("#footer-signup").removeClass('pos_class');
        //console.log('footer news latter cancel click');
     });
 
@@ -130,6 +143,10 @@
        jQuery("#footer-signup-cancel").hide();
        jQuery("#footer-signup").css('position', 'absolute');  
        jQuery('#footer_email').val('');
+       jQuery(".widget-newsletter-footer").removeClass('is-active');
+       jQuery(".widget-newsletter-footer").removeClass('is-focus');
+       jQuery("#footer-signup").removeClass('pos_class');
+       
        //console.log('footer news latter message cancel click');
     });
 });

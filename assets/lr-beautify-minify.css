@@ -1,228 +1,106 @@
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Regular.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Regular_1.woff?v=1725641999") format("woff");
   font-style: normal;
   font-weight: 400;
 }
+
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Italic.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Regular_1.woff2?v=1725640344") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Italic.woff?v=1725642690") format("woff");
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Italic_1.woff2?v=1725640438") format("woff2");
   font-style: italic;
   font-weight: 400;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Medium.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Medium.woff?v=1725642643") format("woff");
   font-style: normal;
   font-weight: 500;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-MediumItalic.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Medium_1.woff2?v=1725640379") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-MediumItalic.woff?v=1725642590") format("woff");
   font-style: italic;
   font-weight: 500;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Bold.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-MediumItalic_1.woff2?v=1725640363") format("woff2");
+  font-style: italic;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Bold.woff?v=1725642869") format("woff");
   font-style: normal;
   font-weight: 600;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-BoldItalic.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Bold_1.woff2?v=1725640474") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-BoldItalic.woff?v=1725642947") format("woff");
   font-style: italic;
   font-weight: 600;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Black.woff2"|asset_url}}) format("woff2");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-BoldItalic_1.woff2?v=1725640454") format("woff2");
+  font-style: italic;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Black.woff?v=1725643009") format("woff");
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-BlackItalic.woff2"|asset_url}}) format("woff2");
-  font-style: italic;
-  font-weight: 700;
-}
-@font-face {
-  font-family: "FK-Grotesk";
-  src: url("../../static/fonts/FK-0.3/FKMonoWeb-Regular.woff2") format("woff2"),
-    url("../../static/fonts/FK-0.3/FKMonoWeb-Regular.woff") format("woff");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-Grotesk-0.1";
-  src: url("../../static/fonts/FK-0.1/FKGrotesk-Regular-220310.woff2")
-      format("woff2"),
-    url("../../static/fonts/FK-0.1/FKGrotesk-Regular-220310.woff")
-      format("woff");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Light.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Light.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Light.otf") format("opentype");
-  font-style: normal;
-  font-weight: 200;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-LightItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-LightItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-LightItalic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 200;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Regular.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Regular.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Regular.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-RegularItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-RegularItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-RegularItalic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Bold.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Bold.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Bold.otf") format("opentype");
-  font-style: normal;
-  font-weight: 600;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-BoldItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-BoldItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-BoldItalic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 600;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Black.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Black.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Black.otf") format("opentype");
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Black_1.woff2?v=1725640507") format("woff2");
   font-style: normal;
   font-weight: 700;
 }
 @font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-BlackItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-BlackItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-BlackItalic.otf") format("opentype");
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-BlackItalic.woff?v=1725643077") format("woff");
   font-style: italic;
   font-weight: 700;
 }
 @font-face {
-  font-family: "FK-Monument";
-  src: url("../../static/fonts/Monument/ABCMonumentGrotesk-Regular.woff2")
-      format("woff2"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-Regular.woff")
-      format("woff"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-Regular.otf")
-      format("opentype");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-Monument";
-  src: url("../../static/fonts/Monument/ABCMonumentGrotesk-RegularItalic.woff2")
-      format("woff2"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-RegularItalic.woff")
-      format("woff"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-RegularItalic.otf")
-      format("opentype");
+  font-family: "LR-Geigy";
+  src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-BlackItalic_1.woff2?v=1725640490") format("woff2");
   font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
 }
-@font-face {
-  font-family: "FK-Monument";
-  src: url("../../static/fonts/Monument/ABCMonumentGrotesk-Medium.woff2")
-      format("woff2"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-Medium.woff")
-      format("woff"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-Medium.otf")
-      format("opentype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "FK-Monument";
-  src: url("../../static/fonts/Monument/ABCMonumentGrotesk-MediumItalic.woff2")
-      format("woff2"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-MediumItalic.woff")
-      format("woff"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-MediumItalic.otf")
-      format("opentype");
-  font-style: italic;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "FK-Monument";
-  src: url("../../static/fonts/Monument/ABCMonumentGrotesk-Bold.woff2")
-      format("woff2"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-Bold.woff")
-      format("woff"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-Bold.otf")
-      format("opentype");
-  font-style: normal;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "FK-Monument";
-  src: url("../../static/fonts/Monument/ABCMonumentGrotesk-BoldItalic.woff2")
-      format("woff2"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-BoldItalic.woff")
-      format("woff"),
-    url("../../static/fonts/Monument/ABCMonumentGrotesk-BoldItalic.otf")
-      format("opentype");
-  font-style: italic;
-  font-weight: 500;
-}
-@font-face {
-  font-family: "FK-Avus";
-  src: url("../../static/fonts/Avus/AvusProLight-webfont.eot")
-    format("embedded-opentype");
-  src: url("../../static/fonts/Avus/AvusProLight-webfont.woff2") format("woff2"),
-    url("../../static/fonts/Avus/AvusProLight-webfont.woff") format("woff"),
-    url("../../static/fonts/Avus/AvusProLight-webfont.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 200;
-}
-@font-face {
-  font-family: "FK-Avus";
-  src: url("../../static/fonts/Avus/AvusPro-webfont.eot")
-    format("embedded-opentype");
-  src: url("../../static/fonts/Avus/AvusPro-webfont.woff2") format("woff2"),
-    url("../../static/fonts/Avus/AvusPro-webfont.woff") format("woff"),
-    url("../../static/fonts/Avus/AvusPro-webfont.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-Avus";
-  src: url("../../static/fonts/Avus/AvusProMedium-webfont.eot")
-    format("embedded-opentype");
-  src: url("../../static/fonts/Avus/AvusProMedium-webfont.woff2")
-      format("woff2"),
-    url("../../static/fonts/Avus/AvusProMedium-webfont.woff") format("woff"),
-    url("../../static/fonts/Avus/AvusProMedium-webfont.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 600;
-}
+
+/* subset */
+
+
 body {
   color: #000;
   background-color: #fff;
@@ -378,9 +256,8 @@ button,
   border: 1px solid #000;
   border-radius: 2px;
   font-family: "LR-Geigy", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
-  font-weight: 400;
   text-align: left;
   text-transform: none;
   font-weight: 500;
@@ -1803,7 +1680,7 @@ textarea.has-error {
 }
 .site-system .item-button-right button,
 .site-system .item-button-right .button {
-  margin-left: 10px;
+  margin-left: -2px;
 }
 @media (min-width: 576px) {
   .site-system .item-button-horizontal {
@@ -2567,10 +2444,10 @@ textarea.has-error {
   content: "";
   position: absolute;
   top: 4px;
-  left: 4px;
+  left: 5px;
   background-color: #000;
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   display: block;
 }
 @media (min-width: 576px) {
@@ -3491,7 +3368,7 @@ textarea.has-error {
   z-index: 5;
 }
 .page {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -4290,13 +4167,6 @@ ul.nav-menu li .tooltip {
   }
 }
 @media (min-width: 835px) {
-  body .headroom {
-    position: fixed !important;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    transform: translate3d(0, 0, 0) !important;
-  }
   .nav-logo {
     display: block;
   }
@@ -4749,6 +4619,33 @@ ul.nav-menu li .tooltip {
     display: none;
   }
 }
+.headroom.headroom--unfixed {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    transform: translateZ(0) !important;
+    background: none !important
+}
+.headroom.headroom--unpinned {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    transform: translate3d(0, -100%, 0) !important;
+}
+.headroom.headroom--pinned {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    transform: translateZ(0) !important;
+    transition: .2s ease-in-out;
+    background: #fff;
+}
 .header-mobile.is-off {
   opacity: 0;
   pointer-events: none;
@@ -5093,7 +4990,7 @@ body.is-search-open .header-mobile:before {
   }
 }
 @media (min-width: 835px) {
-  body .headroom {
+  body.index .headroom {
     position: fixed !important;
     top: 0px;
     left: 0px;
@@ -5231,6 +5128,9 @@ footer {
   z-index: 1000;
   pointer-events: auto;
 }
+button.button-next-footer.pos_class {
+    position: unset !important;
+}
 .widget-newsletter.widget-newsletter-footer.is-active
   .form-field
   button.button-next-footer {
@@ -5245,10 +5145,11 @@ footer {
   width: auto;
   position: absolute;
   right: 0;
-  top: 11px;
+  top: 10px;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   border: none;
+  font-weight:400;
 }
 @media (min-width: 835px) {
   button.button-next-footer,
@@ -5259,8 +5160,16 @@ footer {
     border: none;
   }
   footer .widget-newsletter.widget-newsletter-footer .cancel.is-on {
-    margin-left: -45px;
+    margin-left: -12rem;
     margin-top: 5px;
+  }
+  div#footer_fiels_row_1 {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  div#footer_fiels_row_0 {
+      padding-bottom: 0px;
+      padding-top: 10px;
   }
 }
 button.button-next,
@@ -5388,14 +5297,13 @@ footer .links {
   line-height: 1em;
   padding-top: 26px;
 }
-footer .links:last-child {
-  padding-bottom: 22px;
-}
+
 @media (min-width: 576px) {
   footer .links {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 0 15px;
+    padding-bottom: 22px;
   }
 }
 footer .links ul {
@@ -7148,7 +7056,6 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 @media (min-width: 835px) {
   .plp-header .plp-header-tools {
     justify-content: flex-start;
-    padding-left: 15rem;
   }
   .plp-header .plp-header-tools-filter {
     padding: 10px 0 10px 40px;
@@ -7163,6 +7070,8 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   }
   .plp-header .plp-header-primary {
     padding: 8px 0 8px 100px;
+    width: 75%;
+    box-sizing: border-box;
   }
 }
 @media (min-width: 576px) {
@@ -7622,7 +7531,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   margin: 0;
 }
 .pdp-container {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -7803,6 +7712,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   .pdp-main-info {
     width: 25%;
     padding: 0;
+    min-width: 420px;
   }
 }
 @media (min-width: 576px) {
@@ -7882,6 +7792,9 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 @media (max-width: calc(576px - 1px)) {
   .pdp-info-thumbnail .pdp-product-thumbnail {
     display: none;
+  }
+  .pdp-info .pdp-buttons-triangle {
+     order: 5;
   }
 }
 .pdp-info-header {
@@ -8306,6 +8219,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 }
 .pdp-product-variants .pdp-product-variants-list ul li.is-active a {
   border: 2px solid #000;
+  padding: 7px 11px;
 }
 .pdp-info .pdp-tools {
   margin-top: 10px;
@@ -9071,7 +8985,7 @@ ul.payment-icons li.payment-icon-paypal {
     order: 6;
   }
   .pdp-info .pdp-info-header-secondary {
-    order: 7;
+    order: 8;
   }
 }
 .pdp-info-header {
@@ -9595,7 +9509,7 @@ body.ReactModal__Body--open {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -9742,8 +9656,8 @@ body.ReactModal__Body--open {
 }
 @media (min-width: 576px) {
   .overlay-pdp .overlay-close {
-    right: 20px;
-    top: 35px;
+    right: 0px;
+    top: 0px;
   }
 }
 .overlay-pdp .overlay-panel {
@@ -9755,16 +9669,17 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel {
     transform: translate3d(100%, 0, 0);
     transition: transform 0.8s steps(4);
-    width: 32.5%;
+    width: 25%;
     height: 100%;
     align-items: flex-start;
+    min-width: 420px;
   }
   .overlay-pdp .overlay-panel.ReactModal__Content--before-close {
     transform: translate3d(100%, 0, 0);
   }
 }
 .overlay-pdp .overlay-panel-inner {
-  padding: 40px;
+  padding: 20px 40px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9773,7 +9688,7 @@ body.ReactModal__Body--open {
 }
 @media (min-width: 576px) {
   .overlay-pdp .overlay-panel-inner {
-    padding: 50px 70px 55px 45px;
+    padding: 20px 40px 40px;
     justify-content: space-between;
     min-height: 100%;
   }
@@ -9811,10 +9726,12 @@ body.ReactModal__Body--open {
   position: relative;
 }
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing li:before {
-  content: "–";
+  content: ".";
   position: absolute;
   left: -12px;
-  top: 0;
+  top: -4px;
+  font-size: 15px;
+  font-weight: 600;
 }
 .overlay-pdp-left {
   flex-direction: row;
@@ -10735,7 +10652,7 @@ ul.toolbar-categories li.li-category {
   font-style: italic;
 }
 .widget-newsletter {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -11025,7 +10942,7 @@ ul.toolbar-categories li.li-category {
 }
 @media (min-width: 835px) {
   .widget-newsletter.widget-newsletter-footer.is-active {
-    height: 320px;
+    height: 200px;
   }
 }
 .widget-newsletter.widget-newsletter-footer.is-active
@@ -11051,14 +10968,16 @@ ul.toolbar-categories li.li-category {
     margin-bottom: 10px;
   }
 }
+/*
 @media (min-width: 576px) {
   .widget-newsletter.widget-newsletter-footer
     .hd
     .hd-intro
     .hd-intro-title:after {
     content: ":";
-  }
+  } 
 }
+*/
 .widget-newsletter.widget-newsletter-footer .form-field button.button-next {
   opacity: 1;
 }
@@ -12962,6 +12881,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     .form-field
     button.button-next-footer {
     padding: 3px 0 15px 26px;
+    margin-left: -8.5rem;
   }
   footer
     .widget-newsletter.widget-newsletter-footer
@@ -12972,6 +12892,9 @@ body.collection .header-logo .logotype svg .cls-1 {
   }
   footer .widget-newsletter.widget-newsletter-footer .form-field-padding {
     margin: 30px 0;
+  }
+  footer div#footer_fiels_row_1 {
+    margin-bottom: -31px;
   }
 }
 
