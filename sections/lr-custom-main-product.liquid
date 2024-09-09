@@ -1,3 +1,6 @@
+
+{{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
+
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
@@ -15,6 +18,36 @@
               </a>
             </div>
           {% endfor %}
+		  
+		  {% assign tiktok_video = product.metafields.custom.tiktok_link %}
+
+          {% if tiktok_video %}
+            <div class="pdp-image-set-tiktok">
+                <div class="pdp-image-set-tiktok-content">
+                  <strong>Lost River</strong>
+                  <br>TikTok
+                  <br>
+                  <br>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+          
+                <div class="pdp-image-set-tiktok-video">
+                    <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+                      <source src="{{ tiktok_video }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+          {% endif %}
+          
+          {% assign video_url = product.metafields.custom.video_url %}
+
+          {% if video_url %}
+            <div class="pdp-image-set-video">
+              <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+                <source src="{{ video_url }}" type="video/mp4">
+              </video>
+            </div>
+          {% endif %}
+		  
         </div>
       </div>
     </div>
@@ -152,6 +185,23 @@
     border-radius: 2px 19px 19px 2px;
 }
 </style>
+
+<!---- Video Start --->
+<script>
+  window.onload = function() {
+    var video = document.getElementById("myVideo");
+    video.autoplay = true;
+    video.muted = true; // This is necessary for autoplay to work in some browsers
+    video.play();
+    // Stop the video after 5 seconds
+    // setTimeout(function() {
+    //   video.pause();
+    // }, 5000); // 5000 milliseconds = 5 seconds
+  };
+</script>
+
+<!---- Video End --->
+
 <script>
   window.productMetafields = {
     {% for item in cart.items %}

@@ -1,6 +1,5 @@
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Regular.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Regular_1.woff?v=1725641999") format("woff");
   font-style: normal;
   font-weight: 400;
@@ -8,7 +7,6 @@
 
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Italic.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Regular_1.woff2?v=1725640344") format("woff2");
   font-style: normal;
   font-weight: 400;
@@ -29,14 +27,12 @@
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Medium.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Medium.woff?v=1725642643") format("woff");
   font-style: normal;
   font-weight: 500;
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-MediumItalic.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Medium_1.woff2?v=1725640379") format("woff2");
   font-style: normal;
   font-weight: 500;
@@ -49,7 +45,6 @@
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Bold.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-MediumItalic_1.woff2?v=1725640363") format("woff2");
   font-style: italic;
   font-weight: 500;
@@ -62,7 +57,6 @@
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-BoldItalic.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Bold_1.woff2?v=1725640474") format("woff2");
   font-style: normal;
   font-weight: 600;
@@ -75,7 +69,6 @@
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-Black.woff2"|asset_url}}) format("woff2");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-BoldItalic_1.woff2?v=1725640454") format("woff2");
   font-style: italic;
   font-weight: 600;
@@ -88,79 +81,6 @@
 }
 @font-face {
   font-family: "LR-Geigy";
-  src: url({{"GeigyLLTrialWeb-BlackItalic.woff2"|asset_url}}) format("woff2");
-  font-style: italic;
-  font-weight: 700;
-}
-@font-face {
-  font-family: "FK-Grotesk";
-  src: url("../../static/fonts/FK-0.3/FKMonoWeb-Regular.woff2") format("woff2"),
-    url("../../static/fonts/FK-0.3/FKMonoWeb-Regular.woff") format("woff");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-Grotesk-0.1";
-  src: url("../../static/fonts/FK-0.1/FKGrotesk-Regular-220310.woff2")
-      format("woff2"),
-    url("../../static/fonts/FK-0.1/FKGrotesk-Regular-220310.woff")
-      format("woff");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Light.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Light.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Light.otf") format("opentype");
-  font-style: normal;
-  font-weight: 200;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-LightItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-LightItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-LightItalic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 200;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Regular.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Regular.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Regular.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-RegularItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-RegularItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-RegularItalic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 400;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Bold.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Bold.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Bold.otf") format("opentype");
-  font-style: normal;
-  font-weight: 600;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-BoldItalic.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-BoldItalic.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-BoldItalic.otf") format("opentype");
-  font-style: italic;
-  font-weight: 600;
-}
-@font-face {
-  font-family: "FK-CEO";
-  src: url("../../static/fonts/CEO/CEO-Black.woff2") format("woff2"),
-    url("../../static/fonts/CEO/CEO-Black.woff") format("woff"),
-    url("../../static/fonts/CEO/CEO-Black.otf") format("opentype");
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Black_1.woff2?v=1725640507") format("woff2");
   font-style: normal;
   font-weight: 700;
@@ -1401,7 +1321,7 @@ textarea.has-error {
     padding: 0;
   }
   .site-system .item-product-minibag .info .title .title-title {
-    font-weight: 500;
+    font-weight: 600;
   }
   .site-system .item-product-minibag .info .title .title-inner {
     margin-left: 55px;
@@ -11002,7 +10922,6 @@ ul.toolbar-categories li.li-category {
 @media (min-width: 576px) {
   .widget-newsletter.widget-newsletter-footer {
     margin-right: 24px;
-    height: 42px;
     /* height: 42px; */
   }
 }
