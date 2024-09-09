@@ -1,26 +1,63 @@
+<script src="{{ 'lr-variants-selected.js' | asset_url }}" defer="defer"></script>
+{{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
+
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
       <div class="pdp-image-set">
-        <div class="pdp-image-set-grid ">
+        <div class="pdp-image-set-grid gallery">
           {% for media in product.media %}
             <div class="pdp-image-set-img">
               <a
                 href="{{ media.src | img_url:'master' }}"
                 data-pswp-width="3000"
                 data-pswp-height="2000"
+                data-pswp-src="{{ media.src | img_url: 'master' }}"
                 target="_blank"
                 class="image-zoomable">
                 <img src="{{ media.src | img_url:'master' }}">
               </a>
             </div>
           {% endfor %}
+		  
+          {% assign tiktok_video = product.metafields.custom.tiktok_link %}
+
+          {% if tiktok_video %}
+            <div class="pdp-image-set-tiktok">
+                <div class="pdp-image-set-tiktok-content">
+                  <strong>Lost River</strong>
+                  <br>TikTok
+                  <br>
+                  <br>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+          
+                <div class="pdp-image-set-tiktok-video">
+                    <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+                      <source src="{{ tiktok_video }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+          {% endif %}
+          
+          {% assign video_url = product.metafields.custom.video_url %}
+
+          {% if video_url %}
+            <div class="pdp-image-set-video">
+              <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+                <source src="{{ video_url }}" type="video/mp4">
+              </video>
+            </div>
+
+          {% endif %}  
+        
+		  
         </div>
       </div>
     </div>
     <div class="Plx Plx--below Plx-effect-pdp" style="">
       <div class="pdp-scroller"></div>
     </div>
+    
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
@@ -30,11 +67,9 @@
               <div class="swiper-button-next"></div>
               <div class="swiper-wrapper" style="transition-duration: 0ms;">
                 {% for media in product.media %}
-                  <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4">
+                  <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="{{ forloop.index }}">
                     <a
                       href="{{ media.src | img_url:'master' }}"
-                      data-pswp-width="2400"
-                      data-pswp-height="3000"
                       target="_blank"
                       class="image-zoomable">
                       <img src="{{ media.src | img_url:'master' }}">
@@ -44,9 +79,11 @@
               </div>
             </div>
           </div>
+          <!-- swiper CSS -->
+          
+          
           <div class="pdp-info-header">
             <div class="pdp-info-header-inner">
-              <div class="pdp-brow">Book</div>
                <div class="pdp-headline">
                 {% assign author_name = product.metafields.custom.author_name %}  
                 <div class="pdp-headline-author" id="get_author_name">{{ author_name }}</div>
@@ -55,29 +92,87 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-          <div class="pdp-info-header-secondary">
-            <div class="pdp-description">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-            </div>
+          {% if product.variants.size > 1 %}
+          <!-- Loop through the variants -->
+          {% for variant in product.variants %}
+              <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
+                {% assign short_des = variant.metafields.custom.short_description %}
+                <div class="pdp-description">
+                  <p>{{ short_des }}</p>
+                </div>
+                {% assign bulletpoint = variant.metafields.custom.short_bullet_point | split:'|' %}
+                  <ul class="pdp-keywords">
+                    {% for text in bulletpoint %}
+                      <li>{{ text }}</li>
+                    {% endfor %}
+                    <li class="pdp-details" id="variant_detail_{{ variant.id }}">
+                      <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
+                    </li>
+                </ul>
+              </div>
+               <div id="model_id_{{ variant.id }}" class="ReactModalPortal ReactModal__Overlay ReactModal__Overlay--before-open overlay overlay-pdp">
+                  <div id="model_contect_id_{{ variant.id }}" class="ReactModal__Content ReactModal__Content--before-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
+                        <div class="overlay-close"><span>×</span></div>
+                        <div class="overlay-panel-inner">
+                            <div class="overlay-outer-title">Details</div>
+                            <div class="panel-content">
+                                   {% assign bulletpoint = variant.metafields.custom.book_detail | split:'|' %}
+                                    <div class="block">
+                                        <div class="hd">The Book</div>
+                                        <div class="copy">
+                                          <ul class="ul-listing">
+                                           {% for text in bulletpoint %}
+                                             {% if text != blank %}
+                                                <li>{{ text }}</li>
+                                             {% endif %}
+                                           {% endfor %} 
+                                          </ul>
+                                        </div>
+                                    </div>
+                                  <div class="block">
+                                      <div class="hd">The Author</div>
+                                      <div class="copy">
+                                          <ul class="ul-listing">
+                                              <li>Scott Schomburg is a writer based in New York City. His work has appeared in <em>The Paris Review</em>, <em>The Bare Life Review</em>, <em>After the Art</em>, <em>The Millions</em>, and elsewhere. He has received a writing
+                                                  fellowship from the Virginia Center for the Creative Arts, and he holds a Master of Divinity from Duke Divinity School.</li>
+                                              <li><a href="#">Read Scott on Joseph Mitchell’s collection of objects here</a>.</li>
+                                          </ul>
+                                      </div>
+                                  </div>         
+                                  {% assign shipping_detail = variant.metafields.custom.shipping_and_returns  | split:'|' %}
+                                          <div class="block" current_variants_id="{{ variant.id }}">
+                                             <div class="hd">Shipping and Returns</div>
+                                                  <div class="copy">      
+                                                    {% if shipping_detail != blank %}
+                                                       {% for shipping_Text in shipping_detail %}     
+                                                            <ul class="ul-listing">     
+                                                                <li>{{ shipping_Text }}</li>    
+                                                            </ul>
+                                                       {% endfor %}   
+                                                    {% endif %}             
+                                                   </div>
+                                              </div> 
+                                            </div>
+                                          </div>
+                                      </div>
+                                   </div> 
+                              {% endfor %}  
+        {% else %}
+          <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
+          <div class="pdp-description">
+            {{ product.description }}
             <ul class="pdp-keywords">
-              <li>Ut enim ad minim veniam.</li>
-              <li>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li>Duis aute irure dolor in reprehenderit in voluptate velit esse.</li>
-              <li>Velit esse cillum dolore eu fugiat nulla pariatur.</li>
-              <li>Excepteur sint occaecat.</li>
-              <li>Cupidatat non proident, sunt.</li>
-              <li>In culpa qui officia deserunt mollit anim id est laborum.</li>
               <li class="pdp-details">
                 <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
               </li>
-            </ul>
+            </ul>  
           </div>
-          
+        {% endif %}
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
               <div class="pdp-product-variants-list is-on">
                 <div class="pdp-product-variants-list-scroll">
-                  <ul>
+                  <ul id="variant-selector">
                     {% for variant in product.variants %} 
                         <li class="variant_li {% if forloop.first %}is-active selected{% endif %}" data-id="{{ variant.id }}">
                             <a href="javascript:void(0)">
@@ -95,10 +190,11 @@
               </div>
             </div>
           </div>
+          <div class="pdp-buttons-triangle">
+            <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
+          </div>
           <div class="pdp-info-body-secondary">
-            <div class="pdp-buttons-triangle">
-              <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
-            </div>
+            
             <div class="pdp-buttons " id="pdp-button-addtobag">
               <button class="button-addtobag  Xis-disabled" id="add-to-bag">
                 <span class="button-addtobag-cta"
@@ -113,7 +209,7 @@
           </div>
           <div class="pdp-info-body-tertiary"></div>
         </div>
-        <div class="pdp-info-footer">
+        <div class="pdp-info-footer">	
           <ul class="pdp-keywords pdp-keywords-blank">
             <li class="pdp-storeavailability ">
               <span class="pdp-link pdp-link-chevron"><span>Store availablity</span></span>
@@ -146,12 +242,147 @@
     </div>
   </div>
 </div>
+
 <style>
 .pdp-product-variants .pdp-product-variants-list ul li.is-active {
-    border: 2px solid #000;
+   
     border-radius: 2px 19px 19px 2px;
 }
 </style>
+
+<!-- PDP Gallery -->
+<!-- PhotoSwipe HTML -->
+<!-- Root element of PhotoSwipe. Must have class pswp -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+              <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!-- Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- PhotoSwipe CSS -->
+{{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+<!-- PhotoSwipe JS -->
+<script type="module">
+    //console.log('lightbox');
+    import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+    import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
+    // Flag to track first interaction
+    let firstZoomed = 0;
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: '.gallery',
+        children: 'a',
+        pswpModule: PhotoSwipe,
+        // Enable tap to close
+        bgOpacity: 1, // Ensure the background is fully opaque to prevent seeing white spaces
+        //paddingFn: () => ({ top: 0, bottom: 0, left: 0, right: 0 }), // Remove any padding
+        //showHideOpacity: true,
+        //spacing: 0, // Set spacing between slides to 0
+        loop: true,
+        initialZoomLevel: 'fill', // Initially fit the image to screen
+        //secondaryZoomLevel: '1', // Fully zoom in to original size on second click
+        //maxZoomLevel: 2, // Maximum zoom level
+        //initialPointerPos: 'center', // Start zoom from the center of the image
+        // Other configurations
+        zoom: false,
+        //closeOnVerticalDrag: false,     
+    });
+
+  lightbox.firstZoomed =false;
+  //const pswp = lightbox.pswp;
+  lightbox.on('zoomPanUpdate', () => { //console.log(lightbox.firstZoomed);
+    // Check if this is the first zoom interaction                                   
+    if (!lightbox.firstZoomed == true) { 
+      //console.log('ttt');
+      lightbox.firstZoomed = true; // Mark that zoom interaction happened
+      pswp.close(); // Close the gallery on first zoom
+    }
+  });
+  lightbox.init();
+</script>
+<!-- END PDP Gallery --> 
+
+<!-- swiper JS Mobile -->
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+
+<!-- Swipe Slide Mobile Start --> 
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+  var swiper = new Swiper('.swiper-pdp', {
+    slidesPerView: 10,
+    spaceBetween: 20,
+    breakpoints: {
+      575: {  // This is the new breakpoint for max-width 575px
+        slidesPerView: 1
+      },
+      320: {
+        slidesPerView: 1
+      }
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  });
+});   
+</script>  
+
+<!-- Swipe Slide Mobile End --> 
+
+<!---- Video Start --->
+<script>
+  window.onload = function() {
+    var video = document.getElementById("myVideo");
+    video.autoplay = true;
+    video.muted = true; // This is necessary for autoplay to work in some browsers
+    video.play();
+    // Stop the video after 5 seconds
+    // setTimeout(function() {
+    //   video.pause();
+    // }, 5000); // 5000 milliseconds = 5 seconds
+  };
+</script>
+
+<!---- Video End -->
+
 <script>
   window.productMetafields = {
     {% for item in cart.items %}
@@ -475,6 +706,8 @@ function updateCartDrawer() {
 {% schema %}
 {
   "name": "Custom Product Page",
-  "settings": []
+  "settings": [
+
+  ]
 }
 {% endschema %}

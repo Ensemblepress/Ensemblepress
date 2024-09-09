@@ -1,11 +1,3 @@
-{% comment %}
-  {%- for link in section.settings.menu.links -%}
-  	{{ link.title }}
-  	{%- for childlink in link.links -%}
-  		{{ childlink.title }}
-  	{%- endfor -%}
-  {%- endfor -%}
-{% endcomment %}
 <style>
     #search-results {
       display: flex;
@@ -35,12 +27,37 @@
     mix-blend-mode: normal;
  }
 </style>
+<script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+var menu = document.getElementById("custom-menu");    
+    if (menu) {
+      var headroom = new Headroom(menu, {
+        tolerance: 1,
+        offset: 54,  // Menu will start hiding once scrolled 100px from the top
+        classes: {
+          initial: "headroom",           // Added when Headroom is initialized
+          pinned: "headroom--pinned",    // Added when scrolling up
+          unpinned: "headroom--unpinned", // Added when scrolling down
+          top: "headroom--unfixed",          // Added when at the top of the page
+          //notTop: "headroom--not-top",   // Added when scrolling down the page
+          //bottom: "headroom--bottom",    // Added when at the bottom of the page
+          //notBottom: "headroom--not-bottom" // Added when scrolling up from bottom
+        }
+      });
+      // Initialize Headroom
+      headroom.init();
+    } else {
+      console.error("Menu element not found");
+    }
+});        
+</script>
 <div class="header-background ">
   <div class="header-background-close"></div>
   <div class="header-background-bg"></div>
 </div>
 <div class="headroom-wrapper" style="height: 54px;">
-  <div
+  <div id="custom-menu"
     class="headroom headroom--unfixed headroom-disable-animation"
     style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);"
   >
@@ -54,7 +71,8 @@
           <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
         </ul>
       </div>
-      <div id="menu" class="">
+      
+      <div id="menu">
         <div class="menu-inner">
           <ul class="header-primary">
             <a class="header-item header-item-brand" href="/">
