@@ -6058,7 +6058,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   }
   .product-grid .item .caption-default .name-title,
   .product-grid .item .caption-additional .name-title {
-    font-weight: 600;
+    font-weight: 500;
   }
   .product-grid .item .caption-default .price,
   .product-grid .item .caption-default .sizes,
@@ -8573,7 +8573,7 @@ ul.payment-icons li.payment-icon-paypal {
 }
 @media (min-width: 576px) {
   .pdp-product-slider .product-grid.product-grid-recommended {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
   }
 }
 @media (max-width: calc(576px - 1px)) {
