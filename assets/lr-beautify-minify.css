@@ -2253,14 +2253,6 @@ textarea.has-error {
 .site-system .item-copy p.q {
   margin: 2em 0 2em 2em;
 }
-.site-system .item-copy-longtext {
-  line-height: 1.5em;
-}
-@media (min-width: 576px) {
-  .site-system .item-copy-longtext {
-    line-height: 1.5em;
-  }
-}
 .site-system .item-copy-blockquote {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -5291,7 +5283,7 @@ footer .links {
   flex-direction: row;
   flex-wrap: wrap;
   text-align: left;
-  line-height: 1em;
+  line-height: 1.3em;
   padding-top: 26px;
 }
 
