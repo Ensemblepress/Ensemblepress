@@ -8535,6 +8535,7 @@ ul.payment-icons li.payment-icon-paypal {
 .pdp-divider {
   text-align: left;
   margin: 60px 24px 20px;
+  font-size:14px;
 }
 @media (min-width: 576px) {
   .pdp-divider {
@@ -12862,7 +12863,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     width: 6%;
   }
   footer .widget-newsletter.widget-newsletter-footer .cancel.is-on {
-    margin: -45px 0 0 -50px;
+    margin: -40px 0 0 -50px;
   }
 }
 @media (max-width: calc(575px)) {
@@ -12876,7 +12877,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     .widget-newsletter.widget-newsletter-footer
     .form-field
     button.button-next-footer {
-    padding: 3px 0 15px 26px;
+    padding: 5px 0 15px 26px;
     margin-left: -8.5rem;
   }
   footer
