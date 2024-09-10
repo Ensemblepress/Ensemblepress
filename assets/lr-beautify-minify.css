@@ -111,6 +111,7 @@ body {
   font-weight: 400;
   text-align: left;
   text-transform: none;
+  letter-spacing: 0 !important;
 }
 @media (min-width: 576px) {
   body {
@@ -2253,6 +2254,9 @@ textarea.has-error {
 .site-system .item-copy p.q {
   margin: 2em 0 2em 2em;
 }
+.site-system .item-checkbox strong {
+    font-weight: 500;
+}
 .site-system .item-copy-blockquote {
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -2413,7 +2417,7 @@ textarea.has-error {
   }
 }
 .site-system .item-checkbox input[type="checkbox"].checkbox-single {
-  margin: 4px 10px 0 0;
+  margin: 0px 8px 0 0;
 }
 @media (min-width: 576px) {
   .site-system .item-checkbox input[type="checkbox"].checkbox-single {
@@ -2435,7 +2439,7 @@ textarea.has-error {
 .site-system .item-checkbox input[type="checkbox"]:checked:after {
   content: "";
   position: absolute;
-  top: 4px;
+  top: 5px;
   left: 5px;
   background-color: #000;
   width: 7px;
@@ -9502,7 +9506,7 @@ body.ReactModal__Body--open {
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  line-height: 1.5em;
+  line-height: 1.3em;
   font-weight: 400;
   text-align: left;
   text-transform: none;
@@ -9550,8 +9554,8 @@ body.ReactModal__Body--open {
 }
 .overlay .overlay-close > span {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border: 1px solid #000;
   border-radius: 9px;
   background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/ea9a27c1e6456d80e84d85d6d2ee3b4f.svg?v=1721841942);
