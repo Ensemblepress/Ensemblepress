@@ -8100,7 +8100,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   line-height: 1.3em;
   margin: 0;
   padding: 0;
-  /* list-style: none; */
+  list-style: none; 
 }
 .pdp-keywords li {
   position: relative;
@@ -8108,12 +8108,12 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 .pdp-keywords li.is-off {
   display: none;
 }
-/* .pdp-keywords li::before {
-  content: "–";
+ .pdp-keywords li::before {
+  content: ".";
   position: absolute;
   left: -12px;
-  top: 0;
-} */
+  top: -4px;
+} 
 .pdp-keywords.pdp-keywords-blank {
   padding: 0;
   margin-bottom: 12px;
@@ -10960,7 +10960,6 @@ ul.toolbar-categories li.li-category {
     margin-right: 15%;
   }
   .widget-newsletter.widget-newsletter-footer .hd .hd-intro .hd-intro-title {
-    text-transform: uppercase;
     display: block;
     margin-bottom: 10px;
   }
