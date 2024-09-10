@@ -1246,7 +1246,7 @@ textarea.has-error {
   }
   #nav-bag.is-on-mobile .title-title {
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
   }
   #nav-bag.is-on-mobile .title-favorite {
     display: none;
@@ -1321,7 +1321,7 @@ textarea.has-error {
     padding: 0;
   }
   .site-system .item-product-minibag .info .title .title-title {
-    font-weight: 600;
+    font-weight: 500;
   }
   .site-system .item-product-minibag .info .title .title-inner {
     margin-left: 55px;
@@ -5404,13 +5404,12 @@ footer .links ul li.links-title-copyright {
 }
 footer .links ul li a,
 footer .links ul li .link {
-  display: inline-block;
   padding: 8px 0;
 }
 @media (min-width: 576px) {
   footer .links ul li a,
   footer .links ul li .link {
-    padding: 8px 0;
+    padding: 4px 0;
   }
 }
 footer .links ul .icon-social {
@@ -5700,6 +5699,9 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 0;
     grid-gap: 0px;
+  }
+  footer .links ul .icon-social {
+	background-position: 100% 4px;
   }
 }
 .product-grid.is-off {
@@ -7828,7 +7830,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   }
 }
 .pdp-info-header .pdp-headline .pdp-headline-title {
-  font-weight: 600;
+  font-weight: 500;
 }
 .pdp-info-header .pdp-headline .pdp-headline-price {
   font-style: normal;
