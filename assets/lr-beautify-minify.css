@@ -4620,7 +4620,7 @@ ul.nav-menu li .tooltip {
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    transform: translateZ(0) !important;
+    transform: translate3d(0px, 0px, 0px) !important;
     background: none !important
 }
 .headroom.headroom--unpinned {
@@ -12225,6 +12225,7 @@ div.pswp__img--placeholder,
 }
 .pswp__button--close {
   margin-right: 6px;
+  display:none;
 }
 .pswp__button--arrow {
   position: absolute;
@@ -12250,7 +12251,7 @@ div.pswp__img--placeholder,
   display: none;
 }
 .pswp--touch .pswp__button--arrow {
-  visibility: hidden;
+  visibility: visible;
 }
 .pswp--has_mouse .pswp__button--arrow {
   visibility: visible;
@@ -12271,7 +12272,7 @@ div.pswp__img--placeholder,
   display: none;
 }
 .pswp--zoom-allowed .pswp__button--zoom {
-  display: block;
+  display: none;
 }
 .pswp--zoomed-in .pswp__zoom-icn-bar-v {
   display: none;
