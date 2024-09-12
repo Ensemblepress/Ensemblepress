@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const cartDrawer = document.querySelector('.pdp-info .ReactModalPortal');
   const menu = document.querySelector('body.product #menu .header-secondary');
   const detailsButtons = document.querySelectorAll('.pdp-details');
-  const overlayCloseButton = document.querySelector('.overlay .overlay-close');
   const portal = document.querySelector('.pdp-info .ReactModalPortal');
   const content = document.querySelector('.pdp-info .ReactModal__Content');
 
@@ -59,14 +58,12 @@ document.addEventListener("DOMContentLoaded", function() {
           modal.classList.add("ReactModal__Overlay--after-open");
           modal_content.classList.remove('ReactModal__Content--before-open');
           modal_content.classList.add('ReactModal__Content--after-open');
+            
           $('.header-secondary').hide();
-        
-          modal_content.style.transform = 'transform: translateZ(0)';
-          // Assuming you want to animate or move the custom menu
-          const menu = document.getElementById('custom-menu');
-          if (menu) {
-              //menu.style.display = 'none';
-              //menu.style.transform = 'translate3d(0px, 0px, 0px)'; // Reset to initial position (e.g., showing it)
+          $('body').css('overflowY', 'hidden'); // Show the vertical scroll bar
+          const cust_menu = document.getElementById('custom-menu');
+          if (cust_menu) {
+            cust_menu.style.setProperty('position', 'unset', 'important');
           }
       } else {
           console.warn(`Modal for variant ID ${variantId} not found.`);
@@ -85,25 +82,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-
-  // Handle overlay close button click (vanilla JavaScript)
-  if (overlayCloseButton) {
-      
-    overlayCloseButton.addEventListener('click', function() {
-      if (cartDrawer) {
-        cartDrawer.classList.remove('open'); // Remove the 'open' class
-        cartDrawer.style.display = 'none';
-        menu.style.display = 'flex';
-             
-      }
-      // Show the vertical scroll bar
-      document.body.style.overflowY = 'visible'; 
-      portal.classList.remove("ReactModal__Overlay--after-open");
-      portal.classList.add("ReactModal__Overlay--before-open");
-      content.classList.remove('ReactModal__Content--after-open');
-      content.classList.add('ReactModal__Content--before-open');
-      $('.header-secondary').show();
-        
-    });
-  }
+  
+  $('.overlay-pdp .overlay-close').on('click', function() {
+    var $cartDrawer = $('.ReactModalPortal');
+    $cartDrawer.removeClass('open');
+    $cartDrawer.css('display', 'none');
+    $('body').css('overflowY', 'visible'); // Show the vertical scroll bar
+    portal.classList.remove("ReactModal__Overlay--after-open");
+    portal.classList.add("ReactModal__Overlay--before-open");
+    content.classList.remove('ReactModal__Content--after-open');
+    content.classList.add('ReactModal__Content--before-open');
+    const cust_menu = document.getElementById('custom-menu');
+    $('.header-secondary').show();
+     if (cust_menu) {    
+      cust_menu.style.setProperty('position', 'relative', 'important');
+    }
+    
+  });
 });
