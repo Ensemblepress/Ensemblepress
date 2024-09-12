@@ -19,7 +19,7 @@
               </a>
             </div>
           {% endfor %}
-		  
+
           {% assign tiktok_video = product.metafields.custom.tiktok_link %}
 
           {% if tiktok_video %}
@@ -47,10 +47,8 @@
                 <source src="{{ video_url }}" type="video/mp4">
               </video>
             </div>
-
           {% endif %}  
         
-		  
         </div>
       </div>
     </div>
@@ -64,10 +62,10 @@
           <div class="pdp-info-swiper pdp-main-swiper">
             <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-pdp">
               <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-wrapper" style="transition-duration: 0ms;">
+                <div class="swiper-button-next"></div>
+               <div class="swiper-wrapper" style="transition-duration: 0ms;">
                 {% for media in product.media %}
-                  <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="{{ forloop.index }}">
+                  <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="{{ forloop.index }}">
                     <a
                       href="{{ media.src | img_url:'master' }}"
                       target="_blank"
@@ -75,13 +73,12 @@
                       <img src="{{ media.src | img_url:'master' }}">
                     </a>
                   </div>
+                
                 {% endfor %}
               </div>
             </div>
           </div>
           <!-- swiper CSS -->
-          
-          
           <div class="pdp-info-header">
             <div class="pdp-info-header-inner">
                <div class="pdp-headline">
@@ -209,7 +206,7 @@
           </div>
           <div class="pdp-info-body-tertiary"></div>
         </div>
-        <div class="pdp-info-footer">	
+        <div class="pdp-info-footer">
           <ul class="pdp-keywords pdp-keywords-blank">
             <li class="pdp-storeavailability ">
               <span class="pdp-link pdp-link-chevron"><span>Store availablity</span></span>
@@ -242,14 +239,6 @@
     </div>
   </div>
 </div>
-
-<style>
-.pdp-product-variants .pdp-product-variants-list ul li.is-active {
-   
-    border-radius: 2px 19px 19px 2px;
-}
-</style>
-
 <!-- PDP Gallery -->
 <!-- PhotoSwipe HTML -->
 <!-- Root element of PhotoSwipe. Must have class pswp -->
@@ -299,56 +288,67 @@
     </div>
 </div>
 <!-- PhotoSwipe CSS -->
+
 {{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+
 <!-- PhotoSwipe JS -->
 <script type="module">
-    //console.log('lightbox');
-    import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
-    import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
-    // Flag to track first interaction
-    let firstZoomed = 0;
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: '.gallery',
-        children: 'a',
-        pswpModule: PhotoSwipe,
-        // Enable tap to close
-        bgOpacity: 1, // Ensure the background is fully opaque to prevent seeing white spaces
-        //paddingFn: () => ({ top: 0, bottom: 0, left: 0, right: 0 }), // Remove any padding
-        //showHideOpacity: true,
-        //spacing: 0, // Set spacing between slides to 0
-        loop: true,
-        initialZoomLevel: 'fill', // Initially fit the image to screen
-        //secondaryZoomLevel: '1', // Fully zoom in to original size on second click
-        //maxZoomLevel: 2, // Maximum zoom level
-        //initialPointerPos: 'center', // Start zoom from the center of the image
-        // Other configurations
-        zoom: false,
-        //closeOnVerticalDrag: false,     
-    });
+  import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+  import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
 
-  lightbox.firstZoomed =false;
-  //const pswp = lightbox.pswp;
-  lightbox.on('zoomPanUpdate', () => { //console.log(lightbox.firstZoomed);
-    // Check if this is the first zoom interaction                                   
-    if (!lightbox.firstZoomed == true) { 
-      //console.log('ttt');
-      lightbox.firstZoomed = true; // Mark that zoom interaction happened
-      pswp.close(); // Close the gallery on first zoom
-    }
+  // Initialize the PhotoSwipe lightbox
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.gallery',         // Target the gallery container
+    children: 'a',               // Target child <a> elements for each image
+    pswpModule: PhotoSwipe,      // The PhotoSwipe module
+    bgOpacity: 1,                // Background opacity
+    loop: true,                  // Loop through images
+    initialZoomLevel: 'fill',    // Initially fit the image to screen
   });
+
+  let clickCount = 0; // Track number of clicks
+
+  lightbox.on('uiRegister', () => {
+    const pswp = lightbox.pswp;  // Access the PhotoSwipe instance
+
+    //Handle pointerUp (click or tap) events to control open/close behavior
+    pswp.on('pointerUp', (e) => {
+     const target = e.originalEvent?.target; // Use originalEvent to access DOM element
+    //console.log(target);
+      
+      //Check if the target exists and is an image element
+      if (target && target.tagName === 'IMG') {
+        clickCount++; // Increment click count on every image click
+        //console.log('Click count:', clickCount);
+
+        if (clickCount === 1) {
+          //First click: Close the gallery
+          //console.log('First click: Gallery closed.');
+          pswp.close(); // Close the gallery
+          clickCount = 0; // Reset click count for future interactions
+        }
+      }
+    });
+  });
+
+  // Initialize the lightbox
   lightbox.init();
+
 </script>
 <!-- END PDP Gallery --> 
 
 <!-- swiper JS Mobile -->
-<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+<script src="{{ 'swiper-bundle-min.js' | asset_url }}" defer></script>
+{{ 'photoswipe.css' | asset_url | stylesheet_tag }}
 
 <!-- Swipe Slide Mobile Start --> 
-<script type="text/javascript">
+<script type="module">
+  var swiper;
   document.addEventListener('DOMContentLoaded', function () {
-  var swiper = new Swiper('.swiper-pdp', {
+  swiper = new Swiper('.swiper-pdp', {
     slidesPerView: 10,
     spaceBetween: 20,
+    loop: true, 
     breakpoints: {
       575: {  // This is the new breakpoint for max-width 575px
         slidesPerView: 1
@@ -362,9 +362,88 @@
       prevEl: '.swiper-button-prev'
     }
   });
-});   
-</script>  
+});  
+  
+// mobile Initialize PhotoSwipe
+import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}'; 
+var lightbox;
+ lightbox = new PhotoSwipeLightbox({
+  gallery: '.swiper-pdp',
+  children: 'a',
+  pswpModule: PhotoSwipe,
+  bgOpacity: 1,
+  loop: true,
+  initialZoomLevel: 'fill',
+  showControls: true,
+  zoom: true
+});
 
+
+ let clickCount = 0; // Track number of clicks
+
+  lightbox.on('uiRegister', () => {
+    const pswp = lightbox.pswp;  // Access the PhotoSwipe instance
+
+    //Handle pointerUp (click or tap) events to control open/close behavior
+    pswp.on('pointerUp', (e) => {
+     const target = e.originalEvent?.target; // Use originalEvent to access DOM element
+    console.log(target);
+      
+      //Check if the target exists and is an image element
+      if (target && target.tagName === 'IMG') {
+        clickCount++; // Increment click count on every image click
+        console.log('Click count:', clickCount);
+
+        if (clickCount === 1) {
+          //First click: Close the gallery
+          console.log('First click: Gallery closed.');
+          pswp.close(); // Close the gallery
+          clickCount = 0; // Reset click count for future interactions
+        }
+      }
+    });
+  });
+
+  // Initialize the lightbox
+  lightbox.init();  
+    
+// Add custom class when PhotoSwipe is opened
+lightbox.on('change', () => { 
+  console.log('change');
+  const pswpElement = document.querySelector('.pswp--touch'); // Select the main PhotoSwipe element
+  if (pswpElement) {
+    pswpElement.classList.add('pswp--no-mouse-drag', 'pswp--open');
+    pswpElement.classList.remove('pswp--no-mouse-drag', 'pswp__button--close');
+    pswpElement.classList.add('swipergallery'); // Add your custom class here
+  }
+});
+// Handle the close event
+lightbox.on('close', () => {  
+  console.log('close');
+   lightbox.destroy();  
+  const pswpElement = document.querySelector('.swipergallery');
+  if (pswpElement) {
+    pswpElement.classList.remove('pswp--no-mouse-drag', 'pswp--open');
+    pswpElement.classList.add('pswp--no-mouse-drag', 'pswp__button--close');
+  }  
+}); 
+
+// Ensure that clicking an image in the gallery doesn't open in a new tab
+document.querySelectorAll('.swiper-pdp a').forEach((link) => {
+  link.addEventListener('click', function(e) {  
+    console.log('link click');
+    e.preventDefault();  // Prevent default link click behavior
+     const pswp = lightbox.pswp;  // Access the PhotoSwipe instance
+
+    pswp.zoomTo(2); // Adjust zoom level (2x)
+ 
+  //lightbox.init(); // Initialize the lightbox  
+  });    
+});  
+
+  
+</script>  
 <!-- Swipe Slide Mobile End --> 
 
 <!---- Video Start --->
@@ -374,15 +453,10 @@
     video.autoplay = true;
     video.muted = true; // This is necessary for autoplay to work in some browsers
     video.play();
-    // Stop the video after 5 seconds
-    // setTimeout(function() {
-    //   video.pause();
-    // }, 5000); // 5000 milliseconds = 5 seconds
   };
 </script>
 
 <!---- Video End -->
-
 <script>
   window.productMetafields = {
     {% for item in cart.items %}
@@ -534,7 +608,7 @@ function updateCartDrawer() {
               <div class="caption" id="caption">
                 <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                 <div class="caption-option promo_input is-off" id="promo_input">
-                  <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
+                  <input type="text" id="promo-code-input" placeholder="Enter promotion code" class="input-promo">
                   <button class="button-promo" id="apply-promo-code">Ok</button>
                 </div>
               </div>

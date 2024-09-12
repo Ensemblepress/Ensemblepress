@@ -111,6 +111,7 @@ body {
   font-weight: 400;
   text-align: left;
   text-transform: none;
+  letter-spacing: 0 !important;
 }
 @media (min-width: 576px) {
   body {
@@ -1246,7 +1247,7 @@ textarea.has-error {
   }
   #nav-bag.is-on-mobile .title-title {
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
   }
   #nav-bag.is-on-mobile .title-favorite {
     display: none;
@@ -1321,7 +1322,7 @@ textarea.has-error {
     padding: 0;
   }
   .site-system .item-product-minibag .info .title .title-title {
-    font-weight: 600;
+    font-weight: 500;
   }
   .site-system .item-product-minibag .info .title .title-inner {
     margin-left: 55px;
@@ -2253,13 +2254,8 @@ textarea.has-error {
 .site-system .item-copy p.q {
   margin: 2em 0 2em 2em;
 }
-.site-system .item-copy-longtext {
-  line-height: 1.5em;
-}
-@media (min-width: 576px) {
-  .site-system .item-copy-longtext {
-    line-height: 1.5em;
-  }
+.site-system .item-checkbox strong {
+    font-weight: 500;
 }
 .site-system .item-copy-blockquote {
   text-transform: uppercase;
@@ -2421,7 +2417,7 @@ textarea.has-error {
   }
 }
 .site-system .item-checkbox input[type="checkbox"].checkbox-single {
-  margin: 4px 10px 0 0;
+  margin: 0px 8px 0 0;
 }
 @media (min-width: 576px) {
   .site-system .item-checkbox input[type="checkbox"].checkbox-single {
@@ -2443,7 +2439,7 @@ textarea.has-error {
 .site-system .item-checkbox input[type="checkbox"]:checked:after {
   content: "";
   position: absolute;
-  top: 4px;
+  top: 5px;
   left: 5px;
   background-color: #000;
   width: 7px;
@@ -4624,7 +4620,7 @@ ul.nav-menu li .tooltip {
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    transform: translateZ(0) !important;
+    transform: translate3d(0px, 0px, 0px) !important;
     background: none !important
 }
 .headroom.headroom--unpinned {
@@ -5291,7 +5287,7 @@ footer .links {
   flex-direction: row;
   flex-wrap: wrap;
   text-align: left;
-  line-height: 1em;
+  line-height: 1.3em;
   padding-top: 26px;
 }
 
@@ -5404,13 +5400,12 @@ footer .links ul li.links-title-copyright {
 }
 footer .links ul li a,
 footer .links ul li .link {
-  display: inline-block;
   padding: 8px 0;
 }
 @media (min-width: 576px) {
   footer .links ul li a,
   footer .links ul li .link {
-    padding: 8px 0;
+    padding: 4px 0;
   }
 }
 footer .links ul .icon-social {
@@ -5700,6 +5695,9 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: 0;
     grid-gap: 0px;
+  }
+  footer .links ul .icon-social {
+	background-position: 100% 4px;
   }
 }
 .product-grid.is-off {
@@ -6058,7 +6056,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   }
   .product-grid .item .caption-default .name-title,
   .product-grid .item .caption-additional .name-title {
-    font-weight: 600;
+    font-weight: 500;
   }
   .product-grid .item .caption-default .price,
   .product-grid .item .caption-default .sizes,
@@ -7828,7 +7826,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   }
 }
 .pdp-info-header .pdp-headline .pdp-headline-title {
-  font-weight: 600;
+  font-weight: 500;
 }
 .pdp-info-header .pdp-headline .pdp-headline-price {
   font-style: normal;
@@ -8100,7 +8098,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   line-height: 1.3em;
   margin: 0;
   padding: 0;
-  /* list-style: none; */
+  list-style: none; 
 }
 .pdp-keywords li {
   position: relative;
@@ -8108,12 +8106,12 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 .pdp-keywords li.is-off {
   display: none;
 }
-/* .pdp-keywords li::before {
-  content: "–";
+ .pdp-keywords li::before {
+  content: ".";
   position: absolute;
   left: -12px;
-  top: 0;
-} */
+  top: -4px;
+} 
 .pdp-keywords.pdp-keywords-blank {
   padding: 0;
   margin-bottom: 12px;
@@ -8535,6 +8533,7 @@ ul.payment-icons li.payment-icon-paypal {
 .pdp-divider {
   text-align: left;
   margin: 60px 24px 20px;
+  font-size:14px;
 }
 @media (min-width: 576px) {
   .pdp-divider {
@@ -8573,7 +8572,7 @@ ul.payment-icons li.payment-icon-paypal {
 }
 @media (min-width: 576px) {
   .pdp-product-slider .product-grid.product-grid-recommended {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
   }
 }
 @media (max-width: calc(576px - 1px)) {
@@ -9507,7 +9506,7 @@ body.ReactModal__Body--open {
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  line-height: 1.5em;
+  line-height: 1.3em;
   font-weight: 400;
   text-align: left;
   text-transform: none;
@@ -9555,8 +9554,8 @@ body.ReactModal__Body--open {
 }
 .overlay .overlay-close > span {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border: 1px solid #000;
   border-radius: 9px;
   background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/ea9a27c1e6456d80e84d85d6d2ee3b4f.svg?v=1721841942);
@@ -10960,19 +10959,20 @@ ul.toolbar-categories li.li-category {
     margin-right: 15%;
   }
   .widget-newsletter.widget-newsletter-footer .hd .hd-intro .hd-intro-title {
-    text-transform: uppercase;
     display: block;
     margin-bottom: 10px;
   }
 }
+/*
 @media (min-width: 576px) {
   .widget-newsletter.widget-newsletter-footer
     .hd
     .hd-intro
     .hd-intro-title:after {
     content: ":";
-  }
+  } 
 }
+*/
 .widget-newsletter.widget-newsletter-footer .form-field button.button-next {
   opacity: 1;
 }
@@ -12225,6 +12225,7 @@ div.pswp__img--placeholder,
 }
 .pswp__button--close {
   margin-right: 6px;
+  display:none;
 }
 .pswp__button--arrow {
   position: absolute;
@@ -12250,7 +12251,7 @@ div.pswp__img--placeholder,
   display: none;
 }
 .pswp--touch .pswp__button--arrow {
-  visibility: hidden;
+  visibility: visible;
 }
 .pswp--has_mouse .pswp__button--arrow {
   visibility: visible;
@@ -12271,7 +12272,7 @@ div.pswp__img--placeholder,
   display: none;
 }
 .pswp--zoom-allowed .pswp__button--zoom {
-  display: block;
+  display: none;
 }
 .pswp--zoomed-in .pswp__zoom-icn-bar-v {
   display: none;
@@ -12861,7 +12862,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     width: 6%;
   }
   footer .widget-newsletter.widget-newsletter-footer .cancel.is-on {
-    margin: -45px 0 0 -50px;
+    margin: -40px 0 0 -50px;
   }
 }
 @media (max-width: calc(575px)) {
@@ -12875,7 +12876,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     .widget-newsletter.widget-newsletter-footer
     .form-field
     button.button-next-footer {
-    padding: 3px 0 15px 26px;
+    padding: 5px 0 15px 26px;
     margin-left: -8.5rem;
   }
   footer
