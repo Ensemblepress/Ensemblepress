@@ -59,26 +59,28 @@
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
+		
           <div class="pdp-info-swiper pdp-main-swiper">
-            <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-pdp">
-              <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-               <div class="swiper-wrapper" style="transition-duration: 0ms;">
+            <div class="swiper-container swiper-pdp">
+              <div class="swiper-wrapper">
                 {% for media in product.media %}
-                  <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="{{ forloop.index }}">
-                    <a
-                      href="{{ media.src | img_url:'master' }}"
-                      target="_blank"
-                      class="image-zoomable">
-                      <img src="{{ media.src | img_url:'master' }}">
-                    </a>
-                  </div>
+                <div class="swiper-slide">
+                  <a href="{{ media.src | img_url:'master' }}" data-pswp-width="{{ media.width }}" data-pswp-height="{{ media.height }}" class="image-zoomable">
+                    <img src="{{ media.src | img_url:'master' }}" al="{{ media.alt }}">
+                  </a>
+                </div>
+               {% endfor %}   
                 
-                {% endfor %}
               </div>
+              
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
           </div>
+		  
           <!-- swiper CSS -->
+
           <div class="pdp-info-header">
             <div class="pdp-info-header-inner">
                <div class="pdp-headline">
@@ -337,20 +339,20 @@
 </script>
 <!-- END PDP Gallery --> 
 
-<!-- swiper JS Mobile -->
+<!-- Swiper Js & CSS -->
 <script src="{{ 'swiper-bundle-min.js' | asset_url }}" defer></script>
-{{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-bundle-min.css' | asset_url | stylesheet_tag }}
 
 <!-- Swipe Slide Mobile Start --> 
 <script type="module">
-  var swiper;
-  document.addEventListener('DOMContentLoaded', function () {
-  swiper = new Swiper('.swiper-pdp', {
-    slidesPerView: 10,
-    spaceBetween: 20,
-    loop: true, 
+  document.addEventListener("DOMContentLoaded", function() {
+  // Initialize Swiper
+  const swiper = new Swiper('.swiper-pdp', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
     breakpoints: {
-      575: {  // This is the new breakpoint for max-width 575px
+      575: { // Breakpoint for mobile devices
         slidesPerView: 1
       },
       320: {
@@ -359,91 +361,58 @@
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
+      prevEl: '.swiper-button-prev',
+    },
+    preventClicks: false, // Allow PhotoSwipe to detect click events
   });
-});  
-  
-// mobile Initialize PhotoSwipe
-import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
-import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}'; 
-var lightbox;
- lightbox = new PhotoSwipeLightbox({
-  gallery: '.swiper-pdp',
-  children: 'a',
-  pswpModule: PhotoSwipe,
-  bgOpacity: 1,
-  loop: true,
-  initialZoomLevel: 'fill',
-  showControls: true,
-  zoom: true
-});
+});   
+</script>  
 
+<!-- Include PhotoSwipe CSS -->
+<link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}">
 
- let clickCount = 0; // Track number of clicks
+<!-- Initialize Swiper and PhotoSwipe -->
+<script type='module'>
+  // Initialize the PhotoSwipeLightbox
+    
+  import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+  import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
 
-  lightbox.on('uiRegister', () => {
-    const pswp = lightbox.pswp;  // Access the PhotoSwipe instance
+  const lightbox = new PhotoSwipeLightbox({
+    gallerySelector: '.swiper-pdp',  // Swiper wrapper as the gallery
+    childSelector: 'a',                  // Target anchor tags for images
+    pswpModule: PhotoSwipe,              // Use the UMD PhotoSwipe module
+    bgOpacity: 1,                      // Set background opacity for the lightbox
+    loop: true,                          // Enable looping through images
+    initialZoomLevel: 'fill',    // Initially fit the image to screen
+  });
 
-    //Handle pointerUp (click or tap) events to control open/close behavior
-    pswp.on('pointerUp', (e) => {
-     const target = e.originalEvent?.target; // Use originalEvent to access DOM element
-    console.log(target);
-      
-      //Check if the target exists and is an image element
+  // Initialize the lightbox
+  lightbox.init();
+
+  // Handling custom click-to-close behavior
+  let clickCount = 0; // Variable to track clicks
+
+  lightbox.on('uiRegister', function() {
+    const pswp = lightbox.pswp; // Access PhotoSwipe instance
+
+    pswp.on('pointerUp', function(e) {
+      const target = e.originalEvent?.target; // Target the image element clicked
+
       if (target && target.tagName === 'IMG') {
         clickCount++; // Increment click count on every image click
-        console.log('Click count:', clickCount);
 
         if (clickCount === 1) {
-          //First click: Close the gallery
-          console.log('First click: Gallery closed.');
-          pswp.close(); // Close the gallery
-          clickCount = 0; // Reset click count for future interactions
+          // First click: Close the gallery
+          pswp.close();
+          clickCount = 0; // Reset click count
         }
       }
     });
   });
 
-  // Initialize the lightbox
-  lightbox.init();  
-    
-// Add custom class when PhotoSwipe is opened
-lightbox.on('change', () => { 
-  console.log('change');
-  const pswpElement = document.querySelector('.pswp--touch'); // Select the main PhotoSwipe element
-  if (pswpElement) {
-    pswpElement.classList.add('pswp--no-mouse-drag', 'pswp--open');
-    pswpElement.classList.remove('pswp--no-mouse-drag', 'pswp__button--close');
-    pswpElement.classList.add('swipergallery'); // Add your custom class here
-  }
-});
-// Handle the close event
-lightbox.on('close', () => {  
-  console.log('close');
-   lightbox.destroy();  
-  const pswpElement = document.querySelector('.swipergallery');
-  if (pswpElement) {
-    pswpElement.classList.remove('pswp--no-mouse-drag', 'pswp--open');
-    pswpElement.classList.add('pswp--no-mouse-drag', 'pswp__button--close');
-  }  
-}); 
+</script>
 
-// Ensure that clicking an image in the gallery doesn't open in a new tab
-document.querySelectorAll('.swiper-pdp a').forEach((link) => {
-  link.addEventListener('click', function(e) {  
-    console.log('link click');
-    e.preventDefault();  // Prevent default link click behavior
-     const pswp = lightbox.pswp;  // Access the PhotoSwipe instance
-
-    pswp.zoomTo(2); // Adjust zoom level (2x)
- 
-  //lightbox.init(); // Initialize the lightbox  
-  });    
-});  
-
-  
-</script>  
 <!-- Swipe Slide Mobile End --> 
 
 <!---- Video Start --->

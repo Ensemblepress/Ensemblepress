@@ -12901,7 +12901,7 @@ body.collection .header-logo .logotype svg .cls-1 {
   content: "";
   position: absolute;
   left: 0;
-  top: 1px;
+  top: -1px;
   width: 18px;
   height: 18px;
   border: 1px solid #000;
