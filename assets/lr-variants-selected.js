@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // Selectors
   const variantItems = document.querySelectorAll("#variant-selector .variant_li");
   const pdpInfoHeaders = document.querySelectorAll(".pdp-info-header-secondary");
-  const cartDrawer = document.querySelector('.pdp-info .ReactModalPortal');
+  const cartDrawer = document.querySelector('.ReactModalPortal');
   const menu = document.querySelector('body.product #menu .header-secondary');
   const detailsButtons = document.querySelectorAll('.pdp-details');
-  const portal = document.querySelector('.pdp-info .ReactModalPortal');
-  const content = document.querySelector('.pdp-info .ReactModal__Content');
+  const portal = document.querySelector('.ReactModalPortal');
+  const content = document.querySelector('.ReactModal__Content');
 
   // Function to show the content for the selected variant and hide others
   function showVariantContent(variantId) {
@@ -61,10 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
             
           $('.header-secondary').hide();
           $('body').css('overflowY', 'hidden'); // Show the vertical scroll bar
-          const cust_menu = document.getElementById('custom-menu');
-          if (cust_menu) {
-            cust_menu.style.setProperty('position', 'unset', 'important');
-          }
       } else {
           console.warn(`Modal for variant ID ${variantId} not found.`);
       }
@@ -92,11 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
     portal.classList.add("ReactModal__Overlay--before-open");
     content.classList.remove('ReactModal__Content--after-open');
     content.classList.add('ReactModal__Content--before-open');
-    const cust_menu = document.getElementById('custom-menu');
     $('.header-secondary').show();
-     if (cust_menu) {    
-      cust_menu.style.setProperty('position', 'relative', 'important');
-    }
-    
+     
   });
 });
