@@ -12926,4 +12926,8 @@ body.collection .header-logo .logotype svg .cls-1 {
   list-style: none;
   margin: 8px 0px;
 }
+.pdp-keywords .pdp-details::before {
+  display: none; 
+}
+
 /* PDP End */
