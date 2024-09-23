@@ -12929,5 +12929,23 @@ body.collection .header-logo .logotype svg .cls-1 {
 .pdp-keywords .pdp-details::before {
   display: none; 
 }
-
+.panel-content .metafield-rich_text_field {
+  margin: 0 -4rem; 
+}
+.metafield-rich_text_field li {
+    list-style: none;
+    position: relative;
+}
+.metafield-rich_text_field ul {
+    margin: 0;
+    list-style: none;
+}
+.metafield-rich_text_field li::before {
+    content: ".";
+    position: absolute;
+    left: -12px;
+    top: -4px;
+    font-size: 15px;
+    font-weight: 600;
+}
 /* PDP End */
