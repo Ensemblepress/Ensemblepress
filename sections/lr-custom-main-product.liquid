@@ -94,14 +94,19 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-          {% if product.variants.size > 1 %}
+		  
+          {% if product.variants.size %}
           <!-- Loop through the variants -->
           {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
                 {% assign short_des = variant.metafields.custom.short_description %}
+                {% if short_des %}
                 <div class="pdp-description">
                   <p>{{ short_des }}</p>
                 </div>
+                {% else %}
+                {{ product.description }}
+                {% endif %}
                 {% assign bulletpoint = variant.metafields.custom.short_bullet_point | split:'|' %}
                   <ul class="pdp-keywords">
                     {% for text in bulletpoint %}
@@ -115,15 +120,17 @@
                
 		  {% endfor %}  
         {% else %}
+          {% comment %}
           <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
           <div class="pdp-description">
-            {{ product.description }}
+            --{{ product.description }}
             <ul class="pdp-keywords">
               <li class="pdp-details">
                 <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
               </li>
             </ul>  
           </div>
+          {% endcomment %}  
         {% endif %}
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
@@ -208,6 +215,7 @@
 		<div class="overlay-outer-title">Details</div>
 		<div class="panel-content">
 			{% assign bulletpoint = variant.metafields.custom.book_detail | split:'|' %}
+            {% if bulletpoint !=blank %}
 			<div class="block">
 				<div class="hd">The Book</div>
 				<div class="copy">
@@ -220,13 +228,27 @@
 					</ul>
 				</div>
 			</div>
+            {% else %}
+            {% assign bulletpoint = product.metafields.custom.product_book_contents | split:'|' %}
+            <div class="block">
+				<div class="hd">The Book</div>
+				<div class="copy">
+					<ul class="ul-listing">
+                      {% for text in bulletpoint %}
+						{% if text != blank %}
+							<li>{{ text }}</li>
+						{% endif %}
+					{% endfor %} 
+					
+					</ul>
+				</div>
+			</div>  
+            {% endif %}  
 			<div class="block">
 				<div class="hd">The Author</div>
 				<div class="copy">
 					<ul class="ul-listing">
-						<li>Scott Schomburg is a writer based in New York City. His work has appeared in <em>The Paris Review</em>, <em>The Bare Life Review</em>, <em>After the Art</em>, <em>The Millions</em>, and elsewhere. He has received a writing
-						fellowship from the Virginia Center for the Creative Arts, and he holds a Master of Divinity from Duke Divinity School.</li>
-						<li><a href="#">Read Scott on Joseph Mitchell’s collection of objects here</a>.</li>
+    					{{ product.metafields.custom.author_content | metafield_tag }}
 					</ul>
 				</div>
 			</div>         
@@ -239,7 +261,14 @@
 								<ul class="ul-listing">     
 									<li>{{ shipping_Text }}</li>    
 								</ul>
-							{% endfor %}   
+							{% endfor %}
+                          {% else %}
+                          {% assign shipping_detail = product.metafields.custom.product_shipping_content  | split:'|' %}
+                          {% for shipping_Text in shipping_detail %}     
+								<ul class="ul-listing">     
+									<li>{{ shipping_Text }}</li>    
+								</ul>
+							{% endfor %}
 						{% endif %}             
 					</div>
 				</div> 
@@ -248,6 +277,7 @@
 	</div>
 </div> 
 {% endfor %}
+
 <!-- PDP Gallery -->
 <!-- PhotoSwipe HTML -->
 <!-- Root element of PhotoSwipe. Must have class pswp -->
