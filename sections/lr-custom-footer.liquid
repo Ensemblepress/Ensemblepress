@@ -11,7 +11,7 @@
         <div class="widget-newsletter widget-newsletter-footer  ">
             <div class="hd">
               <span class="hd-intro">
-                <span class="hd-intro-title">Newsletter</span>
+                <span class="hd-intro-title">Newsletter<span class="dot">•</span></span>
               </span>
             </div>
             <div class="form">
@@ -50,7 +50,15 @@
       {% for links in link %}
         <li>
           <a href="{{ links.url | default:"#" }}">
+          {% if links.title == 'Terms & conditions' %}
+            <!-- Do something if the title is exactly "Terms & conditions" -->
+            <span class="text">Terms</span>
+            <span class="dot">•</span>
+            <span class="text">conditions</span>
+          {% else %}
+            <!-- Do something else if the title is different -->
             <span>{{ links.title }}</span>
+          {% endif %}
           </a>
         </li>
       {% endfor %}
