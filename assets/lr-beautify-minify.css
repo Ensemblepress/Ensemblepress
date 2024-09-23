@@ -12948,4 +12948,7 @@ body.collection .header-logo .logotype svg .cls-1 {
     font-size: 15px;
     font-weight: 600;
 }
+.overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
+    padding: 0 4rem;
+}
 /* PDP End */
