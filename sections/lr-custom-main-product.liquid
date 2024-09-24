@@ -19,7 +19,7 @@
               </a>
             </div>
           {% endfor %}
-		  
+
           {% assign tiktok_video = product.metafields.custom.tiktok_link %}
 
           {% if tiktok_video %}
@@ -32,7 +32,7 @@
                 </div>
           
                 <div class="pdp-image-set-tiktok-video">
-                    <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="">
                       <source src="{{ tiktok_video }}" type="video/mp4">
                     </video>
                 </div>
@@ -43,14 +43,15 @@
 
           {% if video_url %}
             <div class="pdp-image-set-video">
-              <video id="myVideo" width="100%" height="100%" autoplay="" loop="" playsinline="">
+
+              <video id="myVideo" width="100%" height="100%"  loop="" playsinline="">
+
+              <video id="myVideo" width="100%" height="100%" loop="" playsinline="">
                 <source src="{{ video_url }}" type="video/mp4">
               </video>
             </div>
-
           {% endif %}  
         
-		  
         </div>
       </div>
     </div>
@@ -61,27 +62,28 @@
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
+		
           <div class="pdp-info-swiper pdp-main-swiper">
-            <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events swiper-pdp">
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-wrapper" style="transition-duration: 0ms;">
+            <div class="swiper-container swiper-pdp">
+              <div class="swiper-wrapper">
                 {% for media in product.media %}
-                  <div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="{{ forloop.index }}">
-                    <a
-                      href="{{ media.src | img_url:'master' }}"
-                      target="_blank"
-                      class="image-zoomable">
-                      <img src="{{ media.src | img_url:'master' }}">
-                    </a>
-                  </div>
-                {% endfor %}
+                <div class="swiper-slide">
+                  <a href="{{ media.src | img_url:'master' }}" data-pswp-width="{{ media.width }}" data-pswp-height="{{ media.height }}" class="image-zoomable">
+                    <img src="{{ media.src | img_url:'master' }}" al="{{ media.alt }}">
+                  </a>
+                </div>
+               {% endfor %}   
+                
               </div>
+              
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
           </div>
+		  
           <!-- swiper CSS -->
-          
-          
+
           <div class="pdp-info-header">
             <div class="pdp-info-header-inner">
                <div class="pdp-headline">
@@ -92,14 +94,19 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-          {% if product.variants.size > 1 %}
+		  
+          {% if product.variants.size %}
           <!-- Loop through the variants -->
           {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
                 {% assign short_des = variant.metafields.custom.short_description %}
+                {% if short_des %}
                 <div class="pdp-description">
                   <p>{{ short_des }}</p>
                 </div>
+                {% else %}
+                {{ product.description }}
+                {% endif %}
                 {% assign bulletpoint = variant.metafields.custom.short_bullet_point | split:'|' %}
                   <ul class="pdp-keywords">
                     {% for text in bulletpoint %}
@@ -110,63 +117,20 @@
                     </li>
                 </ul>
               </div>
-               <div id="model_id_{{ variant.id }}" class="ReactModalPortal ReactModal__Overlay ReactModal__Overlay--before-open overlay overlay-pdp">
-                  <div id="model_contect_id_{{ variant.id }}" class="ReactModal__Content ReactModal__Content--before-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
-                        <div class="overlay-close"><span>×</span></div>
-                        <div class="overlay-panel-inner">
-                            <div class="overlay-outer-title">Details</div>
-                            <div class="panel-content">
-                                   {% assign bulletpoint = variant.metafields.custom.book_detail | split:'|' %}
-                                    <div class="block">
-                                        <div class="hd">The Book</div>
-                                        <div class="copy">
-                                          <ul class="ul-listing">
-                                           {% for text in bulletpoint %}
-                                             {% if text != blank %}
-                                                <li>{{ text }}</li>
-                                             {% endif %}
-                                           {% endfor %} 
-                                          </ul>
-                                        </div>
-                                    </div>
-                                  <div class="block">
-                                      <div class="hd">The Author</div>
-                                      <div class="copy">
-                                          <ul class="ul-listing">
-                                              <li>Scott Schomburg is a writer based in New York City. His work has appeared in <em>The Paris Review</em>, <em>The Bare Life Review</em>, <em>After the Art</em>, <em>The Millions</em>, and elsewhere. He has received a writing
-                                                  fellowship from the Virginia Center for the Creative Arts, and he holds a Master of Divinity from Duke Divinity School.</li>
-                                              <li><a href="#">Read Scott on Joseph Mitchell’s collection of objects here</a>.</li>
-                                          </ul>
-                                      </div>
-                                  </div>         
-                                  {% assign shipping_detail = variant.metafields.custom.shipping_and_returns  | split:'|' %}
-                                          <div class="block" current_variants_id="{{ variant.id }}">
-                                             <div class="hd">Shipping and Returns</div>
-                                                  <div class="copy">      
-                                                    {% if shipping_detail != blank %}
-                                                       {% for shipping_Text in shipping_detail %}     
-                                                            <ul class="ul-listing">     
-                                                                <li>{{ shipping_Text }}</li>    
-                                                            </ul>
-                                                       {% endfor %}   
-                                                    {% endif %}             
-                                                   </div>
-                                              </div> 
-                                            </div>
-                                          </div>
-                                      </div>
-                                   </div> 
-                              {% endfor %}  
+               
+		  {% endfor %}  
         {% else %}
+          {% comment %}
           <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
           <div class="pdp-description">
-            {{ product.description }}
+            --{{ product.description }}
             <ul class="pdp-keywords">
               <li class="pdp-details">
                 <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
               </li>
             </ul>  
           </div>
+          {% endcomment %}  
         {% endif %}
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
@@ -209,7 +173,7 @@
           </div>
           <div class="pdp-info-body-tertiary"></div>
         </div>
-        <div class="pdp-info-footer">	
+        <div class="pdp-info-footer">
           <ul class="pdp-keywords pdp-keywords-blank">
             <li class="pdp-storeavailability ">
               <span class="pdp-link pdp-link-chevron"><span>Store availablity</span></span>
@@ -243,12 +207,76 @@
   </div>
 </div>
 
-<style>
-.pdp-product-variants .pdp-product-variants-list ul li.is-active {
-   
-    border-radius: 2px 19px 19px 2px;
-}
-</style>
+{% for variant in product.variants %}
+<div id="model_id_{{ variant.id }}" class="ReactModalPortal ReactModal__Overlay ReactModal__Overlay--before-open overlay overlay-pdp">
+<div id="model_contect_id_{{ variant.id }}" class="ReactModal__Content ReactModal__Content--before-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="overlay-close"><span>×</span></div>
+		<div class="overlay-panel-inner">
+		<div class="overlay-outer-title">Details</div>
+		<div class="panel-content">
+			{% assign bulletpoint = variant.metafields.custom.book_detail | split:'|' %}
+            {% if bulletpoint !=blank %}
+			<div class="block">
+				<div class="hd">The Book</div>
+				<div class="copy">
+					<ul class="ul-listing">
+					{% for text in bulletpoint %}
+						{% if text != blank %}
+							<li>{{ text }}</li>
+						{% endif %}
+					{% endfor %} 
+					</ul>
+				</div>
+			</div>
+            {% else %}
+            {% assign bulletpoint = product.metafields.custom.product_book_contents | split:'|' %}
+            <div class="block">
+				<div class="hd">The Book</div>
+				<div class="copy">
+					<ul class="ul-listing">
+                      {% for text in bulletpoint %}
+						{% if text != blank %}
+							<li>{{ text }}</li>
+						{% endif %}
+					{% endfor %} 
+					
+					</ul>
+				</div>
+			</div>  
+            {% endif %}  
+			<div class="block">
+				<div class="hd">The Author</div>
+				<div class="copy">
+					<ul class="ul-listing">
+    					{{ product.metafields.custom.author_content | metafield_tag }}
+					</ul>
+				</div>
+			</div>         
+			{% assign shipping_detail = variant.metafields.custom.shipping_and_returns  | split:'|' %}
+			<div class="block" current_variants_id="{{ variant.id }}">
+				<div class="hd">Shipping and Returns</div>
+					<div class="copy">      
+						{% if shipping_detail != blank %}
+							{% for shipping_Text in shipping_detail %}     
+								<ul class="ul-listing">     
+									<li>{{ shipping_Text }}</li>    
+								</ul>
+							{% endfor %}
+                          {% else %}
+                          {% assign shipping_detail = product.metafields.custom.product_shipping_content  | split:'|' %}
+                          {% for shipping_Text in shipping_detail %}     
+								<ul class="ul-listing">     
+									<li>{{ shipping_Text }}</li>    
+								</ul>
+							{% endfor %}
+						{% endif %}             
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div> 
+{% endfor %}
 
 <!-- PDP Gallery -->
 <!-- PhotoSwipe HTML -->
@@ -299,58 +327,69 @@
     </div>
 </div>
 <!-- PhotoSwipe CSS -->
+
 {{ 'photoswipe.css' | asset_url | stylesheet_tag }}
+
 <!-- PhotoSwipe JS -->
 <script type="module">
-    //console.log('lightbox');
-    import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
-    import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
-    // Flag to track first interaction
-    let firstZoomed = 0;
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: '.gallery',
-        children: 'a',
-        pswpModule: PhotoSwipe,
-        // Enable tap to close
-        bgOpacity: 1, // Ensure the background is fully opaque to prevent seeing white spaces
-        //paddingFn: () => ({ top: 0, bottom: 0, left: 0, right: 0 }), // Remove any padding
-        //showHideOpacity: true,
-        //spacing: 0, // Set spacing between slides to 0
-        loop: true,
-        initialZoomLevel: 'fill', // Initially fit the image to screen
-        //secondaryZoomLevel: '1', // Fully zoom in to original size on second click
-        //maxZoomLevel: 2, // Maximum zoom level
-        //initialPointerPos: 'center', // Start zoom from the center of the image
-        // Other configurations
-        zoom: false,
-        //closeOnVerticalDrag: false,     
-    });
+  import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+  import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
 
-  lightbox.firstZoomed =false;
-  //const pswp = lightbox.pswp;
-  lightbox.on('zoomPanUpdate', () => { //console.log(lightbox.firstZoomed);
-    // Check if this is the first zoom interaction                                   
-    if (!lightbox.firstZoomed == true) { 
-      //console.log('ttt');
-      lightbox.firstZoomed = true; // Mark that zoom interaction happened
-      pswp.close(); // Close the gallery on first zoom
-    }
+  // Initialize the PhotoSwipe lightbox
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '.gallery',         // Target the gallery container
+    children: 'a',               // Target child <a> elements for each image
+    pswpModule: PhotoSwipe,      // The PhotoSwipe module
+    bgOpacity: 1,                // Background opacity
+    loop: true,                  // Loop through images
+    initialZoomLevel: 'fill',    // Initially fit the image to screen
   });
+
+  let clickCount = 0; // Track number of clicks
+
+  lightbox.on('uiRegister', () => {
+    const pswp = lightbox.pswp;  // Access the PhotoSwipe instance
+
+    //Handle pointerUp (click or tap) events to control open/close behavior
+    pswp.on('pointerUp', (e) => {
+     const target = e.originalEvent?.target; // Use originalEvent to access DOM element
+    //console.log(target);
+      
+      //Check if the target exists and is an image element
+      if (target && target.tagName === 'IMG') {
+        clickCount++; // Increment click count on every image click
+        //console.log('Click count:', clickCount);
+
+        if (clickCount === 1) {
+          //First click: Close the gallery
+          //console.log('First click: Gallery closed.');
+          pswp.close(); // Close the gallery
+          clickCount = 0; // Reset click count for future interactions
+        }
+      }
+    });
+  });
+
+  // Initialize the lightbox
   lightbox.init();
+
 </script>
 <!-- END PDP Gallery --> 
 
-<!-- swiper JS Mobile -->
-<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+<!-- Swiper Js & CSS -->
+<script src="{{ 'swiper-bundle-min.js' | asset_url }}" defer></script>
+{{ 'swiper-bundle-min.css' | asset_url | stylesheet_tag }}
 
 <!-- Swipe Slide Mobile Start --> 
-<script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function () {
-  var swiper = new Swiper('.swiper-pdp', {
-    slidesPerView: 10,
-    spaceBetween: 20,
+<script type="module">
+  document.addEventListener("DOMContentLoaded", function() {
+  // Initialize Swiper
+  const swiper = new Swiper('.swiper-pdp', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
     breakpoints: {
-      575: {  // This is the new breakpoint for max-width 575px
+      575: { // Breakpoint for mobile devices
         slidesPerView: 1
       },
       320: {
@@ -359,11 +398,57 @@
     },
     navigation: {
       nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev'
-    }
+      prevEl: '.swiper-button-prev',
+    },
+    preventClicks: false, // Allow PhotoSwipe to detect click events
   });
 });   
 </script>  
+
+<!-- Include PhotoSwipe CSS -->
+<link rel="stylesheet" href="{{ 'photoswipe.css' | asset_url }}">
+
+<!-- Initialize Swiper and PhotoSwipe -->
+<script type='module'>
+  // Initialize the PhotoSwipeLightbox
+    
+  import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
+  import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallerySelector: '.swiper-pdp',  // Swiper wrapper as the gallery
+    childSelector: 'a',                  // Target anchor tags for images
+    pswpModule: PhotoSwipe,              // Use the UMD PhotoSwipe module
+    bgOpacity: 1,                      // Set background opacity for the lightbox
+    loop: true,                          // Enable looping through images
+    initialZoomLevel: 'fill',    // Initially fit the image to screen
+  });
+
+  // Initialize the lightbox
+  lightbox.init();
+
+  // Handling custom click-to-close behavior
+  let clickCount = 0; // Variable to track clicks
+
+  lightbox.on('uiRegister', function() {
+    const pswp = lightbox.pswp; // Access PhotoSwipe instance
+
+    pswp.on('pointerUp', function(e) {
+      const target = e.originalEvent?.target; // Target the image element clicked
+
+      if (target && target.tagName === 'IMG') {
+        clickCount++; // Increment click count on every image click
+
+        if (clickCount === 1) {
+          // First click: Close the gallery
+          pswp.close();
+          clickCount = 0; // Reset click count
+        }
+      }
+    });
+  });
+
+</script>
 
 <!-- Swipe Slide Mobile End --> 
 
@@ -374,15 +459,10 @@
     video.autoplay = true;
     video.muted = true; // This is necessary for autoplay to work in some browsers
     video.play();
-    // Stop the video after 5 seconds
-    // setTimeout(function() {
-    //   video.pause();
-    // }, 5000); // 5000 milliseconds = 5 seconds
   };
 </script>
 
 <!---- Video End -->
-
 <script>
   window.productMetafields = {
     {% for item in cart.items %}
@@ -534,7 +614,7 @@ function updateCartDrawer() {
               <div class="caption" id="caption">
                 <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                 <div class="caption-option promo_input is-off" id="promo_input">
-                  <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
+                  <input type="text" id="promo-code-input" placeholder="Enter promotion code" class="input-promo">
                   <button class="button-promo" id="apply-promo-code">Ok</button>
                 </div>
               </div>

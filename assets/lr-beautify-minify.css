@@ -4620,7 +4620,7 @@ ul.nav-menu li .tooltip {
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    transform: translateZ(0) !important;
+    transform: translate3d(0px, 0px, 0px) !important;
     background: none !important
 }
 .headroom.headroom--unpinned {
@@ -12225,6 +12225,7 @@ div.pswp__img--placeholder,
 }
 .pswp__button--close {
   margin-right: 6px;
+  display:none;
 }
 .pswp__button--arrow {
   position: absolute;
@@ -12250,7 +12251,7 @@ div.pswp__img--placeholder,
   display: none;
 }
 .pswp--touch .pswp__button--arrow {
-  visibility: hidden;
+  visibility: visible;
 }
 .pswp--has_mouse .pswp__button--arrow {
   visibility: visible;
@@ -12271,7 +12272,7 @@ div.pswp__img--placeholder,
   display: none;
 }
 .pswp--zoom-allowed .pswp__button--zoom {
-  display: block;
+  display: none;
 }
 .pswp--zoomed-in .pswp__zoom-icn-bar-v {
   display: none;
@@ -12900,7 +12901,7 @@ body.collection .header-logo .logotype svg .cls-1 {
   content: "";
   position: absolute;
   left: 0;
-  top: 1px;
+  top: -1px;
   width: 18px;
   height: 18px;
   border: 1px solid #000;
@@ -12924,5 +12925,30 @@ body.collection .header-logo .logotype svg .cls-1 {
 .pdp-keywords .pdp-details {
   list-style: none;
   margin: 8px 0px;
+}
+.pdp-keywords .pdp-details::before {
+  display: none; 
+}
+.panel-content .metafield-rich_text_field {
+  margin: 0 -4rem; 
+}
+.metafield-rich_text_field li {
+    list-style: none;
+    position: relative;
+}
+.metafield-rich_text_field ul {
+    margin: 0;
+    list-style: none;
+}
+.metafield-rich_text_field li::before {
+    content: ".";
+    position: absolute;
+    left: -12px;
+    top: -4px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
+    padding: 0 4rem;
 }
 /* PDP End */
