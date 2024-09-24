@@ -1,14 +1,3 @@
-// window.onload = function() {
-//   var video = document.getElementById("myVideo");
-//   video.autoplay = true;
-//   video.muted = true; // This is necessary for autoplay to work in some browsers
-//   video.play();
-//   // Stop the video after 5 seconds
-//   setTimeout(function() {
-//     video.pause();
-//   }, 5000); // 5000 milliseconds = 5 seconds
-// };
-
 // Home page Newlatter
 $(document).ready(function() {
   var $list = $('.form-field button.button-next');
@@ -31,7 +20,7 @@ $(document).ready(function() {
   $('.plp-header .plp-header-tools-filter').on('click', function() {    
     var $cartDrawer = $('.ReactModalPortal');    
     // Toggle the 'open' class
-    $cartDrawer.toggleClass('open');    
+    //$cartDrawer.toggleClass('open');    
     // Toggle the display property
     if ($cartDrawer.css('display') === 'block') {
       $cartDrawer.css('display', 'none');
@@ -45,7 +34,7 @@ $(document).ready(function() {
 
 // Event listener to close the cart drawer
 $(document).ready(function() {
-  $('.overlay .overlay-close').on('click', function() {
+  $('body.collection .overlay .overlay-close').on('click', function() {
     var $cartDrawer = $('.ReactModalPortal');
     
     // Remove the 'open' class and hide the cart drawer
@@ -54,6 +43,7 @@ $(document).ready(function() {
     $('body').css('overflowY', 'visible'); // Show the vertical scroll bar
   });
 });
+
 
 // Cart Drawer Open Mobile Menu Start 
 $(document).ready(function() {
@@ -76,7 +66,6 @@ $(document).ready(function() {
     }
   });
 });
-
 
 // Close Icon
 var elements = document.querySelectorAll('.header-close-button');
@@ -104,4 +93,3 @@ elements.forEach(function(element) {
 });
 
 // End
-
