@@ -47,12 +47,11 @@
         </p>
       {%- endif -%}
     </div>
-
     <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
       <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
         <div class="js-contents">
           {%- if cart != empty -%}
-            <table class="cart-items">
+            <table class="cart-items" >
               <caption class="visually-hidden">
                 {{ 'sections.cart.title' | t }}
               </caption>
@@ -79,7 +78,9 @@
 
               <tbody>
                 {%- for item in cart.items -%}
-                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                  
+                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.product.id }}" 
+       data-author-name="{{ item.product.metafields.custom.author_name }}">
                     <td class="cart-item__media">
                       {% if item.image %}
                         {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -96,14 +97,14 @@
                         </div>
                       {% endif %}
                     </td>
-
                     <td class="cart-item__details">
                       {%- if settings.show_vendor -%}
                         <p class="caption-with-letter-spacing">{{ item.product.vendor }}</p>
                       {%- endif -%}
-
+                      
                       <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
-
+                      {% assign author_name = item.product.metafields.custom.author_name %}
+                      <span class="title-author" id="author_name_{{item.id}}">{{ author_name }}</span>
                       {%- if item.original_price != item.final_price -%}
                         <div class="cart-item__discounted-prices">
                           <span class="visually-hidden">

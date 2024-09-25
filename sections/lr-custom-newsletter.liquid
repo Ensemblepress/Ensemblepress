@@ -1,0 +1,104 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{{ 'lr-custom-newslatter.js' | asset_url }}" defer="defer"></script>
+<div class="item">
+  <div class="widget-newsletter widget-newsletter-strip">
+    <div class="hd">
+      <span class="hd-intro">
+        <span class="hd-intro-title">Newsletter</span>
+        <div class="Typewriter" data-testid="typewriter-wrapper">
+          <span class="Typewriter__wrapper">Private sales</span>
+          <span class="Typewriter__cursor"></span>
+        </div>
+      </span>
+      <span class="cancel ">Cancel</span>
+    </div>
+    <div class="form">
+      <form id="newsletter-form" method="post" accept-charset="UTF-8">
+        <div class="form-field is-on" id="fiels_row_0">
+           <input type="hidden" name="form_type" value="customer">
+           <input type="hidden" name="utf8" value="✓">
+           <input type="hidden" name="contact[tags]" id="tags" value="homepage-newslettermodule">
+           <input type="email" class="input-email" id="email" placeholder="Enter your email" style="outline: none;">
+           <button class="button-next">Sign up</button>
+        </div>
+      <div class="form-field" id="fiels_row_1">
+        <input type="checkbox" id="nwsl_chckbk" class="checkbox-single" id="widget-newsletter-strip-newsletter-confirm">
+        <label for="widget-newsletter-strip-newsletter-confirm" class="error_color">
+          I have read, understood and accepted the <a class="error_color" href="/legal/termsofuse">terms and conditions</a> and the
+          <a href="/legal/privacy" class="error_color">privacy policy</a>
+        </label>
+      </div>
+
+      <div class="form-field form-field-padding" id="fiels_row_2">
+        <button class="button button-newsletter-submit button-submit" type="submit">Submit</button>
+      </div>
+       </form>
+      <div class="form-field form-field-copy form-field-padding newsletter-success ">
+        <p>Thank you. You have successfully been subscribed to the newsletter. We will email you shortly.</p>
+        <p><button class="button" id="nwsl_close_button">Close</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#nwsl_close_button').click(function(){
+    //Some code
+    $('.widget-newsletter-strip').removeClass('is-active');
+    $('.widget-newsletter-strip').removeClass('is-focus');
+    $('.newsletter-success').removeClass('is-on');
+    $('#fiels_row_0').addClass('is-on');
+    $('#email').val('');
+  });
+
+  $('#email').click(function(){
+      $('.widget-newsletter-strip').addClass('is-focus');     
+  });  
+
+  $(document).on("click", function(e) {
+      if ($(e.target).is(".item, .button-submit, .checkbox-single, .button-next, #email") === false) {
+        $(".widget-newsletter").removeClass("is-focus");
+      }
+  });
+
+   $('.button-next').click(function(){
+      $('.widget-newsletter-strip').addClass('is-active');
+      $('.widget-newsletter-strip').addClass('is-focus');   
+  });  
+  // @ sign covert to .(dot) symbole
+  // document.getElementById('email').addEventListener('input', function(event) {
+  // // Replace all instances of "@" with "."
+  // event.target.value = event.target.value.replace(/@/g, '.');
+  // });
+  // End
+  const text = document.querySelector(".Typewriter__wrapper");
+  const textLoad = () => {
+   setTimeout(() => {
+     text.textContent = "Private sales";
+   }, 0);
+   setTimeout(() => {
+     text.textContent = "New collections";
+   }, 3000);
+   setTimeout(() => {
+     text.textContent = "Collaborations";
+   }, 7000);
+  setTimeout(() => {
+     text.textContent = "Exclusive events";
+   }, 9000);
+
+  };
+  textLoad();
+  setInterval(textLoad, 11000);
+</script>
+
+{% schema %}
+{
+  "name": "LR Custom Newsletter",
+  "settings": [],
+  "presets": [
+    {
+      "name": "LR Custom Newsletter"
+    }
+  ]
+}
+{% endschema %}

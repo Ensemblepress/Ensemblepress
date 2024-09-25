@@ -1,222 +1,811 @@
-{% comment %}
-{%- for link in section.settings.menu.links -%}
-	{{ link.title }}
-	{%- for childlink in link.links -%}
-		{{ childlink.title }}
-	{%- endfor -%}
-{%- endfor -%}
-{% endcomment %}
+<style>
+    #search-results {
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .search-result-item {
+      width: 200px;
+      margin: 10px;
+      text-align: center;
+  }
+
+  .search-result-item img {
+      width: 100%;
+      height: auto;
+  }
+
+  .search-result-item h3 {
+      font-size: 1em;
+  }
+
+  .search-result-item p {
+      font-size: 0.9em;
+  }
+
+  body.is-home .header-logo {
+    mix-blend-mode: normal;
+ }
+</style>
+<script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+var menu = document.getElementById("custom-menu");    
+    if (menu) {
+      var headroom = new Headroom(menu, {
+        tolerance: 1,
+        offset: 54,  // Menu will start hiding once scrolled 100px from the top
+        classes: {
+          initial: "headroom",           // Added when Headroom is initialized
+          pinned: "headroom--pinned",    // Added when scrolling up
+          unpinned: "headroom--unpinned", // Added when scrolling down
+          top: "headroom--unfixed",          // Added when at the top of the page
+          //notTop: "headroom--not-top",   // Added when scrolling down the page
+          //bottom: "headroom--bottom",    // Added when at the bottom of the page
+          //notBottom: "headroom--not-bottom" // Added when scrolling up from bottom
+        }
+      });
+      // Initialize Headroom
+      headroom.init();
+    } else {
+      console.error("Menu element not found");
+    }
+});        
+</script>
 <div class="header-background ">
-    <div class="header-background-close"></div>
-    <div class="header-background-bg"></div>
+  <div class="header-background-close"></div>
+  <div class="header-background-bg"></div>
 </div>
 <div class="headroom-wrapper" style="height: 54px;">
-    <div class="headroom headroom--unfixed headroom-disable-animation" style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);">
-        <header>
-            <div class="header-close-button ">Close</div>
-            <div class="header-mobile  ">
-                <ul class="header-mobile-icons">
-                    <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
-                    <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
-                    <li class="header-mobile-icon header-mobile-icon-search">Search</li>
-                    <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount">0</span></li>
-                </ul>
-            </div>
-            <div id="menu" class="">
-                <div class="menu-inner">
-                    <ul class="header-primary">
-						<a class="header-item header-item-brand" href="/">
-							<span>Lost River</span>
-						</a>
-						{%- for link in section.settings.menu.links -%}	
-							<li class="header-item header-item-{{ link.title | downcase }}">
-								<a class="header-item header-item-brand" href="{{ link.url }}">
-									<span>{{- link.title | escape -}}</span>
-								</a>	
-							</li>
-						{%- endfor -%}	
-						</ul>
-						<ul class="header-secondary">
-							<li class="header-item header-item-search">
-								<span>Search</span>
-							</li>
-							<li class="header-item header-item-clean header-item-account ">
-								<span>Account</span>
-							</li>
-							<li class="header-item header-item-bag  false false" id="menu-link-bag">
-								<span>Bag <span class="amount">0</span></span>
-							</li>
-						</ul>
-                </div>
-            </div>
-            <div id="search-form" class="header-search ">
-                <div class="header-search-inner">
-                    <input type="text" class="input-search-display" placeholder="Enter search term..." fdprocessedid="oy9mr">
-                </div>
-            </div>
-        </header>
-    </div>
+  <div id="custom-menu"
+    class="headroom headroom--unfixed headroom-disable-animation"
+    style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);"
+  >
+    <header>
+      <div class="header-close-button ">Close</div>
+      <div class="header-mobile  ">
+        <ul class="header-mobile-icons">
+          <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
+          <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
+          <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
+        </ul>
+      </div>
+      
+      <div id="menu">
+        <div class="menu-inner">
+          <ul class="header-primary">
+            <a class="header-item header-item-brand" href="/">
+              <span>Lost River</span>
+            </a>
+            {%  assign i = 0 %}
+            {%- for link in section.settings.menu.links -%}
+              <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}">
+                <a class="header-item header-item-brand" href="{{ link.url }}">
+                  <span>{{- link.title | escape -}}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+          <ul class="header-secondary">
+            <li class="header-item header-item-search nav_3" data-title="nav-search">
+                 <div class="header-search-title is-active">
+                   <span>Search</span>
+                 </div>
+              <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+                 <div class="header-search-field">
+                   <input type="text" 
+                id="Search-In-Template"   
+                name="q"
+                class="input-search-display"                     
+                placeholder="Enter search term..."
+                fdprocessedid="oy9mr">
+                 </div>
+              </form> 
+            </li>
+            <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account">
+              <span>Account</span>
+            </li>
+            <li class="header-item header-item-bag  false false nav_5 main-nav-menu-item" id="li-nav-bag" data-title="nav-bag">
+                {%- if cart.item_count < 100 -%}
+                  <span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span>
+                {% endif %}  
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="search-form" class="header-search" data-title="nav-search" style="display:none;">
+        <div class="header-search-inner">
+           <script src="{{ 'lr_custom-search.js' | asset_url }}" defer="defer"></script>
+          <form id="search-form" action="/search" method="get">
+              <input type="text" 
+                value="{{ search.terms | escape }}"
+                id="Search-In-Template"
+                name="q"
+                class="input-search-display"
+                placeholder="Enter search term..."
+                fdprocessedid="oy9mr">
+          </form>
+          <div id="search-results"></div>
+        </div>
+      </div>
+    </header>
+  </div>
 </div>
-	<div class="header-logo header-logo-difference ">
-		<a href="/">
-			<span class="logotype logotype-default">
-				<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 119.1 232.4"><rect class="cls-1" x="5.7" y="62.4" width="107.7" height="51" rx="1.4" ry="1.4" fill="#fff"></rect><rect class="cls-1" x="5.7" y="5.7" width="51" height="51" rx="1.4" ry="1.4" fill="#fff"></rect><path class="cls-1" d="M87,119.1H7.1c-.8,0-1.4.6-1.4,1.4v48.2c0,.8.6,1.4,1.4,1.4h80.8c14.2,0,25.8-11.7,25.5-26-.3-14-12.3-25-26.4-25Z" fill="#fff"></path><path class="cls-1" d="M5.7,177.2v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L7.7,175.9c-.9-.4-2,.3-2,1.3Z" fill="#fff"></path></svg></span><span class="logotype logotype-horizontal logotype-pdp"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 402.5 62.4"><rect class="cls-1" x="62.4" y="5.7" width="107.7" height="51" rx="1.4" ry="1.4" fill="#000"></rect><rect class="cls-1" x="5.7" y="5.7" width="51" height="51" rx="1.4" ry="1.4" fill="#000"></rect><path class="cls-1" d="M257.1,5.7h-79.9c-.8,0-1.4.6-1.4,1.4v48.2c0,.8.6,1.4,1.4,1.4h80.8c14.2,0,25.8-11.7,25.5-26-.3-14-12.3-25-26.4-25Z" fill="#000"></path><path class="cls-1" d="M289.1,7.1v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L291.1,5.8c-.9-.4-2,.3-2,1.3Z" fill="#000"></path></svg>
-			</span>
-			<span class="brand">Lost River</span>
-		</a>
-	</div>
-		{%- for link in section.settings.menu.links -%}
-		<nav id="nav-{{ link.title | downcase }}" class="nav nav-primary">
-			<a class="nav-logo" href="/"></a>
-			{%- for link in section.settings.menu.links -%}
-			<div class="nav-layout nav-layout-horizontal">
-				<div class="nav-layout-item">
-					<ul class="nav-menu">
-					  {%- for childlink in link.links -%}
-							<li>
-							  <a
-								id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-								href="{{ childlink.url }}"
-								class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-								{% if childlink.current %}
-								  aria-current="page"
-								{% endif %}
-							  >
-								{{ childlink.title | escape }}
-							  </a>
-							</li>
-						{%- endfor -%}					  
-												
-					</ul>
-				</div>
-				<div class="nav-icon-back">
-					<svg viewBox="0 0 210 210">
-						<path class="path" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L200,105"></path>
-						<path class="path path-b" fill="transparent" stroke="black" stroke-width="10" d="M 105,10 L10,105"></path>
-						<path class="path path-c" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L105,200"></path>
-					</svg>
-				</div>
-			</div>
-			{%- endfor -%}
-		</nav>
-		{%- endfor -%}
-		
-		{% assign right_menu = menus.lr_header_top_right_menu %}
-		{{ right_menu.title }}
-		{% if right_menu %}
-		<nav id="nav-account" class="nav nav-secondary    ">
-			<div class="nav-layout nav-layout-horizontal nav-layout-secondary">
-				<div class="nav-layout-item">
-					<ul class="nav-menu">
-						<li><a href="/login"><span>Sign in</span></a></li>
-						<li><a href="/register"><span>Register</span></a></li>
-					</ul>
-				</div>
-				<div class="nav-layout-item">
-					<ul class="nav-menu">
-						{%- for childlink in menus.lr_header_top_right_men -%}
-							<li>
-							  <a
-								id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
-								href="{{ childlink.url }}"
-								class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-								{% if childlink.current %}
-								  aria-current="page"
-								{% endif %}
-							  >
-								{{ childlink.title | escape }}
-							  </a>
-							</li>
-						{%- endfor -%}
-					</ul>
-				</div>
-				<div class="nav-icon-back">
-					<svg viewBox="0 0 210 210">
-						<path class="path" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L200,105"></path>
-						<path class="path path-b" fill="transparent" stroke="black" stroke-width="10" d="M 105,10 L10,105"></path>
-						<path class="path path-c" fill="transparent" stroke="black" stroke-width="10" d="M 10,105 L105,200"></path>
-					</svg>
-				</div>
-			</div>
-		</nav>
-		{%- endif -%}
-		<nav id="nav-bag" class="nav nav-secondary">
-			<div class="nav-layout">
-				<div class="site-system site-system-minibag">
-					<div class="item item-product item-product-minibag ">
-						<div class="image">
-							<a href="/pdp"><img src="/uploads/products/default/3-a.jpg"></a>
-						</div>
-						<div class="info">
-							<div class="caption">
-								<div class="title"><span class="title-inner"><span class="title-author">Georges Simenon</span><span class="title-title">Letter to my Mother</span></span><span class="title-favorite">Favorite</span></div>
-								<div class="values"><span class="value-material">Paperback</span></div>
-								<div class="info-price">USD 12.00 × 1</div>
-								<div class="tools">
-									<div class="tool tool-quantity">
-										<div class="quantity">× <span class="quantity-value">1</span></div>
-										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">2</span><span class="icon-quantity icon-quantity-plus"></span></div>
-									</div>
-									<div class="tool tool-remove"><a href="#" class="link-remove"><span></span></a></div>
-								</div>
-							</div>
-							<div class="price">
-								<div class="tools">
-									<div class="tool tool-quantity">
-										<div class="quantity">× <span class="quantity-value">1</span></div>
-										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">1</span><span class="icon-quantity icon-quantity-plus"></span></div>
-									</div>
-								</div>
-								<div class="price-amount">1 ×</div>
-								<div class="price-price">USD 12.00</div>
-							</div>
-						</div>
-					</div>
-					<div class="item item-product item-product-minibag">
-						<div class="image">
-							<a href="/pdp"><img src="/uploads/products/default/8-a.jpg"></a>
-						</div>
-						<div class="info">
-							<div class="caption">
-								<div class="title"><span class="title-inner"><span class="title-author">J. D. Salinger</span><span class="title-title">Franny and Zoe</span></span><span class="title-favorite">Favorite</span></div>
-								<div class="values"><span class="value-material">Electronic</span></div>
-								<div class="info-price">USD 10.00 × 2</div>
-								<div class="tools">
-									<div class="tool tool-quantity">
-										<div class="quantity">× <span class="quantity-value">2</span></div>
-										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">2</span><span class="icon-quantity icon-quantity-plus"></span></div>
-									</div>
-									<div class="tool tool-remove"><a href="#" class="link-remove"><span></span></a></div>
-								</div>
-							</div>
-							<div class="price">
-								<div class="tools">
-									<div class="tool tool-quantity">
-										<div class="quantity">× <span class="quantity-value">2</span></div>
-										<div class="quantity-modifiers"><span class="icon-quantity icon-quantity-minus"></span><span class="icon-quantity icon-quantity-amount">2</span><span class="icon-quantity icon-quantity-plus"></span></div>
-									</div>
-								</div>
-								<div class="price-amount">2 ×</div>
-								<div class="price-price">USD 10.00</div>
-							</div>
-						</div>
-					</div>
-					<div class="item item-total item-total-first item-total-promo">
-						<div class="caption">
-							<div class="caption-option "><span class="icon-promo"></span> Add promotion code</div>
-							<div class="caption-option is-off">
-								<input type="text" placeholder="Enter promotion code" class="input-promo">
-								<button class="button-promo">OK</button>
-							</div>
-						</div>
-					</div>
-					<div class="item item-total item-total-final">
-						<div class="caption">Total <span class="note">Taxes and duties incl.</span></div>
-						<div class="price">USD 22.00</div>
-					</div>
-					<div class="item item-button item-button-sticky item-button-checkout"><a class="button button-xlarge button-inverted button-orange" href="/checkout">Checkout</a>
-						<button class="button button-xlarge is-off">Continue shopping</button>
-					</div>
-				</div>
-			</div>
-		</nav>
+<div class="header-logo header-logo-difference ">
+  <a href="/">
+    <span class="logotype logotype-default">
+      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 119.1 232.4">
+        <rect class="logo-color logo-color-0" id="logo-element_0" data-state="0" x="5.7" y="62.4" width="107.7" height="51" rx="1.4" ry="1.4" fill="#fff" onMouseEnter="randomizeColor(0)"></rect>
+        <rect class="logo-color logo-color-0" id="logo-element_1" data-state="0" x="5.7" y="5.7" width="51" height="51" rx="1.4" ry="1.4" fill="#fff" onMouseEnter="randomizeColor(1)"></rect>
+        <path class="logo-color logo-color-0" id="logo-element_3" data-state="0" d="M87,119.1H7.1c-.8,0-1.4.6-1.4,1.4v48.2c0,.8.6,1.4,1.4,1.4h80.8c14.2,0,25.8-11.7,25.5-26-.3-14-12.3-25-26.4-25Z" fill="#fff" onMouseEnter="randomizeColor(3)"></path>
+        <path class="logo-color logo-color-0" id="logo-element_4" data-state="0" d="M5.7,177.2v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L7.7,175.9c-.9-.4-2,.3-2,1.3Z" fill="#fff" onMouseEnter="randomizeColor(4)"></path>
+      </svg>
+    </span>
+    <span class="logotype logotype-horizontal logotype-pdp">
+      <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 402.5 62.4">
+        <rect class="cls-1" x="62.4" y="5.7" width="107.7" height="51" rx="1.4" ry="1.4" fill="#000"></rect>
+        <rect class="cls-1" x="5.7" y="5.7" width="51" height="51" rx="1.4" ry="1.4" fill="#000"></rect>
+        <path class="cls-1" d="M257.1,5.7h-79.9c-.8,0-1.4.6-1.4,1.4v48.2c0,.8.6,1.4,1.4,1.4h80.8c14.2,0,25.8-11.7,25.5-26-.3-14-12.3-25-26.4-25Z" fill="#000">
+        </path><path class="cls-1" d="M289.1,7.1v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L291.1,5.8c-.9-.4-2,.3-2,1.3Z" fill="#000"></path>
+      </svg>
+    </span>
+    <span class="brand">Lost River</span>
+  </a>
+</div>
+{%  assign j = 0 %}
+{%- for link in section.settings.menu.links -%}
+  <nav
+    id="nav-{{ link.title | downcase }}"
+    class="nav nav-primary nav_{% increment j %} nav-sub-menu-item li-nav-{{ link.title | downcase }}-cls"
+data-titlesub="nav-{{ link.title | downcase }}">
+    <a class="nav-logo" href="/"></a>
+    <div class="nav-layout nav-layout-horizontal">
+      <div class="nav-layout-item">
+        <ul class="nav-menu">
+          {%- for childlink in link.links -%}
+            {% if childlink.title == '---' %}
+              </ul>
+              </div>
+              <div class="nav-layout-item">
+                <ul class="nav-menu">
+            {% endif %}
+            <li>
+              {% if childlink.title != '---' %}
+              <a
+                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                href="{{ childlink.url }}"
+                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                {% if childlink.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{ childlink.title | escape }}
+              </a>
+              {% endif %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="nav-icon-back">
+        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>
+      </div>
+    </div>
+  </nav>
+{%- endfor -%}
+  <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls">
+    <div class="nav-layout nav-layout-horizontal nav-layout-secondary">
+      <div class="nav-layout-item">
+        <ul class="nav-menu">
+          {% for link in linklists['lr_header_top_right_menu'].links %}
+          {% for childlink in link.links %}
+            {% if childlink.title == '---' %}
+              </ul>
+              </div>
+              <div class="nav-layout-item">
+                <ul class="nav-menu">
+            {% endif %}
+            <li>
+              {% if childlink.title != '---' %}
+              <a
+                id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                href="{{ childlink.url }}"
+                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                {% if childlink.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{ childlink.title | escape }}
+              </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="nav-icon-back">
+        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>
+      </div>
+    </div>
+</nav>
+ 
+<nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls">
+  <script>
+  window.productMetafields = {
+    {% for item in cart.items %}
+      "{{ item.product_id }}": {
+        "author_name": "{{ item.product.metafields.custom.author_name }}"
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>  
+  <div class="nav-layout">   
+      <div class="site-system site-system-minibag cart-drawer-body">
+      {%- for item in cart.items -%}
+        <div class="item item-product item-product-minibag " data-line="{{ forloop.index }}">
+         {% if item.image %}  
+        <div class="image">
+          <a href="{{ item.url }}">
+            <img src="{{ item.image | img_url:'master' }}" alt="{{ item.image.alt | escape }}">
+          </a>
+        </div>
+        {% endif %}   
+        <div class="info">
+          <div class="caption">
+            <div class="title">
+              <span class="title-inner">
+                 {% assign author_name = item.product.metafields.custom.author_name %}
+                <span class="title-author" id="author_name_{{ item.id }}">{{ author_name }}</span>
+                <span class="title-title">{{ item.title }}</span>
+              </span>
+              <span class="title-favorite">Favorite </span>
+            </div>
+            <div class="values"><span class="value-material">Paperback</span></div>
+            <div class="tools">
+              <div class="tool tool-quantity">
+                <div class="quantity">× <span class="quantity-value">1</span></div>
+                <div class="quantity-modifiers quantity-controls">
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="{{ forloop.index }}" onclick="attachCartItemEvents();"></button>
+                  <span class="icon-quantity icon-quantity-amount quantity quantity_upd">1</span>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="{{ forloop.index }}" onclick="attachCartItemEvents();"></button>
+                </div>
+              </div>
+              <div class="tool tool-remove">
+                {% comment %}
+                <button class="link-remove remove-item" data-line="{{ forloop.index }}"><span>remove</span></button>
+                {% endcomment %}
+                <a href="javascript:void(0)" class="link-remove remove-item" data-line="{{ forloop.index }}"><span></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="price">
+            <div class="tools">
+              <div class="tool tool-quantity">
+                <div class="quantity">× <span class="quantity-value">1</span></div>
+                <div class="quantity-modifiers quantity-controls">
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="{{ forloop.index }}" onclick="attachCartItemEvents();"></button>
+                  <span class="icon-quantity icon-quantity-amount quantity quantity_upd">1</span>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="{{ forloop.index }}" onclick="attachCartItemEvents();"></button>
+                </div>
+              </div>
+            </div>
+            <div class="price-amount">1 ×</div>
+            <div class="price-price">{{ item.original_line_price | money }}</div> 
+          </div>
+        </div>  
+      </div>
+      {% endfor %}
+      <div class="item item-total item-total-first item-total-promo">
+        <div class="caption">
+          <div class="caption-option promo_label is-off"><span class="icon-promo"></span> Add promotion code</div>
+          <div class="caption-option promo_input">
+            <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
+            <button class="button-promo" id="apply-promo-code">OK</button>
+            <div id="discount-message"></div>
+          </div>
+        </div>
+      </div>
+      <div class="item item-total item-total-final">
+        <div class="caption">Total <span class="note">Taxes and duties incl.</span></div>
+        <div class="price">{{ cart.total_price | money_with_currency }}</div>
+      </div>
+      <div class="item item-button item-button-sticky item-button-checkout">
+        <a class="button button-xlarge button-inverted button-orange" href="/checkout">Checkout</a>
+        <button class="button button-xlarge is-off">Continue shopping</button>
+      </div>
+    </div>       
+  </div>
+</nav>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function randomizeColor(id) {
+      var key = 'color' + id;
+      const element = document.getElementById('logo-element_'+id);
+      if (element) {
+        // Get the current state value from the data attribute
+        let state = parseInt(element.getAttribute('data-state'), 10);
+        element.classList.remove('logo-color-'+state);
+        // Increment the state
+        state = (state < 5) ? state + 1 : 0;
+        element.setAttribute('data-state', state);
+        element.classList.add('logo-color-'+state); 
+      }      
+}
+</script>
+<script type="text/javascript">
+  
+jQuery(function() {  
+  $('.main-nav-menu-item').hover(
+        function () {
+           $('.nav-primary').removeClass('is-on');
+           $('.nav-secondary').removeClass('is-on');
+          var submenucls = document.getElementsByClassName(this.id+'-cls');
+          $('.'+this.id+'-cls').addClass('is-on'); 
+        }
+  );
+  $('main').on('mouseenter', function(event) {
+    $('.nav-primary').removeClass('is-on');
+    $('.nav-secondary').removeClass('is-on');
+  });
+});
+  
+jQuery(function() {  
+  jQuery(".header-item-search").click(function() {  //use a class, since your ID gets mangled
+      jQuery('#search-form').toggleClass("is-on");      //add the class to the clicked element
+  });
+  
+  jQuery(".header-search-title").click(function() {
+     jQuery(".header-search-title").removeClass('is-active');
+     jQuery(".header-search-field").addClass('is-active');
+  });
+
+  //mobile resposive menu
+  jQuery(".header-mobile-icon-menu").click(function() {
+    jQuery(".header-background").addClass('is-on');
+    jQuery(".header-close-button").addClass('is-on');
+    jQuery(".header-mobile").addClass('is-off');
+    jQuery("#menu").addClass('is-on');
+
+    //search
+    jQuery(".header-mobile").removeClass('is-transparent-mobile');
+    jQuery("#search-form").removeClass('is-on');
+  });
+
+  jQuery(".header-mobile-icon-menu").click(function() {
+     jQuery(".js").addClass('is-disabled');
+  });
+  
+  jQuery(".header-close-button").click(function() {
+    jQuery(".header-background").removeClass('is-on');
+    jQuery(".header-close-button").removeClass('is-on');
+    jQuery(".header-mobile").removeClass('is-off');
+    jQuery("#menu").removeClass('is-on');
+    jQuery(".js").removeClass('is-disabled');
+    jQuery(".nav").removeClass('is-on-mobile');
+  });
+
+  jQuery(".header-mobile-icon-search").click(function() {
+    jQuery(".header-mobile").toggleClass('is-transparent-mobile');
+    jQuery("#search-form").toggleClass('is-on');
+    jQuery("#search-form").show(); 
+  }); 
+       
+  // hide searchbar
+  jQuery(".header-mobile-icon-bag").click(function() {
+    jQuery(".header-search").removeClass('is-on');    
+  }); 
+  
+  //header-background-close
+  jQuery(".header-background-close").click(function() {
+      jQuery(".header-background").removeClass('is-on');
+      jQuery(".header-close-button").removeClass('is-on');
+      jQuery(".header-mobile").removeClass('is-off');
+      jQuery("#menu").removeClass('is-on');
+      jQuery(".js").removeClass('is-disabled');
+      jQuery(".nav-primary").removeClass('is-on-mobile');
+      jQuery(".nav-secondary").removeClass('is-on-mobile');
+  });
+  
+  //lavel 2 sub menu
+  jQuery(".header-item").click(function() {
+    jQuery(".header-background").addClass('is-on');
+    var val_id = $(this).attr('data-title');
+    jQuery("#menu").removeClass('is-on');
+    jQuery('#'+val_id).addClass('is-on-mobile');
+  }); 
+
+  jQuery(".nav-icon-back").click(function() {
+     jQuery(".nav-primary").removeClass('is-on-mobile');
+     jQuery(".nav-secondary").removeClass('is-on-mobile');
+     jQuery("#menu").addClass('is-on');
+  });  
+});
+
+  
+//cart drower
+document.addEventListener('DOMContentLoaded', function() {
+  
+  var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+  
+  document.addEventListener('click', function(event) {
+
+  //promo code input open
+   if (event.target && event.target.id === 'icon-promo-text') {
+    jQuery(".promo_input").removeClass('is-off');
+    jQuery(".promo_label").addClass('is-off');
+   }
+
+  if (event.target && event.target.id === 'icon-promo-symbol') {
+    jQuery(".promo_input").removeClass('is-off');
+    jQuery(".promo_label").addClass('is-off');
+   }
+    
+    //apply prommo code 
+    if (event.target && event.target.id === 'apply-promo-code') {
+     //alert('aaa');
+      var discountCode = document.getElementById('promo-code-input').value;
+      if (discountCode === '') {
+        document.getElementById('discount-message').innerText = 'Please enter a discount code.';
+        return;
+      }
+      fetch('/discount/' + discountCode, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => { 
+       if (response.ok) { 
+          //console.log(cart)
+          document.getElementById('discount-message').innerText = 'Discount applied!';
+          jQuery(".is-discount").removeClass('is-off');
+          // Optionally, you could refresh the cart to show updated totals
+          //updateCartDrawer();
+          return fetch('/cart.js');
+        } else {
+          document.getElementById('discount-message').innerText = 'Invalid discount code.';
+          //return null;
+        }
+      })
+      .then(response => response.json())
+      .then(cart => {
+        //updateCartDrawer(cart);
+        // Log the latest cart data
+        if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
+          // Update the cart UI with the latest data
+          document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
+          document.querySelector('.cart-drawer-footer').textContent = `${formatMoney(cart.total_price, cart.currency)}`;
+          document.getElementById('caption').style.display = 'none';
+          document.getElementById('discount-message').style.display = 'none';
+          jQuery(".is-discount").show();
+          jQuery("#item-total-promo").removeClass('item-total');
+          discount_code = cart.items[0].discounts[0].title;
+          document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
+        }else{
+          document.getElementById('discount-message').style.display = 'block';
+          document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
+          document.getElementById('discount-message').innerText = 'Wrong Discount applied!';
+          jQuery(".is-discount").show();
+          jQuery(".is-discount").removeClass('is-off');
+        }
+      })
+      .catch(error => {
+        console.error('Error applying discount code:', error);
+        document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
+      });
+      //End apply promo code
+    }
+
+    if (event.target && event.target.id === 'remove-discount') {
+
+     fetch('/discount/' + discountCode, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      .then( response => { //console.log(cart);
+        if (response.ok) {
+          document.getElementById('discount-message').innerText = 'Discount code removed';
+           return fetch('/cart.js');
+          // Optionally, you could refresh the cart to show updated totals
+          //updateCartDrawer();
+        } else {
+          document.getElementById('discount-message').innerText = 'Invalid discount code.';
+        }
+      })
+      .then(response => response.json())
+      .then(cart => {
+        //updateCartDrawer(cart);
+        //console.log(cart); // Log the latest cart data
+        // Update the cart UI with the latest data
+        document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
+        document.querySelector('.cart-drawer-footer').textContent = `${formatMoney(cart.total_price, cart.currency)}`;
+        jQuery("#promo_code_text").textContent = "";
+        jQuery("#item-total-promo").addClass('item-total');
+        jQuery(".is-discount").hide();
+        jQuery("#caption").removeClass('is-off');
+        jQuery("#caption").show();
+
+         jQuery("#icon-promo-symbol").removeClass('is-off');
+         jQuery("#promo_input").addClass('is-off');
+        
+      })
+      .catch(error => {
+        console.error('Error applying discount code:', error);
+        document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
+      });      
+  }
+    
+});
+
+  function updateCartDrawer() {
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        var cartDrawerBody = document.querySelector('.cart-drawer-body');
+         if (cartDrawerBody) {
+        cartDrawerBody.innerHTML = '';
+  
+        cart.items.forEach((item, index) => {
+          const product = item.product;
+          const productName = item.product_title;
+          let variantName = item.variant_title;
+          if (variantName === null || variantName === undefined || variantName.trim() === '') {
+              variantName = ''; 
+          } else {
+              variantName = variantName;
+          }
+          //console.log(productName);
+           var authorName = window.productMetafields[item.product_id]?.author_name || 'Unknown Author';
+          // Use authorName and other details to build the cart item HTML
+          //console.log(authorName);
+          if(authorName == 'Unknown Author'){
+             var authorName_title = $('#get_author_name').text();
+             authorName = authorName_title;
+           }              
+          var cartItem = `  
+          <div class="cart-item item item-product item-product-minibag " data-line="${index + 1}">
+            <div class="image">
+              <a href="${ item.url }">
+                <img src="${ item.image }" alt="${ productName }">
+              </a>
+            </div>
+            <div class="info">
+              <div class="caption">
+                <div class="title">
+                  <span class="title-inner">
+                   
+                    <span class="title-author" author-title="">${ authorName }</span>
+                    <span class="title-title">${ productName }</span>
+                  </span>
+                  <span class="title-favorite">Favorite </span>
+                </div>
+                <div class="values"><span class="value-material">${ variantName }</span></div>
+                <div class="tools">
+                   <div class="tool tool-quantity">
+                      <div class="quantity">× <span class="quantity-value">1</span></div>
+                        <div class="quantity-modifiers quantity-controls">
+                          <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                          <span class="icon-quantity icon-quantity-amount quantity_upd">${item.quantity}</span>
+                          <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                        </div>
+                   </div> 
+                    <div class="tool tool-remove">
+                        <a href="javascript:void(0)" class="link-remove remove-item" data-line="${index + 1}"><span></span></a>
+                    </div>
+                </div>
+           </div>   
+           <div class="price">
+            <div class="tools">
+              <div class="tool tool-quantity">
+                <div class="quantity">× <span class="quantity-value">1</span></div>
+                <div class="quantity-modifiers quantity-controls">
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                  <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                </div>
+              </div>
+            </div>
+            <div class="price-amount">1 ×</div>
+              <div class="price-price" id="price_${ item.id }" >${formatMoney(item.original_line_price, cart.currency)}</div> 
+            </div>
+           </div>
+          </div>`;
+
+          cartDrawerBody.insertAdjacentHTML('beforeend', cartItem);
+        });
+        
+        var totalQuantity = calculateTotalQuantity(cart.items);
+        var discount_code;
+        if(totalQuantity != 0){
+          if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
+               discount_code = cart.items[0].discounts[0].title; 
+               var class_add = '';
+               var code_apply = 'is-off';
+               var add_disc = '';
+          }else{
+                discount_code = '';
+                var class_add = 'is-off';
+                var code_apply = '';
+                 var add_disc = 'item-total';
+          }
+        }else{
+           discount_code = "";
+        }
+        
+        var cart_footer = ` <div id="cart_footer"> 
+              <div class="item ${add_disc} item-total-first item-total-promo" id="item-total-promo">
+                <div class="caption ${code_apply}" id="caption">
+                  <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+                  <div class="caption-option promo_input is-off" id="promo_input">
+                    <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
+                    <button class="button-promo" id="apply-promo-code">Ok</button>
+                  </div>
+                </div>
+            </div>
+            <div class="item item-total item-total-final is-discount ${ class_add }">
+              <div class="caption"><span id="promo_code_text">Discount Promo Code : ${ discount_code }</span><span class="note"><div id="discount-message"></div></span></div>
+              <button id="remove-discount" class="remove-discount-button"></button>
+              <div class="price" id="cart_total_discount"> ${formatMoney(cart.total_discount, cart.currency)}</div>
+            </div>
+            <div class="item item-total item-total-final">
+              <div class="caption">Total <span class="note">Taxes and duties incl.</span></div>
+              <div class="price cart-drawer-footer"></div>
+            </div>
+            <div class="item item-button item-button-sticky item-button-checkout">
+              <a class="button button-xlarge button-inverted button-orange" href="/checkout">Checkout</a>
+              <button class="button button-xlarge is-off">Continue shopping</button>
+            </div>
+        </div>
+        </div>`;
+      
+        cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
+
+        var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
+                    <a href="/collections/all" class="button">Continue </a>   
+        </div>`;
+
+        cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
+        
+        document.querySelector('.cart-drawer-footer').textContent = `${formatMoney(cart.total_price, cart.currency)}`;
+        var totalQuantity = calculateTotalQuantity(cart.items);
+        document.getElementById('total-quantity').textContent = totalQuantity;
+        totalCartQuantityElement.textContent = totalQuantity;
+        if(totalQuantity == 0){  
+          document.getElementById('cart_footer').style.display = 'none';
+          document.getElementById('cart-empty-message').style.display = 'flex';
+        }
+        }      
+        attachCartItemEvents();   
+      });
+  }
+
+  function attachCartItemEvents() {
+    var increaseButtons = document.querySelectorAll('.increase-quantity');
+    var decreaseButtons = document.querySelectorAll('.decrease-quantity');
+    var removeButtons = document.querySelectorAll('.remove-item');
+    
+    increaseButtons.forEach(button => {
+      button.addEventListener('click', function(e) { 
+        e.preventDefault();
+        updateCartItemQuantity(button.dataset.line, 1);
+      });
+    });
+
+    decreaseButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        updateCartItemQuantity(button.dataset.line, -1);
+      });
+    });
+
+    removeButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        removeCartItem(button.dataset.line);
+      });
+    });
+  }
+
+  function updateCartItemQuantity(line, delta) {
+    var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
+    var newQuantity = parseInt(quantityElement.textContent) + delta;
+
+    if (newQuantity < 1) {
+      removeCartItem(line);
+    } else {
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ line: parseInt(line), quantity: newQuantity })
+      })
+      .then(response => response.json())
+      .then( cart => {
+        //updateCartDrawer();
+        // Update the quantity
+        //console.log(cart);
+        quantityElement.textContent = newQuantity;
+
+        // Get the specific item based on the line number
+        var cartItem = cart.items[line - 1];  // line is 1-indexed
+        //console.log(cartItem);
+        
+        // Update the price for the specific item qty
+        var itemPriceElement = document.querySelector(`#qty_${cartItem.id}`);
+        if (itemPriceElement) {
+          itemPriceElement.textContent = cartItem.quantity;
+        }
+        
+        // Update the price for the specific item price
+        var itemPriceElement = document.querySelector(`#price_${cartItem.id}`);
+        if (itemPriceElement) {
+          itemPriceElement.textContent = formatMoney(cartItem.original_line_price, cart.currency);
+        }
+        //console.log(cart);
+         quantityElement.textContent = newQuantity;
+         var cart_total_price_value = cart.original_total_price - cart.total_discount;
+         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
+         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
+         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+      });
+    }
+  }
+
+  function removeCartItem(line) {
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({ line: parseInt(line), quantity: 0 })
+    })
+    .then(response => response.json())
+    .then(cart => {
+       
+      //updateCartDrawer();
+        document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        var cart_total_price_value = cart.original_total_price - cart.total_discount;
+        document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
+        document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
+        var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        if (cart.item_count == 0) {
+            document.getElementById('cart_footer').style.display = 'none';
+            document.getElementById('cart-empty-message').style.display = 'flex';
+        }
+    });
+  }
+    
+  function formatMoney(cents, currency) {
+    let money = (cents / 100).toFixed(2);
+    switch (currency) {
+      case 'USD':
+        return `$${money}`;
+      case 'EUR':
+        return `€${money}`;
+      case 'GBP':
+        return `£${money}`;
+      // Add more currency cases as needed
+      default:
+        return `${money} ${currency}`;
+    }
+}
+
+  function calculateTotalQuantity(items) {
+    return items.reduce((total, item) => total + item.quantity, 0);
+  }
+  
+  document.addEventListener('cart:updated', updateCartDrawer);
+  // Call updateCartDrawer initially to load the cart contents
+  updateCartDrawer();    
+});
+//cart drower end      
+</script>  

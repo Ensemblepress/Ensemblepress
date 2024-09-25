@@ -1,0 +1,176 @@
+<footer>
+  <script src="{{ 'lr-custom-footer-newsletter-form.js' | asset_url }}" defer="defer"></script>
+  <div class="links links-secondary">
+    {% comment %}
+    <ul class="links-4col links-copyright">
+      <li class="links-title links-title-copyright">Copyright {{ 'now' | date: '%Y' }}  {{ shop.name | link_to: routes.root_url -}}</li>
+    </ul>
+    {% endcomment %}
+    <ul class="links-6col links-copyright">
+      <li>
+        <div class="widget-newsletter widget-newsletter-footer  ">
+            <div class="hd">
+              <span class="hd-intro">
+                <span class="hd-intro-title">Newsletter<span class="dot">•</span></span>
+              </span>
+            </div>
+            <div class="form">
+              <form id="footer-newsletter-form" method="post" accept-charset="UTF-8">
+              <div class="form-field footer-form-field is-on" id="footer_fiels_row_0">
+                <input type="hidden" name="form_type" value="customer">
+                <input type="hidden" name="utf8" value="✓">
+                <input type="hidden" name="contact[tags]" id="footer_tags" value="Newsletter-Footer-{{ page_title }}">
+                <input type="email" class="input-email" id="footer_email" placeholder="Enter your email" style="outline:none;">
+                <button class="button-next-footer" id="footer-signup">Sign up</button>
+                <span class="cancel" id="footer-signup-cancel" style="display:none;">Cancel</span>
+              </div>
+              <div class="form-field footer-form-field" id="footer_fiels_row_1">
+                  <input type="checkbox" id="footer_nwsl_chckbk" class="checkbox-single" id="widget-newsletter-footer-newsletter-confirm">
+                  <label for="widget-newsletter-footer-newsletter-confirm" class="footer_error_color">
+                    Yes, I have read, understood and accepted the 
+                    <a href="/pages/terms-and-conditions" class="footer_error_color">terms and conditions</a> and the <a href="/pages/privacy-policy" class="footer_error_color">privacy policy</a>
+                  </label>
+              </div>
+              <div class="form-field footer-form-field form-field-padding " id="footer_fiels_row_2">
+                  <button class="button button-newsletter-submit">Submit</button>
+              </div> 
+              </form>  
+              <div class="form-field form-field-copy form-field-padding footer-newsletter-success">
+                  <p>Thank you. You have successfully been subscribed to the newsletter. We will email you shortly.</p>
+                  <p>
+                      <button class="button footer-message-close" id="footer-message-close">Close</button>
+                  </p>
+              </div>
+            </div>
+        </div>
+      </li>
+    </ul>
+    <ul class="links-4col links-horizontal links-legal is-only-desktop">
+      {%- assign link = section.settings.menu.links -%}
+      {% for links in link %}
+        <li>
+          <a href="{{ links.url | default:"#" }}">
+          {% if links.title == 'Terms & conditions' %}
+            <!-- Do something if the title is exactly "Terms & conditions" -->
+            <span class="text">Terms</span>
+            <span class="dot">•</span>
+            <span class="text">conditions</span>
+          {% else %}
+            <!-- Do something else if the title is different -->
+            <span>{{ links.title }}</span>
+          {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {%- if section.settings.show_social -%}
+      <ul class="links-2col links-horizontal links-social">
+        {%- if settings.social_tiktok_link != blank -%}
+        <li>
+          <a href="{{ settings.social_tiktok_link | default:"#" }}" class="icon-social icon-social-tiktok" target="_blank">
+            <span></span>
+          </a>
+        </li>
+        {% endif %}  
+        {%- if settings.social_instagram_link != blank -%}
+          <li>
+            <a href="{{ settings.social_instagram_link }}" class="icon-social icon-social-instagram" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        {%- if settings.social_facebook_link != blank -%}
+          <li>
+            <a href="{{ settings.social_facebook_link }}" class="icon-social icon-social-facebook" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        
+        {% comment %}
+        {%- if settings.social_pinterest_link != blank -%}
+          <li>
+            <a href="{{ settings.social_pinterest_link }}" class="icon-social icon-social-pinterest" target="_blank">
+              <span></span>
+            </a>
+          </li>
+        {% endif %}
+        {% endcomment %}
+        {%- if settings.icon_social_threads != blank -%}
+          <li>
+            <a
+              href="{{ settings.icon_social_threads }}"
+              class="icon-social icon-social-threads"
+              target="_blank"
+            >
+              <span></span>
+            </a>
+          </li>  
+        {% endif %}
+      </ul>
+    {% endif %}
+  </div>
+<script type="text/javascript">
+  jQuery(function() {  
+    jQuery("#footer-signup").click(function() {
+       jQuery(".widget-newsletter-footer").addClass('is-active');
+       jQuery(".widget-newsletter-footer").addClass('is-focus');
+       jQuery(".footer-form-field").addClass('is-on');
+       jQuery(".cancel").addClass('is-on');
+       jQuery("#footer-signup-cancel").show();
+       //jQuery("#footer-signup").css('position', 'unset');
+       jQuery("#footer-signup").addClass('pos_class');
+       //console.log('footer news latter click');
+    });
+    
+    jQuery("#footer-signup-cancel").click(function() {
+       jQuery(".widget-newsletter-footer").removeClass('is-active');
+       jQuery(".widget-newsletter-footer").removeClass('is-focus');
+       jQuery(".footer-form-field").removeClass('is-on');
+       jQuery(".cancel").removeClass('is-on');
+       jQuery("#footer_fiels_row_0").addClass('is-on');
+       jQuery("#footer-signup-cancel").hide();
+       jQuery("#footer-signup").css('position', 'absolute');  
+       jQuery("#footer-signup").removeClass('pos_class');
+       //console.log('footer news latter cancel click');
+    });
+
+    jQuery("#footer-message-close").click(function() {
+       jQuery("#footer-signup-cancel").removeClass('is-on');
+       jQuery(".footer-newsletter-success").removeClass('is-on');
+       jQuery("#footer_fiels_row_0").addClass('is-on');
+       jQuery('#footer-signup').css('opacity', '1');
+       jQuery("#footer-signup-cancel").hide();
+       jQuery("#footer-signup").css('position', 'absolute');  
+       jQuery('#footer_email').val('');
+       jQuery(".widget-newsletter-footer").removeClass('is-active');
+       jQuery(".widget-newsletter-footer").removeClass('is-focus');
+       jQuery("#footer-signup").removeClass('pos_class');
+       
+       //console.log('footer news latter message cancel click');
+    });
+});
+</script>
+</footer>
+{% schema %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": true,
+      "label": "t:sections.footer.blocks.brand_information.settings.show_social.label",
+      "info": "t:sections.footer.blocks.brand_information.settings.show_social.info"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "footer",
+      "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+      "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+    }
+
+  ]
+}
+{% endschema %}

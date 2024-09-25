@@ -1341,6 +1341,12 @@
       },
       {
         "type": "text",
+        "id": "icon_social_threads",
+        "label": "t:settings_schema.social-media.settings.icon_social_threads.label",
+        "placeholder": "t:settings_schema.social-media.settings.icon_social_threads.info"
+      },
+      {
+        "type": "text",
         "id": "social_snapchat_link",
         "label": "t:settings_schema.social-media.settings.social_snapchat_link.label",
         "placeholder": "t:settings_schema.social-media.settings.social_snapchat_link.info"

@@ -1,0 +1,108 @@
+<div class="item item-double">
+  {% comment %}
+    <a class="item-inner" href="#">
+      <div class="image is-sm is-sm-translate">
+        <div class="caption-sticky caption-sticky-bottom none">
+          <div class="caption-primary">Andrea Smith</div>
+          <div class="caption-secondary">Read now</div>
+        </div>
+
+        <picture>
+          <source
+            media="(min-width:835px)"
+            srcset="//8b47fd-7d.myshopify.com/cdn/shop/files/andrea-smith-4.jpg?v=1721048407"
+          >
+          <img src="//8b47fd-7d.myshopify.com/cdn/shop/files/andrea-smith-4.jpg?v=1721048407" alt="">
+        </picture>
+      </div>
+    </a>
+  {% endcomment %}
+  {% for block in section.blocks %}
+    <a class="item-inner" href="{{ block.settings.button_link | default:'#' }}">
+      <div class="image is-sm is-sm-translate">
+        <div class="caption-sticky caption-sticky-bottom {{ block.settings.vertical_alignment }}">
+          <div class="caption-primary">{{ block.settings.heading_label }}</div>
+          <div class="caption-secondary">{{ block.settings.sub_heading }}</div>
+        </div>
+
+        {% if block.settings.image != blank %}
+          <picture>
+            <source
+              media="(min-width:835px)"
+              srcset="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}"
+            >
+            {% if block.settings.mobile_image != blank %}
+              <img src="{{ block.settings.mobile_image | img_url:'master' }}" alt="{{ block.settings.mobile_image.alt }}">
+            {% else %}  
+              <img src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}">
+            {% endif %}  
+          </picture>
+        {% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "LR Custom Grid",
+  "settings": [],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "select",
+          "id": "vertical_alignment",
+          "label": "Class Vertical",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "caption-sticky-white",
+              "label": "Caption Sticky White"
+            }
+          ],
+          "default": "caption-sticky-white"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "heading_label",
+          "label": "Heading",
+          "default": "Joanna is reading"
+        },
+        {
+          "type": "text",
+          "id": "sub_heading",
+          "label": "Sub Heading",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LR Custom Grid"
+    }
+  ]
+}
+{% endschema %}
