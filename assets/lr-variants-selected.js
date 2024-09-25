@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const body = document.body;
 
   // Function to show variant content
-  function showVariantContent(variantId) {
+  function showVariantContent(variantId) { 
     pdpInfoHeaders.forEach(header => {
       if (header.getAttribute("current_variants_id") === variantId) {
         header.style.display = "block";
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         header.style.display = "none";
       }
     });
+
   }
 
   // Function to set the active variant
@@ -21,6 +22,15 @@ document.addEventListener("DOMContentLoaded", function() {
     selectedItem.classList.add("is-active", "selected");
     const selectedVariantId = selectedItem.getAttribute("data-id");
     showVariantContent(selectedVariantId);
+
+    //Get the current URL
+    // set current VariantId for browser url 
+    var currentUrl = new URL(window.location.href);
+    // Set the new variant parameter in the URL
+    currentUrl.searchParams.set('variant', selectedVariantId);
+    // Update the browser's URL without reloading the page
+    window.history.replaceState({}, '', currentUrl);
+    
   }
 
   // Initialize with the default active variant
@@ -48,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         modalContent.classList.remove('ReactModal__Content--before-open');
         modalContent.classList.add('ReactModal__Content--after-open');
         body.classList.add('ReactModal__Body--open');
-      }, 10); // Small timeout to trigger the CSS transition
+      }, 6); // Small timeout to trigger the CSS transition
     } else {
       console.warn(`Modal for variant ID ${variantId} not found.`);
     }
