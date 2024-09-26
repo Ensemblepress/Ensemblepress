@@ -4,21 +4,18 @@
   font-style: normal;
   font-weight: 400;
 }
-
 @font-face {
   font-family: "LR-Geigy";
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Regular_1.woff2?v=1725640344") format("woff2");
   font-style: normal;
   font-weight: 400;
 }
-
 @font-face {
   font-family: "LR-Geigy";
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Italic.woff?v=1725642690") format("woff");
   font-style: italic;
   font-weight: 400;
 }
-
 @font-face {
   font-family: "LR-Geigy";
   src: url("https://cdn.shopify.com/s/files/1/0645/7563/5607/files/GeigyLLWeb-Italic_1.woff2?v=1725640438") format("woff2");
@@ -97,10 +94,7 @@
   font-style: italic;
   font-weight: 700;
 }
-
 /* subset */
-
-
 body {
   color: #000;
   background-color: #fff;
@@ -4993,6 +4987,7 @@ body.is-search-open .header-mobile:before {
   body .headroom #menu:before {
     opacity: 0 !important;
   }
+
 }
 header {
   width: 100%;
@@ -9610,6 +9605,14 @@ body.ReactModal__Body--open {
 }
 .overlay .overlay-panel.ReactModal__Content--after-open {
   transform: translate3d(0, 0, 0);
+}  
+.overlay .overlay-panel {
+    animation: slideIn 0.8s ease-in-out forwards;
+}
+
+.overlay .overlay-panel.ReactModal__Content--after-open {
+  /* transform: translate3d(0, 0, 0); */
+  transform: translate3d(0,0,0)
 }
 .overlay .overlay-panel.ReactModal__Content--before-close {
   transform: translate3d(100%, 0, 0);
@@ -9665,6 +9668,7 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel {
     transform: translate3d(100%, 0, 0);
     transition: transform 0.8s steps(4);
+    transition: transform .8s ease-in-out;
     width: 25%;
     height: 100%;
     align-items: flex-start;
@@ -9687,6 +9691,7 @@ body.ReactModal__Body--open {
     padding: 20px 40px 40px;
     justify-content: space-between;
     min-height: 100%;
+    /* min-height: 100%; */
   }
 }
 .overlay-pdp .overlay-panel-inner .block {
@@ -12931,6 +12936,7 @@ body.collection .header-logo .logotype svg .cls-1 {
 }
 .panel-content .metafield-rich_text_field {
   margin: 0 -4rem; 
+  margin: 0 0 0 -40px; 
 }
 .metafield-rich_text_field li {
     list-style: none;
