@@ -93,15 +93,6 @@
                 {% else %}
                 {{ product.description }}
                 {% endif %}
-               
-                  {% if short_des %}
-                    <div class="pdp-description">
-                      <p>{{ short_des }}</p>
-                    </div>
-                  {% else %}
-                    {{ product.description }}
-                  {% endif %}
-                
                   <ul class="pdp-keywords">
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                     <li class="pdp-details" id="variant_detail_{{ variant.id }}">
