@@ -6,7 +6,9 @@
       <div class="filter-panel">
         <div class="filter-items">
           <div class="filter-item">
-            <div class="filter-item-title">{{ 'products.facets.sort_by_label' | t }}</div>
+            <div class="filter-item-title">
+              {{ 'products.facets.sort_by_label' | t }}
+            </div>
              <div class="filter-item-options">
                <ul class="filter-selector">
                  <!--<li>
@@ -16,83 +18,54 @@
                  </li>-->
                  <li>
                     <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="az">Title A-Z</span>
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="az">
+                        <span class="filter-option-title">Title A-Z</span>
+                      </span>
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="za">Title Z-A</span>
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="za">
+                        <span class="filter-option-title">Title Z-A</span>
+                      </span>
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="lowprice">Price ascending</span>
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="lowprice">
+                        <span class="filter-option-title">Price ascending</span>
+                      </span>
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="highprice">Price descendeing</span>
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="highprice">
+                        <span class="filter-option-title">Price descendeing</span>
+                      </span>
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="newold">Newest</span>
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="newold">
+                        <span class="filter-option-title">Newest</span>
+                      </span>
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="oldnew">Oldest</span>
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="oldnew">
+                        <span class="filter-option-title">Oldest</span>
+                      </span>
                       </div>
                  </li>
-               </ul>
-               {% comment %}
-                <ul class="filter-selector">
-                {%- for option in collection.sort_options -%}
-                  <li>
+                 <li>
                     <div class="filter-option ">
-                      <span class="filter-option-input"></span>
-                      <span class="filter-option-title">{{ option.name | escape }}</span>
-                    </div>
-                  </li>
-                {% endfor %} 
-                <li>
-                    <div class="filter-option ">
-                      <span class="filter-option-input"></span>
-                      <span class="filter-option-title">Newest</span>
-                    </div>
-                </li>
-                <li>
-                  <div class="filter-option ">
-                      <span class="filter-option-input"></span>
-                      <span class="filter-option-title">Title A-Z</span>
-                    </div>
-                </li>
-                <li>
-                  <div class="filter-option ">
-                    <span class="filter-option-input"></span>
-                    <span class="filter-option-title">Title Z-A</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="filter-option ">
-                    <span class="filter-option-input"></span>
-                    <span class="filter-option-title">Price ascending</span>
-                  </div>
-                </li>
-                <li>
-                  <div class="filter-option ">
-                    <span class="filter-option-input"></span>
-                    <span class="filter-option-title">Price descendeing</span>
-                  </div>
-                </li>
-                <li>
-                    <div class="filter-option ">
-                      <span class="filter-option-input"></span>
-                      <span class="filter-option-title">In Stock</span>
-                    </div>
-                  </li>
-              </ul>
-              {% endcomment %}  
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="instock">
+                        <span class="filter-option-title">In Stock</span>
+                      </span>
+                      </div>
+                 </li>
+               </ul>  
             </div>
           </div>
         </div>
@@ -103,17 +76,20 @@
       </div>
     </div>
   </div>
-<script type="text/javascript">
+</div>  
+<script>
+  // Sort Filter Start Work
 document.addEventListener("DOMContentLoaded", function() {
   const sortRadios = document.querySelectorAll('input[name="sort"]');
   const applyButton = document.getElementById('apply-sort');
   const clearButton = document.getElementById('clear-sort');
   const productList = document.getElementById('product-list');
-  const products = Array.from(document.querySelectorAll('.product'));
+  let products = Array.from(document.querySelectorAll('.product')); // Capture the initial product list
 
+  // Store the original product order
+  const originalProducts = [...products];
   function sortProducts(sortValue) {
     let sortedProducts;
-
     switch (sortValue) {
       case 'az':
         sortedProducts = products.sort((a, b) => {
@@ -157,15 +133,23 @@ document.addEventListener("DOMContentLoaded", function() {
           return dateB - dateA;
         });
         break;
+      case 'instock':
+        sortedProducts = products.filter(product => {
+          const quantity = parseInt(product.dataset.quantity) || 0;
+          return quantity > 0;
+        });
+        break;
       default:
-        sortedProducts = products;
+        sortedProducts = originalProducts; // Reset to original product order when 'default' is selected
         break;
     }
 
+    // Clear and append sorted/filtered products
     productList.innerHTML = '';
     sortedProducts.forEach(product => productList.appendChild(product));
   }
 
+  // Apply sort when Apply button is clicked
   applyButton.addEventListener('click', function() {
     const selectedSort = document.querySelector('input[name="sort"]:checked').value;
     sortProducts(selectedSort);
@@ -174,19 +158,18 @@ document.addEventListener("DOMContentLoaded", function() {
     jQuery('body').css('overflow-y', 'visible');
   });
 
+  // Reset products to default state when Clear button is clicked
   clearButton.addEventListener('click', function() {
-    document.querySelector('input[name="sort"][value="default"]').checked = true;
-    sortProducts('default');
+    document.querySelectorAll('input[name="sort"]').forEach(radio => radio.checked = false); // Uncheck all radio buttons
+    products = [...originalProducts]; // Reset the product array to the original products
+    sortProducts(); // Re-render the original product order
   });
 });
-
-  $(document).on("click", function(e) {
-     //console.log(e.target);
-      if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input") === false) {
-        $("#sort_by_filter").hide();
-        jQuery('body').css('overflow-y', 'visible');
-        //console.log('aaa');
-      }
-  });
-  
+$(document).on("click", function(e) {
+  if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input") === false) {
+    $("#sort_by_filter").hide();
+    jQuery('body').css('overflow-y', 'visible');
+  }
+});
+// Sort Filter End Work
 </script>

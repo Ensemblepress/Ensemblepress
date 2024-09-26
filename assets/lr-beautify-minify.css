@@ -4776,6 +4776,7 @@ ul.nav-menu li .tooltip {
     background-position: center;
     background-repeat: no-repeat;
   }
+
   body .headroom #menu:before {
     opacity: 0 !important;
   }
@@ -4984,6 +4985,7 @@ body.is-search-open .header-mobile:before {
     right: 0px;
     transform: translate3d(0, 0, 0) !important;
   }
+
   body .headroom #menu:before {
     opacity: 0 !important;
   }
@@ -9603,6 +9605,14 @@ body.ReactModal__Body--open {
 .overlay .overlay-panel:focus {
   outline: 0;
 }
+.overlay .overlay-panel {
+    animation: slideIn 0.8s ease-in-out forwards;
+}
+
+.overlay .overlay-panel.ReactModal__Content--after-open {
+  /* transform: translate3d(0, 0, 0); */
+  transform: translate3d(0,0,0)
+
 .overlay .overlay-panel.ReactModal__Content--after-open {
   transform: translate3d(0, 0, 0);
 }  
@@ -9667,6 +9677,7 @@ body.ReactModal__Body--open {
 @media (min-width: 576px) {
   .overlay-pdp .overlay-panel {
     transform: translate3d(100%, 0, 0);
+    transition: transform .8s ease-in-out;
     transition: transform 0.8s steps(4);
     transition: transform .8s ease-in-out;
     width: 25%;
@@ -9690,6 +9701,8 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel-inner {
     padding: 20px 40px 40px;
     justify-content: space-between;
+    /* min-height: 100%; */
+
     min-height: 100%;
     /* min-height: 100%; */
   }
@@ -12957,4 +12970,5 @@ body.collection .header-logo .logotype svg .cls-1 {
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
     padding: 0 4rem;
 }
+
 /* PDP End */
