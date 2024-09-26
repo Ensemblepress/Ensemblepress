@@ -9735,8 +9735,6 @@ body.ReactModal__Body--open {
   position: absolute;
   left: -12px;
   top: -4px;
-  font-size: 15px;
-  font-weight: 600;
 }
 .overlay-pdp-left {
   flex-direction: row;
@@ -12955,8 +12953,9 @@ body.collection .header-logo .logotype svg .cls-1 {
     position: absolute;
     left: -12px;
     top: -4px;
-    font-size: 15px;
-    font-weight: 600;
+}
+.pdp-keywords .metafield-rich_text_field {
+    margin: 0 0 0 -40px;
 }
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
     padding: 0 4rem;

@@ -86,6 +86,14 @@
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
                 {% assign short_des = variant.metafields.custom.short_descriptions %}
+                {% if short_des %}
+                <div class="pdp-description">
+                  <p>{{ short_des }}</p>
+                </div>
+                {% else %}
+                {{ product.description }}
+                {% endif %}
+               
                   {% if short_des %}
                     <div class="pdp-description">
                       <p>{{ short_des }}</p>
@@ -93,12 +101,9 @@
                   {% else %}
                     {{ product.description }}
                   {% endif %}
-                  
-                {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
+                
                   <ul class="pdp-keywords">
-                    {% for text in bulletpoint %}
-                      <li>{{ text }}</li>
-                    {% endfor %}
+                      {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                     <li class="pdp-details" id="variant_detail_{{ variant.id }}">
                       <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
                     </li>
