@@ -6,7 +6,12 @@
       <div class="filter-panel">
         <div class="filter-items">
           <div class="filter-item">
+
+            <div class="filter-item-title">
+              {{ 'products.facets.sort_by_label' | t }}
+            </div>
             <div class="filter-item-title">{{ 'products.facets.sort_by_label' | t }}</div>
+
              <div class="filter-item-options">
                <ul class="filter-selector">
                  <!--<li>
@@ -16,31 +21,75 @@
                  </li>-->
                  <li>
                     <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="az">
+                        <span class="filter-option-title">Title A-Z</span>
+                      </span>
+
                       <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="az">Title A-Z</span>
+
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
+
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="za">
+                        <span class="filter-option-title">Title Z-A</span>
+                      </span>
+
                       <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="za">Title Z-A</span>
+
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
+
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="lowprice">
+                        <span class="filter-option-title">Price ascending</span>
+                      </span>
+
                       <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="lowprice">Price ascending</span>
+
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
+
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="highprice">
+                        <span class="filter-option-title">Price descendeing</span>
+                      </span>
+
                       <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="highprice">Price descendeing</span>
+
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
+
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="newold">
+                        <span class="filter-option-title">Newest</span>
+                      </span>
+
                       <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="newold">Newest</span>
+
                     </div>
                  </li>
                  <li>
                     <div class="filter-option ">
+
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="oldnew">
+                        <span class="filter-option-title">Oldest</span>
+                      </span>
+                      </div>
+                 </li>
+                 <li>
+                    <div class="filter-option ">
+                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="instock">
+                        <span class="filter-option-title">In Stock</span>
+                      </span>
+                      </div>
+                 </li>
+               </ul>  
+
                       <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="oldnew">Oldest</span>
                       </div>
                  </li>
@@ -93,6 +142,7 @@
                   </li>
               </ul>
               {% endcomment %}  
+
             </div>
           </div>
         </div>
@@ -103,6 +153,9 @@
       </div>
     </div>
   </div>
+
+</div>  
+
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
   const sortRadios = document.querySelectorAll('input[name="sort"]');

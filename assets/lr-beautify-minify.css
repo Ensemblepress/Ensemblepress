@@ -4782,6 +4782,11 @@ ul.nav-menu li .tooltip {
     background-position: center;
     background-repeat: no-repeat;
   }
+
+  body .headroom #menu:before {
+    opacity: 0 !important;
+  }
+
 }
 #menu-link-bag > span {
   position: relative;
@@ -4986,6 +4991,10 @@ body.is-search-open .header-mobile:before {
     left: 0px;
     right: 0px;
     transform: translate3d(0, 0, 0) !important;
+  }
+
+  body .headroom #menu:before {
+    opacity: 0 !important;
   }
 }
 header {
@@ -9602,6 +9611,10 @@ body.ReactModal__Body--open {
 .overlay .overlay-panel:focus {
   outline: 0;
 }
+
+.overlay .overlay-panel.ReactModal__Content--after-open {
+  transform: translate3d(0, 0, 0);
+
 .overlay .overlay-panel {
     animation: slideIn 0.8s ease-in-out forwards;
 }
@@ -9609,6 +9622,7 @@ body.ReactModal__Body--open {
 .overlay .overlay-panel.ReactModal__Content--after-open {
   /* transform: translate3d(0, 0, 0); */
   transform: translate3d(0,0,0)
+
 }
 .overlay .overlay-panel.ReactModal__Content--before-close {
   transform: translate3d(100%, 0, 0);
@@ -9663,7 +9677,11 @@ body.ReactModal__Body--open {
 @media (min-width: 576px) {
   .overlay-pdp .overlay-panel {
     transform: translate3d(100%, 0, 0);
+
+    transition: transform 0.8s steps(4);
+
     transition: transform .8s ease-in-out;
+
     width: 25%;
     height: 100%;
     align-items: flex-start;
@@ -9685,7 +9703,12 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel-inner {
     padding: 20px 40px 40px;
     justify-content: space-between;
+
+    min-height: 100%;
+
     /* min-height: 100%; */
+
+    
   }
 }
 .overlay-pdp .overlay-panel-inner .block {
@@ -12929,7 +12952,8 @@ body.collection .header-logo .logotype svg .cls-1 {
   display: none; 
 }
 .panel-content .metafield-rich_text_field {
-  margin: 0 0 0 -40px; 
+  margin: 0 -4rem; 
+  margin: 0 0 0 -40px;
 }
 .metafield-rich_text_field li {
     list-style: none;
@@ -12950,5 +12974,4 @@ body.collection .header-logo .logotype svg .cls-1 {
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
     padding: 0 4rem;
 }
-
 /* PDP End */
