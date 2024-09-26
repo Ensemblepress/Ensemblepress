@@ -9696,9 +9696,6 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel-inner {
     padding: 20px 40px 40px;
     justify-content: space-between;
-    /* min-height: 100%; */
-    min-height: 100%;
-    /* min-height: 100%; */
   }
 }
 .overlay-pdp .overlay-panel-inner .block {
