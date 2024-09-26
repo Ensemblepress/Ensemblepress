@@ -108,11 +108,8 @@
                 {{ product.description }}
                 {% endif %}
                 
-                {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
                   <ul class="pdp-keywords">
-                    {% for text in bulletpoint %}
-                      <li>{{ text }}</li>
-                    {% endfor %}
+                      {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                     <li class="pdp-details" id="variant_detail_{{ variant.id }}">
                       <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
                     </li>
