@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const pdpInfoHeaders = document.querySelectorAll(".pdp-info-header-secondary");
   const detailsButtons = document.querySelectorAll('.pdp-details');
   const body = document.body;
-
+  
   // Function to show variant content
   function showVariantContent(variantId) { 
     pdpInfoHeaders.forEach(header => {
@@ -13,9 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         header.style.display = "none";
       }
     });
-
   }
-
   // Function to set the active variant
   function setActiveVariant(selectedItem) {
     variantItems.forEach(item => item.classList.remove("is-active", "selected"));
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
     currentUrl.searchParams.set('variant', selectedVariantId);
     // Update the browser's URL without reloading the page
     window.history.replaceState({}, '', currentUrl);
-    
   }
 
   // Initialize with the default active variant
@@ -51,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
   function toggleCartDrawer(variantId) {
     const modal = document.getElementById(`model_id_${variantId}`);
     const modalContent = document.getElementById(`model_contect_id_${variantId}`);
-
     if (modal && modalContent) {
       modal.style.display = 'block'; // Ensure it's visible
       setTimeout(() => {
@@ -81,11 +77,9 @@ document.addEventListener("DOMContentLoaded", function() {
     closeButton.addEventListener('click', function() {
       const modal = this.closest('.ReactModalPortal');
       const modalContent = this.closest('.ReactModal__Content');
-
       // Start the close animation
       modalContent.classList.remove('ReactModal__Content--after-open');
       modalContent.classList.add('ReactModal__Content--before-open');
-
       setTimeout(() => {
         modal.style.display = 'none'; // Hide the modal after animation ends
         body.classList.remove('ReactModal__Body--open');
@@ -97,12 +91,10 @@ document.addEventListener("DOMContentLoaded", function() {
   document.addEventListener('click', function(event) {
     const modal = document.querySelector('.ReactModalPortal.open'); // Select the open modal
     const modalContent = document.querySelector('.ReactModal__Content.ReactModal__Content--after-open');
-    
     // Check if click is outside the modal content and the modal is open
     if (modal && modalContent && !modalContent.contains(event.target) && !event.target.closest('.pdp-details')) {
       modalContent.classList.remove('ReactModal__Content--after-open');
       modalContent.classList.add('ReactModal__Content--before-open');
-
       setTimeout(() => {
         modal.style.display = 'none'; // Hide the modal after transition
         body.classList.remove('ReactModal__Body--open');
