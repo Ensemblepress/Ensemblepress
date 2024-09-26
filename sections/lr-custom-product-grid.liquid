@@ -1,9 +1,5 @@
-
 <div class="product-grid product-grid-4col product-grid-background product-grid-gap" id="product-list">
-   
-  
   {%- paginate collection.products by section.settings.products_per_page -%}
-
     {%- if collection.products.size == 0 -%}
       <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
         <div class="loading-overlay gradient"></div>
@@ -20,9 +16,7 @@
       </div>
     {%- else -%}
       {%- for product in collection.products -%}  
-
-        <a class="product item" href="{{ product.url }}" data-name="{{ product.title | escape }}" data-price="{{ product.price }}" data-date="{{ product.created_at }}" data-quantity="{% if product.selected_or_first_available_variant.inventory_quantity > 0 %}{{ product.variants.first.inventory_quantity }}{% endif %}">
-
+        <a class="product item" href="{{ product.url }}"  data-name="{{ product.title | escape }}" data-price="{{ product.price }}" data-date="{{ product.created_at }}" data-quantity="{% if product.selected_or_first_available_variant.inventory_quantity > 0 %}{{ product.variants.first.inventory_quantity }}{% endif %}">
           {%- if product.featured_media -%}
             <div class="image ">
               <svg viewBox="0 0 1500 2000"></svg>
@@ -43,19 +37,11 @@
                     {% endif %}
                     <div class="name-title">{{ product.title }}</div>
                   </div>
-                  
                   <div class="price">
                     {% if product.compare_at_price !=blank %}
                       <span class="price-sale-original">{{ product.compare_at_price | money }}</span>
                     {% endif %}
-                    
                     {{ product.price | money }}
-                    {% comment %}
-                    {% if product.price > 0 %}
-                    {% else %}
-                    {{ 'products.product.sold_out' | t }}
-                    {% endif %}
-                    {% endcomment %}
                   </div>
               </div>
               <div class="caption-additional">
@@ -69,11 +55,9 @@
           </div>
         </a>
       {% endfor %}
-      
     {% endif %}  
   {% endpaginate %}  
 </div>
-
 {% schema %}
   {
     "name": "Custom Product Grid",
