@@ -128,7 +128,41 @@
               {% endif %}
           {% endfor %}
           <!-- Back in stock end -->
-          
+         
+                {% assign short_des = variant.metafields.custom.short_descriptions %}
+                {% if short_des %}
+                <div class="pdp-description">
+                  <p>{{ short_des }}</p>
+                </div>
+                {% else %}
+                {{ product.description }}
+                {% endif %}
+                
+                {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
+                  <ul class="pdp-keywords">
+                    {% for text in bulletpoint %}
+                      <li>{{ text }}</li>
+                    {% endfor %}
+                    <li class="pdp-details" id="variant_detail_{{ variant.id }}">
+                      <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
+                    </li>
+                </ul>
+              </div>
+               
+		  {% endfor %}  
+        {% else %}
+          {% comment %}
+          <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
+          <div class="pdp-description">
+            {{ product.description }}
+            <ul class="pdp-keywords">
+              <li class="pdp-details">
+                <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
+              </li>
+            </ul>  
+          </div>
+          {% endcomment %}  
+        {% endif %}
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
               <div class="pdp-product-variants-list is-on">
@@ -225,6 +259,24 @@
                     </ul>  
                     {% endif %}
                 </div>
+<div id="model_id_{{ variant.id }}" class="ReactModalPortal ReactModal__Overlay ReactModal__Overlay--before-open overlay overlay-pdp">
+<div id="model_contect_id_{{ variant.id }}" class="ReactModal__Content ReactModal__Content--before-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
+	<div class="overlay-close"><span>×</span></div>
+		<div class="overlay-panel-inner">
+		<div class="overlay-outer-title">Details</div>
+		<div class="panel-content">
+          <div class="block">
+              <div class="hd">The Book</div>
+              <div class="copy">
+                  {% if variant.metafields.custom.custom_book_detail != blank %}
+                    <ul class="ul-listing">
+                        {{ variant.metafields.custom.custom_book_detail | metafield_tag }}
+                    </ul>
+                  {% else %}
+                    <ul class="ul-listing">
+                       {{ product.metafields.custom.book_contents | metafield_tag }}
+                  </ul>  
+                  {% endif %}
               </div>
               
   			<div class="block">
@@ -236,7 +288,7 @@
   				</div>
   			</div>         
   			
-            
+           
   			<div class="block" current_variants_id="{{ variant.id }}">
   				<div class="hd">Shipping and Returns</div>
   					<div class="copy">      
@@ -256,6 +308,35 @@
   		</div>
   	</div>
   </div> 
+			<div class="block">
+				<div class="hd">The Author</div>
+				<div class="copy">
+					<ul class="ul-listing">
+        				{{ product.metafields.custom.author_content | metafield_tag }}
+					</ul>
+				</div>
+			</div>         
+			
+          
+			<div class="block" current_variants_id="{{ variant.id }}">
+				<div class="hd">Shipping and Returns</div>
+					<div class="copy">      
+						{% if variant.metafields.custom.custom_shipping_and_returns != blank %}
+                            <ul class="ul-listing">     
+                                {{ variant.metafields.custom.custom_shipping_and_returns | metafield_tag }}
+                            </ul>
+                        
+                          {% else %}
+                            <ul class="ul-listing">     
+                                {{ product.metafields.custom.shipping_content | metafield_tag }}
+                            </ul>
+						{% endif %}             
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div> 
 {% endfor %}
 
 <!-- PDP Gallery -->
