@@ -99,21 +99,16 @@
           <!-- Loop through the variants -->
           {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
-
-                {% assign short_des = variant.metafields.custom.short_description %}
-
+                {% assign short_des = variant.metafields.custom.short_descriptions %}
                 {% if short_des %}
                 <div class="pdp-description">
                   <p>{{ short_des }}</p>
                 </div>
                 {% else %}
-                 {{ product.description }}
+                {{ product.description }}
                 {% endif %}
-
-                {% assign bulletpoint = variant.metafields.custom.short_bullet_point | split:'|' %}
                 
                 {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
-
                   <ul class="pdp-keywords">
                     {% for text in bulletpoint %}
                       <li>{{ text }}</li>
@@ -124,17 +119,12 @@
                 </ul>
               </div>
                
-
-	{% endfor %}  
-		  
-
+		  {% endfor %}  
         {% else %}
           {% comment %}
           <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
           <div class="pdp-description">
-
             {{ product.description }}
-
             <ul class="pdp-keywords">
               <li class="pdp-details">
                 <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
@@ -143,6 +133,7 @@
           </div>
           {% endcomment %}  
         {% endif %}
+
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
               <div class="pdp-product-variants-list is-on">
@@ -225,38 +216,6 @@
 		<div class="overlay-panel-inner">
 		<div class="overlay-outer-title">Details</div>
 		<div class="panel-content">
-
-			{% assign bulletpoint = variant.metafields.custom.book_detail | split:'|' %}
-            {% if bulletpoint !=blank %}
-			<div class="block">
-				<div class="hd">The Book</div>
-				<div class="copy">
-					<ul class="ul-listing">
-					{% for text in bulletpoint %}
-						{% if text != blank %}
-							<li>{{ text }}</li>
-						{% endif %}
-					{% endfor %} 
-					</ul>
-				</div>
-			</div>
-            {% else %}
-            {% assign bulletpoint = product.metafields.custom.product_book_contents | split:'|' %}
-            <div class="block">
-				<div class="hd">The Book</div>
-				<div class="copy">
-					<ul class="ul-listing">
-                      {% for text in bulletpoint %}
-						{% if text != blank %}
-							<li>{{ text }}</li>
-						{% endif %}
-					{% endfor %} 
-					
-					</ul>
-				</div>
-			</div>  
-            {% endif %}  
-
           <div class="block">
               <div class="hd">The Book</div>
               <div class="copy">
@@ -276,32 +235,11 @@
 				<div class="hd">The Author</div>
 				<div class="copy">
 					<ul class="ul-listing">
-
-    					{{ product.metafields.custom.author_content | metafield_tag }}
-					</ul>
-				</div>
-			</div>         
-			{% assign shipping_detail = variant.metafields.custom.shipping_and_returns  | split:'|' %}
-			<div class="block" current_variants_id="{{ variant.id }}">
-				<div class="hd">Shipping and Returns</div>
-					<div class="copy">      
-						{% if shipping_detail != blank %}
-							{% for shipping_Text in shipping_detail %}     
-								<ul class="ul-listing">     
-									<li>{{ shipping_Text }}</li>    
-								</ul>
-							{% endfor %}
-                          {% else %}
-                          {% assign shipping_detail = product.metafields.custom.product_shipping_content  | split:'|' %}
-                          {% for shipping_Text in shipping_detail %}     
-								<ul class="ul-listing">     
-									<li>{{ shipping_Text }}</li>    
-								</ul>
-							{% endfor %}
         				{{ product.metafields.custom.author_content | metafield_tag }}
 					</ul>
 				</div>
-			</div>      
+			</div>         
+			
           
 			<div class="block" current_variants_id="{{ variant.id }}">
 				<div class="hd">Shipping and Returns</div>
@@ -310,11 +248,11 @@
                             <ul class="ul-listing">     
                                 {{ variant.metafields.custom.custom_shipping_and_returns | metafield_tag }}
                             </ul>
+                        
                           {% else %}
                             <ul class="ul-listing">     
                                 {{ product.metafields.custom.shipping_content | metafield_tag }}
                             </ul>
-
 						{% endif %}             
 					</div>
 				</div> 
