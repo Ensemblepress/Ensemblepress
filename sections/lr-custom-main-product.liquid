@@ -50,7 +50,6 @@
     <div class="Plx Plx--below Plx-effect-pdp" style="">
       <div class="pdp-scroller"></div>
     </div>
-    
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
@@ -86,25 +85,25 @@
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
-                  {% assign short_des = variant.metafields.custom.short_descriptions %}
+                {% assign short_des = variant.metafields.custom.short_descriptions %}
                   {% if short_des %}
-                  <div class="pdp-description">
-                    <p>{{ short_des }}</p>
-                  </div>
+                    <div class="pdp-description">
+                      <p>{{ short_des }}</p>
+                    </div>
                   {% else %}
-                  {{ product.description }}
+                    {{ product.description }}
                   {% endif %}
                   
-                  {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
-                    <ul class="pdp-keywords">
-                      {% for text in bulletpoint %}
-                        <li>{{ text }}</li>
-                      {% endfor %}
-                      <li class="pdp-details" id="variant_detail_{{ variant.id }}">
-                        <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
-                      </li>
+                {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
+                  <ul class="pdp-keywords">
+                    {% for text in bulletpoint %}
+                      <li>{{ text }}</li>
+                    {% endfor %}
+                    <li class="pdp-details" id="variant_detail_{{ variant.id }}">
+                      <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
+                    </li>
                   </ul>
-                </div> 
+              </div> 
             {% endfor %}  
           {% else %}
             {% comment %}
@@ -120,49 +119,7 @@
             {% endcomment %}  
           {% endif %}
           
-          <!-- start Back in stock -->
-          {% for collection in product.collections %}
-            {% if collection.handle == 'forthcoming' %}
-              <!-- Your specific code here -->
-                <div id="omnisend-embedded-v2-66e423b7b1d6e266fd3a7a1c"></div>
-              {% endif %}
-          {% endfor %}
-          <!-- Back in stock end -->
-         
-                {% assign short_des = variant.metafields.custom.short_descriptions %}
-                {% if short_des %}
-                <div class="pdp-description">
-                  <p>{{ short_des }}</p>
-                </div>
-                {% else %}
-                {{ product.description }}
-                {% endif %}
-                
-                {% assign bulletpoint = variant.metafields.custom.bullet_point | split:'|' %}
-                  <ul class="pdp-keywords">
-                    {% for text in bulletpoint %}
-                      <li>{{ text }}</li>
-                    {% endfor %}
-                    <li class="pdp-details" id="variant_detail_{{ variant.id }}">
-                      <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
-                    </li>
-                </ul>
-              </div>
-               
-		  {% endfor %}  
-        {% else %}
-          {% comment %}
-          <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
-          <div class="pdp-description">
-            {{ product.description }}
-            <ul class="pdp-keywords">
-              <li class="pdp-details">
-                <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
-              </li>
-            </ul>  
-          </div>
-          {% endcomment %}  
-        {% endif %}
+          
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
               <div class="pdp-product-variants-list is-on">
@@ -259,24 +216,6 @@
                     </ul>  
                     {% endif %}
                 </div>
-<div id="model_id_{{ variant.id }}" class="ReactModalPortal ReactModal__Overlay ReactModal__Overlay--before-open overlay overlay-pdp">
-<div id="model_contect_id_{{ variant.id }}" class="ReactModal__Content ReactModal__Content--before-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
-	<div class="overlay-close"><span>×</span></div>
-		<div class="overlay-panel-inner">
-		<div class="overlay-outer-title">Details</div>
-		<div class="panel-content">
-          <div class="block">
-              <div class="hd">The Book</div>
-              <div class="copy">
-                  {% if variant.metafields.custom.custom_book_detail != blank %}
-                    <ul class="ul-listing">
-                        {{ variant.metafields.custom.custom_book_detail | metafield_tag }}
-                    </ul>
-                  {% else %}
-                    <ul class="ul-listing">
-                       {{ product.metafields.custom.book_contents | metafield_tag }}
-                  </ul>  
-                  {% endif %}
               </div>
               
   			<div class="block">
@@ -288,7 +227,7 @@
   				</div>
   			</div>         
   			
-           
+            
   			<div class="block" current_variants_id="{{ variant.id }}">
   				<div class="hd">Shipping and Returns</div>
   					<div class="copy">      
@@ -308,35 +247,6 @@
   		</div>
   	</div>
   </div> 
-			<div class="block">
-				<div class="hd">The Author</div>
-				<div class="copy">
-					<ul class="ul-listing">
-        				{{ product.metafields.custom.author_content | metafield_tag }}
-					</ul>
-				</div>
-			</div>         
-			
-          
-			<div class="block" current_variants_id="{{ variant.id }}">
-				<div class="hd">Shipping and Returns</div>
-					<div class="copy">      
-						{% if variant.metafields.custom.custom_shipping_and_returns != blank %}
-                            <ul class="ul-listing">     
-                                {{ variant.metafields.custom.custom_shipping_and_returns | metafield_tag }}
-                            </ul>
-                        
-                          {% else %}
-                            <ul class="ul-listing">     
-                                {{ product.metafields.custom.shipping_content | metafield_tag }}
-                            </ul>
-						{% endif %}             
-					</div>
-				</div> 
-			</div>
-		</div>
-	</div>
-</div> 
 {% endfor %}
 
 <!-- PDP Gallery -->
@@ -430,10 +340,8 @@
       }
     });
   });
-
   // Initialize the lightbox
   lightbox.init();
-
 </script>
 <!-- END PDP Gallery --> 
 
@@ -473,7 +381,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
   import PhotoSwipeLightbox from '{{ 'photoswipe-lightbox.esm.js' | asset_url }}';
   import PhotoSwipe from '{{ 'photoswipe.esm.js' | asset_url }}';
-
   const lightbox = new PhotoSwipeLightbox({
     gallerySelector: '.swiper-pdp',  // Swiper wrapper as the gallery
     childSelector: 'a',                  // Target anchor tags for images
@@ -482,22 +389,16 @@ document.addEventListener("DOMContentLoaded", function() {
     loop: true,                          // Enable looping through images
     initialZoomLevel: 'fill',    // Initially fit the image to screen
   });
-
   // Initialize the lightbox
   lightbox.init();
-
   // Handling custom click-to-close behavior
   let clickCount = 0; // Variable to track clicks
-
   lightbox.on('uiRegister', function() {
     const pswp = lightbox.pswp; // Access PhotoSwipe instance
-
     pswp.on('pointerUp', function(e) {
       const target = e.originalEvent?.target; // Target the image element clicked
-
       if (target && target.tagName === 'IMG') {
         clickCount++; // Increment click count on every image click
-
         if (clickCount === 1) {
           // First click: Close the gallery
           pswp.close();
@@ -506,7 +407,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   });
-
 </script>
 
 <!---- Video Start --->
