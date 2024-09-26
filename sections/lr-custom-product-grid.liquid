@@ -20,7 +20,9 @@
       </div>
     {%- else -%}
       {%- for product in collection.products -%}  
+
         <a class="product item" href="{{ product.url }}" data-name="{{ product.title | escape }}" data-price="{{ product.price }}" data-date="{{ product.created_at }}" data-quantity="{% if product.selected_or_first_available_variant.inventory_quantity > 0 %}{{ product.variants.first.inventory_quantity }}{% endif %}">
+
           {%- if product.featured_media -%}
             <div class="image ">
               <svg viewBox="0 0 1500 2000"></svg>

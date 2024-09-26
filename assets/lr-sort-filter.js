@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       closeFiltersPLPModal();
     }
   });
+
 });
 
 // Sort Filter Start Work
@@ -160,3 +161,5 @@ $(document).on("click", function(e) {
 });
 
 // Sort Filter End Work
+});
+
