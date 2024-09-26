@@ -102,14 +102,12 @@
 
                 {% assign short_des = variant.metafields.custom.short_description %}
 
-                {% assign short_des = variant.metafields.custom.short_descriptions %}
-
                 {% if short_des %}
                 <div class="pdp-description">
                   <p>{{ short_des }}</p>
                 </div>
                 {% else %}
-                {{ product.description }}
+                 {{ product.description }}
                 {% endif %}
 
                 {% assign bulletpoint = variant.metafields.custom.short_bullet_point | split:'|' %}
@@ -127,8 +125,8 @@
               </div>
                
 
-		  {% endfor %}  
-		  {% endfor %}   
+	{% endfor %}  
+		  
 
         {% else %}
           {% comment %}
