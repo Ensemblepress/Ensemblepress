@@ -4776,10 +4776,6 @@ ul.nav-menu li .tooltip {
     background-position: center;
     background-repeat: no-repeat;
   }
-
-  body .headroom #menu:before {
-    opacity: 0 !important;
-  }
 }
 #menu-link-bag > span {
   position: relative;
@@ -4989,7 +4985,6 @@ body.is-search-open .header-mobile:before {
   body .headroom #menu:before {
     opacity: 0 !important;
   }
-
 }
 header {
   width: 100%;
@@ -9612,6 +9607,7 @@ body.ReactModal__Body--open {
 .overlay .overlay-panel.ReactModal__Content--after-open {
   /* transform: translate3d(0, 0, 0); */
   transform: translate3d(0,0,0)
+}
 
 .overlay .overlay-panel.ReactModal__Content--after-open {
   transform: translate3d(0, 0, 0);
@@ -9679,7 +9675,6 @@ body.ReactModal__Body--open {
     transform: translate3d(100%, 0, 0);
     transition: transform .8s ease-in-out;
     transition: transform 0.8s steps(4);
-    transition: transform .8s ease-in-out;
     width: 25%;
     height: 100%;
     align-items: flex-start;
@@ -9702,7 +9697,6 @@ body.ReactModal__Body--open {
     padding: 20px 40px 40px;
     justify-content: space-between;
     /* min-height: 100%; */
-
     min-height: 100%;
     /* min-height: 100%; */
   }
