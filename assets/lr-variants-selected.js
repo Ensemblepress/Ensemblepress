@@ -3,6 +3,39 @@ document.addEventListener("DOMContentLoaded", function() {
   const pdpInfoHeaders = document.querySelectorAll(".pdp-info-header-secondary");
   const detailsButtons = document.querySelectorAll('.pdp-details');
   const body = document.body;
+
+  // change button action add to cart to out of stock
+  var addToCartButton = document.getElementById('add-to-cart-btn');
+  var addToCartDiv = document.getElementById('add-to-bag');
+  // end 
+    
+  // Function to show variant content
+  function showVariantContent(variantId) { 
+
+    // start change button label add to cart to out of stock
+    var selectedVariant = window.product.variants.find(function(variant) {
+      return variant.id == variantId;
+    });
+    
+   var available_variant = selectedVariant.available;
+   //console.log(selectedVariant); 
+   if (selectedVariant.available == true || selectedVariant.inventory_policy == "continue") {
+       //Variant is out of stock but allows selling
+        //addToCartButton.innerText = "Pre-order";
+        addToCartButton.innerText = "Add to Bag";
+        addToCartButton.disabled = false;
+        addToCartDiv.removeAttribute('disabled');
+  //} else if (selectedVariant.available == true) {
+        //addToCartButton.innerText = "Add to Bag";
+        //addToCartButton.disabled = false;
+        //addToCartDiv.removeAttribute('disabled'); // Remove disabled attribute
+   } else {
+        addToCartButton.innerText = "Out of Stock";
+        addToCartButton.disabled = true;
+        addToCartDiv.setAttribute('disabled', 'disabled'); // Add disabled attribute
+   }
+   // End  button label add to cart to out of stock
+    
   
   // Function to show variant content
   function showVariantContent(variantId) { 
@@ -18,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function setActiveVariant(selectedItem) {
     variantItems.forEach(item => item.classList.remove("is-active", "selected"));
     selectedItem.classList.add("is-active", "selected");
-    const selectedVariantId = selectedItem.getAttribute("data-id");
+    selectedVariantId = selectedItem.getAttribute("data-id");
     showVariantContent(selectedVariantId);
 
     //Get the current URL
