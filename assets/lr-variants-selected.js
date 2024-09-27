@@ -11,12 +11,10 @@ document.addEventListener("DOMContentLoaded", function() {
     
   // Function to show variant content
   function showVariantContent(variantId) { 
-
     // start change button label add to cart to out of stock
     var selectedVariant = window.product.variants.find(function(variant) {
       return variant.id == variantId;
     });
-    
    var available_variant = selectedVariant.available;
    //console.log(selectedVariant); 
    if (selectedVariant.available == true || selectedVariant.inventory_policy == "continue") {
@@ -34,11 +32,13 @@ document.addEventListener("DOMContentLoaded", function() {
         addToCartButton.disabled = true;
         addToCartDiv.setAttribute('disabled', 'disabled'); // Add disabled attribute
    }
+
+   // End  button label add to cart to out of stock 
    // End  button label add to cart to out of stock
     
   
   // Function to show variant content
-  function showVariantContent(variantId) { 
+
     pdpInfoHeaders.forEach(header => {
       if (header.getAttribute("current_variants_id") === variantId) {
         header.style.display = "block";

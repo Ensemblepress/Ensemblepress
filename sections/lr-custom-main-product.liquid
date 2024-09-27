@@ -500,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('Please select a variant.');
         }
     });
-});
+});	
 
 function updateCartDrawer() {
   
@@ -519,8 +519,7 @@ function updateCartDrawer() {
               variantName = ''; 
           } else {
               variantName = variantName;
-          }
-         
+          } 
           //console.log(productName);
            //var authorName = $('#get_author_name').text();          
            //var authorName = document.getElementById('get_author_name').text();          
@@ -541,8 +540,7 @@ function updateCartDrawer() {
             <div class="info">
               <div class="caption">
                 <div class="title">
-                  <span class="title-inner">
-                   
+                  <span class="title-inner">                   
                     <span class="title-author" author-title="">${ authorName }</span>
                     <span class="title-title">${ productName }</span>
                   </span>
@@ -650,7 +648,6 @@ function updateCartDrawer() {
         
       });
   }
-
   function attachCartItemEvents() {
     var increaseButtons = document.querySelectorAll('.increase-quantity');
     var decreaseButtons = document.querySelectorAll('.decrease-quantity');
