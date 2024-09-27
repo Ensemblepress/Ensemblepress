@@ -1,15 +1,40 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Selectors
   const variantItems = document.querySelectorAll("#variant-selector .variant_li");
   const pdpInfoHeaders = document.querySelectorAll(".pdp-info-header-secondary");
-  const cartDrawer = document.querySelector('.pdp-info .ReactModalPortal');
-  const menu = document.querySelector('body.product #menu .header-secondary');
   const detailsButtons = document.querySelectorAll('.pdp-details');
-  const portal = document.querySelector('.pdp-info .ReactModalPortal');
-  const content = document.querySelector('.pdp-info .ReactModal__Content');
+  const body = document.body;
+  // change button action add to cart to out of stock
+  var addToCartButton = document.getElementById('add-to-cart-btn');
+  var addToCartDiv = document.getElementById('add-to-bag');
+  // end 
+    
+  // Function to show variant content
+  function showVariantContent(variantId) { 
 
-  // Function to show the content for the selected variant and hide others
-  function showVariantContent(variantId) {
+    // start change button label add to cart to out of stock
+    var selectedVariant = window.product.variants.find(function(variant) {
+      return variant.id == variantId;
+    });
+    
+   var available_variant = selectedVariant.available;
+   //console.log(selectedVariant); 
+   if (selectedVariant.available == true || selectedVariant.inventory_policy == "continue") {
+       //Variant is out of stock but allows selling
+        //addToCartButton.innerText = "Pre-order";
+        addToCartButton.innerText = "Add to Bag";
+        addToCartButton.disabled = false;
+        addToCartDiv.removeAttribute('disabled');
+  //} else if (selectedVariant.available == true) {
+        //addToCartButton.innerText = "Add to Bag";
+        //addToCartButton.disabled = false;
+        //addToCartDiv.removeAttribute('disabled'); // Remove disabled attribute
+   } else {
+        addToCartButton.innerText = "Out of Stock";
+        addToCartButton.disabled = true;
+        addToCartDiv.setAttribute('disabled', 'disabled'); // Add disabled attribute
+   }
+   // End  button label add to cart to out of stock
+    
     pdpInfoHeaders.forEach(header => {
       if (header.getAttribute("current_variants_id") === variantId) {
         header.style.display = "block";
@@ -18,85 +43,91 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }
-
-  // Function to set the active class and show correct content
+  // Function to set the active variant
   function setActiveVariant(selectedItem) {
-    // Remove "is-active" and "selected" from all variants
     variantItems.forEach(item => item.classList.remove("is-active", "selected"));
-    // Add "is-active" and "selected" to the clicked/selected variant
     selectedItem.classList.add("is-active", "selected");
-    const selectedVariantId = selectedItem.getAttribute("data-id");
+    selectedVariantId = selectedItem.getAttribute("data-id");
     showVariantContent(selectedVariantId);
+      
+    //Get the current URL
+    // set current VariantId for browser url 
+    var currentUrl = new URL(window.location.href);
+    // Set the new variant parameter in the URL
+    currentUrl.searchParams.set('variant', selectedVariantId);
+    // Update the browser's URL without reloading the page
+    window.history.replaceState({}, '', currentUrl);
   }
 
-  // Initialize: Show the content for the default active variant
+  // Initialize with the default active variant
   const defaultActiveVariant = document.querySelector("#variant-selector .variant_li.is-active");
   if (defaultActiveVariant) {
     const defaultVariantId = defaultActiveVariant.getAttribute("data-id");
     showVariantContent(defaultVariantId);
   }
 
-  // Add click event listener to each variant
+  // Attach event listeners for variant selection
   variantItems.forEach(item => {
     item.addEventListener("click", function() {
       setActiveVariant(item);
     });
   });
 
-  // Function to show cart drawer and hide menu
+  // Function to show the cart drawer with animation
   function toggleCartDrawer(variantId) {
-    if (cartDrawer) {
-      const modal = document.getElementById(`model_id_${variantId}`);
-      const modal_content = document.getElementById(`model_contect_id_${variantId}`);
-      const body = document.body;
-      if (modal) {
-          // Open the modal by changing display and adding necessary classes
-          modal.style.display = 'block';
-          modal.classList.add('open'); // Assuming there's an 'open' class for animations or visibility
-          body.classList.add('is-pdp', 'ReactModal__Body--open');
-          modal.classList.remove("ReactModal__Overlay--before-open");
-          modal.classList.add("ReactModal__Overlay--after-open");
-          modal_content.classList.remove('ReactModal__Content--before-open');
-          modal_content.classList.add('ReactModal__Content--after-open');
-            
-          $('.header-secondary').hide();
-          $('body').css('overflowY', 'hidden'); // Show the vertical scroll bar
-          const cust_menu = document.getElementById('custom-menu');
-          if (cust_menu) {
-            cust_menu.style.setProperty('position', 'unset', 'important');
-          }
-      } else {
-          console.warn(`Modal for variant ID ${variantId} not found.`);
-      }
+    const modal = document.getElementById(`model_id_${variantId}`);
+    const modalContent = document.getElementById(`model_contect_id_${variantId}`);
+    if (modal && modalContent) {
+      modal.style.display = 'block'; // Ensure it's visible
+      setTimeout(() => {
+        modalContent.classList.remove('ReactModal__Content--before-open');
+        modalContent.classList.add('ReactModal__Content--after-open');
+        body.classList.add('ReactModal__Body--open');
+      }, 6); // Small timeout to trigger the CSS transition
+    } else {
+      console.warn(`Modal for variant ID ${variantId} not found.`);
     }
   }
-  // Attach event listener to the Details buttons
+
+  // Attach click event to Details buttons
   detailsButtons.forEach(detailsButton => {
     detailsButton.addEventListener('click', function() {
-    if (this.id) {
-       const variantId = this.id.split('_').pop(); // Extract the variant ID from the 'id' attribute            
-      // Call your function to open the corresponding modal or cart drawer
-      toggleCartDrawer(variantId); // Pass the variant ID to toggleCartDrawer function
-    } else {
+      if (this.id) {
+        const variantId = this.id.split('_').pop(); // Extract the variant ID
+        toggleCartDrawer(variantId); // Show cart drawer for the variant
+      } else {
         console.error("No 'id' attribute found on this element");
-    }
+      }
+    });
   });
-});
-  
-  $('.overlay-pdp .overlay-close').on('click', function() {
-    var $cartDrawer = $('.ReactModalPortal');
-    $cartDrawer.removeClass('open');
-    $cartDrawer.css('display', 'none');
-    $('body').css('overflowY', 'visible'); // Show the vertical scroll bar
-    portal.classList.remove("ReactModal__Overlay--after-open");
-    portal.classList.add("ReactModal__Overlay--before-open");
-    content.classList.remove('ReactModal__Content--after-open');
-    content.classList.add('ReactModal__Content--before-open');
-    const cust_menu = document.getElementById('custom-menu');
-    $('.header-secondary').show();
-     if (cust_menu) {    
-      cust_menu.style.setProperty('position', 'relative', 'important');
+
+  // Close the cart drawer with animation
+  document.querySelectorAll('.overlay-close').forEach(closeButton => {
+    closeButton.addEventListener('click', function() {
+      const modal = this.closest('.ReactModalPortal');
+      const modalContent = this.closest('.ReactModal__Content');
+      // Start the close animation
+      modalContent.classList.remove('ReactModal__Content--after-open');
+      modalContent.classList.add('ReactModal__Content--before-open');
+      setTimeout(() => {
+        modal.style.display = 'none'; // Hide the modal after animation ends
+        body.classList.remove('ReactModal__Body--open');
+      }, 800); // Match this duration with the CSS animation duration
+    });
+  });
+
+  // Close the cart drawer when clicking outside of it (on body)
+  document.addEventListener('click', function(event) {
+    const modal = document.querySelector('.ReactModalPortal.open'); // Select the open modal
+    const modalContent = document.querySelector('.ReactModal__Content.ReactModal__Content--after-open');
+    // Check if click is outside the modal content and the modal is open
+    if (modal && modalContent && !modalContent.contains(event.target) && !event.target.closest('.pdp-details')) {
+      modalContent.classList.remove('ReactModal__Content--after-open');
+      modalContent.classList.add('ReactModal__Content--before-open');
+      setTimeout(() => {
+        modal.style.display = 'none'; // Hide the modal after transition
+        body.classList.remove('ReactModal__Body--open');
+      }, 800); // Match this duration with the CSS animation duration
     }
-    
   });
 });
