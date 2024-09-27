@@ -1,6 +1,5 @@
 <script src="{{ 'lr-variants-selected.js' | asset_url }}" defer="defer"></script>
 {{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
-
 <script>
   window.product = {
     variants: [
@@ -15,7 +14,6 @@
     ]
   };
 </script>
-
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
@@ -96,32 +94,19 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-          
           {% if product.variants.size %}
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
                 {% assign short_des = variant.metafields.custom.short_descriptions %}
-
-              {% if short_des %}
+                  {% if short_des %}
                     <div class="pdp-description">
                       <p>{{ short_des }}</p>
                     </div>
                   {% else %}
                     {{ product.description }}
                   {% endif %}
-                  
                   <ul class="pdp-keywords">    
-
-                {% if short_des %}
-                <div class="pdp-description">
-                  <p>{{ short_des }}</p>
-                </div>
-                {% else %}
-                {{ product.description }}
-                {% endif %}
-                  <ul class="pdp-keywords">
-
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                     <li class="pdp-details" id="variant_detail_{{ variant.id }}">
                       <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
@@ -143,7 +128,6 @@
             {% endcomment %}  
           {% endif %}
           
-
           <!-- start Back in stock -->
           {% for collection in product.collections %}
             {% if collection.handle == 'forthcoming' %}
@@ -152,7 +136,6 @@
               {% endif %}
           {% endfor %}
           <!-- Back in stock end -->
-
           
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
@@ -184,10 +167,6 @@
               <button class="button-addtobag  Xis-disabled" id="add-to-bag">
                 <span class="button-addtobag-cta">                    
                   <span class="button-addtobag-cta-title" id="add-to-cart-btn">Add to bag </span>
-                <span class="button-addtobag-cta">
-                     
-                  <span class="button-addtobag-cta-title" id="add-to-cart-btn">Add to bag </span>
-                  
                   <span class="button-addtobag-cta-price">USD 22.00</span></span>
                 <span class="button-addtobag-help">Select a variant</span>
               </button>
@@ -500,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('Please select a variant.');
         }
     });
-});	
+});
 
 function updateCartDrawer() {
   
@@ -519,7 +498,8 @@ function updateCartDrawer() {
               variantName = ''; 
           } else {
               variantName = variantName;
-          } 
+          }
+         
           //console.log(productName);
            //var authorName = $('#get_author_name').text();          
            //var authorName = document.getElementById('get_author_name').text();          
@@ -540,7 +520,8 @@ function updateCartDrawer() {
             <div class="info">
               <div class="caption">
                 <div class="title">
-                  <span class="title-inner">                   
+                  <span class="title-inner">
+                   
                     <span class="title-author" author-title="">${ authorName }</span>
                     <span class="title-title">${ productName }</span>
                   </span>
@@ -648,6 +629,7 @@ function updateCartDrawer() {
         
       });
   }
+
   function attachCartItemEvents() {
     var increaseButtons = document.querySelectorAll('.increase-quantity');
     var decreaseButtons = document.querySelectorAll('.decrease-quantity');
