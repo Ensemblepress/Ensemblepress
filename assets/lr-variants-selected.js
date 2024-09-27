@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const pdpInfoHeaders = document.querySelectorAll(".pdp-info-header-secondary");
   const detailsButtons = document.querySelectorAll('.pdp-details');
   const body = document.body;
+
   // change button action add to cart to out of stock
   var addToCartButton = document.getElementById('add-to-cart-btn');
   var addToCartDiv = document.getElementById('add-to-bag');
@@ -35,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
    }
    // End  button label add to cart to out of stock
     
+  
+  // Function to show variant content
+  function showVariantContent(variantId) { 
     pdpInfoHeaders.forEach(header => {
       if (header.getAttribute("current_variants_id") === variantId) {
         header.style.display = "block";
@@ -49,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
     selectedItem.classList.add("is-active", "selected");
     selectedVariantId = selectedItem.getAttribute("data-id");
     showVariantContent(selectedVariantId);
-      
+
     //Get the current URL
     // set current VariantId for browser url 
     var currentUrl = new URL(window.location.href);

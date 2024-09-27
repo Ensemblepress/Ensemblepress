@@ -1,5 +1,6 @@
 <script src="{{ 'lr-variants-selected.js' | asset_url }}" defer="defer"></script>
 {{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
+
 <script>
   window.product = {
     variants: [
@@ -14,6 +15,7 @@
     ]
   };
 </script>
+
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
@@ -100,7 +102,8 @@
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
                 {% assign short_des = variant.metafields.custom.short_descriptions %}
-                  {% if short_des %}
+
+              {% if short_des %}
                     <div class="pdp-description">
                       <p>{{ short_des }}</p>
                     </div>
@@ -109,6 +112,16 @@
                   {% endif %}
                   
                   <ul class="pdp-keywords">    
+
+                {% if short_des %}
+                <div class="pdp-description">
+                  <p>{{ short_des }}</p>
+                </div>
+                {% else %}
+                {{ product.description }}
+                {% endif %}
+                  <ul class="pdp-keywords">
+
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                     <li class="pdp-details" id="variant_detail_{{ variant.id }}">
                       <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
@@ -130,6 +143,7 @@
             {% endcomment %}  
           {% endif %}
           
+
           <!-- start Back in stock -->
           {% for collection in product.collections %}
             {% if collection.handle == 'forthcoming' %}
@@ -138,6 +152,7 @@
               {% endif %}
           {% endfor %}
           <!-- Back in stock end -->
+
           
           <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
@@ -169,6 +184,10 @@
               <button class="button-addtobag  Xis-disabled" id="add-to-bag">
                 <span class="button-addtobag-cta">                    
                   <span class="button-addtobag-cta-title" id="add-to-cart-btn">Add to bag </span>
+                <span class="button-addtobag-cta">
+                     
+                  <span class="button-addtobag-cta-title" id="add-to-cart-btn">Add to bag </span>
+                  
                   <span class="button-addtobag-cta-price">USD 22.00</span></span>
                 <span class="button-addtobag-help">Select a variant</span>
               </button>
