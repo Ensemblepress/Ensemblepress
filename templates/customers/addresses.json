@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-addresses",
+      "type": "lr-main-addresses",
       "settings": {
       }
     }
