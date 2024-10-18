@@ -251,7 +251,7 @@
       }
     {% endstyle %}
 
-    {% if template.name == 'cart' or template.name == 'register' or template.name == 'login' or template.name == 'addresses' or template.name == 'order' or template.name == 'account' %}  
+    {% if template.name == 'cart' or template.name == 'reset_password' %}  
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% endif %}
     
