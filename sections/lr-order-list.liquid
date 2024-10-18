@@ -1,0 +1,69 @@
+{{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
+{{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
+{{ 'lr-account-login.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
+
+<div class="plp-header">
+  <div class="plp-header-primary">
+    <div class="widget-dts">
+      <div class="widget-dts-text widget-dts-text-ghost">{{ page.title }}</div>
+      <!-- Foreground Text -->
+      <div id="foreground" class="widget-dts-text">{{ page.title }}</div>    
+      <!-- Middleground Text -->
+      <div id="middleground" class="widget-dts-text">{{ page.title }}</div>    
+      <!-- Background Text -->
+      <div id="background" class="widget-dts-text">{{ page.title }}</div>
+    </div>
+  </div>
+</div>
+{% paginate customer.orders by 20 %}
+  {%- if customer.orders.size > 0 -%}  
+    <div class="page-account page-account-account">
+      <div class="inner inner-wide">
+        <div class="site-system site-system-2col">
+          <div class="item item-summary item-summary-fullwidth">
+            <div class="hd">Orders <span class="dot">•</span> returns<a class="tooltip-right" href="{{ routes.account_url }}">Return to Account</a></div>
+            <div class="info">
+              <div class="widget-orders">
+                {%- for order in customer.orders -%}
+                  <div class="widget-orders-item">
+                    <div class="widget-orders-image">
+                    {% for line_item in order.line_items %}
+                       {% if line_item.product.featured_image or line_item.variant.image %}
+                          <img src="{{ line_item.product.featured_image | img_url: 'master' }}" alt="{{ line_item.product.title }}">                
+                      {% else %}               
+                        <img src="{{ line_item.variant.image | img_url: 'master' }}" alt="{{ line_item.product.title }}">
+                      {% endif %}                      
+                    {% endfor %}   
+                    </div>  
+                    <div class="widget-orders-details">
+                      <div class="details details-title">Order {{ order.name }}
+                          <br>{{ order.created_at | date: "%d-%m-%Y" }}                    
+                      </div>
+                      <div class="details details-status details-status-progress">{{ order.financial_status_label }}</div>
+                      <div class="details details-pricing">{{ order.total_net_amount | money_with_currency }}</div>
+                      <div class="details details-view"><a href="{{ order.customer_url }}">View details</a></div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}                  
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Order List",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Order List"
+      }
+    ]
+  }
+{% endschema %}
