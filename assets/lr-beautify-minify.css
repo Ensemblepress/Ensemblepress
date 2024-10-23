@@ -1032,7 +1032,6 @@ textarea.has-error {
 .site-system .item-product .info .title {
   padding-bottom: 2px;
   padding-right: 10px;
-  font-weight: 500;
 }
 .site-system .item-product .info .values span:after {
   content: ",";
@@ -1297,7 +1296,7 @@ textarea.has-error {
     border-radius: 2px;
   }
   .site-grid .item-product-grid .item-title-triangle {
-    left: 50px;
+    left: 40px;
     width: calc(100% - 80px);
   }
   .site-system .item-product-minibag .image {
@@ -2839,7 +2838,7 @@ textarea.has-error {
     margin-bottom: 30px;
     padding-top: 30px;
     height: 120px;
-    padding-left: 50px;
+    padding-left: 40px;
   }
 }
 .site-grid .caption-sticky-top + img,
@@ -3648,9 +3647,6 @@ body.is-maintenance main {
     width: 100%;
     display: inline-block;
   }
-  #menu .header-primary .main-nav-menu-item {
-    padding: 0px;
-  }
 }
 @media (min-width: 835px) {
   #menu ul {
@@ -3670,13 +3666,12 @@ body.is-maintenance main {
 @media (min-width: 835px) {
   #menu .header-primary {
     justify-content: flex-start;
-    margin: 20px 0;
+    /* margin: 20px 0; */
   }
 }
 @media (min-width: 835px) {
   #menu .header-secondary {
     justify-content: flex-end;
-    margin: 20px 0;
   }
 }
 @media (max-width: calc(835px - 1px)) {
@@ -3702,7 +3697,7 @@ body.is-maintenance main {
 }
 @media (min-width: 835px) {
   #menu .header-item {
-    padding: 0 12px;
+    padding: 20px 40px 0 0;
     box-sizing: border-box;
     text-align: left;
     height: 54px;
@@ -3734,7 +3729,7 @@ body.is-maintenance main {
   min-width: 18px;
   height: 18px;
   border-radius: 9px;
-  padding: 3px 3px 0;
+  padding: 2px 3px 0;
   font-size: 12px;
   line-height: 1.5em;
   font-weight: 400;
@@ -3748,7 +3743,7 @@ body.is-maintenance main {
 }
 @media (min-width: 576px) {
   #menu .header-item .amount {
-    font-size: 8px;
+    font-size: 9px;
     line-height: 1.3em;
   }
 }
@@ -3823,7 +3818,7 @@ body.is-maintenance main {
 @media (min-width: 835px) {
   .header-logo {
     position: fixed;
-    left: 50px;
+    left: 40px;
     top: 70px;
     z-index: 9;
   }
@@ -4068,7 +4063,7 @@ ul.nav-menu li .tooltip {
 }
 @media (min-width: 835px) {
   .nav-layout {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 }
 @media (min-width: 835px) {
@@ -4146,7 +4141,7 @@ ul.nav-menu li .tooltip {
   }
 }
 .nav-logo {
-  margin: 0 40px 40px;
+  margin: 0 30px 40px;
   width: 42px;
   height: 84px;
   background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/b2f8d7a46bef2ca65ff765f28fd1aed3.svg?v=1721304042);
