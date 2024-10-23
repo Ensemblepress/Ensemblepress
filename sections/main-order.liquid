@@ -68,7 +68,7 @@
 
                         <div class="values"><span>{{ line_item.variant.title }}</span></div>
                         <div class="tools">
-                            <div class="tool">Quantity<span class="dot">•</span>&nbsp;{{ line_item.quantity }}</div>
+                            <div class="tool">Quantity<span class="dot">•</span>{{ line_item.quantity }}</div>
                         </div>
                     </div>
                   {%- if line_item.original_line_price != line_item.final_line_price -%}
@@ -113,6 +113,7 @@
         </div>
     </div>
 </div>
+
 {% schema %}
 {
   "name": "t:sections.main-order.name",
