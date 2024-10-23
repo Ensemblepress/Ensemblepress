@@ -31,11 +31,19 @@
           {%- for address in customer.addresses -%}
             <div class="item item-address" current_edit_id="{{ address.id }}">
               <div class="item-address-info">
+                {%- if address -%}  <!-- Check if the address exists -->
                 {%- if address == customer.default_address -%}
-                   <div class="title">Office<span class="dot">•</span></div>  
-                {% else %}  
-                   <div class="title" >Home <span class="dot">•</span>default address<span class="dot">••</span></div>
-                {%- endif -%}                
+                  <div class="title">Billing Address<span class="dot">•</span></div>
+                {%- else -%}
+                  <div class="title">Shipping Address<span class="dot">•</span></div>
+                {%- endif -%}
+              {%- else -%}
+                {%- if customer.metafields.custom.address_title -%}
+                  <div class="title">{{ customer.metafields.custom.address_title }}<span class="dot">•</span></div>
+                {%- else -%}
+                  <div class="title">No Address Available<span class="dot">•</span></div>
+                {%- endif -%}
+              {%- endif -%}             
                 <div class="info">{{ address | format_address }}</div>
               </div>
               <div class="item-address-tools">
@@ -91,18 +99,24 @@
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="Apt, Suite, Building, Company">
         </div>
-        <div class="item item-input item-input-spaced">
-          <select class="select-fullwidth" 
-            id="AddressCountry_{{ form.id }}"
-            name="address[country]"
-            data-address-country-select
-            data-default="{{ form.country }}"
-            data-form-id="{{ form.id }}"
-            autocomplete="country"
-            >
-            {{ all_country_option_tags }}
-          </select>
-          
+		<div class="item item-input item-input-spaced">
+          <select id="AddressCountry_{{ form.id }}"
+              name="address[country]"
+              data-address-country-select
+              data-default="{{ form.country }}"
+              data-form-id="{{ form.id }}"
+              autocomplete="country">
+                <option value="USA" data-provinces="[]" {% if form.country == 'USA' %}selected{% endif %}>USA</option>
+                <option value="Canada" data-provinces="[]" {% if form.country == 'Canada' %}selected{% endif %}>Canada</option>
+                <option value="Italy" data-provinces="[]" {% if form.country == 'Italy' %}selected{% endif %}>Italy</option>
+                <option value="Germany" data-provinces="[]" {% if form.country == 'Germany' %}selected{% endif %}>Germany</option>
+                <option value="Netherlands" data-provinces="[]" {% if form.country == 'Netherlands' %}selected{% endif %}>Netherlands</option>
+                <option value="Spain" data-provinces="[]" {% if form.country == 'Spain' %}selected{% endif %}>Spain</option>
+                <option value="Switzerland" data-provinces="[]" {% if form.country == 'Switzerland' %}selected{% endif %}>Switzerland</option>
+                <option value="Belgium" data-provinces="[]" {% if form.country == 'Belgium' %}selected{% endif %}>Belgium</option>
+                <option value="Austria" data-provinces="[]" {% if form.country == 'Austria' %}selected{% endif %}>Austria</option>
+                <option value="UK" data-provinces="[]" {% if form.country == 'UK' %}selected{% endif %}>UK</option>
+            </select>
         </div>
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressProvince_{{ form.id }}" name="address[province]" value="{{ form.province }}" placeholder="State•">
@@ -158,15 +172,19 @@
         <input type="text" id="AddressAddress2New" name="address[address2]" placeholder="Apt, Suite, Building, Company" value="{{ form.address2 }}">
       </div>
       <div class="item item-input item-input-spaced">
-        <select class="select-fullwidth" 
-          id="AddressCountryNew" 
-          name="address[country]" 
-          data-default="{{ form.country }}" 
-          autocomplete="country"
-        >
-          {{ all_country_option_tags }}
+          <select id="AddressCountryNew" class="select-fullwidth" name="address[country]" data-default="" autocomplete="country">
+            <option value="USA" data-provinces="[]">USA</option>
+            <option value="Canada" data-provinces="[]">Canada</option>
+        	<option value="Italy" data-provinces="[]">Italy</option>
+        	<option value="Germany" data-provinces="[]">Germany</option>
+        	<option value="Netherlands" data-provinces="[]">Netherlands</option>
+        	<option value="Spain" data-provinces="[]">Spain</option>
+        	<option value="Switzerland" data-provinces="[]">Switzerland</option>
+        	<option value="Belgium" data-provinces="[]">Belgium</option>
+        	<option value="Austria" data-provinces="[]">Austria</option>
+        	<option value="UK" data-provinces="[]">UK</option>
         </select>
-      </div>
+        </div>
       <div class="item item-input item-input-spaced">
         <input type="text" id="AddressProvinceNew" name="address[province]" placeholder="State•" value="{{ form.province }}">
       </div>
