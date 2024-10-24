@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "lr-custom-acount-profile",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
