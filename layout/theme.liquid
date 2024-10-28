@@ -251,8 +251,8 @@
       }
     {% endstyle %}
 
-    {% if template.name == 'cart' or template.name == 'reset_password' %}  
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% if template.name == 'reset_password' %}  
+      {{ 'base.css' | asset_url | stylesheet_tag }}
     {% endif %}
     
 
