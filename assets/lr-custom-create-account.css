@@ -1,0 +1,13 @@
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.page-account.page-account-register .item-button button {
+    width: 100%;
+}
+@media (min-width: 576px) {
+  div#page-account-register-success {
+      padding: 0;
+  }
+}

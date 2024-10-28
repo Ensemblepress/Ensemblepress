@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "lr-main-addresses",
+      "type": "lr-custom-acount-profile",
       "settings": {
       }
     }

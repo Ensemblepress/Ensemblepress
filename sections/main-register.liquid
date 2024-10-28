@@ -1,174 +1,109 @@
-{{ 'customer.css' | asset_url | stylesheet_tag }}
+{{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
+{{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+{{ 'lr-custom-create-account.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lr-custom-create-account.js' | asset_url }}" defer="defer"></script>
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-<div class="customer register section-{{ section.id }}-padding">
-  <svg style="display: none">
-    <symbol id="icon-error" viewBox="0 0 13 13">
-      <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
-      <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
-      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
-      <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
-    </symbol>
-  </svg>
-  <h1>
-    {{ 'customer.register.title' | t }}
-  </h1>
-  {%- form 'create_customer', novalidate: 'novalidate' -%}
-    {%- if form.errors -%}
-      <h2 class="form__message" tabindex="-1" autofocus>
-        <svg aria-hidden="true" focusable="false">
-          <use href="#icon-error" />
-        </svg>
-        {{ 'templates.contact.form.error_heading' | t }}
-      </h2>
-      <ul>
-        {%- for field in form.errors -%}
-          <li>
-            {%- if field == 'form' -%}
-              {{ form.errors.messages[field] }}
-            {%- else -%}
-              <a href="#RegisterForm-{{ field }}">
-                {{ form.errors.translated_fields[field] | capitalize }}
-                {{ form.errors.messages[field] }}
-              </a>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
-    <div class="field">
-      <input
-        type="text"
-        name="customer[first_name]"
-        id="RegisterForm-FirstName"
-        {% if form.first_name %}
-          value="{{ form.first_name }}"
-        {% endif %}
-        autocomplete="given-name"
-        placeholder="{{ 'customer.register.first_name' | t }}"
-      >
-      <label for="RegisterForm-FirstName">
-        {{ 'customer.register.first_name' | t }}
-      </label>
-    </div>
-    <div class="field">
-      <input
-        type="text"
-        name="customer[last_name]"
-        id="RegisterForm-LastName"
-        {% if form.last_name %}
-          value="{{ form.last_name }}"
-        {% endif %}
-        autocomplete="family-name"
-        placeholder="{{ 'customer.register.last_name' | t }}"
-      >
-      <label for="RegisterForm-LastName">
-        {{ 'customer.register.last_name' | t }}
-      </label>
-    </div>
-    <div class="field">
-      <input
-        type="email"
-        name="customer[email]"
-        id="RegisterForm-email"
-        {% if form.email %}
-          value="{{ form.email }}"
-        {% endif %}
-        spellcheck="false"
-        autocapitalize="off"
-        autocomplete="email"
-        aria-required="true"
-        {% if form.errors contains 'email' %}
-          aria-invalid="true"
-          aria-describedby="RegisterForm-email-error"
-        {% endif %}
-        placeholder="{{ 'customer.register.email' | t }}"
-      >
-      <label for="RegisterForm-email">
-        {{ 'customer.register.email' | t }}
-      </label>
-    </div>
-    {%- if form.errors contains 'email' -%}
-      <span id="RegisterForm-email-error" class="form__message">
-        <svg aria-hidden="true" focusable="false">
-          <use href="#icon-error" />
-        </svg>
-        {{ form.errors.translated_fields.email | capitalize }}
-        {{ form.errors.messages.email }}.
-      </span>
-    {%- endif -%}
-    <div class="field">
-      <input
-        type="password"
-        name="customer[password]"
-        id="RegisterForm-password"
-        aria-required="true"
-        {% if form.errors contains 'password' %}
-          aria-invalid="true"
-          aria-describedby="RegisterForm-password-error"
-        {% endif %}
-        placeholder="{{ 'customer.register.password' | t }}"
-      >
-      <label for="RegisterForm-password">
-        {{ 'customer.register.password' | t }}
-      </label>
-    </div>
-    {%- if form.errors contains 'password' -%}
-      <span id="RegisterForm-password-error" class="form__message">
-        <svg aria-hidden="true" focusable="false">
-          <use href="#icon-error" />
-        </svg>
-        {{ form.errors.translated_fields.password | capitalize }}
-        {{ form.errors.messages.password }}.
-      </span>
-    {%- endif -%}
-    <button>
-      {{ 'customer.register.submit' | t }}
-    </button>
-  {%- endform -%}
+<div class="plp-header">
+  <div class="plp-header-primary">
+    <div class="widget-dts">
+      <div class="widget-dts-text widget-dts-text-ghost">Create account</div>
+      <!-- Foreground Text -->
+      <div id="foreground" class="widget-dts-text">Create account</div>    
+      <!-- Middleground Text -->
+      <div id="middleground" class="widget-dts-text">Create account</div>    
+      <!-- Background Text -->
+      <div id="background" class="widget-dts-text">Create account</div>
+    </div>      
+  </div>
 </div>
 
+<div class="customer register section-{{ section.id }}-padding">
+  <div class="form-container" id="page-account-register-form">
+    <form id="registerForm">
+      <div class="page-account page-account-register">
+        <div class="inner">
+          <div class="site-system">
+            <div class="item item-hd">
+              Create an account
+              <span class="tooltip-right"><span class="dot">•</span>Required</span>
+            </div>
+            <div class="item item-input item-input-spaced">
+              <select class="select-fullwidth" id="salutation" name="salutation">
+              <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Mr.</option>
+              <option value="Mrs." {% if customer.metafields.custom.salutation == "Mrs." %}selected{% endif %}>Mrs.</option>
+              <option value="Ms." {% if customer.metafields.custom.salutation == "Ms." %}selected{% endif %}>Ms.</option>
+              <option value="Miss" {% if customer.metafields.custom.salutation == "Miss" %}selected{% endif %}>Miss</option>
+              <option value="Mx." {% if customer.metafields.custom.salutation == "Mx." %}selected{% endif %}>Mx.</option>
+              <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Dr.</option>
+              <option value="Ind." {% if customer.metafields.custom.salutation == "Ind." %}selected{% endif %}>Ind.</option>
+              <option value="Misc." {% if customer.metafields.custom.salutation == "Misc." %}selected{% endif %}>Misc.</option>
+            </select>
+            </div>
+            <div class="item item-input item-input-spaced">
+              <input type="text" placeholder="First name•" id="firstName" name="firstName" />
+              <div id="firstName-error" class="error-message"></div> <!-- Error message -->
+            </div>
+            <div class="item item-input item-input-spaced">
+              <input type="text" placeholder="Last name•" id="lastName" name="lastName" />
+              <div id="lastName-error" class="error-message"></div> <!-- Error message -->
+            </div>
+            <div class="item item-input item-input-spaced">
+              <input type="email" placeholder="E-mail address•" id="email" name="email" />
+               <div id="email-error" class="error-message"></div>
+            </div>
+            <div class="item item-input item-input-spaced">
+              <input type="password" placeholder="Password•" id="password" name="password" />
+              <div id="password-error" class="error-message"></div> <!-- Error message -->
+            </div>
+            <div class="item item-input item-input-spaced">
+              <input type="password" placeholder="Confirm password•" id="confirmPassword" name="confirmPassword" />
+              <div id="confirmPassword-error" class="error-message"></div> <!-- Error message -->
+            </div>
+            <div class="item item-copy item-copy-longtext">
+              <p>Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.</p>
+            </div>
+            <div class="item item-checkbox item-input-spaced">
+              <input type="checkbox" class="checkbox-single newsletter" id="newsletter" name="newsletter" checked="true" />
+              <label htmlFor="register-newsletter">Subscribe to newsletter</label>
+            </div>
+            <div class="item item-checkbox item-checkbox-longtext">
+              <input type="checkbox" class="checkbox-single" id="terms" name="terms" />
+              <label htmlFor="newsletter-confirm">
+                I have read, understood and accepted the <a href="/pages/terms-and-conditions">terms and conditions</a> and the <a href="/pages/privacy-policy">privacy policy</a>
+              </label>
+            </div>
+            <div class="item item-button">
+              <button type="submit">Register</button>
+              <div id="error_required" class="error-message"></div> <!-- Error message -->
+            </div>
+            <div id="error"></div>
+            <div id="sucess"></div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="page-account page-account-register-success" id="page-account-register-success" style="display:none;">
+    <div class="inner">
+      <div class="site-system">
+        <div class="item item-hd">Thank you</div>
+        <div class="item item-copy item-copy-longtext">
+          <p>You are now registered to Lost River. You will receive an email with your account confirmation shortly. Meanwhile, you can start using your account.</p>
+        </div>
+        <div class="item item-button">
+          <a class="button" href="/account">Go to account overview</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
 {% schema %}
 {
   "name": "t:sections.main-register.name",
   "settings": [
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
+  
   ]
 }
 {% endschema %}

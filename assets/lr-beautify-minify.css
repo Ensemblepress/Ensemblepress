@@ -3726,7 +3726,7 @@ body.is-maintenance main {
   min-width: 18px;
   height: 18px;
   border-radius: 9px;
-  padding: 3px 3px 0;
+  padding: 2px 3px 0;
   font-size: 12px;
   line-height: 1.5em;
   font-weight: 400;
@@ -12937,6 +12937,11 @@ input[type=text], input[type=password] {
   border-bottom: 1px solid rgba(0, 0, 0, .4);
   width: 100%;
   border-radius: 0;
+}
+
+div#error {
+    margin: 14px 0;
+    padding: 6px 22px 6px 0;
 }
 .page-account form {
     margin-top: 40px;
