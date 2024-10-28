@@ -1,0 +1,81 @@
+{{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
+{{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
+{{ 'lr-account-login.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lr-custom-change-password.js' | asset_url }}" defer="defer"></script>
+
+<div class="plp-header">
+  <div class="plp-header-primary">
+    <div class="widget-dts">
+      <div class="widget-dts-text widget-dts-text-ghost">{{ page.title }}</div>
+      <!-- Foreground Text -->
+      <div id="foreground" class="widget-dts-text">{{ page.title }}</div>    
+      <!-- Middleground Text -->
+      <div id="middleground" class="widget-dts-text">{{ page.title }}</div>    
+      <!-- Background Text -->
+      <div id="background" class="widget-dts-text">{{ page.title }}</div>
+    </div>
+  </div>
+</div>
+<div class="page-account page-account-password" id="change-password-container">
+  <div class="inner">
+    <div class="site-system">
+      <div class="item item-hd item-hd-line">Change password<span class="tooltip-right"><span class="dot">•</span>Required</span></div>
+      <form id="change-password-form" method="post" action="/account">  
+        <input type="hidden" name="form_type" value="customer_password">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="_method" value="put"> 
+        <div class="item item-input item-input-password item-input-spaced">
+          <input type="password" placeholder="Current password•" id="current-password" name="customer[old_password]" required>
+          <div class="password_eye toggle_password_visibility"  data-target="current-password"></div>
+        </div>
+        <div class="item item-input item-input-password item-input-spaced">
+          <input type="password" placeholder="New password•" id="new-password" name="customer[password]">
+          <div class="password_eye toggle_password_visibility" data-target="new-password"></div>
+        </div>
+        <div class="item item-input item-input-password item-input-spaced">
+          <input type="password" placeholder="Confirm new password•" id="confirm-password" name="customer[password_confirmation]">
+          <input type="hidden" id="customer_id" name="customer_id" value="{{ customer.id }}">
+          <div class="password_eye toggle_password_visibility" data-target="confirm-password"></div>
+        </div>
+        <div class="item item-copy item-copy-longtext spacer">
+          <p>Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.</p>
+        </div>
+        <div class="item item-button">
+          <button type="submit" class="button button-large" id="save-new-password">Save</button>
+        </div>
+        <div id="error"></div>
+      </form>  
+    </div>
+  </div>
+</div>
+
+<div class="page-account page-account-forgottpassword-create-success" style="display:none">
+  <div class="inner">
+    <div class="site-system">
+      <div class="item item-hd">Create new password</div>
+      <div class="item item-copy item-copy-longtext">
+          <p>Your new password has been created successfully. Going forward, you can use this password for checkout and to login to your account.</p>
+      </div>
+      <div class="item item-button"><a class="button" href="/account">Go to account overview</a></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .page-account.page-account-forgottpassword-create-success {
+    padding-top: 40px;
+  }
+  @media (max-width: calc(575px)) {
+  .page-account.page-account-forgottpassword-create-success {
+    padding-top: 0px;
+  }
+ }   
+</style>
+
+{% schema %}
+  {
+    "name": "Change Password",
+    "settings": []
+  }
+{% endschema %}
