@@ -100,8 +100,8 @@ body {
   background-color: #fff;
   margin: 0;
   font-family: "LR-Geigy", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 16px;
-  line-height: 1.5em;
+  font-size: 14px;
+  line-height: 1.3em;
   font-weight: 400;
   text-align: left;
   text-transform: none;
@@ -252,7 +252,7 @@ button,
   border-radius: 2px;
   font-family: "LR-Geigy", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
-  line-height: 1.5em;
+  line-height: 1.3em;
   text-align: left;
   text-transform: none;
   font-weight: 500;
@@ -271,7 +271,7 @@ button,
 @media (min-width: 576px) {
   button,
   .button {
-    padding: 8px 10px 5px;
+    padding: 10px 12px 8px;
   }
   .widget-newsletter.widget-newsletter-footer
     .form-field
@@ -328,7 +328,7 @@ button.button-large,
 @media (min-width: 576px) {
   button.button-large,
   .button.button-large {
-    padding: 11px 20px 8px;
+    padding: 10px 20px 8px;
   }
 }
 button.button-large + .button-large,
@@ -908,7 +908,7 @@ input[type="password"].input-email::-webkit-contacts-auto-fill-button {
   top: -2px;
   width: 33px;
   height: 33px;
-  background-image: url(../../static/img/icon-eye-3px.svg);
+  background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/d2b8f45f24f84d47a84a8569af980c70.svg?v=1728311480);
   background-repeat: no-repeat;
   background-position: right center;
   background-size: 14px;
@@ -921,7 +921,11 @@ input[type="password"].input-email::-webkit-contacts-auto-fill-button {
   }
 }
 .item-input-password input[type="text"] + .password_eye {
-  background-image: url(../../static/img/icon-eye-off-3px.svg);
+  background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/d2b8f45f24f84d47a84a8569af980c70.svg?v=1728311480);
+  right: 1px;
+  top: 3px;
+  width: 14px;
+  height: 24px
 }
 textarea {
   -webkit-appearance: none;
@@ -1292,7 +1296,7 @@ textarea.has-error {
     border-radius: 2px;
   }
   .site-grid .item-product-grid .item-title-triangle {
-    left: 50px;
+    left: 40px;
     width: calc(100% - 80px);
   }
   .site-system .item-product-minibag .image {
@@ -1547,11 +1551,11 @@ textarea.has-error {
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-  line-height: 1.5em;
+  line-height: 1.3em;
 }
 @media (min-width: 576px) {
   .site-system .item-address {
-    line-height: 1.5em;
+    line-height: 1.3em;
   }
 }
 .site-system .item-address-checkout {
@@ -1572,6 +1576,7 @@ textarea.has-error {
 .site-system .item-address p {
   text-overflow: ellipsis;
   overflow: hidden;
+  margin: 0px;
 }
 .site-system .item-address p.phone {
   display: none;
@@ -1592,7 +1597,7 @@ textarea.has-error {
 }
 .site-system .item-address .textlink-edit {
   color: rgba(0, 0, 0, 0.4);
-  padding: 12px 0 12px 6px;
+  padding: 12px 0 12px 3px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1687,7 +1692,7 @@ textarea.has-error {
   .site-system .item-button-horizontal .button + button,
   .site-system .item-button-horizontal .button + .button {
     margin-top: 0;
-    margin-left: 30px;
+    margin-left: 4px;
   }
 }
 @media (max-width: calc(835px - 1px)) {
@@ -1790,11 +1795,11 @@ textarea.has-error {
   margin: 33px 0 44px;
 }
 .site-system .item-summary {
-  margin: 60px 0;
+  margin: 0 0 100px;
 }
 @media (min-width: 576px) {
   .site-system .item-summary {
-    margin: 30px 0;
+    margin: 0 0 60px;
   }
 }
 .site-system .item-summary.item-summary-fullwidth {
@@ -2113,17 +2118,14 @@ textarea.has-error {
 .site-system .item-error,
 .site-system .inline-error {
   color: #c00;
-  background-image: url(../../static/img/icon-error-circle-3px-red.svg);
-  background-size: 15px;
-  background-position: left 3px;
-  background-repeat: no-repeat;
-  padding-left: 25px;
+  padding-left: 26px;
+  position: relative;
 }
 @media (min-width: 576px) {
   .site-system .item-error,
   .site-system .inline-error {
     background-size: 10px;
-    padding-left: 20px;
+    padding-left: 26px;
     background-position: left 1px;
   }
 }
@@ -2141,12 +2143,12 @@ textarea.has-error {
 }
 .site-system .item-checkbox + .item-error,
 .site-system .inline-error {
-  margin-top: 10px;
+  margin-top: 26px;
 }
 @media (min-width: 576px) {
   .site-system .item-checkbox + .item-error,
   .site-system .inline-error {
-    margin-top: 7px;
+    margin-top: 26px;
   }
 }
 .site-system .item-legal {
@@ -2348,13 +2350,13 @@ textarea.has-error {
   padding: 6px 12px 6px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   margin: 0;
-  background-image: url(../../static/img/icon-chevron-down-2-555.svg);
+  background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/e2b9404d5fb783aff8bb015de5a54f41.svg?v=1728996562);
   background-size: 6px;
   background-repeat: no-repeat;
   background-position: 100% 45%;
   color: #000;
   border-radius: 0;
-  font-family: "Times New Roman", serif;
+  font-family: "LR-Geigy","Helvetica Neue","Helvetica","Arial",sans-serif;
   font-size: inherit;
   line-height: inherit;
   letter-spacing: inherit;
@@ -2458,11 +2460,11 @@ textarea.has-error {
   background-color: #c00;
 }
 .site-system .item-checkbox-longtext {
-  line-height: 1.5em;
+  line-height: 1.3em;
 }
 @media (min-width: 576px) {
   .site-system .item-checkbox-longtext {
-    line-height: 1.5em;
+    line-height: 1.3em;
   }
 }
 .site-system .item-checkbox-longtext input[type="checkbox"].checkbox-single {
@@ -2584,7 +2586,7 @@ textarea.has-error {
 }
 @media (min-width: 576px) {
   .site-system .spacer {
-    margin-top: 20px;
+    margin-top: 22px;
   }
 }
 .site-system .spacer-larger {
@@ -2833,7 +2835,7 @@ textarea.has-error {
     margin-bottom: 30px;
     padding-top: 30px;
     height: 120px;
-    padding-left: 50px;
+    padding-left: 40px;
   }
 }
 .site-grid .caption-sticky-top + img,
@@ -3034,23 +3036,16 @@ textarea.has-error {
   justify-content: flex-start;
 }
 .site-grid .item .hd {
-  font-size: 11px;
-  line-height: 1.5em;
+  font-size: 14px;
+  line-height: 1.3em;
   font-weight: 400;
-  text-align: center;
   margin: 0;
   position: sticky;
   position: -webkit-sticky;
   bottom: 0;
-  padding: 30px 30px 15px;
-  text-align: center;
+  /* padding: 30px 30px 15px;
+  text-align: center; */
   z-index: 2;
-}
-@media (min-width: 576px) {
-  .site-grid .item .hd {
-    font-size: 10px;
-    line-height: 1.4em;
-  }
 }
 .site-grid .item .caption {
   margin: 20px 30px 80px;
@@ -3649,9 +3644,6 @@ body.is-maintenance main {
     width: 100%;
     display: inline-block;
   }
-  #menu .header-primary .main-nav-menu-item {
-    padding: 0px;
-  }
 }
 @media (min-width: 835px) {
   #menu ul {
@@ -3671,13 +3663,12 @@ body.is-maintenance main {
 @media (min-width: 835px) {
   #menu .header-primary {
     justify-content: flex-start;
-    margin: 20px 0;
+    /* margin: 20px 0; */
   }
 }
 @media (min-width: 835px) {
   #menu .header-secondary {
     justify-content: flex-end;
-    margin: 20px 0;
   }
 }
 @media (max-width: calc(835px - 1px)) {
@@ -3703,7 +3694,7 @@ body.is-maintenance main {
 }
 @media (min-width: 835px) {
   #menu .header-item {
-    padding: 0 12px;
+    padding: 20px 40px 0 0;
     box-sizing: border-box;
     text-align: left;
     height: 54px;
@@ -3749,7 +3740,7 @@ body.is-maintenance main {
 }
 @media (min-width: 576px) {
   #menu .header-item .amount {
-    font-size: 9px;
+    font-size: 8px;
     line-height: 1.3em;
   }
 }
@@ -3824,7 +3815,7 @@ body.is-maintenance main {
 @media (min-width: 835px) {
   .header-logo {
     position: fixed;
-    left: 50px;
+    left: 40px;
     top: 70px;
     z-index: 9;
   }
@@ -4069,7 +4060,7 @@ ul.nav-menu li .tooltip {
 }
 @media (min-width: 835px) {
   .nav-layout {
-    padding: 0 40px;
+    padding: 0 30px;
   }
 }
 @media (min-width: 835px) {
@@ -4136,24 +4127,9 @@ ul.nav-menu li .tooltip {
 }
 @media (min-width: 835px) {
   .nav-secondary {
-    padding-top: 90px;
+    padding-top: 72px;
     left: auto;
     right: 0;
-  }
-  body.login .site-system .item-product-minibag .info .title .title-inner {
-    margin-top: -53px;
-  }
-  body.register .site-system .item-product-minibag .info .title .title-inner {
-    margin-top: -53px;
-  }
-  body.account .site-system .item-product-minibag .info .title .title-inner {
-    margin-top: -53px;
-  }
-  body.addresses .site-system .item-product-minibag .info .title .title-inner {
-    margin-top: -53px;
-  }
-  body.cart .site-system .item-product-minibag .info .title .title-inner {
-    margin-top: -53px;
   }
 }
 @media (min-width: 835px) {
@@ -4162,7 +4138,7 @@ ul.nav-menu li .tooltip {
   }
 }
 .nav-logo {
-  margin: 0 40px 40px;
+  margin: 0 30px 40px;
   width: 42px;
   height: 84px;
   background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/b2f8d7a46bef2ca65ff765f28fd1aed3.svg?v=1721304042);
@@ -4981,10 +4957,6 @@ body.is-search-open .header-mobile:before {
     right: 0px;
     transform: translate3d(0, 0, 0) !important;
   }
-
-  body .headroom #menu:before {
-    opacity: 0 !important;
-  }
 }
 header {
   width: 100%;
@@ -5149,8 +5121,8 @@ button.button-next-footer.pos_class {
     margin-top: 5px;
   }
   div#footer_fiels_row_1 {
-    padding-bottom: 0px;
-    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
   div#footer_fiels_row_0 {
       padding-bottom: 0px;
@@ -5179,7 +5151,7 @@ button.button-next-footer:before,
   content: "";
   position: absolute;
   left: 0;
-  top: 6px;
+  top: 5px;
   width: 18px;
   height: 18px;
   border: 1px solid #000;
@@ -5280,7 +5252,7 @@ footer .links {
   flex-wrap: wrap;
   text-align: left;
   line-height: 1.3em;
-  padding-top: 26px;
+  padding-top: 15px;
 }
 
 @media (min-width: 576px) {
@@ -5322,7 +5294,7 @@ footer .links ul.links-12col {
 }
 footer .links ul.links-horizontal {
   flex-direction: row;
-  padding-top: 15px;
+  padding-top: 12px;
 }
 footer .links ul.links-horizontal li a,
 footer .links ul.links-horizontal li .link {
@@ -5393,6 +5365,7 @@ footer .links ul li.links-title-copyright {
 footer .links ul li a,
 footer .links ul li .link {
   padding: 8px 0;
+  display: block;
 }
 @media (min-width: 576px) {
   footer .links ul li a,
@@ -5406,7 +5379,7 @@ footer .links ul .icon-social {
   background-position: 0 4px;
   background-repeat: no-repeat;
   padding-left: 16px;
-  min-height: 11px;
+  min-height: 22px;
 }
 footer .links ul .icon-social-tiktok {
   background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/f43882aff14da9a5312a284c9c992de5.svg?v=1722939182);
@@ -9052,8 +9025,8 @@ ul.payment-icons li.payment-icon-paypal {
 @media (min-width: 576px) {
   .page-account {
     justify-content: center;
-    min-height: calc(100vh - 250px);
-    padding: 70px 45px 70px;
+    min-height: calc(100vh - 400px);
+    padding: 0 40px 70px;
   }
 }
 .page-account .inner {
@@ -9099,7 +9072,7 @@ ul.payment-icons li.payment-icon-paypal {
   .page-account-newsletter,
   .page-account-contact,
   .page-account-404 {
-    padding-top: 116px;
+    padding-top: 40px;
   }
 }
 .page-account .change-password-link {
@@ -9124,15 +9097,15 @@ ul.payment-icons li.payment-icon-paypal {
 .widget-orders .widget-orders-item {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, .4);
   padding: 18px 15px 15px;
   margin-bottom: 15px;
 }
 @media (min-width: 576px) {
   .widget-orders .widget-orders-item {
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, .4);
+    border-radius: 0;
     padding: 18px 0 15px 0;
     margin-bottom: 0;
   }
@@ -9147,6 +9120,7 @@ ul.payment-icons li.payment-icon-paypal {
 .widget-orders .widget-orders-item .details-status {
   order: 5;
   padding-top: 6px;
+  opacity: .6;
 }
 .widget-orders .widget-orders-item .details-date {
   order: 4;
@@ -9172,16 +9146,13 @@ ul.payment-icons li.payment-icon-paypal {
   .widget-orders .widget-orders-item .details-pricing,
   .widget-orders .widget-orders-item .details-view {
     order: 0;
-    width: 17.5%;
+    width: 20%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .widget-orders .widget-orders-item .details-status {
     padding-top: 0;
-  }
-  .widget-orders .widget-orders-item .details-view {
-    width: 30%;
   }
 }
 .widget-orders .widget-orders-item .details a {
@@ -9313,9 +9284,11 @@ ul.payment-icons li.payment-icon-paypal {
   width: 100%;
 }
 @media (min-width: 576px) {
+  /*
   .page-bag .inner {
     max-width: 320px;
   }
+  */
   .page-bag .inner-wide {
     max-width: 670px;
   }
@@ -9603,21 +9576,7 @@ body.ReactModal__Body--open {
 .overlay .overlay-panel {
     animation: slideIn 0.8s ease-in-out forwards;
 }
-
 .overlay .overlay-panel.ReactModal__Content--after-open {
-  /* transform: translate3d(0, 0, 0); */
-  transform: translate3d(0,0,0)
-}
-
-.overlay .overlay-panel.ReactModal__Content--after-open {
-  transform: translate3d(0, 0, 0);
-}  
-.overlay .overlay-panel {
-    animation: slideIn 0.8s ease-in-out forwards;
-}
-
-.overlay .overlay-panel.ReactModal__Content--after-open {
-  /* transform: translate3d(0, 0, 0); */
   transform: translate3d(0,0,0)
 }
 .overlay .overlay-panel.ReactModal__Content--before-close {
@@ -9674,7 +9633,6 @@ body.ReactModal__Body--open {
   .overlay-pdp .overlay-panel {
     transform: translate3d(100%, 0, 0);
     transition: transform .8s ease-in-out;
-    transition: transform 0.8s steps(4);
     width: 25%;
     height: 100%;
     align-items: flex-start;
@@ -10788,7 +10746,7 @@ ul.toolbar-categories li.li-category {
 }
 @media (min-width: 835px) {
   .widget-newsletter .form-field input[type="checkbox"].checkbox-single {
-    margin-top: 2px;
+    margin-top: 0px;
   }
 }
 .widget-newsletter .form-field input[type="checkbox"]:active,
@@ -12937,7 +12895,6 @@ body.collection .header-logo .logotype svg .cls-1 {
   display: none; 
 }
 .panel-content .metafield-rich_text_field {
-  margin: 0 -4rem; 
   margin: 0 0 0 -40px; 
 }
 .metafield-rich_text_field li {
@@ -12960,5 +12917,28 @@ body.collection .header-logo .logotype svg .cls-1 {
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
     padding: 0 4rem;
 }
-
+input[type="email"],
+input[type="password"] {
+  outline: none; /* Remove default outline */
+}
+input[type=text], input[type=password] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 6px 0;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: inherit;
+  letter-spacing: inherit;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
+  width: 100%;
+  border-radius: 0;
+}
+.page-account form {
+    margin-top: 40px;
+}
 /* PDP End */
