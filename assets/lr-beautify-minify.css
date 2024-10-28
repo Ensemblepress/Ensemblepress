@@ -1597,7 +1597,7 @@ textarea.has-error {
 }
 .site-system .item-address .textlink-edit {
   color: rgba(0, 0, 0, 0.4);
-  padding: 12px 0 12px 6px;
+  padding: 12px 0 12px 3px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -2118,17 +2118,14 @@ textarea.has-error {
 .site-system .item-error,
 .site-system .inline-error {
   color: #c00;
-  background-image: url(../../static/img/icon-error-circle-3px-red.svg);
-  background-size: 15px;
-  background-position: left 3px;
-  background-repeat: no-repeat;
-  padding-left: 25px;
+  padding-left: 26px;
+  position: relative;
 }
 @media (min-width: 576px) {
   .site-system .item-error,
   .site-system .inline-error {
     background-size: 10px;
-    padding-left: 20px;
+    padding-left: 26px;
     background-position: left 1px;
   }
 }
@@ -2146,12 +2143,12 @@ textarea.has-error {
 }
 .site-system .item-checkbox + .item-error,
 .site-system .inline-error {
-  margin-top: 10px;
+  margin-top: 26px;
 }
 @media (min-width: 576px) {
   .site-system .item-checkbox + .item-error,
   .site-system .inline-error {
-    margin-top: 7px;
+    margin-top: 26px;
   }
 }
 .site-system .item-legal {
@@ -2463,11 +2460,11 @@ textarea.has-error {
   background-color: #c00;
 }
 .site-system .item-checkbox-longtext {
-  line-height: 1.5em;
+  line-height: 1.3em;
 }
 @media (min-width: 576px) {
   .site-system .item-checkbox-longtext {
-    line-height: 1.5em;
+    line-height: 1.3em;
   }
 }
 .site-system .item-checkbox-longtext input[type="checkbox"].checkbox-single {
@@ -3743,7 +3740,7 @@ body.is-maintenance main {
 }
 @media (min-width: 576px) {
   #menu .header-item .amount {
-    font-size: 9px;
+    font-size: 8px;
     line-height: 1.3em;
   }
 }
@@ -5154,7 +5151,7 @@ button.button-next-footer:before,
   content: "";
   position: absolute;
   left: 0;
-  top: 6px;
+  top: 5px;
   width: 18px;
   height: 18px;
   border: 1px solid #000;
@@ -9123,6 +9120,7 @@ ul.payment-icons li.payment-icon-paypal {
 .widget-orders .widget-orders-item .details-status {
   order: 5;
   padding-top: 6px;
+  opacity: .6;
 }
 .widget-orders .widget-orders-item .details-date {
   order: 4;
@@ -9286,9 +9284,11 @@ ul.payment-icons li.payment-icon-paypal {
   width: 100%;
 }
 @media (min-width: 576px) {
+  /*
   .page-bag .inner {
     max-width: 320px;
   }
+  */
   .page-bag .inner-wide {
     max-width: 670px;
   }
@@ -12938,6 +12938,7 @@ input[type=text], input[type=password] {
   width: 100%;
   border-radius: 0;
 }
+
 div#error {
     margin: 14px 0;
     padding: 6px 22px 6px 0;
