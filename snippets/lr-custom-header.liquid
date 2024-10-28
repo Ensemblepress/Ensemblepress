@@ -659,7 +659,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue </a>   
+                    <a href="/collections/all" class="button">Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
-        }
+          }
         }      
         attachCartItemEvents();   
       });
@@ -765,6 +765,19 @@ document.addEventListener('DOMContentLoaded', function() {
        
       //updateCartDrawer();
         document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        const remainingItemsDrover = document.querySelectorAll('.cart-item');
+        remainingItemsDrover.forEach((item, index) => {
+            //item.setAttribute('data-line', index + 1); // Shopify uses 1-based line numbers
+            const newLine = index + 1;
+            item.setAttribute('data-line', newLine);
+
+            // Update the corresponding remove link if it exists
+            const removeLinkDrover = item.querySelector('.remove-item');
+            if (removeLinkDrover) {
+                removeLinkDrover.setAttribute('data-line', newLine);
+            } 
+        });
+      
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
