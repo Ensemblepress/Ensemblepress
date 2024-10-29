@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
       //End apply promo code
     }
 
-    if (event.target && event.target.id === 'remove-discount') {
+    if (event.target && event.target.id === 'remove-discount') { console.log('remove code');
 
      fetch('/discount/' + discountCode, {
         method: 'GET',
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue </a>   
+                    <a href="/collections/all" class="button">Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
@@ -442,8 +442,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //var cartpagenewQuantity = parseInt(quantityElementCartPage.textContent) + delta;
     
     if (newQuantity < 1) {
-      removeCartItem(line);
-      //removeCartItemPage(line);
+      //removeCartItem(line);
+      removeCartItemCartPage(line);
     } else {
       fetch('/cart/change.js', {
         method: 'POST',
