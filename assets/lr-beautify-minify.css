@@ -1430,7 +1430,7 @@ textarea.has-error {
   opacity: 1;
 }
 .site-system .item-total {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5em;
   font-weight: 400;
   text-align: left;
@@ -1699,7 +1699,7 @@ textarea.has-error {
   .site-system .item-button-sticky {
     position: sticky;
     position: -webkit-sticky;
-    bottom: -40px;
+    /*bottom: -40px;*/
   }
 }
 .site-system .item-button-checkout {
@@ -4694,9 +4694,7 @@ ul.nav-menu li .tooltip {
     width: 100%;
     font-size: 14px;
   }
-  .site-system-minibag .item-total-final .price {
-    font-weight: 500;
-  }
+  
 }
 @media (min-width: 835px) {
   .site-system-minibag {
