@@ -9267,28 +9267,24 @@ ul.payment-icons li.payment-icon-paypal {
   border-bottom: 1px solid #000;
 }
 .page-bag {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: calc(100vh - 250px);
-  padding: 86px 24px 0;
+  padding: 0 20px 0;
 }
 @media (min-width: 576px) {
   .page-bag {
-    justify-content: center;
-    padding: 70px 45px;
+    padding: 0 40px;
   }
 }
 .page-bag .inner {
   width: 100%;
+  margin: 0 auto;
 }
 @media (min-width: 576px) {
-  /*
-  .page-bag .inner {
-    max-width: 320px;
+    .page-bag .inner {
+    max-width: 680px;
+      width: 50%;
+      
   }
-  */
+ 
   .page-bag .inner-wide {
     max-width: 670px;
   }

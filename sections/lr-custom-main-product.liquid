@@ -94,6 +94,7 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
+          
           {% if product.variants.size %}
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
@@ -106,6 +107,7 @@
                   {% else %}
                     {{ product.description }}
                   {% endif %}
+                  
                   <ul class="pdp-keywords">    
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                     <li class="pdp-details" id="variant_detail_{{ variant.id }}">
@@ -562,7 +564,7 @@ function updateCartDrawer() {
           cartDrawerBody.insertAdjacentHTML('beforeend', cartItem);
         });
         
-         var totalQuantity = calculateTotalQuantity(cart.items);
+        var totalQuantity = calculateTotalQuantity(cart.items);
         var discount_code;
         if(totalQuantity != 0){
           if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
@@ -574,7 +576,7 @@ function updateCartDrawer() {
                 discount_code = '';
                 var class_add = 'is-off';
                 var code_apply = '';
-                 var add_disc = 'item-total';
+                var add_disc = 'item-total';
           }
         }else{
            discount_code = "";
@@ -609,7 +611,7 @@ function updateCartDrawer() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue </a>   
+                    <a href="/collections/all" class="button">Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
