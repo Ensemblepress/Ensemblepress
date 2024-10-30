@@ -4,8 +4,6 @@
 <script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'lr-account-login.js' | asset_url }}" defer="defer"></script>
 
-Test Code
-
 <div class="plp-header">
   <div class="plp-header-primary">
     <div class="widget-dts">
@@ -69,55 +67,11 @@ Test Code
   </div>
 </div>
 
-
-  <div id="success-message" style="display:none;">
-    A password reset email has been sent to your email address.
-  </div>
-  
-  <div id="error-message" style="display:none;">
-    There was an error processing your request. Please try again.
-  </div>
-  
-  <div class="page-account page-account-forgotpassword" id="forgot-password-form" style="display: none;">
-    <div class="inner">
-      <div class="site-system">
-          <div class="item item-hd" id="recover">Forgot password</div>
-          {%- form 'recover_customer_password' -%}
-          
-            <div class="item item-input">
-              <input
-                type="email"
-                value=""
-                name="email"
-                id="RecoverEmail"
-                autocorrect="off"
-                autocapitalize="off"
-                autocomplete="email"
-                {% if form.errors %}
-                  aria-invalid="true"
-                  aria-describedby="RecoverEmail-email-error"
-                  autofocus
-                {% endif %}
-                placeholder="Enter e-mail address"
-                required
-              >
-            </div>
-          
-            <div class="item item-button">
-              <button class="button">Request password reset</button>
-            </div>
-          {%- endform -%} 
-      </div>
-    </div>
-  </div>
-  
-
   <!-- Custom Account Login Start -->
   <div class="page-account page-account-login" id="login-form">
     <div class="inner">
       <div class="site-system">
         <div class="item item-hd" id="login">Login</div>
-
         {%- form 'customer_login', novalidate: 'novalidate' -%}
           <div class="item item-input">
             <input type="email" name="customer[email]" id="CustomerEmail" 
@@ -146,50 +100,6 @@ Test Code
         {%- endform -%}
       </div>
     </div>
-    
-        <!-- Login Form -->
-        {%- form 'customer_login', novalidate: 'novalidate' -%}      
-          <!-- Email Input -->
-          <div class="item item-input">
-            <input type="email"
-              name="customer[email]"
-              id="CustomerEmail"
-              placeholder="E-mail address"
-              autocorrect="off"
-              autocapitalize="off"
-              {% if form.errors contains 'form' %}
-              aria-invalid="true"
-              {% endif %}
-              required>
-          </div>
-    
-          <!-- Password Input -->
-          {%- if form.password_needed -%}
-            <div class="item item-input item-input-password">
-              <input
-              type="password"
-              value=""
-              name="customer[password]"
-              id="CustomerPassword"
-              autocomplete="current-password"
-              {% if form.errors contains 'form' %}
-                aria-invalid="true"
-              {% endif %}
-              placeholder="{{ 'customer.login_page.password' | t }}"
-              required  
-            >
-              <div class="password_eye toggle_password_visibility" id="togglePassword"></div>
-            </div>
-          {% endif %}
-          <!-- Login Button and Forgot Password Link -->
-          <div class="item item-button item-button-horizontal">
-            <button type="submit" class="button">Log in</button>
-            <a class="button button-textlink" id="show-recover-form" href="#recover">Forgot password<span class="dot">•</span></a>
-          </div>
-         {%- endform -%}
-      </div>
-    </div>
-    
     <div class="inner">
       <div class="site-system divider">
       <div class="item item-hd">Create an account</div>
@@ -199,16 +109,10 @@ Test Code
       <div class="item item-button">
         <a href="{{ routes.account_register_url }}" class="button">Register</a>
       </div>
-  
-      <div class="item item-button">
-        <a href="{{ routes.account_register_url }}" class="button">Register</a>
-      </div>
-  
     </div>
   </div>
   </div>              
   <!-- Custom Account Login End -->              
-
   {%- if shop.checkout.guest_login -%}
     <div>
       <hr>
