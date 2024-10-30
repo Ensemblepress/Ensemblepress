@@ -61,9 +61,9 @@
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
                 <div class="quantity-modifiers quantity-controls">
-                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="{{ forloop.index }}"></button>
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity cart-page-decrease-quantity" data-line="{{ forloop.index }}"></button>
                   <span class="icon-quantity icon-quantity-amount quantity_upd_cart_page" id="qty_{{ item.id }}">{{item.quantity}}</span>
-                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="{{ forloop.index }}"></button>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity cart-page-increase-quantity" data-line="{{ forloop.index }}"></button>
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@
           {%- endif -%}
        {%- endif -%}
       <div id="cart_page_footer" style="display:{{ cusnti_cart_footer }}">
-        <div class="cart-item item {{ add_disc }} item-total-first item-total-promo" id="item-total-promo">
+        <div class="cart-item item {{ add_disc }} item-total-first item-total-promo apply_promocode" id="item-total-promo">
            <div class="caption_cust {{ code_apply }}" id="caption">
              <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
              <div class="caption-option promo_input is-off" id="promo_input">
@@ -184,7 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
           document.querySelector('.cart-drawer-footer').textContent = `${formatMoney(cart.total_price, cart.currency)}`;
           document.querySelector('.cart-page-drawer-footer').textContent = `${formatMoney(cart.total_price, cart.currency)}`;
           document.getElementById('caption').style.display = 'none';
-          jQuery(".item-total-promo").hide(); 
+          //jQuery(".item-total-promo").hide(); 
+          jQuery(".apply_promocode").hide();
           document.getElementById('discount-message').style.display = 'none';
           jQuery(".is-discount").show();
           jQuery("#item-total-promo").removeClass('item-total');
@@ -305,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       <div class="quantity">× <span class="quantity-value">1</span></div>
                         <div class="quantity-modifiers quantity-controls">
                           <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
-                          <span class="icon-quantity icon-quantity-amount quantity_upd">${item.quantity}</span>
+                          <span class="icon-quantity icon-quantity-amount ttt quantity_upd">${item.quantity}</span>
                           <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
                         </div>
                    </div> 
@@ -435,9 +436,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function updateCartItemQuantity(line, delta) {
+    
     var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
     //var quantityElementCartPage = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd_cart_page`);
-
+    if (!quantityElement) {
+      console.error(`Quantity element for line ${line} not found.`);
+      return;
+    }
+    //console.log(quantityElement.textContent);
+    
     var newQuantity = parseInt(quantityElement.textContent) + delta;
     //var cartpagenewQuantity = parseInt(quantityElementCartPage.textContent) + delta;
     
@@ -538,8 +545,8 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(cart => {
        
-      //updateCartDrawer();
-        document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+      updateCartDrawer();
+        //document.querySelector(`.cart-item[data-line="${line}"]`).remove();
         const remainingItemsDrover = document.querySelectorAll('.cart-item');
         remainingItemsDrover.forEach((item, index) => {
             //item.setAttribute('data-line', index + 1); // Shopify uses 1-based line numbers
@@ -566,7 +573,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (removeLink) {
                 removeLink.setAttribute('data-line', newLine);
             }
-            
+
+            // Update the corresponding cart-page-decrease-quantity if it exists
+            const decreaseLink = item.querySelector('.cart-page-decrease-quantity');
+            if (decreaseLink) {
+                decreaseLink.setAttribute('data-line', newLine);
+            }
+          
+           //Update the corresponding cart-page-increase-quantity if it exists
+            const increaseLink = item.querySelector('.cart-page-increase-quantity');
+            if (increaseLink) {
+                increaseLink.setAttribute('data-line', newLine);
+            }
+
+          
+          
         });
       
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
