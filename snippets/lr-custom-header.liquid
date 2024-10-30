@@ -174,7 +174,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
                   aria-current="page"
                 {% endif %}
               >
-                {{ childlink.title | escape }}
+              {{ childlink.title | escape }}
               </a>
               {% endif %}
             </li>
@@ -189,38 +189,61 @@ data-titlesub="nav-{{ link.title | downcase }}">
 {%- endfor -%}
   <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls">
     <div class="nav-layout nav-layout-horizontal nav-layout-secondary">
-      <div class="nav-layout-item">
-        <ul class="nav-menu">
-          {% for link in linklists['lr_header_top_right_menu'].links %}
-          {% for childlink in link.links %}
-            {% if childlink.title == '---' %}
-              </ul>
-              </div>
-              <div class="nav-layout-item">
-                <ul class="nav-menu">
-            {% endif %}
-            <li>
-              {% if childlink.title != '---' %}
-              <a
-                id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
-                href="{{ childlink.url }}"
-                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                {% if childlink.current %}
-                  aria-current="page"
+  <div class="nav-layout-item">
+    <ul class="nav-menu">
+      {% for link in linklists['lr_header_top_right_menu'].links %}
+        {% for childlink in link.links %}
+          {% if childlink.title == '---' %}
+            </ul>
+          </div>
+          <div class="nav-layout-item">
+            <ul class="nav-menu">
+          {% endif %}     
+          {% if customer %}
+            {% if childlink.title != '---' %}
+             {% if childlink.title != 'Sign in' and childlink.title != 'Register'  %} 
+                <li class="customer">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href="{{ childlink.url }}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
                 {% endif %}
-              >
-                {{ childlink.title | escape }}
-              </a>
+            {% endif %}
+          {% else %}
+            {% if childlink.title != '---' %}
+            {% if childlink.title != 'Logged out' %}
+                <li class="guest">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href="{{ childlink.url }}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
               {% endif %}
-            </li>
-          {% endfor %}
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="nav-icon-back">
-        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>
-      </div>
-    </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-icon-back">
+    <svg viewBox="0 0 510.2 510.2">
+      <polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon>
+    </svg>
+  </div>
+</div>
 </nav>
  
 <nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls">
