@@ -3,26 +3,21 @@
       display: flex;
       flex-wrap: wrap;
   }
-
   .search-result-item {
       width: 200px;
       margin: 10px;
       text-align: center;
   }
-
   .search-result-item img {
       width: 100%;
       height: auto;
   }
-
   .search-result-item h3 {
       font-size: 1em;
   }
-
   .search-result-item p {
       font-size: 0.9em;
   }
-
   body.is-home .header-logo {
     mix-blend-mode: normal;
  }
@@ -81,9 +76,7 @@ var menu = document.getElementById("custom-menu");
             {%  assign i = 0 %}
             {%- for link in section.settings.menu.links -%}
               <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}">
-                <a class="header-item header-item-brand" href="{{ link.url }}">
                   <span>{{- link.title | escape -}}</span>
-                </a>
               </li>
             {%- endfor -%}
           </ul>
@@ -530,8 +523,8 @@ document.addEventListener('DOMContentLoaded', function() {
         jQuery("#caption").removeClass('is-off');
         jQuery("#caption").show();
 
-         jQuery("#icon-promo-symbol").removeClass('is-off');
-         jQuery("#promo_input").addClass('is-off');
+        jQuery("#icon-promo-symbol").removeClass('is-off');
+        jQuery("#promo_input").addClass('is-off');
         
       })
       .catch(error => {
@@ -666,7 +659,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue </a>   
+                    <a href="/collections/all" class="button">Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
@@ -678,7 +671,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
-        }
+          }
         }      
         attachCartItemEvents();   
       });
@@ -772,6 +765,19 @@ document.addEventListener('DOMContentLoaded', function() {
        
       //updateCartDrawer();
         document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        const remainingItemsDrover = document.querySelectorAll('.cart-item');
+        remainingItemsDrover.forEach((item, index) => {
+            //item.setAttribute('data-line', index + 1); // Shopify uses 1-based line numbers
+            const newLine = index + 1;
+            item.setAttribute('data-line', newLine);
+
+            // Update the corresponding remove link if it exists
+            const removeLinkDrover = item.querySelector('.remove-item');
+            if (removeLinkDrover) {
+                removeLinkDrover.setAttribute('data-line', newLine);
+            } 
+        });
+      
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
