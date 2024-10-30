@@ -1,49 +1,150 @@
-// password hide and show start
-  const togglePassword = document.querySelector('#togglePassword');
-  const password = document.querySelector('#CustomerPassword');
-    togglePassword.addEventListener('click', function (e) {
-      const type = password.getAttribute('type') === 'password' ? 'email' : 'password';
-      password.setAttribute('type', type);
-  });
-// password hide and show End
+// Toggle Password Visibility
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#CustomerPassword');
+togglePassword.addEventListener('click', function () {
+  const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+  password.setAttribute('type', type);
+});
 
-// Forget password Click hide and show Start
-  document.getElementById('show-recover-form').addEventListener('click', function(e) {
-  e.preventDefault();
-  document.getElementById('login-form').style.display = 'none';    
-  // Change account text to "Forgot Password"
-  const accountTextElements = document.querySelectorAll('.widget-dts-text');
-    accountTextElements.forEach(function(element) {
-        element.textContent = 'Forgot Password';
-    });
-    document.getElementById('success-message').style.display = 'none';
-    document.getElementById('forgot-password-form').style.display = 'flex';
-  });
-// Forget password Click hide and show End 
+// Login start 
+const loginForm = document.querySelector('form[action="/account/login"]');
+const emailInput = document.getElementById('CustomerEmail');
+const passwordInput = document.getElementById('CustomerPassword');
+const emailError = document.getElementById('customer-email-error');
+const passwordError = document.getElementById('customer-password-error');
 
-// this customer email sent Start 
-document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent default form submission
-  var email = document.getElementById('RecoverEmail').value;
-  fetch('/account/recover', {
+// Handle form submission
+loginForm.addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent default submission if validation fails
+
+  // Reset error states
+  emailError.style.display = 'none';
+  passwordError.style.display = 'none';
+  emailInput.style.borderBottom = '1px solid';
+  passwordInput.style.borderBottom = '1px solid';
+
+  let isValid = true;
+  const email = emailInput.value.trim();
+  const passwordValue = passwordInput.value.trim();
+
+  // Email validation
+  if (!email) {
+    emailError.textContent = 'Please enter your email.';
+    emailError.style.display = 'block';
+    emailInput.style.borderBottom = '1px solid #c00';
+    isValid = false;
+  }
+
+  // Password validation
+  if (!passwordValue) {
+    passwordError.textContent = 'Please enter your password.';
+    passwordError.style.display = 'block';
+    passwordInput.style.borderBottom = '1px solid #c00';
+    isValid = false;
+  }
+
+  // If validation fails, stop further processing
+  if (!isValid) return;
+
+  // Submit login request via fetch
+  fetch('/account/login', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded' // Form data must be sent in URL-encoded format
-    },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
-      'form_type': 'recover_customer_password',
-      'email': email
+      'customer[email]': email,
+      'customer[password]': passwordValue
     })
   })
-  .then(function(response) {
-    if (response.ok) {
-      document.getElementById('success-message').style.display = 'flex';
-      document.getElementById('forgot-password-form').style.display = 'none';
-      document.getElementById('error-message').style.display = 'none';
-    } else {
-      document.getElementById('success-message').style.display = 'none';
-      document.getElementById('error-message').style.display = 'flex';
-    }
-  })
+    .then(response => {
+      if (response.redirected) {
+        // If login is successful, redirect to the account page
+        window.location.href = response.url;
+      } else {
+        // If login fails, show an appropriate error message
+        response.text().then(text => {
+          if (text.includes('incorrect') || text.includes('password')) {
+            passwordError.textContent = 'The password you entered is incorrect.';
+            passwordError.style.display = 'block';
+            passwordInput.style.borderBottom = '1px solid #c00';
+          } else if (text.includes('email') || text.includes('Invalid')) {
+            emailError.textContent = 'Invalid email address or user not found.';
+            emailError.style.display = 'block';
+            emailInput.style.borderBottom = '1px solid #c00';
+          } else {
+            emailError.textContent = 'Login failed. Please try again.';
+            emailError.style.display = 'block';
+          }
+        });
+      }
+    })
+    .catch(() => {
+      emailError.textContent = 'An unexpected error occurred. Please try again.';
+      emailError.style.display = 'block';
+    });
 });
-// this customer email sent End
+
+// Clear error messages on focus
+emailInput.addEventListener('focus', function () {
+  emailError.style.display = 'none';
+  emailInput.style.borderBottom = '1px solid';
+});
+
+passwordInput.addEventListener('focus', function () {
+  passwordError.style.display = 'none';
+  passwordInput.style.borderBottom = '1px solid';
+});
+
+// Login End
+
+// Forgot Password Form Toggle
+document.getElementById('show-recover-form').addEventListener('click', function (e) {
+  e.preventDefault();
+  document.getElementById('login-form').style.display = 'none';
+  document.getElementById('forgot-password-form').style.display = 'flex';
+  document.querySelectorAll('.widget-dts-text').forEach(element => {
+    element.textContent = 'Forgot Password';
+  });
+  document.getElementById('success-message').style.display = 'none';
+});
+
+// Forgot Password Form Submission
+document.getElementById('forgot-password-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const recoverEmailInput = document.getElementById('RecoverEmail');
+  const recoverEmail = recoverEmailInput.value.trim();
+  const errorMessageElement = document.getElementById('reset_email');
+  const successMessageElement = document.getElementById('success-message');
+  errorMessageElement.style.display = 'none';
+  successMessageElement.style.display = 'none';
+  recoverEmailInput.style.borderBottom = '1px solid #c00';
+  if (!recoverEmail) {
+    errorMessageElement.textContent = 'Please enter your email address.';
+    errorMessageElement.style.display = 'flex';
+    recoverEmailInput.style.borderBottom = '1px solid #c00'; // Add border style for error
+    return;
+  }
+  fetch('/account/recover', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      'form_type': 'recover_customer_password',
+      'email': recoverEmail
+    })
+  })
+  .then(response => {
+    if (response.ok) {
+      successMessageElement.style.display = 'flex';
+      document.getElementById('forgot-password-form').style.display = 'none';
+    } else {
+      errorMessageElement.textContent = 'There was an error processing your request. Please try again.';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+    }
+  });
+});
+// Add focus event listener to the input field
+document.getElementById('RecoverEmail').addEventListener('focus', function() {
+  const errorMessageElement = document.getElementById('reset_email');
+  errorMessageElement.style.display = 'none'; // Hide error message
+  this.style.borderBottom = '1px solid'; // Remove border-bottom style
+});
