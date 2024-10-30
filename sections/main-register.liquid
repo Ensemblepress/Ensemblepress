@@ -21,47 +21,48 @@
 
 <div class="customer register section-{{ section.id }}-padding">
   <div class="form-container" id="page-account-register-form">
+    
     <form id="registerForm">
       <div class="page-account page-account-register">
         <div class="inner">
           <div class="site-system">
-            <div class="item item-hd">
-              Create an account
-              <span class="tooltip-right"><span class="dot">•</span>Required</span>
-            </div>
+            <div class="item item-hd">Create an account<span class="tooltip-right"><span class="dot">•</span>Required</span></div>
             <div class="item item-input item-input-spaced">
               <select class="select-fullwidth" id="salutation" name="salutation">
-              <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Mr.</option>
-              <option value="Mrs." {% if customer.metafields.custom.salutation == "Mrs." %}selected{% endif %}>Mrs.</option>
-              <option value="Ms." {% if customer.metafields.custom.salutation == "Ms." %}selected{% endif %}>Ms.</option>
-              <option value="Miss" {% if customer.metafields.custom.salutation == "Miss" %}selected{% endif %}>Miss</option>
-              <option value="Mx." {% if customer.metafields.custom.salutation == "Mx." %}selected{% endif %}>Mx.</option>
-              <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Dr.</option>
-              <option value="Ind." {% if customer.metafields.custom.salutation == "Ind." %}selected{% endif %}>Ind.</option>
-              <option value="Misc." {% if customer.metafields.custom.salutation == "Misc." %}selected{% endif %}>Misc.</option>
-            </select>
+                <option value="" disabled selected>Select Salutation</option>
+                <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Mr.</option>
+                <option value="Mrs." {% if customer.metafields.custom.salutation == "Mrs." %}selected{% endif %}>Mrs.</option>
+                <option value="Ms." {% if customer.metafields.custom.salutation == "Ms." %}selected{% endif %}>Ms.</option>
+                <option value="Miss" {% if customer.metafields.custom.salutation == "Miss" %}selected{% endif %}>Miss</option>
+                <option value="Mx." {% if customer.metafields.custom.salutation == "Mx." %}selected{% endif %}>Mx.</option>
+                <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Dr.</option>
+                <option value="Ind." {% if customer.metafields.custom.salutation == "Ind." %}selected{% endif %}>Ind.</option>
+                <option value="Misc." {% if customer.metafields.custom.salutation == "Misc." %}selected{% endif %}>Misc.</option>
+              </select>
             </div>
+            <div id="salutation-error" class="error-message item-error"></div> <!-- Error message -->
+            <div class="item item-error" id="default_salutation"></div>
             <div class="item item-input item-input-spaced">
               <input type="text" placeholder="First name•" id="firstName" name="firstName" />
-              <div id="firstName-error" class="error-message"></div> <!-- Error message -->
             </div>
+            <div id="firstName-error" class="error-message item-error"></div> <!-- Error message -->
             <div class="item item-input item-input-spaced">
-              <input type="text" placeholder="Last name•" id="lastName" name="lastName" />
-              <div id="lastName-error" class="error-message"></div> <!-- Error message -->
+              <input type="text" placeholder="Last name•" id="lastName" name="lastName" />              
             </div>
+            <div id="lastName-error" class="error-message item-error"></div> <!-- Error message -->
             <div class="item item-input item-input-spaced">
               <input type="email" placeholder="E-mail address•" id="email" name="email" />
-               <div id="email-error" class="error-message"></div>
             </div>
+            <div id="email-error" class="error-message item-error"></div>
             <div class="item item-input item-input-spaced">
               <input type="password" placeholder="Password•" id="password" name="password" />
-              <div id="password-error" class="error-message"></div> <!-- Error message -->
             </div>
+            <div id="password-error" class="error-message item-error"></div> <!-- Error message -->
             <div class="item item-input item-input-spaced">
               <input type="password" placeholder="Confirm password•" id="confirmPassword" name="confirmPassword" />
-              <div id="confirmPassword-error" class="error-message"></div> <!-- Error message -->
             </div>
-            <div class="item item-copy item-copy-longtext">
+            <div id="confirmPassword-error" class="error-message item-error"></div> <!-- Error message -->
+            <div class="item item-copy item-copy-long text">
               <p>Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.</p>
             </div>
             <div class="item item-checkbox item-input-spaced">
@@ -74,16 +75,17 @@
                 I have read, understood and accepted the <a href="/pages/terms-and-conditions">terms and conditions</a> and the <a href="/pages/privacy-policy">privacy policy</a>
               </label>
             </div>
+            <div id="terms-error" class="error-message item-error"></div>
             <div class="item item-button">
               <button type="submit">Register</button>
-              <div id="error_required" class="error-message"></div> <!-- Error message -->
             </div>
-            <div id="error"></div>
+            <div id="error" class="error-message item-error"></div>
             <div id="sucess"></div>
           </div>
         </div>
       </div>
     </form>
+    
   </div>
   <div class="page-account page-account-register-success" id="page-account-register-success" style="display:none;">
     <div class="inner">
