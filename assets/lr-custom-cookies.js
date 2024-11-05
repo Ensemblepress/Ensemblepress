@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Show the cookie popup
     var cookiePopup = document.getElementById('cookie-consent-popup');
-    cookiePopup.style.display = 'block';
-
+    //cookiePopup.style.display = 'block';
+    // Check if the user has already made a choice before displaying the popup
+    if (!getCookie('cookieConsent') && !getCookie('cookiePreferences')) {
+        cookiePopup.style.display = 'block';
+    }
+  
     // Close popup event
     document.getElementById('close-popup').addEventListener('click', function() {
         cookiePopup.style.display = 'none';

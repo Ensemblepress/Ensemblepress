@@ -18,9 +18,9 @@
   .search-result-item p {
       font-size: 0.9em;
   }
-  body.is-home .header-logo {
+  body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
- }
+  }
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
@@ -218,7 +218,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
             {% endif %}
           {% else %}
             {% if childlink.title != '---' %}
-            {% if childlink.title != 'Logged out' %}
+            {% if childlink.title != 'Logout' %}
                 <li class="guest">
                   <a
                     id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
