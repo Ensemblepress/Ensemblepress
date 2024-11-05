@@ -1,46 +1,38 @@
-body.is-home .header-logo .logotype svg .logo-color {
+body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color {
     fill: #f90;
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo {
+    body.is-home:has(.headroom--unfixed) .header-logo {
         left: 34px;
     }
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo .logotype svg .logo-color-1 {
+    body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-1 {
         fill: #e83f2d;
     }
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo .logotype svg .logo-color-1 {
+    body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-1 {
         fill: #e83f2d;
     }
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo .logotype svg .logo-color-2 {
+    body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-2 {
         fill: #035c2b;
     }
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo .logotype svg .logo-color-3 {
+    body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-3 {
         fill: #435ba6;
     }
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo .logotype svg .logo-color-4 {
+    body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-5 {
         fill: #e83f2d;
     }
 }
-
 @media (min-width: 835px) {
-    body.is-home .header-logo .logotype svg .logo-color-5 {
+    body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-5 {
         fill: #69b42e;
     }
 }
-
