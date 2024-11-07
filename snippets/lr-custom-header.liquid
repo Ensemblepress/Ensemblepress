@@ -164,21 +164,41 @@ data-titlesub="nav-{{ link.title | downcase }}">
               <div class="nav-layout-item">
                 <ul class="nav-menu">
             {% endif %}
-            <li>
-              {% if childlink.title != '---' %}
-              <a
-                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                href="{{ childlink.url }}"
-                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                {% if childlink.current %}
-                  aria-current="page"
+            {% if customer %}
+            {% if childlink.title != '---' %}
+             {% if childlink.title != 'Login' and childlink.title != 'Sign up'  %} 
+                <li class="customer">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href="{{ childlink.url }}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
                 {% endif %}
-              >
-              {{ childlink.title | escape }}
-              </a>
+            {% endif %}
+          {% else %}
+            {% if childlink.title != '---' %}
+            {% if childlink.title != 'Logout' %}
+                <li class="guest">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href=" {% if customer %} {{ childlink.url }} {% else %} {% if childlink.title == 'Sign up' %} {{ '/account/register' }} {% else %} {{ childlink.url }} {% endif %}{% endif %}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
               {% endif %}
-            </li>
-          {%- endfor -%}
+            {% endif %}
+          {% endif %}          {%- endfor -%}
         </ul>
       </div>
       <div class="nav-icon-back">
