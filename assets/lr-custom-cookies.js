@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Show the cookie popup
     var cookiePopup = document.getElementById('cookie-consent-popup');
+    // Check if user already made a choice
+    if (getCookie('cookieConsent') || getCookie('cookiePreferences')) {
+        cookiePopup.style.display = 'none';
+    }
+  
     //cookiePopup.style.display = 'block';
     // Check if the user has already made a choice before displaying the popup
     if (!getCookie('cookieConsent') && !getCookie('cookiePreferences')) {
@@ -177,10 +182,5 @@ document.addEventListener('DOMContentLoaded', function() {
             if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length,c.length);
         }
         return null;
-    }
-
-    // Check if user already made a choice
-    if (getCookie('cookieConsent') || getCookie('cookiePreferences')) {
-        cookiePopup.style.display = 'none';
     }
 });
