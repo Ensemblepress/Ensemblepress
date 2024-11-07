@@ -222,7 +222,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
                 <li class="guest">
                   <a
                     id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
-                    href="{{ childlink.url }}"
+                    href=" {% if customer %} {{ childlink.url }} {% else %} {% if childlink.title == 'Register' %} {{ '/account/register' }} {% else %} {{ '/account/login' }} {% endif %}{% endif %}"
                     class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
                     {% if childlink.current %}
                       aria-current="page"

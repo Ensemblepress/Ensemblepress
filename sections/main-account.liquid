@@ -24,6 +24,9 @@
       <div class="item item-summary item-summary-fullwidth">
         <a class="hd" href="/pages/order-list">Recent orders <span class="dot">•</span> returns <span class="secondary">View all</span></a>
         <div class="info">
+          {% if customer.orders_count == 0 %}
+             <span class="cust_no_order_msg" style="padding: 20px 0px 0px 0px;"><p>You have not placed any orders yet.</p></span>
+          {% endif %} 
           <div class="widget-orders">
             {% paginate customer.orders by 2 %}
               {%- if customer.orders.size > 0 -%}
