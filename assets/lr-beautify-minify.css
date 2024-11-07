@@ -205,7 +205,8 @@ img {
     display: none !important;
   }
   .site-grid .item-text {
-    padding: 50px 40px;
+    /* padding: 50px 40px; */
+    padding: 50px 0px 50px 40px;
     width: 50%;
     font-size: 18px;
   }
