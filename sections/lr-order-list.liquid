@@ -18,28 +18,16 @@
   </div>
 </div>
 <!-- Display message or content for customers with no orders -->
-{% if customer.orders_count == 0 %}
-  <div class="page-account page-account-account">
-      <div class="inner inner-wide">
-        <div class="site-system site-system-2col">
-          <div class="item item-summary item-summary-fullwidth">
-            <div class="hd">Orders <span class="dot">•</span> returns<a class="tooltip-right" href="{{ routes.account_url }}">Return to Account</a></div>
-            <div class="info">
-                <span class="cust_no_order_msg" style="padding: 20px 0px 0px 0px;"><p>You have not placed any orders yet.</p></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-{% else %}
+
 {% paginate customer.orders by 20 %}
-  {%- if customer.orders.size > 0 -%}  
+  
     <div class="page-account page-account-account">
       <div class="inner inner-wide">
         <div class="site-system site-system-2col">
           <div class="item item-summary item-summary-fullwidth">
             <div class="hd">Orders <span class="dot">•</span> returns<a class="tooltip-right" href="{{ routes.account_url }}">Return to Account</a></div>
             <div class="info">
+              {%- if customer.orders.size > 0 -%}  
               <div class="widget-orders">
                 {%- for order in customer.orders -%}
                   <div class="widget-orders-item">
@@ -63,14 +51,15 @@
                   </div>
                 {% endfor %}
               </div>
+              {% else %}
+              <span class="cust_no_order_msg" style="padding: 20px 0px 0px 0px;"><p>You have not placed any orders yet.</p></span>  
+              {% endif %}  
             </div>
           </div>
         </div>
       </div>
-    </div>
-  {% endif %}                  
+    </div>                
 {% endpaginate %}
-{% endif %}  
 {% schema %}
   {
     "name": "Order List",
