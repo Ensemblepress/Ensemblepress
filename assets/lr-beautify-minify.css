@@ -1484,14 +1484,14 @@ textarea.has-error {
   background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/45aded01ba581c241662346e06274d12.svg?v=1723838103);
   background-position: 3px 5px;
   background-size: 12px;
-  padding-left: 21px;
+  padding-left: 0px;
   background-repeat: no-repeat;
 }
 @media (min-width: 835px) {
   .site-system .item-total .caption-option .button-promo {
-    background-position: 2px 3px;
+    background-position: 23px 3px;
     background-size: 10px;
-    padding-left: 18px;
+    padding-left: 18px; 
   }
 }
 .site-system .item-pricing {
