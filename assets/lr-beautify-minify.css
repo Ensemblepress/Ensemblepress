@@ -1474,6 +1474,7 @@ textarea.has-error {
     border-bottom: none;
   }
 }
+/* resolve promo code issue change css */    
 .site-system .item-total .caption-option .button-promo {
   position: absolute;
   right: 0;
@@ -1487,6 +1488,7 @@ textarea.has-error {
   padding-left: 0px;
   background-repeat: no-repeat;
 }
+/* resolve promo code issue change css */    
 @media (min-width: 835px) {
   .site-system .item-total .caption-option .button-promo {
     background-position: 23px 3px;
