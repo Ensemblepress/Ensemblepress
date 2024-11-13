@@ -1,0 +1,44 @@
+/* update all code main-404.liquid file code with custom file lr-custom-main-404.liquid file code */
+<script type="text/javascript">
+  setTimeout(function() {
+    window.location.href = "/"; // Replace with your destination URL
+  }, 2000); // 2000 milliseconds = 2 seconds
+</script>
+{{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
+{{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
+
+<div class="plp-header">
+  <div class="plp-header-primary">
+      <div class="widget-dts">
+        <div class="widget-dts-text widget-dts-text-ghost">404</div>
+        <!-- Foreground Text -->
+        <div id="foreground" class="widget-dts-text">404</div>    
+        <!-- Middleground Text -->
+        <div id="middleground" class="widget-dts-text">404</div>
+        <!-- Background Text -->
+        <div id="background" class="widget-dts-text">404</div>
+      </div>
+    </div>
+</div>
+<div class="page-account page-account-register-success" style="text-align: center;">
+  <div class="inner">
+    <div class="site-system">
+      <div class="item item-hd"><h2 style="text-align: center;">404</h2></div>
+      <div class="item item-copy item-copy-longtext" style="font-size:40px;">
+        <h1>Page not found</h1>
+        </div>
+         <div class="item item-button">
+          <a class="button" href="/">Go to Home</a>
+        </div>
+    </div>
+  </div>
+</div>
+/* code updated end */
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
