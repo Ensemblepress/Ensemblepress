@@ -2,11 +2,11 @@ describe('Shopify user account flow', () => {
   it('Shopify user account flow', () => {
     
 	// Visit the homepage
-    cy.visit('http://127.0.0.1:9292');
+    cy.visit('https://dev-store-lost-river-press.myshopify.com');
 	
 	//enter store password
 	cy.get('.password-link').click();
-	cy.get('[type="password"]').type('nowyoh');
+	cy.get('[type="password"]').type('yeacuy');
 	cy.get('.password-button').click();
 	cy.get('#accept-cookies').click();
 	
