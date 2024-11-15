@@ -5,9 +5,9 @@ describe('Shopify Full Navigation Flow', () => {
     cy.visit('https://dev-store-lost-river-press.myshopify.com');
 	
 	//enter store password
-	cy.get('.password-link').click();
-	cy.get('[type="password"]').type('yeacuy');
-	cy.get('.password-button').click();
+	//cy.get('.password-link').click();
+	//cy.get('[type="password"]').type('yeacuy');
+	//cy.get('.password-button').click();
 	cy.get('#accept-cookies').click();
 		
 	//check menu navigation
