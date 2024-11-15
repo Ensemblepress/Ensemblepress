@@ -1,5 +1,5 @@
 module.exports = {
   e2e: {
-    baseUrl: 'http://127.0.0.1:9292/', // Replace with the correct port
+    baseUrl: 'https://dev-store-lost-river-press.myshopify.com', // Replace with the correct port
   },
 };
