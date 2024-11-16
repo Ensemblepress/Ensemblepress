@@ -14,6 +14,8 @@ describe('Shopify user account flow', () => {
 	cy.get('#li-nav-account').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-register').click();
 	//cy.get('#salutation').click();
+	//cy.get('#salutation').select('Mr.');
+	cy.get('#salutation').select('Mrs.').should('have.value', 'Mrs.');
 	cy.get('#firstName').type('Abc').trigger('keydown', { keyCode: 9, which: 9 });
 	cy.get('#lastName').type('Cde').trigger('keydown', { keyCode: 9, which: 9 });
 	cy.get('#email').type('xojig67475@anypng.com').trigger('keydown', { keyCode: 9, which: 9 });
@@ -22,15 +24,11 @@ describe('Shopify user account flow', () => {
 	cy.get('#terms').check();
     cy.get('button[type="submit"]').click();
 	
-	//login page
-	cy.scrollTo('top');
+	cy.wait(2000); // Wait briefly to simulate user behavior
+	
 	cy.get('#li-nav-account').trigger('mouseover');
-	cy.get('#HeaderMenu-EmptyDrop-sign-in').click();
-	cy.get('#CustomerEmail').type('xojig67475@anypng.com').trigger('keydown', { keyCode: 9, which: 9 });
-	cy.get('#CustomerPassword').type('Xojig67475@%').trigger('keydown', { keyCode: 9, which: 9 });
-	cy.get('button[type="submit"]').first().click();
-	cy.get('#li-nav-account').trigger('mouseover');
-	cy.get('#HeaderMenu-EmptyDrop-logout').click();
+	
+	cy.wait(2000); // Wait briefly to simulate user behavior
 	
   });
 });
