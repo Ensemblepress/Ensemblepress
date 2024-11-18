@@ -12,11 +12,11 @@ describe('Shopify Full Navigation Flow', () => {
 		
 	//check menu navigation
 	cy.get('#li-nav-books').trigger('mouseover');
-	cy.get('#HeaderMenu-books-new-arrivals').click();
+	cy.get('#HeaderMenu-EmptyDrop-new-arrivals').click();
 	cy.get('#li-nav-merchandise').trigger('mouseover');
 	cy.get('#HeaderMenu-merchandise-hats').click();
 	cy.get('#li-nav-club').trigger('mouseover');
-	cy.get('#HeaderMenu-club-login').click();
+	cy.get('#HeaderMenu-EmptyDrop-login').click();
 	cy.get('#li-nav-account').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-overview').click();
 	cy.get('#li-nav-bag').trigger('mouseover');
