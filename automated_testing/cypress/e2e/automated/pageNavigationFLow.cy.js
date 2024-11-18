@@ -20,6 +20,7 @@ describe('Shopify Full Navigation Flow', () => {
 	cy.wait(2000); // Wait briefly to simulate user behavior
 
 	cy.get('#HeaderMenu-EmptyDrop-login').click();
+
 	cy.get('#li-nav-account').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-overview').click();
 	cy.get('#li-nav-bag').trigger('mouseover');

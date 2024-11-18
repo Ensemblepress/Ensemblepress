@@ -7,3 +7,4 @@ const { defineConfig } = require("cypress");
 		supportFile: false, // Disable support file
 	  },
 	});
+		

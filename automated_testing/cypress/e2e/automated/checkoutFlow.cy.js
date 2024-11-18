@@ -92,5 +92,17 @@ describe('Shopify Full checkout Flow', () => {
 	//cy.get('#checkout-pay-button').should('have.text', 'Complete order.').click({ force: true });	
 	//cy.get('#checkout-pay-button').contains('Complete order').click({ force: true });
 
+	//credit card method
+	/*	
+	cy.get('#number').click().type('4242424242424242').trigger('keydown', { keyCode: 9, which: 9 });
+	cy.get('#expiry').click().type('12/28').trigger('keydown', { keyCode: 9, which: 9 });
+	cy.get('#verification_value').click().type('123').trigger('keydown', { keyCode: 9, which: 9 });
+	cy.get('#verification_value').click().type('lr developer testing').trigger('keydown', { keyCode: 9, which: 9 });
+	*/	
+	// COD Method
+	cy.get('#basic-paymentOnDelivery').click();
+	//cy.get('#checkout-pay-button').should('have.text', 'Complete order.').click({ force: true });	
+	cy.get('#checkout-pay-button').contains('Complete order').click({ force: true });
+
  });
 });
