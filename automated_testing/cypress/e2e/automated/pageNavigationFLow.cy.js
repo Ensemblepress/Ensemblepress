@@ -14,7 +14,7 @@ describe('Shopify Full Navigation Flow', () => {
 	cy.get('#li-nav-books').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-new-arrivals').click();
 	cy.get('#li-nav-merchandise').trigger('mouseover');
-	cy.get('#HeaderMenu-merchandise-hats').click();
+	cy.get('#HeaderMenu-EmptyDrop-hats').click();
 	cy.get('#li-nav-club').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-login').click();
 	cy.get('#li-nav-account').trigger('mouseover');
