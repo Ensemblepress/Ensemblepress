@@ -15,7 +15,7 @@ describe('Shopify Product Search Flow', () => {
 	cy.get('.input-search-display').first().type('Letter to my Mother{enter}');
 	cy.get('.name-title').first().click();
 	cy.get('#li-nav-books').trigger('mouseover');
-	cy.get('#HeaderMenu-books-new-arrivals').click();
+	cy.get('#HeaderMenu-EmptyDrop-new-arrivals').click();
 	
 	// product filter
 	cy.get('.plp-header-tools-filter-title').click();
