@@ -1,4 +1,4 @@
-name: Staging store Automated testing
+name: Automated testing
 on:
   workflow_dispatch:
 
