@@ -19,7 +19,7 @@ describe('Shopify Full checkout Flow', () => {
 	cy.get('#loginSubmit').first().click();
 
 	cy.get('#li-nav-books').trigger('mouseover');
-	cy.get('#HeaderMenu-books-new-arrivals').click();
+	cy.get('#HeaderMenu-EmptyDrop-new-arrivals').click();
 
 	//home page
 	//cy.get('.caption-secondary').first().click();
