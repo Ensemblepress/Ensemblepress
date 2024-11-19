@@ -3664,7 +3664,6 @@ body.is-maintenance main {
 @media (min-width: 835px) {
   #menu .header-primary {
     justify-content: flex-start;
-    /* margin: 20px 0; */
   }
 }
 @media (min-width: 835px) {
@@ -3741,7 +3740,7 @@ body.is-maintenance main {
 }
 @media (min-width: 576px) {
   #menu .header-item .amount {
-    font-size: 8px;
+    font-size: 9px;
     line-height: 1.3em;
   }
 }
@@ -7511,16 +7510,16 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   .pdp-container {
     padding-top: 0;
     margin-top: -54px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
-@media (min-width: 835px) {
+/* @media (min-width: 835px) {
   .pdp-container {
     padding-left: 0;
     padding-right: 0;
   }
-}
+} */
 .pdp-main {
   display: flex;
   flex-direction: column;
@@ -7665,7 +7664,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 @media (min-width: 576px) {
   .pdp-main-info {
     order: 1;
-    width: 140px;
+    width: 50%;
     padding: 0;
     padding-left: 24px;
     flex-shrink: 0;

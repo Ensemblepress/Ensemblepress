@@ -1,6 +1,3 @@
-body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color {
-    fill: #f90;
-}
 /* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color {
     fill: #f90;
@@ -24,6 +21,7 @@ body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color {
     }
 }
 /* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
+
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-2 {
         fill: #035c2b;
@@ -52,7 +50,7 @@ body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color {
   body.is-home .header-logo .logotype svg .logo-color {
       fill: #f90;
   }
-   .header-logo.header-logo-difference{
+   body.is-home .header-logo.header-logo-difference{
      mix-blend-mode: normal; 
     }
 }
