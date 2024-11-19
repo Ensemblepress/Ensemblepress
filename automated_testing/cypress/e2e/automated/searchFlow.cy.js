@@ -2,8 +2,7 @@ describe('Shopify Product Search Flow', () => {
   it('searches for a product', () => {
     
 	//visit the homepage
-    cy.visit('https://dev-store-lost-river-press.myshopify.com');
-	
+        cy.visit('https://dev-store-lost-river-press.myshopify.com');
 	//enter store password
 	//cy.get('.password-link').click();
 	//cy.get('[type="password"]').type('yeacuy');
@@ -31,6 +30,5 @@ describe('Shopify Product Search Flow', () => {
 	cy.get('#apply-sort').click();
 	cy.scrollTo('top');
 	cy.get('.header-item-brand').first().click();
-	
   });
 });

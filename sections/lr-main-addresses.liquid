@@ -206,8 +206,8 @@
         </div>
         <div id="phone_error" class="error-message item-error" style="display:none;"></div>
         <div class="item item-checkbox item-input-spaced">
-            <input type="checkbox" id="default" class="checkbox-single" name="address[default]" value="true">
-            <label for="default">Set as default address</label>
+        <input type="checkbox" id="default" class="checkbox-single" name="address[default]" value="true" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+            <label for="default" >Set as default address</label>
         </div>
         <div class="item item-button">
             <button type="submit" class="button button-large">Save Address</button>
