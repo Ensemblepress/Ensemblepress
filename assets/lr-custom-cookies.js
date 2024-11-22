@@ -52,53 +52,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Handle preferences form submission cookie-personalization
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(event) {
+          if (event.target) {
+              if (event.target.id === 'cookie-personalization') {
+                  toggleCheckbox('cookie-personalization');
+              } else if (event.target.id === 'cookie-marketing') {
+                  toggleCheckbox('cookie-marketing');
+              } else if (event.target.id === 'cookie-analytics') {
+                  toggleCheckbox('cookie-analytics');
+              }
+          }
+      });
+  
+      // Function to toggle checkbox state
+      function toggleCheckbox(id) {
+          const checkbox = document.getElementById(id);
+          if (checkbox) {
+              checkbox.checked = !checkbox.checked;
+          } else {
+              //console.error(`Checkbox with ID "${id}" not found.`);
+          }
+      }
+  });
+
+  
     document.addEventListener('click', function(event) {
-      //cookie-personalization click
-      if (event.target && event.target.id === 'cookie-personalization') {
-        const checkbox = document.getElementById('cookie-personalization');
-         // Toggle the checkbox state
-        checkbox.checked = !checkbox.checked;  
-        if (checkbox.checked) {
-            checkbox.checked = true;
-            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
-        } else {
-            checkbox.checked = false;
-            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
-        }
-     }
-     // end click
-
-      //cookie-marketing click
-      if (event.target && event.target.id === 'cookie-marketing') {
-        const checkbox = document.getElementById('cookie-marketing');
-         // Toggle the checkbox state
-        checkbox.checked = !checkbox.checked;  
-        if (checkbox.checked) {
-            checkbox.checked = true;
-            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
-        } else {
-            checkbox.checked = false;
-            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
-        }
-     }
-     // end click
-
-      //cookie-analytics click
-      if (event.target && event.target.id === 'cookie-analytics') {
-        const checkbox = document.getElementById('cookie-analytics');
-         // Toggle the checkbox state
-        checkbox.checked = !checkbox.checked;  
-        if (checkbox.checked) {
-            checkbox.checked = true;
-            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
-            
-        } else {
-            checkbox.checked = false;
-            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
-        }
-     }
-     // end click
-
      // Attach a submit event handler to the newly added form
      if (event.target && event.target.id === 'save_my_choices') {
         // Prevent the default form submission
