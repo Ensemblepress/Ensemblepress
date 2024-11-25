@@ -1,6 +1,5 @@
 {{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
 {{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
-
 <script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
 
 <!-- Address JS Start -->
@@ -31,19 +30,11 @@
           {%- for address in customer.addresses -%}
             <div class="item item-address" current_edit_id="{{ address.id }}">
               <div class="item-address-info">
-                {%- if address -%}  <!-- Check if the address exists -->
                 {%- if address == customer.default_address -%}
-                  <div class="title">Billing Address<span class="dot">•</span></div>
-                {%- else -%}
-                  <div class="title">Shipping Address<span class="dot">•</span></div>
+                 <div class="title">Home •default address••</div>
+                {% else %}  
+                  <div class="title"></div>
                 {%- endif -%}
-              {%- else -%}
-                {%- if customer.metafields.custom.address_title -%}
-                  <div class="title">{{ customer.metafields.custom.address_title }}<span class="dot">•</span></div>
-                {%- else -%}
-                  <div class="title">No Address Available<span class="dot">•</span></div>
-                {%- endif -%}
-              {%- endif -%}             
                 <div class="info">{{ address | format_address }}</div>
               </div>
               <div class="item-address-tools">
@@ -57,15 +48,15 @@
                   data-address-id="{{ address.id }}"
                 >
                   <span>Edit</span>
-                </button>
-                <button
-                type="button"
-                class="textlink-edit do_removeaddress"
-                aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
-                data-address-id="{{ address.id }}"
-                data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
-              >
-                <span>Remove</span>
+              </button>
+              <button
+                  type="button"
+                  class="textlink-edit do_removeaddress"
+                  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+                  data-target="{{ address.url }}"
+                  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                  data-address-id="{{ address.id }}">
+                  <span>Remove</span>
               </button>
               </div>
             </div>
@@ -85,21 +76,22 @@
         {%- form 'customer_address', address -%}
         <div class="item item-hd item-hd-line">Edit address<span class="tooltip-right"><span class="dot">•</span>Required</span></div>
         <div class="item item-input item-input-spaced">
-          <input type="text" placeholder="Address title" value="{{ customer.metafields.custom.address_title }}">
-        </div>
-        <div class="item item-input item-input-spaced">
           <input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="First name•">
         </div>
+        <div id="editaddress_firstname_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>  
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="Last name•">
         </div>
+        <div id="editaddress_lastname_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>  
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="Street address•">
         </div>
+        <div id="editaddress_address1_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>    
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="Apt, Suite, Building, Company">
         </div>
-		<div class="item item-input item-input-spaced">
+        <div id="editaddress_address2_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>      
+        <div class="item item-input item-input-spaced">
           <select id="AddressCountry_{{ form.id }}"
               name="address[country]"
               data-address-country-select
@@ -121,101 +113,116 @@
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressProvince_{{ form.id }}" name="address[province]" value="{{ form.province }}" placeholder="State•">
         </div>
+        <div id="editaddress_province_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>   
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="City•">
         </div>
+        <div id="editaddress_city_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>   
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" placeholder="ZIP code•">
         </div>
+        <div id="editaddress_zip_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>   
         <div class="item item-input item-input-spaced">
           <input type="text" id="AddressPhone_{{ form.id }}" name="address[phone]" value="{{ form.phone }}" placeholder="Phone number•">
         </div>
-        <div class="item item-checkbox item-input-spaced spacer">
-          <input type="checkbox" class="checkbox-single" name="address[default]" id="address_default_address_shipping_{{ form.id }}" value="{{ address.id }}" data-type="shipping">
-          <label for="address_default_address_shipping_{{ form.id }}">Make default shipping address</label>
-        </div>
+        <div id="editaddress_phone_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>   
         <div class="item item-checkbox item-input-spaced">
-          <input type="checkbox" class="checkbox-single" name="address[default]" id="address_default_address_billing_{{ form.id }}" value="{{ address.id }}" data-type="billing">
-          <label for="address_default_address_billing_{{ form.id }}">Make default billing address</label>
-        </div>
+          <input type="checkbox" id="default" class="checkbox-single" name="address[default]" value="true">
+          <label for="default">Set as default address</label>
+        </div>  
         <div class="item item-button">
           <button type="button" class="button button-large save-address" data-address-id="{{ address.id }}">Save</button>
         </div>   
-          
         {%- endform -%}      
       </div>
     </div>
   </div>
 {% endfor %} 
 
+
 <div class="page-account page-account-addressbook-detail active" id="AddAddress">
   <div class="inner">
     <div class="site-system">
-      {%- form 'customer_address', customer.new_address, aria_labelledby: 'AddressNewHeading' -%}
-      <div class="item item-hd item-hd-line">Edit address<span class="tooltip-right">•Required</span></div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" 
-               id="AddressTitleNew" 
-               name="address[metafields][custom][address_title]" 
-               placeholder="Address title" />
-    </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressFirstNameNew" name="address[first_name]" placeholder="First name•" value="{{ form.first_name }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressLastNameNew" name="address[last_name]" placeholder="Last name•" value="{{ form.last_name }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressAddress1New" name="address[address1]" placeholder="Street address•" value="{{ form.address1 }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressAddress2New" name="address[address2]" placeholder="Apt, Suite, Building, Company" value="{{ form.address2 }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-          <select id="AddressCountryNew" class="select-fullwidth" name="address[country]" data-default="" autocomplete="country">
-            <option value="USA" data-provinces="[]">USA</option>
-            <option value="Canada" data-provinces="[]">Canada</option>
-        	<option value="Italy" data-provinces="[]">Italy</option>
-        	<option value="Germany" data-provinces="[]">Germany</option>
-        	<option value="Netherlands" data-provinces="[]">Netherlands</option>
-        	<option value="Spain" data-provinces="[]">Spain</option>
-        	<option value="Switzerland" data-provinces="[]">Switzerland</option>
-        	<option value="Belgium" data-provinces="[]">Belgium</option>
-        	<option value="Austria" data-provinces="[]">Austria</option>
-        	<option value="UK" data-provinces="[]">UK</option>
-        </select>
+      <div class="item item-hd item-hd-line">New address<span class="tooltip-right">•Required</span></div>
+      <!-- New Address Form -->
+       <form id="new-address-form" method="post" action="/account/addresses" autocomplete="on">
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="first_name" name="address[first_name]" placeholder="First name•">
         </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressProvinceNew" name="address[province]" placeholder="State•" value="{{ form.province }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressCityNew" name="address[city]" placeholder="City•" value="{{ form.city }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressZipNew" name="address[zip]" placeholder="ZIP code•" value="{{ form.zip }}">
-      </div>
-      <div class="item item-input item-input-spaced">
-        <input type="text" id="AddressPhoneNew" name="address[phone]" placeholder="Phone number•" value="{{ form.phone }}">
-      </div>
-      <div class="item item-checkbox item-input-spaced spacer">
-        <input type="checkbox" class="checkbox-single" name="address[default]" id="address_default_address_shipping" value="5">
-        <label for="address_default_address_shipping">Make default shipping address</label>
-      </div>
-      <div class="item item-checkbox item-input-spaced">
-        <input type="checkbox" class="checkbox-single" name="address[default]" id="address_default_address_billing" value="5">
-        <label for="address_default_address_billing">Make default billing address</label>
-      </div>
-      <div class="item item-button">
-        <button type="submit" class="button button-large" id="newaddress_data">Save</button>
-      </div>
+        <div id="first_name_error" class="error-message item-error" style="display:none;"></div>
+    
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="last_name" name="address[last_name]" placeholder="Last name•">
+        </div>
+        <div id="last_name_error" class="error-message item-error" style="display:none;"></div>
+    
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="address1" name="address[address1]" placeholder="Street address•">
+        </div>
+        <div id="address1_error" class="error-message item-error" style="display:none;"></div>
+    
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="address2" name="address[address2]" placeholder="Apt, Suite, Building, Company">
+        </div>
+        <div id="address2_error" class="error-message item-error" style="display:none;"></div>
+    
+        <div class="item item-input item-input-spaced">
+            <select id="country" class="select-fullwidth" name="address[country]">
+                <option value="">Select a country</option> <!-- Default prompt -->
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="Italy">Italy</option>
+                <option value="Germany">Germany</option>
+                <option value="Netherlands">Netherlands</option>
+                <option value="Spain">Spain</option>
+                <option value="Switzerland">Switzerland</option>
+                <option value="Belgium">Belgium</option>
+                <option value="Austria">Austria</option>
+                <option value="UK">UK</option>
+            </select>
+        </div>
+        <div id="country_error" class="error-message item-error" style="display:none;"></div>
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="province" name="address[province]" placeholder="State/Province•">
+        </div>
+        <div id="province_error" class="error-message item-error" style="display:none;"></div>
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="city" name="address[city]" placeholder="City•">
+        </div>
+        <div id="city_error" class="error-message item-error" style="display:none;"></div>
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="zip" name="address[zip]" placeholder="ZIP code•">
+        </div>
+        <div id="zip_error" class="error-message item-error" style="display:none;"></div>
+        <div class="item item-input item-input-spaced">
+            <input type="text" id="phone" name="address[phone]" placeholder="Phone number•">
+        </div>
+        <div id="phone_error" class="error-message item-error" style="display:none;"></div>
+        <div class="item item-checkbox item-input-spaced">
+        <input type="checkbox" id="default" class="checkbox-single" name="address[default]" value="true" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+            <label for="default" >Set as default address</label>
+        </div>
+        <div class="item item-button">
+            <button type="submit" class="button button-large">Save</button>
+        </div>
+    </form>
+      <!-- Success and Error Messages -->
+      <div id="address-form-success" style="display:none; color:green;">Address saved successfully!</div>
+      <div id="address-form-error" style="display:none; color:#c00;">Failed to save address.</div>
+      <!-- Address List Container -->
+      <div id="address-list-container"></div>
       
-      {%- endform -%} 
     </div>
   </div>
-</div>
+</div>  
+
+ 
 {%- endpaginate -%}
 
 <style>
+  .page-account .button {
+    font-weight: 500;
+  }
   .page-account.page-account-addressbook-detail.active {
     display: none;
   }
@@ -226,9 +233,6 @@
     margin: 0px -2px;
   }
   .page-account.page-account-edit-addressbook-detail form {
-    margin-top: 0;
-  }
-  .page-account.page-account-addressbook-detail form {
     margin-top: 0;
   }
   @media (max-width: 575px) {
@@ -244,6 +248,55 @@
       margin: -12px 0;
     }
   }
+/* Edit Address Validation CSS Start */
+.page-account.page-account-edit-addressbook-detail .error-message.item-error:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #c00;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/386c391b02fdc9948d17ba92b988a24c_1.svg?v=1729769672);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.page-account.page-account-edit-addressbook-detail .error-message.item-error {
+display: none; /* Hide by default */
+}
+
+.page-account.page-account-edit-addressbook-detail .error-message.item-error.visible {
+  display: block; /* Show when there's an error */
+}
+/*  Edit Address Validation CSS End  */
+  
+/* New Address validtion Css Start */
+.page-account.page-account-addressbook-detail .error-message.item-error:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #c00;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/386c391b02fdc9948d17ba92b988a24c_1.svg?v=1729769672);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.page-account.page-account-addressbook-detail .error-message.item-error {
+display: none; /* Hide by default */
+}
+
+.page-account.page-account-addressbook-detail .error-message.item-error.visible {
+  display: block; /* Show when there's an error */
+}
+/*  New Address Validation CSS End  */
 </style>
 
 {% schema %}

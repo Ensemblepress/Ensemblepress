@@ -1,13 +1,43 @@
 .error-message {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+  color: #c00;
+}
+.item.item-error.error-message{
+  color: #c00;
 }
 .page-account.page-account-register .item-button button {
     width: 100%;
+    font-weight: 500;
 }
 @media (min-width: 576px) {
   div#page-account-register-success {
       padding: 0;
   }
+  .page-account.page-account-register .item-button button {
+    padding: 10px 20px 8px;
+  }
+}
+.page-account.page-account-register .error-message.item-error:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid #c00;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0645/7563/5607/files/386c391b02fdc9948d17ba92b988a24c_1.svg?v=1729769672);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.page-account.page-account-register .error-message.item-error {
+  display: none; /* Hide by default */
+}
+
+.page-account.page-account-register .error-message.item-error.visible {
+    display: block; /* Show when there's an error */
+}
+div#page-account-register-success .item-button .button {
+    font-weight: 500;
 }
