@@ -30,13 +30,6 @@
           {%- for address in customer.addresses -%}
             <div class="item item-address" current_edit_id="{{ address.id }}">
               <div class="item-address-info">
-                {% comment %}
-                {%- if address == customer.default_address -%}
-                  <div class="title">Billing Address<span class="dot">•</span></div>
-                {%- else -%}
-                  <div class="title">Shipping Address<span class="dot">•</span></div>
-                {%- endif -%}
-                {% endcomment %}  
                 {%- if address == customer.default_address -%}
                  <div class="title">Home •default address••</div>
                 {% else %}  
@@ -210,7 +203,7 @@
             <label for="default" >Set as default address</label>
         </div>
         <div class="item item-button">
-            <button type="submit" class="button button-large">Save Address</button>
+            <button type="submit" class="button button-large">Save</button>
         </div>
     </form>
       <!-- Success and Error Messages -->
@@ -227,6 +220,9 @@
 {%- endpaginate -%}
 
 <style>
+  .page-account .button {
+    font-weight: 500;
+  }
   .page-account.page-account-addressbook-detail.active {
     display: none;
   }
@@ -237,9 +233,6 @@
     margin: 0px -2px;
   }
   .page-account.page-account-edit-addressbook-detail form {
-    margin-top: 0;
-  }
-  .page-account.page-account-addressbook-detail form {
     margin-top: 0;
   }
   @media (max-width: 575px) {
