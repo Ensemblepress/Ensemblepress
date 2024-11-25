@@ -17,6 +17,7 @@
     </div>
   </div>
 </div>
+
 <div class="page-account page-account-password" id="change-password-container">
   <div class="inner">
     <div class="site-system">
@@ -26,25 +27,33 @@
         <input type="hidden" name="utf8" value="✓">
         <input type="hidden" name="_method" value="put"> 
         <div class="item item-input item-input-password item-input-spaced">
-          <input type="password" placeholder="Current password•" id="current-password" name="customer[old_password]" required>
+          <input type="password" placeholder="Current password•" id="current-password" name="customer[old_password]">
           <div class="password_eye toggle_password_visibility"  data-target="current-password"></div>
         </div>
+        
+        <div id="current_password_error" class="error-message item-error" style="display:none;"></div>
+        
         <div class="item item-input item-input-password item-input-spaced">
           <input type="password" placeholder="New password•" id="new-password" name="customer[password]">
           <div class="password_eye toggle_password_visibility" data-target="new-password"></div>
         </div>
+        
+        <div id="new_password_error" class="error-message item-error" style="display:none;"></div>
+        
         <div class="item item-input item-input-password item-input-spaced">
           <input type="password" placeholder="Confirm new password•" id="confirm-password" name="customer[password_confirmation]">
           <input type="hidden" id="customer_id" name="customer_id" value="{{ customer.id }}">
           <div class="password_eye toggle_password_visibility" data-target="confirm-password"></div>
         </div>
+        <div id="error"></div>
+        <div id="confirm_password_error" class="error-message item-error" style="display:none;"></div>
         <div class="item item-copy item-copy-longtext spacer">
           <p>Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long.</p>
         </div>
         <div class="item item-button">
           <button type="submit" class="button button-large" id="save-new-password">Save</button>
         </div>
-        <div id="error"></div>
+        <div id="pasword_text"></div>
       </form>  
     </div>
   </div>
@@ -64,11 +73,11 @@
 
 <style>
   .page-account.page-account-forgottpassword-create-success {
-    padding-top: 40px;
+    padding-top: 70px;
   }
   @media (max-width: calc(575px)) {
   .page-account.page-account-forgottpassword-create-success {
-    padding-top: 0px;
+    padding-top: 90px;
   }
  }   
 </style>

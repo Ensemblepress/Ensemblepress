@@ -1,0 +1,53 @@
+name: Automated testing
+on:
+  workflow_dispatch:
+
+jobs:
+  automated-testing:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install Ruby Dependencies
+        run: bundle install
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest @shopify/theme
+
+      - name: Install Node.js Dependencies
+        run: npm install
+
+      - name: Install Cypress
+        run: npm install cypress@latest  # Update to the latest version
+
+      - name: Install XVFB for headless mode
+        run: sudo apt-get install -y xvfb
+
+      - name: Start Xvfb
+        run: Xvfb :99 -screen 0 1024x768x24 &
+
+      - name: List files (for debugging)
+        run: ls -R automated_testing/cypress/e2e/automated
+
+      - name: Run Cypress tests
+        run: |
+          npx cypress run --spec "automated_testing/cypress/e2e/automated/*.cy.js"
+        env:
+          DISPLAY: ':99.0'

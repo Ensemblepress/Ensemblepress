@@ -18,9 +18,10 @@
   .search-result-item p {
       font-size: 0.9em;
   }
-  body.is-home .header-logo {
+  /* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
+  body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
- }
+  }
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
@@ -76,14 +77,14 @@ var menu = document.getElementById("custom-menu");
             {%  assign i = 0 %}
             {%- for link in section.settings.menu.links -%}
               <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}">
-                  <span>{{- link.title | escape -}}</span>
+                  <a tabindex="0"><span>{{- link.title | escape -}}</span></a>
               </li>
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
             <li class="header-item header-item-search nav_3" data-title="nav-search">
                  <div class="header-search-title is-active">
-                   <span>Search</span>
+                  <a tabindex="0"> <span>Search</span></a>
                  </div>
               <form action="{{ routes.search_url }}" method="get" role="search" class="search">
                  <div class="header-search-field">
@@ -97,11 +98,11 @@ var menu = document.getElementById("custom-menu");
               </form> 
             </li>
             <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account">
-              <span>Account</span>
+              <a tabindex="0"><span>Account</span></a>
             </li>
             <li class="header-item header-item-bag  false false nav_5 main-nav-menu-item" id="li-nav-bag" data-title="nav-bag">
                 {%- if cart.item_count < 100 -%}
-                  <span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span>
+                  <a tabindex="0"><span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span></a>
                 {% endif %}  
             </li>
           </ul>
@@ -164,21 +165,41 @@ data-titlesub="nav-{{ link.title | downcase }}">
               <div class="nav-layout-item">
                 <ul class="nav-menu">
             {% endif %}
-            <li>
-              {% if childlink.title != '---' %}
-              <a
-                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                href="{{ childlink.url }}"
-                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                {% if childlink.current %}
-                  aria-current="page"
+            {% if customer %}
+            {% if childlink.title != '---' %}
+             {% if childlink.title != 'Login' and childlink.title != 'Sign up'  %} 
+                <li class="customer">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href="{{ childlink.url }}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
                 {% endif %}
-              >
-                {{ childlink.title | escape }}
-              </a>
+            {% endif %}
+          {% else %}
+            {% if childlink.title != '---' %}
+            {% if childlink.title != 'Logout' %}
+                <li class="guest">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href=" {% if customer %} {{ childlink.url }} {% else %} {% if childlink.title == 'Sign up' %} {{ '/account/register' }} {% else %} {{ childlink.url }} {% endif %}{% endif %}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
               {% endif %}
-            </li>
-          {%- endfor -%}
+            {% endif %}
+          {% endif %}          {%- endfor -%}
         </ul>
       </div>
       <div class="nav-icon-back">
@@ -189,38 +210,61 @@ data-titlesub="nav-{{ link.title | downcase }}">
 {%- endfor -%}
   <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls">
     <div class="nav-layout nav-layout-horizontal nav-layout-secondary">
-      <div class="nav-layout-item">
-        <ul class="nav-menu">
-          {% for link in linklists['lr_header_top_right_menu'].links %}
-          {% for childlink in link.links %}
-            {% if childlink.title == '---' %}
-              </ul>
-              </div>
-              <div class="nav-layout-item">
-                <ul class="nav-menu">
-            {% endif %}
-            <li>
-              {% if childlink.title != '---' %}
-              <a
-                id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
-                href="{{ childlink.url }}"
-                class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                {% if childlink.current %}
-                  aria-current="page"
+  <div class="nav-layout-item">
+    <ul class="nav-menu">
+      {% for link in linklists['lr_header_top_right_menu'].links %}
+        {% for childlink in link.links %}
+          {% if childlink.title == '---' %}
+            </ul>
+          </div>
+          <div class="nav-layout-item">
+            <ul class="nav-menu">
+          {% endif %}     
+          {% if customer %}
+            {% if childlink.title != '---' %}
+             {% if childlink.title != 'Sign in' and childlink.title != 'Register'  %} 
+                <li class="customer">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href="{{ childlink.url }}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
                 {% endif %}
-              >
-                {{ childlink.title | escape }}
-              </a>
+            {% endif %}
+          {% else %}
+            {% if childlink.title != '---' %}
+            {% if childlink.title != 'Logout' %}
+                <li class="guest">
+                  <a
+                    id="HeaderMenu-{{ menus.handle }}-{{ childlink.handle }}"
+                    href=" {% if customer %} {{ childlink.url }} {% else %} {% if childlink.title == 'Register' %} {{ '/account/register' }} {% else %} {{ '/account/login' }} {% endif %}{% endif %}"
+                    class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                    {% if childlink.current %}
+                      aria-current="page"
+                    {% endif %}
+                  >
+                    {{ childlink.title | escape }}   
+                  </a>
+                </li>
               {% endif %}
-            </li>
-          {% endfor %}
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="nav-icon-back">
-        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>
-      </div>
-    </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="nav-icon-back">
+    <svg viewBox="0 0 510.2 510.2">
+      <polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon>
+    </svg>
+  </div>
+</div>
 </nav>
  
 <nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls">
@@ -291,10 +335,12 @@ data-titlesub="nav-{{ link.title | downcase }}">
       {% endfor %}
       <div class="item item-total item-total-first item-total-promo">
         <div class="caption">
-          <div class="caption-option promo_label is-off"><span class="icon-promo"></span> Add promotion code</div>
+          <div class="caption-option promo_label is-off" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo"></span> Add promotion code</div>
           <div class="caption-option promo_input">
             <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-            <button class="button-promo" id="apply-promo-code">OK</button>
+            <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>OK</button>
             <div id="discount-message"></div>
           </div>
         </div>
@@ -633,10 +679,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var cart_footer = ` <div id="cart_footer"> 
               <div class="item ${add_disc} item-total-first item-total-promo" id="item-total-promo">
                 <div class="caption ${code_apply}" id="caption">
-                  <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+                  <div class="caption-option promo_label" id="icon-promo-symbol" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                   <div class="caption-option promo_input is-off" id="promo_input">
                     <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-                    <button class="button-promo" id="apply-promo-code">Ok</button>
+                    <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>Ok</button>
                   </div>
                 </div>
             </div>
@@ -659,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue </a>   
+                    <a href="/collections/all" class="button">Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
@@ -671,7 +719,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
-        }
+          }
         }      
         attachCartItemEvents();   
       });
@@ -765,6 +813,19 @@ document.addEventListener('DOMContentLoaded', function() {
        
       //updateCartDrawer();
         document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        const remainingItemsDrover = document.querySelectorAll('.cart-item');
+        remainingItemsDrover.forEach((item, index) => {
+            //item.setAttribute('data-line', index + 1); // Shopify uses 1-based line numbers
+            const newLine = index + 1;
+            item.setAttribute('data-line', newLine);
+
+            // Update the corresponding remove link if it exists
+            const removeLinkDrover = item.querySelector('.remove-item');
+            if (removeLinkDrover) {
+                removeLinkDrover.setAttribute('data-line', newLine);
+            } 
+        });
+      
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);

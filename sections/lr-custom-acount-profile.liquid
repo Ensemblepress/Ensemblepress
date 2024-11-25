@@ -24,11 +24,10 @@
       <div class="item item-hd item-hd-line">Account details
         <a class="tooltip-right" href="/account">Return to Account</a>
       </div>
-      
         <form id="customer-update-form" method="post" action="/account">
-       
         <div class="item item-input item-input-spaced">
           <select class="select-fullwidth" id="salutation" name="salutation">
+            <option value="" disabled selected>Select Salutation</option>
             <option value="Mr." {% if customer.metafields.custom.salutation == "Mr." %}selected{% endif %}>Mr.</option>
             <option value="Mrs." {% if customer.metafields.custom.salutation == "Mrs." %}selected{% endif %}>Mrs.</option>
             <option value="Ms." {% if customer.metafields.custom.salutation == "Ms." %}selected{% endif %}>Ms.</option>
@@ -39,22 +38,38 @@
             <option value="Misc." {% if customer.metafields.custom.salutation == "Misc." %}selected{% endif %}>Misc.</option>
           </select>
         </div>
+        <div id="salutation-error" class="error-message item-error" style="display:none;"></div> <!-- Error message -->  
         <div class="item item-input item-input-spaced">
           <input type="text" placeholder="First name" id="first_name" name="first_name" value="{{ customer.first_name }}">
         </div>
+          
+        <div id="first_name_error" class="error-message item-error" style="display:none;"></div>
+          
         <div class="item item-input item-input-spaced">
           <input type="text" placeholder="Last name" id="last_name" name="last_name" value="{{ customer.last_name }}">
         </div>
+          
+        <div id="last_name_error" class="error-message item-error" style="display:none;"></div>
+          
         <div class="item item-input item-input-spaced">
           <input type="email" id="email" name="email" value="{{ customer.email }}" placeholder="E-mail address">
         </div>
+
+        <div id="email_error" class="error-message item-error" style="display:none;"></div>
+          
         <div class="item item-input item-input-spaced">
           <input type="text" id="phone" name="phone" value="{{ customer.metafields.custom.phone }}" placeholder="Phone Number">
         </div>
+
+        <div id="phone_error" class="error-message item-error" style="display:none;"></div>
+          
         <div class="item item-input item-input-spaced">
-          <input type="password" placeholder="Current password" id="current_password" name="customer[old_password]" required>
+          <input type="password" placeholder="Current password" id="current_password" name="customer[old_password]">
           <input type="hidden" id="customer_id" name="customer_id" value="{{ customer.id }}">
         </div>
+          
+        <div id="current_password_error" class="error-message item-error" style="display:none;"></div>
+          
         <div class="item item-button">
           <button type="submit" class="button button-large">Save</button>
           <a class="button button-large button-textlink" href="/pages/password">Change password</a>

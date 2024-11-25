@@ -1,8 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Show the cookie popup
+    const custom_cookies = document.getElementById("custom_cookies").value;
+    const customer_id = document.getElementById("customer_id").value;
+    
     var cookiePopup = document.getElementById('cookie-consent-popup');
-    cookiePopup.style.display = 'block';
-
+    // Check if user already made a choice
+    if (getCookie('cookieConsent') || getCookie('cookiePreferences')) {
+        cookiePopup.style.display = 'none';
+    }
+  
+    // Check if the user has already made a choice before displaying the popup
+    if( custom_cookies == 1 && customer_id != ""){
+	 if (!getCookie('cookieConsent') && !getCookie('cookiePreferences')) {
+        cookiePopup.style.display = 'none';
+     }
+    }else{
+	 if (!getCookie('cookieConsent') && !getCookie('cookiePreferences')) {
+        cookiePopup.style.display = 'block';
+	 }
+    }
+  
     // Close popup event
     document.getElementById('close-popup').addEventListener('click', function() {
         cookiePopup.style.display = 'none';
@@ -12,12 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('accept-cookies').addEventListener('click', function() {
         setCookie('cookieConsent', 'accepted', 365);
         cookiePopup.style.display = 'none';
+        saveToCustomerMetafields(consentValue = 1);
     });
 
     // Decline cookies event
     document.getElementById('decline-cookies').addEventListener('click', function() {
         setCookie('cookieConsent', 'declined', 365);
         cookiePopup.style.display = 'none';
+        saveToCustomerMetafields(consentValue = 1);
     });
 
     // Manage preferences event
@@ -33,54 +52,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Handle preferences form submission cookie-personalization
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(event) {
+          if (event.target) {
+              if (event.target.id === 'cookie-personalization') {
+                  toggleCheckbox('cookie-personalization');
+              } else if (event.target.id === 'cookie-marketing') {
+                  toggleCheckbox('cookie-marketing');
+              } else if (event.target.id === 'cookie-analytics') {
+                  toggleCheckbox('cookie-analytics');
+              }
+          }
+      });
+  
+      // Function to toggle checkbox state
+      function toggleCheckbox(id) {
+          const checkbox = document.getElementById(id);
+          if (checkbox) {
+              checkbox.checked = !checkbox.checked;
+          } else {
+              //console.error(`Checkbox with ID "${id}" not found.`);
+          }
+      }
+  });
+
+  
     document.addEventListener('click', function(event) {
-      //cookie-personalization click
-      if (event.target && event.target.id === 'cookie-personalization') {
-        const checkbox = document.getElementById('cookie-personalization');
-         // Toggle the checkbox state
-        checkbox.checked = !checkbox.checked;  
-        if (checkbox.checked) {
-            checkbox.checked = true;
-            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
-        } else {
-            checkbox.checked = false;
-            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
-        }
-     }
-     // end click
-
-      //cookie-marketing click
-      if (event.target && event.target.id === 'cookie-marketing') {
-        const checkbox = document.getElementById('cookie-marketing');
-         // Toggle the checkbox state
-        checkbox.checked = !checkbox.checked;  
-        if (checkbox.checked) {
-            checkbox.checked = true;
-            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
-            
-        } else {
-            checkbox.checked = false;
-            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
-        }
-     }
-     // end click
-
-      //cookie-analytics click
-      if (event.target && event.target.id === 'cookie-analytics') {
-        const checkbox = document.getElementById('cookie-analytics');
-         // Toggle the checkbox state
-        checkbox.checked = !checkbox.checked;  
-        if (checkbox.checked) {
-            checkbox.checked = true;
-            checkbox.removeAttribute('checked');  // Remove the 'checked' attribute
-            
-        } else {
-            checkbox.checked = false;
-            checkbox.setAttribute('checked', 'checked');  // Add the 'checked' attribute
-        }
-     }
-     // end click
-
      // Attach a submit event handler to the newly added form
      if (event.target && event.target.id === 'save_my_choices') {
         // Prevent the default form submission
@@ -105,14 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
       var modal = document.getElementById('cookie-consent-popup');
       modal.style.display = 'none';
       cookiePopup.style.display = 'none';
-        
+      saveToCustomerMetafields(consentValue = 1); 
       }
 
      // click on accept-all
      if (event.target && event.target.id === 'accept-all') {
        // Prevent the default form submission
         event.preventDefault();
-        
         const checkboxes = document.querySelectorAll('.cookie-preferences');
         var preferences = {};
         checkboxes.forEach(function(checkbox) {
@@ -126,14 +123,13 @@ document.addEventListener('DOMContentLoaded', function() {
        var modal = document.getElementById('cookie-consent-popup');
        modal.style.display = 'none';
        cookiePopup.style.display = 'none';
-        
+       saveToCustomerMetafields(consentValue = 1); 
      }
 
      // click on decline-all
      if (event.target && event.target.id === 'decline-all') {
         // Prevent the default form submission
         event.preventDefault();
-        
         const checkboxes = document.querySelectorAll('.cookie-preferences');
         var preferences = {};
         checkboxes.forEach(function(checkbox) {
@@ -147,9 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
        var modal = document.getElementById('cookie-consent-popup');
        modal.style.display = 'none';
        cookiePopup.style.display = 'none';
-     
+       saveToCustomerMetafields(consentValue = 1);
      }
-
   }); 
    
     // Set cookie function
@@ -175,8 +170,41 @@ document.addEventListener('DOMContentLoaded', function() {
         return null;
     }
 
-    // Check if user already made a choice
-    if (getCookie('cookieConsent') || getCookie('cookiePreferences')) {
-        cookiePopup.style.display = 'none';
-    }
+function saveToCustomerMetafields(consentValue = 1) {
+ //alert(customer_id);      	
+ fetch(`/admin/api/2023-01/customers/${customer_id}.json`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Shopify-Access-Token": "", // Ensure this token is kept secure
+            },
+            body: JSON.stringify({
+                customer: {
+                    metafields: [
+                        {
+                            namespace: "custom",
+                            key: "custom_cookies",
+                            value: "1",
+                            type: "single_line_text_field",
+                        },
+                    ],
+                },
+            }),
+        })
+        .then((response) => {
+            if (response.ok) {
+                window.location.href = "/account";
+            } else {
+                return response.json().then((data) => {
+                    if (data.errors) {
+                        current_password_error.textContent = data.errors.map(error => error.message).join(', ');
+                        current_password_error.style.display = 'block';
+                    } else {
+                        throw new Error("Unknown error occurred");
+                    }
+                });
+            }
+        })
+        .catch((error) => console.error("Error updating customer:", error));
+ }  
 });

@@ -1,0 +1,31 @@
+.site-system .item-product-minibag .info .caption {
+  margin: 0px;
+}
+.site-system .item-product.item-product-minibag .info .title .title-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.site-system .item-product.item-product-minibag .info .title .title-title {
+    font-weight: 500;
+}
+@media (max-width: calc(834px)) {
+    .site-system-minibag .item-total-promo .caption_cust {
+        width: 100%;
+    }
+}
+@media (min-width: 835px) {
+    .site-system .item-product.item-product-minibag {
+        height: 78px;
+    }
+}
+@media (min-width: 835px) {
+    .site-system .item-product.item-product-minibag {
+        height: 78px;
+    }
+    .site-system .item-product.item-product-minibag .image {
+        position: absolute;
+        left: 8px;
+        top: 8px;
+    }
+}

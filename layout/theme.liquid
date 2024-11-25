@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
-
+	
+	<meta name="robots" content="noindex, nofollow">
+	
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -218,12 +220,6 @@
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
       }
 
-      *,
-      *::before,
-      *::after {
-        box-sizing: inherit;
-      }
-
       html {
         box-sizing: border-box;
         font-size: calc(var(--font-body-scale) * 62.5%);
@@ -251,8 +247,8 @@
       }
     {% endstyle %}
 
-    {% if template.name == 'cart' or template.name == 'reset_password' %}  
-    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% if template.name == 'reset_password' %}  
+      {{ 'base.css' | asset_url | stylesheet_tag }}
     {% endif %}
     
 

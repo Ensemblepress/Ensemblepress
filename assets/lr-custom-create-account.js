@@ -12,85 +12,56 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
   const terms = document.getElementById('terms').checked;
 
   const passwordCriteria = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  let isValid = true; // Track form validity
+  let isValid = true;
 
   // Clear previous errors
   document.querySelector('#error').textContent = '';
-  document.querySelector('#error_required').textContent = '';
+  document.querySelector('#salutation-error').textContent = '';
 
-  // Helper functions
   function showError(inputId, message) {
     const inputElement = document.getElementById(inputId);
-    inputElement.style.border = '2px solid red'; // Add red border
+    inputElement.style.borderBottom = '1px solid #c00';
     const errorElement = document.querySelector(`#${inputId}-error`);
-    errorElement.textContent = message; // Display error message
+    errorElement.textContent = message;
+    errorElement.classList.add('visible');
     isValid = false;
   }
 
   function clearError(inputId) {
     const inputElement = document.getElementById(inputId);
-    inputElement.style.border = ''; // Clear border
+    inputElement.style.border = '';
     const errorElement = document.querySelector(`#${inputId}-error`);
-    errorElement.textContent = ''; // Clear error message
+    errorElement.textContent = '';
+    errorElement.classList.remove('visible');
   }
 
   // Add event listeners to clear errors on interaction
-  ['firstName', 'lastName', 'email', 'password', 'confirmPassword'].forEach((id) => {
+  ['salutation', 'firstName', 'lastName', 'email', 'password', 'confirmPassword', 'terms'].forEach((id) => {
     const inputElement = document.getElementById(id);
-    inputElement.addEventListener('focus', () => clearError(id)); // Clear error on focus
-    inputElement.addEventListener('input', () => clearError(id)); // Clear error on input
+    inputElement.addEventListener('change', () => clearError(id));
+    inputElement.addEventListener('input', () => clearError(id));
   });
 
-  // Validate First Name (Mandatory)
-  if (!firstName) {
-    showError('firstName', 'First name is required.');
+  // Validate Salutation
+  if (!salutation) {
+    showError('salutation', 'Please select a salutation.');
   }
-
-  // Validate Last Name (Mandatory)
-  if (!lastName) {
-    showError('lastName', 'Last name is required.');
+  if (!firstName) showError('firstName', 'Please enter your first name.');
+  if (!lastName) showError('lastName', 'Please enter your last name.');
+  if (!email) showError('email', 'Please enter your email.');
+  if (!password) showError('password', 'Please enter your Password.');
+  else if (!passwordCriteria.test(password)) {
+    showError('password', 'Password must contain at least one uppercase, one lowercase, one number, one special character, and be at least 8 characters long.');
   }
-
-  // Validate Email
-  if (!email) {
-    showError('email', 'Email address is required.');
+  if (!confirmPassword) showError('confirmPassword', 'Please confirm your password.');
+  else if (password !== confirmPassword) {
+    showError('confirmPassword', 'Passwords do not match.');
   }
+  if (!terms) showError('terms', 'You must accept the terms and conditions.');
 
-  // Validate Password
-  if (!password) {
-    showError('password', 'Password is required.');
-  }
+  if (!isValid) return; // Stop if form is invalid
 
-  // Validate Confirm Password
-  if (!confirmPassword) {
-    showError('confirmPassword', 'Confirm password is required.');
-  }
-
-  // Password Criteria Check
-  if (password && !passwordCriteria.test(password)) {
-    document.querySelector('#error').textContent =
-      'Password must contain at least one uppercase, one lowercase, one number, one special character, and be at least 8 characters long.';
-    isValid = false;
-  }
-
-  // Password Match Check
-  if (password !== confirmPassword) {
-    document.querySelector('#error').textContent +=
-      ' Passwords do not match.';
-    isValid = false;
-  }
-
-  // Terms Acceptance Check
-  if (!terms) {
-    document.querySelector('#error').textContent +=
-      ' You must accept the terms and conditions.';
-    isValid = false;
-  }
-
-  // Stop form submission if validation fails
-  if (!isValid) return;
-
-  // Submit form data (Simulate sending to Shopify API)
+  // Simulate form submission to Shopify API
   fetch('/account', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -113,20 +84,19 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
     }),
   })
     .then((response) => {
-      console.log(response); // Log response for debugging
       if (response.ok) {
-        document.querySelector('#sucess').textContent =
-          'Account created successfully!';
+        // Hide the register form and show the success message
+        //window.location.href = '/account';   
         document.getElementById('page-account-register-form').style.display = 'none';
         document.getElementById('page-account-register-success').style.display = 'flex';
       } else {
         document.querySelector('#error').textContent =
-          'There was an error. Please try again.';
+          'There has been an error while submitting the form. Please try again.';
       }
     })
     .catch((error) => {
       console.error('Error:', error);
       document.querySelector('#error').textContent =
-        'There was an error. Please try again.';
+        'There has been an error while submitting the form. Please try again.';
     });
 });

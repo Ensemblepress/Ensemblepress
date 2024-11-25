@@ -3,8 +3,10 @@
     <div class="item-inner">
       <div class="image Ximage-viewport-crop is-sm is-sm-translate">
         <div class="caption-sticky caption-sticky-bottom">
-          <div class="caption-primary">{{ section.settings.heading_label }}</div>
-          <div class="caption-secondary">{{ section.settings.sub_heading }}</div>
+          <div class="caption-sticky-inner">
+            <div class="caption-primary" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') window.location.href='{{ section.settings.button_link | default:'#' }}';">{{ section.settings.heading_label }}</div>
+            <div class="caption-secondary" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') window.location.href='{{ section.settings.button_link | default:'#' }}';">{{ section.settings.sub_heading }}</div>
+          </div>
         </div>
         {% if section.settings.image != blank %}
           <picture>
