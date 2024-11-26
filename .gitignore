@@ -1,6 +1,10 @@
 node_modules
-.shopify
 .github
 Gemfile
 automated_testing
 automated_testing\cypress\e2e\automated\searchFlow.cy
+automated_testing
+cypress
+cypress.config.js
+package.json
+package-lock.json
