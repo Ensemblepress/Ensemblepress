@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "featured_collection_MnxekR": {
@@ -57,8 +66,8 @@
           "type": "image",
           "settings": {
             "vertical_alignment": "caption-sticky-white",
-            "image": "shopify://shop_images/andrea-smith-17-desktop.jpg",
-            "mobile_image": "shopify://shop_images/andrea-smith-17-mobile.jpg",
+            "image": "shopify://shop_images/andrea-smith-17-mobile.jpg",
+            "mobile_image": "shopify://shop_images/andrea-smith-17-mobile_e1625a8f-57dd-4d6b-aff6-4ed9901f15d1.jpg",
             "heading_label": "Favourites",
             "sub_heading": "Shop now",
             "button_link": "#"
