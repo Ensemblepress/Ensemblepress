@@ -31,6 +31,5 @@ describe('Shopify Product Search Flow', () => {
 	cy.get('#apply-sort').click();
 	cy.scrollTo('top');
 	cy.get('.header-item-brand').first().click();
-	
   });
 });

@@ -1,7 +1,8 @@
-name: Deploy Shopify Theme
+name: Deploy Shopify Theme code 
 
 on:
   workflow_dispatch:
+
 
 jobs:
   deploy:

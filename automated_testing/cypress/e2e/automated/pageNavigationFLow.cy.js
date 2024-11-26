@@ -14,13 +14,9 @@ describe('Shopify Full Navigation Flow', () => {
 	cy.get('#li-nav-books').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-new-arrivals').click();
 	cy.get('#li-nav-merchandise').trigger('mouseover');
-	cy.wait(2000); // Wait briefly to simulate user behavior
 	cy.get('#HeaderMenu-EmptyDrop-hats').click();
 	cy.get('#li-nav-club').trigger('mouseover');
-	cy.wait(2000); // Wait briefly to simulate user behavior
-
 	cy.get('#HeaderMenu-EmptyDrop-login').click();
-
 	cy.get('#li-nav-account').trigger('mouseover');
 	cy.get('#HeaderMenu-EmptyDrop-overview').click();
 	cy.get('#li-nav-bag').trigger('mouseover');
