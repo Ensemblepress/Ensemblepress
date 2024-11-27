@@ -56,25 +56,14 @@ loginForm.addEventListener('submit', function (event) {
     })
   })
     .then(response => {
-      if (response.redirected) {
-        // If login is successful, redirect to the account page
-        window.location.href = response.url;
+
+      if (response.url.includes('login')) {
+        console.log('Login failed: Redirected back to the login page.');
+        passwordError.textContent = 'Invalid login credentials. Please try again.';
+        passwordError.style.display = 'block';
       } else {
-        // If login fails, show an appropriate error message
-        response.text().then(text => {
-          if (text.includes('incorrect') || text.includes('password')) {
-            passwordError.textContent = 'The password you entered is incorrect.';
-            passwordError.style.display = 'block';
-            passwordInput.style.borderBottom = '1px solid #c00';
-          } else if (text.includes('email') || text.includes('Invalid')) {
-            emailError.textContent = 'Invalid email address or user not found.';
-            emailError.style.display = 'block';
-            emailInput.style.borderBottom = '1px solid #c00';
-          } else {
-            emailError.textContent = 'Login failed. Please try again.';
-            emailError.style.display = 'block';
-          }
-        });
+        console.log('Login successful:', response.url);
+        window.location.href = response.url; // Redirect to the account page
       }
     })
     .catch(() => {
