@@ -56,12 +56,42 @@ loginForm.addEventListener('submit', function (event) {
     })
   })
     .then(response => {
-
       if (response.url.includes('login')) {
-        console.log('Login failed: Redirected back to the login page.');
+        //console.log('Login failed: Redirected back to the login page.');
         passwordError.textContent = 'Invalid login credentials. Please try again.';
         passwordError.style.display = 'block';
-      } else {
+  
+      } else if(response.status === 403){
+      
+      passwordError.textContent = 'You do not have permission to access this resource.';
+      passwordError.style.display = 'flex';
+      
+     } else if(response.status === 405){
+    
+      passwordError.textContent = 'Method Not Allowed. Check the HTTP method used.';
+      passwordError.style.display = 'flex';
+      
+     } else if(response.status === 500){
+    
+      passwordError.textContent = 'Internal Server Error. Retrying...';
+      passwordError.style.display = 'flex';
+      
+     } else if(response.status === 502){
+    
+      passwordError.textContent = 'The server is experiencing issues. Please try again later.';
+      passwordError.style.display = 'flex';
+      
+     } else if(response.status === 503){
+    
+      passwordError.textContent = 'Service Unavailable.';
+      passwordError.style.display = 'flex';
+      
+     } else if(response.status === 504){
+    
+      passwordError.textContent = 'The server is temporarily unavailable. Please try again later.';
+      passwordError.style.display = 'flex';
+        
+    } else {
         console.log('Login successful:', response.url);
         window.location.href = response.url; // Redirect to the account page
       }
@@ -124,7 +154,45 @@ document.getElementById('forgot-password-form').addEventListener('submit', funct
     if (response.ok) {
       successMessageElement.style.display = 'flex';
       document.getElementById('forgot-password-form').style.display = 'none';
-    } else {
+    
+    } else if(response.status === 403){
+      
+      errorMessageElement.textContent = 'You do not have permission to access this resource.';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+    
+    } else if(response.status === 405){
+    
+      errorMessageElement.textContent = 'Method Not Allowed. Check the HTTP method used.';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+
+    } else if(response.status === 500){
+    
+      errorMessageElement.textContent = 'Internal Server Error. Retrying...';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+    
+    } else if(response.status === 502){
+    
+      errorMessageElement.textContent = 'The server is experiencing issues. Please try again later.';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+    
+    } else if(response.status === 503){
+    
+      errorMessageElement.textContent = 'Service Unavailable.';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+
+    } else if(response.status === 504){
+    
+      errorMessageElement.textContent = 'The server is temporarily unavailable. Please try again later.';
+      errorMessageElement.style.display = 'flex';
+      recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error
+        
+    }else {
+      
       errorMessageElement.textContent = 'There was an error processing your request. Please try again.';
       errorMessageElement.style.display = 'flex';
       recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error

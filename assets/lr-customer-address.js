@@ -27,7 +27,6 @@ document.getElementById('new-address').addEventListener('click', function() {
 });
 //END
 
-
 // Toggle visibility for editing the address Start
 const mainAddressBook = document.querySelector('.page-account.page-account-addressbook');
 document.querySelectorAll('.textlink-edit').forEach(button => {
@@ -49,7 +48,6 @@ document.querySelectorAll('.textlink-edit').forEach(button => {
       mainAddressBook.style.display = 'block'; // Show the main address book
       editForm.style.display = 'none'; // Hide the form
     }
-
     // Toggle aria-expanded for accessibility
     this.setAttribute('aria-expanded', !isExpanded);
   });
@@ -60,17 +58,14 @@ document.querySelectorAll('.save-address').forEach(saveButton => {
   saveButton.addEventListener('click', function () {
     const addressId = this.getAttribute('data-address-id');
     const form = document.querySelector(`.site-system[data-address-id="${addressId}"] form`);
-    console.log(saveButton);
+    //console.log(saveButton);
     if (!form) {
       console.error('Form not found for address ID:', addressId);
       return;
     }
-
-    console.log('Validating form for address ID:', addressId);
-
+    //console.log('Validating form for address ID:', addressId);
     let isValid = true;
-
-    console.log('adress_id='+addressId);
+    //console.log('adress_id='+addressId);
     
     // Define fields with IDs and error elements dynamically
     const fields = [
@@ -88,12 +83,10 @@ document.querySelectorAll('.save-address').forEach(saveButton => {
     fields.forEach(({ id, errorId, message }) => {
       const input = document.getElementById(id);
       const error = document.getElementById(errorId);
-
       if (!input) {
         console.error(`Input field with ID ${id} not found.`);
         return;
       }
-
       // Check if the input is empty
       if (!input.value.trim()) {
         error.innerText = message;
@@ -113,11 +106,11 @@ document.querySelectorAll('.save-address').forEach(saveButton => {
     });
 
     if (isValid) {
-      console.log('Submitting form for address ID:', addressId);
+      //console.log('Submitting form for address ID:', addressId);
       form.submit();  // Submit the form if valid
       document.querySelector('.main-address-book').style.display = 'block';  // Show address book
     } else {
-      console.log('Form validation failed.');
+      //console.log('Form validation failed.');
     }
   });
 });
@@ -179,30 +172,46 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (response.redirected) {
-                window.location.href = response.url; // Handle Shopify redirects
+              window.location.href = response.url; // Handle Shopify redirects            
             } else if (response.ok) {
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                form.reset(); // Reset the form on success
-            } else {
-                throw new Error('Failed to save address');
-            }
-        })
-        .catch(error => {
+              successMessage.style.display = 'block';
+              errorMessage.style.display = 'none';
+              form.reset(); // Reset the form on success
+            } else if(response.status === 403){
+              errorMessage.innerText = 'You do not have permission to access this resource.';
+              errorMessage.style.display = 'flex';            
+           } else if(response.status === 405){          
+              errorMessage.innerText = 'Method Not Allowed. Check the HTTP method used.';
+              errorMessage.style.display = 'flex';            
+           } else if(response.status === 500){
+              errorMessage.innerText = 'Internal Server Error. Retrying...';
+              errorMessage.style.display = 'flex';            
+           } else if(response.status === 502){          
+              errorMessage.innerText = 'The server is experiencing issues. Please try again later.';
+              errorMessage.style.display = 'flex';            
+           } else if(response.status === 503){          
+              errorMessage.innerText = 'Service Unavailable.';
+              errorMessage.style.display = 'flex';            
+           } else if(response.status === 504){          
+              errorMessage.innerText = 'The server is temporarily unavailable. Please try again later.';
+              errorMessage.style.display = 'flex';              
+           } else {
+              throw new Error('Failed to save address');
+           }
+     })
+     .catch(error => {
             errorMessage.innerText = 'An error occurred. Please try again.';
             errorMessage.style.display = 'block';
             successMessage.style.display = 'none';
             console.error('Error:', error);
-        });
+      });
     }
-
     // Hide error messages and red border when the user interacts with the input fields
     function hideErrorOnInput() {
         const fields = [
             'first_name', 'last_name', 'address1', 'address2', 
             'country','province', 'city', 'zip', 'phone'
         ];
-
         fields.forEach(id => {
             const input = document.getElementById(id);
             const error = document.getElementById(`${id}_error`);
@@ -218,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-
     // Initialize the event listeners to hide errors on input
     hideErrorOnInput();
 });
