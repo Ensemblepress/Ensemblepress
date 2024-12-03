@@ -1,5 +1,7 @@
 <script src="{{ 'lr-variants-selected.js' | asset_url }}" defer="defer"></script>
 {{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
+{{ 'lr-custom-main-product.css' | asset_url | stylesheet_tag }}
+
 <script>
   window.product = {
     variants: [
@@ -14,6 +16,11 @@
     ]
   };
 </script>
+<style>
+.lr_pdp_mobile_detail {
+  display: none !important; 
+}
+</style>  
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
@@ -61,7 +68,7 @@
         </div>
       </div>
     </div>
-    <div class="Plx Plx--below Plx-effect-pdp" style="">
+    <div class="Plx Plx--above Plx-effect-pdp" style="">
       <div class="pdp-scroller"></div>
     </div>
     <div class="pdp-main-info">
@@ -94,7 +101,6 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-          
           {% if product.variants.size %}
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
@@ -110,13 +116,21 @@
                   
                   <ul class="pdp-keywords">    
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
-                    <li class="pdp-details" id="variant_detail_{{ variant.id }}">
-                      <span class="pdp-link pdp-link-chevron"><span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
->Details</span></span>
-                    </li>
-                  </ul>
-              </div> 
-            {% endfor %}  
+                      <li class="pdp-details lr_pdp_mobile_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
+                        <span class="pdp-link pdp-link-chevron">
+                        <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
+                        </span>
+                      </li>
+                  </ul>                 
+              </div>            
+              <ul class="pdp-keywords">
+                <li class="pdp-details lr_pdp_desktop_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
+                  <span class="pdp-link pdp-link-chevron">
+                    <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
+                  </span>
+                </li>
+              </ul>
+              {% endfor %}  
           {% else %}
             {% comment %}
             <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
@@ -129,8 +143,7 @@
               </ul>  
             </div>
             {% endcomment %}  
-          {% endif %}
-          
+          {% endif %}          
           <!-- start Back in stock -->
           {% for collection in product.collections %}
             {% if collection.handle == 'forthcoming' %}
@@ -140,7 +153,13 @@
           {% endfor %}
           <!-- Back in stock end -->
           
-          <div class="pdp-info-header-tertiary">
+          
+          
+          <div class="pdp-info-body-secondary">
+            
+          
+          <div class="pdp-info-body-tertiary">
+            <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
               <div class="pdp-product-variants-list is-on">
                 <div class="pdp-product-variants-list-scroll">
@@ -162,10 +181,9 @@
               </div>
             </div>
           </div>
-          <div class="pdp-buttons-triangle">
-            <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
-          </div>
-          <div class="pdp-info-body-secondary">
+            <div class="pdp-buttons-triangle">
+              <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
+            </div>
             <div class="pdp-buttons " id="pdp-button-addtobag">
               <button class="button-addtobag  Xis-disabled" id="add-to-bag">
                 <span class="button-addtobag-cta">                    
@@ -178,7 +196,7 @@
               <button class="button-italic button-xlarge button-notifyme">Notify me when available</button>
             </div>
           </div>
-          <div class="pdp-info-body-tertiary"></div>
+         </div>   
         </div>
         <div class="pdp-info-footer">
           <ul class="pdp-keywords pdp-keywords-blank">
@@ -268,6 +286,39 @@
   </div> 
 {% endfor %}
 
+<style>
+  @media (min-width: 835px) {
+  .pdp-container .pdp-info .pdp-info-header-secondary{
+    overflow: hidden;
+    max-height: 285px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+@media (min-width: 576px) and (max-width: calc(836px - 1px)) {
+  .pdp-container .pdp-info .pdp-info-header-secondary {
+      overflow: hidden;
+      max-height: 140px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+  }
+  .pdp-product-variants .pdp-product-variants-list ul li a{
+    height: auto !important;
+  }
+  .pdp-info{
+    padding-top: 135px !important;
+  }
+  .pdp-info-body-secondary {
+      position: -webkit-sticky;
+      position: sticky;
+      bottom: 0;
+      padding: 0 40px 10px;
+      margin: 0 -40px;
+      background-color: #fff;
+      margin-top: 8rem;
+    }
+}  
+</style> 
 <!-- PDP Gallery -->
 <!-- PhotoSwipe HTML -->
 <!-- Root element of PhotoSwipe. Must have class pswp -->
