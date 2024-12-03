@@ -415,7 +415,7 @@
         padding: 0 40px 10px;
         margin: 0 -40px;
         background-color: #fff;
-        margin-top: 15rem;
+        margin-top: 40rem;
     }
 }
 @media (max-width: calc(576px - 1px)) {
@@ -911,3 +911,42 @@
 .swiper-container-vertical.swiper-container-css-mode > .swiper-wrapper {
   scroll-snap-type: y mandatory;
 } /*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
+
+@media (min-width: calc(576px - 1px)) {
+  ul.pdp-keywords.no-verient {
+      padding: revert-layer;
+  }
+}
+@media (min-width: 835px) {
+  .pdp-container .pdp-info .pdp-info-header-secondary{
+    overflow: hidden;
+    max-height: 285px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+}
+@media (min-width: 576px) and (max-width: calc(836px - 1px)) {
+  /*
+  .pdp-container .pdp-info .pdp-info-header-secondary {
+      overflow: hidden;
+      max-height: 140px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+  }
+  */
+  .pdp-product-variants .pdp-product-variants-list ul li a{
+    height: auto !important;
+  }
+  .pdp-info{
+    padding-top: 135px !important;
+  }
+  .pdp-info-body-secondary {
+      position: -webkit-sticky;
+      position: sticky;
+      bottom: 0;
+      padding: 0 40px 10px;
+      margin: 0 -40px;
+      background-color: #fff;
+      margin-top: 40rem;
+    }
+}  
