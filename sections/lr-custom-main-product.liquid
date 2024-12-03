@@ -101,10 +101,14 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-          {% if product.variants.size %}
+
+          
+          {% if product.variants.size  %}
+          
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
+
                 {% assign short_des = variant.metafields.custom.short_descriptions %}
                   {% if short_des %}
                     <div class="pdp-description">
@@ -285,40 +289,6 @@
   	</div>
   </div> 
 {% endfor %}
-
-<style>
-  @media (min-width: 835px) {
-  .pdp-container .pdp-info .pdp-info-header-secondary{
-    overflow: hidden;
-    max-height: 285px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-  }
-}
-@media (min-width: 576px) and (max-width: calc(836px - 1px)) {
-  .pdp-container .pdp-info .pdp-info-header-secondary {
-      overflow: hidden;
-      max-height: 140px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-  }
-  .pdp-product-variants .pdp-product-variants-list ul li a{
-    height: auto !important;
-  }
-  .pdp-info{
-    padding-top: 135px !important;
-  }
-  .pdp-info-body-secondary {
-      position: -webkit-sticky;
-      position: sticky;
-      bottom: 0;
-      padding: 0 40px 10px;
-      margin: 0 -40px;
-      background-color: #fff;
-      margin-top: 8rem;
-    }
-}  
-</style> 
 <!-- PDP Gallery -->
 <!-- PhotoSwipe HTML -->
 <!-- Root element of PhotoSwipe. Must have class pswp -->
