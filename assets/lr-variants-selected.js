@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const variantItems = document.querySelectorAll("#variant-selector .variant_li");
   const pdpInfoHeaders = document.querySelectorAll(".pdp-info-header-secondary");
   const detailsButtons = document.querySelectorAll('.pdp-details');
+  const pdp_desktop_detail = document.querySelectorAll('.lr_pdp_desktop_detail');
   const body = document.body;
 
   // change button action add to cart to out of stock
@@ -46,6 +47,15 @@ document.addEventListener("DOMContentLoaded", function() {
         header.style.display = "none";
       }
     });
+
+    pdp_desktop_detail.forEach(detail_btn => {
+      if (detail_btn.getAttribute("current_variants_id") === variantId) {
+        detail_btn.style.display = "block";
+      } else {
+        detail_btn.style.display = "none";
+      }
+    });
+    
   }
   // Function to set the active variant
   function setActiveVariant(selectedItem) {
@@ -81,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function toggleCartDrawer(variantId) {
     const modal = document.getElementById(`model_id_${variantId}`);
     const modalContent = document.getElementById(`model_contect_id_${variantId}`);
+    
     if (modal && modalContent) {
       modal.style.display = 'block'; // Ensure it's visible
       setTimeout(() => {
