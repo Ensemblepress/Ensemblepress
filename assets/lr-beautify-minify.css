@@ -12055,14 +12055,11 @@ body.collection .header-logo .logotype svg .cls-1 {
     top: -4px;
 }
 @media (min-width: 576px) {
-  .pdp-keywords .metafield-rich_text_field {
+  .pdp-keywords li {
       margin: 0 0 0 -27px;
   }  
 }
 @media (max-width: calc(575px)) {
-.pdp-keywords .metafield-rich_text_field {
-    margin: 0 0 0 -27px;
-}
 .overlay-pdp .overlay-panel-inner .copy ul.ul-listing ol {
     padding: 0 4rem;
 }
