@@ -1,9 +1,8 @@
-name: Deploy Shopify Theme
+name: Deploy Shopify Theme code 
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+
 
 jobs:
   deploy:
@@ -37,9 +36,9 @@ jobs:
       - name: Authenticate and Deploy shopify Theme  
         uses: pgrimaud/action-shopify@master
         env:
-          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
-          SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
-          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-          THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
+          SHOPIFY_PASSWORD: ${{ secrets.DEV_STORE_SHOPIFY_PASSWORD }}
+          SHOPIFY_STORE_URL: ${{ secrets.DEV_STORE_SHOPIFY_STORE_URL }}
+          SHOPIFY_THEME_ID: ${{ secrets.DEV_STORE_SHOPIFY_THEME_ID }}
+          THEME_PATH: ${{ secrets.DEV_STORE_SHOPIFY_THEME_PATH }}
         with:
-          args: --ignored-file=config/settings_data.json --ignored-file=locales/*
+          args: --ignored-file=config/settings_data.json --ignored-file=locales/* --ignored-file=automated_testing/* --ignored-file=Gemfile --ignored-file=package.json --ignored-file=cypress.config.js

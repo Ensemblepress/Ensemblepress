@@ -1,46 +1,56 @@
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color {
     fill: #f90;
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo {
         left: 34px;
     }
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-1 {
         fill: #e83f2d;
     }
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-1 {
         fill: #e83f2d;
     }
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
+
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-2 {
         fill: #035c2b;
     }
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-3 {
         fill: #435ba6;
     }
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-5 {
         fill: #e83f2d;
     }
 }
+/* add is-home:has(.headroom--unfixed) class with change logo size after scroll */
 @media (min-width: 835px) {
     body.is-home:has(.headroom--unfixed) .header-logo .logotype svg .logo-color-5 {
         fill: #69b42e;
     }
 }
+/* add css with change logo size after scroll */
 @media (max-width: calc(834px)) {
   body.is-home .header-logo .logotype svg .logo-color {
       fill: #f90;
   }
-   .header-logo.header-logo-difference{
+   body.is-home .header-logo.header-logo-difference{
      mix-blend-mode: normal; 
     }
 }
