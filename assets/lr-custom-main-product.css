@@ -415,19 +415,10 @@
         padding: 0 40px 10px;
         margin: 0 -40px;
         background-color: #fff;
-        margin-top: 8rem;
+        margin-top: 15rem;
     }
 }
 @media (max-width: calc(576px - 1px)) {
-  /* .pdp-info-body-secondary {
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    padding: 0;
-    margin: 20px -24px 10px;
-    background-color: #fff;
-    z-index: 20;
-  } */
   .pdp-info .pdp-info-body-tertiary .pdp-buttons {
     position: -webkit-sticky;
     position: sticky;
@@ -598,6 +589,7 @@
 }
 .pdp-keywords li {
   position: relative;
+  margin: 0 13px;
 }
 .pdp-keywords li.is-off {
   display: none;
