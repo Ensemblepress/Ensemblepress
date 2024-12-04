@@ -30,13 +30,6 @@
           {%- for address in customer.addresses -%}
             <div class="item item-address" current_edit_id="{{ address.id }}">
               <div class="item-address-info">
-                {% comment %}
-                {%- if address == customer.default_address -%}
-                  <div class="title">Billing Address<span class="dot">•</span></div>
-                {%- else -%}
-                  <div class="title">Shipping Address<span class="dot">•</span></div>
-                {%- endif -%}
-                {% endcomment %}  
                 {%- if address == customer.default_address -%}
                  <div class="title">Home •default address••</div>
                 {% else %}  
@@ -206,11 +199,11 @@
         </div>
         <div id="phone_error" class="error-message item-error" style="display:none;"></div>
         <div class="item item-checkbox item-input-spaced">
-            <input type="checkbox" id="default" class="checkbox-single" name="address[default]" value="true">
-            <label for="default">Set as default address</label>
+        <input type="checkbox" id="default" class="checkbox-single" name="address[default]" value="true" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+            <label for="default" >Set as default address</label>
         </div>
         <div class="item item-button">
-            <button type="submit" class="button button-large">Save Address</button>
+            <button type="submit" class="button button-large">Save</button>
         </div>
     </form>
       <!-- Success and Error Messages -->
@@ -227,6 +220,9 @@
 {%- endpaginate -%}
 
 <style>
+  .page-account .button {
+    font-weight: 500;
+  }
   .page-account.page-account-addressbook-detail.active {
     display: none;
   }
@@ -237,9 +233,6 @@
     margin: 0px -2px;
   }
   .page-account.page-account-edit-addressbook-detail form {
-    margin-top: 0;
-  }
-  .page-account.page-account-addressbook-detail form {
     margin-top: 0;
   }
   @media (max-width: 575px) {

@@ -79,13 +79,31 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     })
       .then(response => {
-        if (response.ok) {
+        if (response.ok) {          
           formContainer.style.display = "none";
           successMessage.style.display = "flex";
           accountTextElements.forEach(function(element) {
               element.textContent = 'New Password';
-          }); 
-        } else {
+          });         
+        } else if(response.status === 403){
+          errorMessageElement.textContent = 'You do not have permission to access this resource.';
+          errorMessageElement.style.display = 'flex';
+        } else if(response.status === 405){
+          errorMessageElement.textContent = 'Method Not Allowed. Check the HTTP method used.';
+          errorMessageElement.style.display = 'flex';
+        } else if(response.status === 500){
+          errorMessageElement.textContent = 'Internal Server Error. Retrying...';
+          errorMessageElement.style.display = 'flex';      
+        } else if(response.status === 502){      
+          errorMessageElement.textContent = 'The server is experiencing issues. Please try again later.';
+          errorMessageElement.style.display = 'flex';
+        } else if(response.status === 503){
+          errorMessageElement.textContent = 'Service Unavailable.';
+          errorMessageElement.style.display = 'flex';
+        } else if(response.status === 504){
+          errorMessageElement.textContent = 'The server is temporarily unavailable. Please try again later.';
+          errorMessageElement.style.display = 'flex';        
+        }else {
           return response.json().then(data => {
             console.error("Error:", data.errors);
           });

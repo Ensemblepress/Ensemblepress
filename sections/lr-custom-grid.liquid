@@ -3,6 +3,7 @@
     <a class="item-inner" href="{{ block.settings.button_link | default:'#' }}">
       <div class="image is-sm is-sm-translate">
         <div class="caption-sticky caption-sticky-bottom {{ block.settings.vertical_alignment }}">
+
           {% if block.settings.heading_label != blank %}
             <div class="caption-primary">{{ block.settings.heading_label }}</div>
           {% endif %}    

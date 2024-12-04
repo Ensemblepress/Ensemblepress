@@ -1,0 +1,36 @@
+<script type="text/javascript">
+  setTimeout(function() {
+    window.location.href = "/"; // Replace with your destination URL
+  }, 2000); // 2000 milliseconds = 2 seconds
+</script>
+{{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
+{{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
+{{ 'lr-custom-main-404.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
+
+<div class="plp-header">
+  <div class="plp-header-primary">
+      <div class="widget-dts">
+        <div class="widget-dts-text widget-dts-text-ghost">404 Page Not Found</div>
+        <!-- Foreground Text -->
+        <div id="foreground" class="widget-dts-text">404 Page Not Found</div>    
+        <!-- Middleground Text -->
+        <div id="middleground" class="widget-dts-text">404 Page Not Found</div>
+        <!-- Background Text -->
+        <div id="background" class="widget-dts-text">404 Page Not Found</div>
+      </div>
+    </div>
+</div>
+<div class="page-error">
+  <p>Unfortunately, the requested page was not found on the Lost River website.</p>
+  <p>
+    <a href="/">Visit homepage</a>
+  </p>
+</div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}

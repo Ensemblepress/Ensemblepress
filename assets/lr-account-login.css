@@ -2,7 +2,7 @@
     margin-bottom: 16px !important;!i;!;
 }
 .widget-orders .widget-orders-item .widget-orders-image {
-    width: 60px;
+    width: 45px;
     flex-shrink: 0;
     padding-right: 15px;
 }
@@ -69,4 +69,7 @@ div#forgot-password-form{
 
 .error-message.item-error.visible {
     display: block; /* Show when there's an error */
+}
+.page-account .button {
+    font-weight: 500;
 }
