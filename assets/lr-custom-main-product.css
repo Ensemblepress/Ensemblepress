@@ -998,8 +998,11 @@
   }
 }  
 @media (max-width: calc(835px - 1px)) {
+  .pdp-info-body-secondary.desktop .pdp-info-body-tertiary .pdp-buttons{
+    display:none;
+  }
   .pdp-info-body-secondary.mobile {
-    display: none;
+    display: block;
   }
   .pdp-info-body-secondary.mobile {
     position: -webkit-sticky;
