@@ -4,8 +4,12 @@
       <div class="image Ximage-viewport-crop is-sm is-sm-translate">
         <div class="caption-sticky caption-sticky-bottom">
           <div class="caption-sticky-inner">
-            <div class="caption-primary" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') window.location.href='{{ section.settings.button_link | default:'#' }}';">{{ section.settings.heading_label }}</div>
-            <div class="caption-secondary" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') window.location.href='{{ section.settings.button_link | default:'#' }}';">{{ section.settings.sub_heading }}</div>
+            {% if section.settings.heading_label != blank %}
+              <div class="caption-primary">{{ section.settings.heading_label }}</div>
+            {% endif %}    
+            {% if section.settings.sub_heading != blank %}
+              <div class="caption-secondary">{{ section.settings.sub_heading }}</div>
+            {% endif %}  
           </div>
         </div>
         {% if section.settings.image != blank %}

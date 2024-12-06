@@ -17,8 +17,20 @@
   };
 </script>
 <style>
-.lr_pdp_mobile_detail {
-  display: none !important; 
+
+/* Styles for desktop (above 835px) */
+@media screen and (min-width: 836px) {
+  /* Add your desktop-specific styles here */
+  .lr_pdp_mobile_detail {
+    display: none !important; 
+  }
+}
+/* Styles for mobile (below 835px) */
+@media screen and (max-width: 835px) {
+  /* Add your mobile-specific styles here */
+  .lr_pdp_desktop_detail {
+    display: none !important; 
+  }
 }
 </style>  
 <div class="pdp-container" id="pdp">
@@ -116,8 +128,7 @@
                     </div>
                   {% else %}
                     {{ product.description }}
-                  {% endif %}
-                  
+                  {% endif %}    
                   <ul class="pdp-keywords">    
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
                       <li class="pdp-details lr_pdp_mobile_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
@@ -127,13 +138,7 @@
                       </li>
                   </ul>                 
               </div>            
-              <ul class="pdp-keywords">
-                <li class="pdp-details lr_pdp_desktop_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
-                  <span class="pdp-link pdp-link-chevron">
-                    <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
-                  </span>
-                </li>
-              </ul>
+              <!-- Back in stock end -->
               {% endfor %}  
           {% else %}
             {% comment %}
@@ -155,13 +160,23 @@
                 <div id="omnisend-embedded-v2-66e423b7b1d6e266fd3a7a1c"></div>
               {% endif %}
           {% endfor %}
-          <!-- Back in stock end -->
-          
-          
-          
-          <div class="pdp-info-body-secondary">
+                      
+                     
+          <div class="pdp-info-body-secondary desktop pdp-info-body-secondary-get-height"> 
+           
+            {% if product.variants.size  %}
+            <!-- Loop through the variants -->
+            {% for variant in product.variants %}
+                <ul class="pdp-keywords">
+                    <li class="pdp-details lr_pdp_desktop_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
+                      <span class="pdp-link pdp-link-chevron">
+                        <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
+                      </span>
+                    </li>
+                 </ul>  
+            {% endfor %}
+          {% endif %}
             
-          
           <div class="pdp-info-body-tertiary">
             <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
@@ -200,7 +215,17 @@
               <button class="button-italic button-xlarge button-notifyme">Notify me when available</button>
             </div>
           </div>
-         </div>   
+         </div>
+          <div class="pdp-info-body-secondary mobile">
+          <div class="pdp-buttons " id="pdp-button-addtobag">
+              <button class="button-addtobag  Xis-disabled" id="add-to-bag">
+                <span class="button-addtobag-cta">                    
+                  <span class="button-addtobag-cta-title" id="add-to-cart-btn">Add to bag </span>
+                  <span class="button-addtobag-cta-price">USD 22.00</span></span>
+                <span class="button-addtobag-help">Select a variant</span>
+              </button>
+            </div>
+          </div>  
         </div>
         <div class="pdp-info-footer">
           <ul class="pdp-keywords pdp-keywords-blank">
@@ -782,6 +807,31 @@ function updateCartDrawer() {
   // Call updateCartDrawer initially to load the cart contents
   updateCartDrawer();
   
+</script>
+<script>
+function updateWindowHeight() {
+  const windowWidth = window.innerWidth;
+  //console.log(windowWidth);  
+   if (windowWidth > 580 ) {5
+    const windowHeight = window.innerHeight; // Get window height
+    document.documentElement.style.setProperty('--window-height', `${windowHeight}px`);
+    //console.log("window height:",windowHeight);
+    const element = document.querySelector('.pdp-info-body-secondary-get-height'); // Replace with your element's selector
+    const elementHeight = element.offsetHeight;  
+    //console.log('Element height:', elementHeight);
+    //var elementHeight_new = elementHeight + 72 + 70 + 30 + 15;
+     var elementHeight_new = elementHeight + 54 + 50;
+    var new_height = windowHeight - elementHeight_new;
+    //console.log('new height:', new_height);
+      const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
+      elements.forEach((element) => {
+        element.style.maxHeight = `${new_height}px`; // Apply the height to each element
+      });
+    }
+}
+// Call on page load and whenever the window resizes
+  updateWindowHeight(); // Initial call
+  window.addEventListener('resize', updateWindowHeight); // Update on window resize
 </script>
 {% schema %}
 {

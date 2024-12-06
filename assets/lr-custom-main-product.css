@@ -450,6 +450,18 @@
 }
 @media (min-width: 835px) {
   .pdp-info-body-secondary.desktop{  
+    .pdp-info-body-secondary {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        padding: 0 40px 10px;
+        margin: 0 -40px;
+        background-color: #fff;
+        margin-top: auto;
+    }
+}
+@media (max-width: calc(576px - 1px)) {
+  .pdp-info .pdp-info-body-tertiary .pdp-buttons {
     position: -webkit-sticky;
     position: sticky;
     bottom: 0;
