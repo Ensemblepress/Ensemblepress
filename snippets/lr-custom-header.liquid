@@ -76,15 +76,15 @@ var menu = document.getElementById("custom-menu");
             </a>
             {%  assign i = 0 %}
             {%- for link in section.settings.menu.links -%}
-              <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}">
-                  <span>{{- link.title | escape -}}</span>
+              <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}" tabindex="0">
+                  <a><span>{{- link.title | escape -}}</span></a>
               </li>
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
-            <li class="header-item header-item-search nav_3" data-title="nav-search">
-                 <div class="header-search-title is-active">
-                   <span>Search</span>
+            <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0">
+                <div class="header-search-title is-active" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                  <a><span>Search</span></a>
                  </div>
               <form action="{{ routes.search_url }}" method="get" role="search" class="search">
                  <div class="header-search-field">
@@ -97,12 +97,12 @@ var menu = document.getElementById("custom-menu");
                  </div>
               </form> 
             </li>
-            <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account">
-              <span>Account</span>
+            <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account" tabindex="0">
+              <a><span>Account</span></a>
             </li>
-            <li class="header-item header-item-bag  false false nav_5 main-nav-menu-item" id="li-nav-bag" data-title="nav-bag">
+            <li class="header-item header-item-bag  false false nav_5 main-nav-menu-item" id="li-nav-bag" data-title="nav-bag" tabindex="0">
                 {%- if cart.item_count < 100 -%}
-                  <span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span>
+                  <a><span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span></a>
                 {% endif %}  
             </li>
           </ul>
@@ -153,7 +153,7 @@ var menu = document.getElementById("custom-menu");
   <nav
     id="nav-{{ link.title | downcase }}"
     class="nav nav-primary nav_{% increment j %} nav-sub-menu-item li-nav-{{ link.title | downcase }}-cls"
-data-titlesub="nav-{{ link.title | downcase }}">
+data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
     <a class="nav-logo" href="/"></a>
     <div class="nav-layout nav-layout-horizontal">
       <div class="nav-layout-item">
@@ -208,7 +208,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
     </div>
   </nav>
 {%- endfor -%}
-  <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls">
+  <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls" tabindex="0">
     <div class="nav-layout nav-layout-horizontal nav-layout-secondary">
   <div class="nav-layout-item">
     <ul class="nav-menu">
@@ -267,7 +267,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
 </div>
 </nav>
  
-<nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls">
+<nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls" tabindex="">
   <script>
   window.productMetafields = {
     {% for item in cart.items %}
@@ -278,7 +278,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
   };
 </script>  
   <div class="nav-layout">   
-      <div class="site-system site-system-minibag cart-drawer-body">
+      <div class="site-system site-system-minibag cart-drawer-body" tabindex="0">
       {%- for item in cart.items -%}
         <div class="item item-product item-product-minibag " data-line="{{ forloop.index }}">
          {% if item.image %}  
@@ -335,10 +335,12 @@ data-titlesub="nav-{{ link.title | downcase }}">
       {% endfor %}
       <div class="item item-total item-total-first item-total-promo">
         <div class="caption">
-          <div class="caption-option promo_label is-off"><span class="icon-promo"></span> Add promotion code</div>
+          <div class="caption-option promo_label is-off" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo"></span> Add promotion code</div>
           <div class="caption-option promo_input">
             <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-            <button class="button-promo" id="apply-promo-code">OK</button>
+            <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>OK</button>
             <div id="discount-message"></div>
           </div>
         </div>
@@ -677,10 +679,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var cart_footer = ` <div id="cart_footer"> 
               <div class="item ${add_disc} item-total-first item-total-promo" id="item-total-promo">
                 <div class="caption ${code_apply}" id="caption">
-                  <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+                  <div class="caption-option promo_label" id="icon-promo-symbol" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                   <div class="caption-option promo_input is-off" id="promo_input">
                     <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-                    <button class="button-promo" id="apply-promo-code">Ok</button>
+                    <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>Ok</button>
                   </div>
                 </div>
             </div>
@@ -703,7 +707,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue shopping</a>   
+                    <a tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();" href="/collections/all" class="button" 
+>Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
@@ -857,5 +862,58 @@ document.addEventListener('DOMContentLoaded', function() {
   // Call updateCartDrawer initially to load the cart contents
   updateCartDrawer();    
 });
-//cart drower end      
+//cart drower end   
+// start accessibility code
+document.querySelectorAll('.header-primary .main-nav-menu-item, .header-secondary .header-item-search, .header-secondary .main-nav-menu-item').forEach((menuItem, index, menuItems) => {
+  menuItem.addEventListener('keydown', (event) => {
+    // Close all other submenus
+    document.querySelectorAll('.nav-primary, .nav-secondary').forEach((nav) => {
+      nav.classList.remove('is-on');
+    });
+
+    if (event.key === 'Enter') {
+      const targetMenuId = menuItem.getAttribute('data-title'); // Get submenu ID
+      const submenu = document.getElementById(targetMenuId);
+
+      if (submenu) {
+        // Toggle submenu visibility
+        const isVisible = submenu.classList.contains('is-on');
+        submenu.classList.toggle('is-on', !isVisible);
+
+        if (!isVisible) {
+          // Focus on the first focusable child in the submenu
+          const focusableItems = submenu.querySelectorAll('a, button, [tabindex="0"]');
+          if (focusableItems.length > 0) {
+            focusableItems[0].focus();
+          }
+
+          // Handle Tab navigation within the submenu
+          submenu.addEventListener('keydown', (subEvent) => {
+            const focusableArray = Array.from(focusableItems);
+            const currentIndex = focusableArray.indexOf(document.activeElement);
+
+            if (subEvent.key === 'Tab') {
+              if (subEvent.shiftKey && currentIndex === 0) {
+                // Shift+Tab on the first item: move back to the main menu item
+                subEvent.preventDefault();
+                menuItem.focus();
+              } else if (!subEvent.shiftKey && currentIndex === focusableArray.length - 1) {
+                // Tab on the last item: move to the next main menu item
+                subEvent.preventDefault();
+				submenu.classList.remove('is-on');	
+                // Find the next main menu item
+                const nextMenuItem = menuItems[index + 1] || menuItems[0]; // Loop back to the first if at the last item
+                console.log(nextMenuItem);
+				if (nextMenuItem) {
+                  nextMenuItem.focus();				  
+                }
+              }
+            }
+          });
+        }
+      }
+    }
+  });
+});
+// end accessibility code
 </script>  
