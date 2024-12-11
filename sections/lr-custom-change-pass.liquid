@@ -43,6 +43,7 @@
         <div class="item item-input item-input-password item-input-spaced">
           <input type="password" placeholder="Confirm new password•" id="confirm-password" name="customer[password_confirmation]">
           <input type="hidden" id="customer_id" name="customer_id" value="{{ customer.id }}">
+          <input type="hidden" id="customer_email_id" name="customer_email_id" value="{{ customer.email }}">
           <div class="password_eye toggle_password_visibility" data-target="confirm-password"></div>
         </div>
         <div id="error"></div>

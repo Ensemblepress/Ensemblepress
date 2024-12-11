@@ -1,5 +1,6 @@
 {{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
 {{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
+
 <script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>
 
 <!-- Address JS Start -->
@@ -76,7 +77,7 @@
         {%- form 'customer_address', address -%}
         <div class="item item-hd item-hd-line">Edit address<span class="tooltip-right"><span class="dot">•</span>Required</span></div>
         <div class="item item-input item-input-spaced">
-          <input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="First name•">
+          <input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="First name">
         </div>
         <div id="editaddress_firstname_error_{{ form.id }}" class="error-message item-error" style="display:none;"></div>  
         <div class="item item-input item-input-spaced">
@@ -147,7 +148,7 @@
       <!-- New Address Form -->
        <form id="new-address-form" method="post" action="/account/addresses" autocomplete="on">
         <div class="item item-input item-input-spaced">
-            <input type="text" id="first_name" name="address[first_name]" placeholder="First name•">
+            <input type="text" id="first_name" name="address[first_name]" placeholder="First name">
         </div>
         <div id="first_name_error" class="error-message item-error" style="display:none;"></div>
     

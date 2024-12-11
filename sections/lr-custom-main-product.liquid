@@ -127,7 +127,7 @@
                       <p>{{ short_des }}</p>
                     </div>
                   {% else %}
-                    {{ product.description }}
+                    <div class="pdp-description"> {{ product.description }} </div>
                   {% endif %}    
                   <ul class="pdp-keywords">    
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
@@ -502,7 +502,8 @@ document.addEventListener("DOMContentLoaded", function() {
        $(this).addClass("is-active");
        $(this).addClass("selected");
     });
-    
+
+      
     $('.pdp-buttons').on('click', function() {
         // Your existing code logic here
         var selectedVariantId = $('.variant_li.selected').data('id');
@@ -677,7 +678,7 @@ function updateCartDrawer() {
           document.getElementById('cart-empty-message').style.display = 'flex';
         } 
         }
-        $("#nav-bag").addClass('is-on');
+        //$("#nav-bag").addClass('is-on');
         attachCartItemEvents();  
         
       });
@@ -687,7 +688,7 @@ function updateCartDrawer() {
     var increaseButtons = document.querySelectorAll('.increase-quantity');
     var decreaseButtons = document.querySelectorAll('.decrease-quantity');
     var removeButtons = document.querySelectorAll('.remove-item');
-    
+        
     increaseButtons.forEach(button => {
       button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -708,12 +709,13 @@ function updateCartDrawer() {
         removeCartItem(button.dataset.line);
       });
     });
+
   }
 
   function updateCartItemQuantity(line, delta) {
     var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
     var newQuantity = parseInt(quantityElement.textContent) + delta;
-
+    
     if (newQuantity < 1) {
       removeCartItem(line);
     } else {
@@ -805,23 +807,33 @@ function updateCartDrawer() {
   document.addEventListener('cart:updated', updateCartDrawer);
   // Call updateCartDrawer initially to load the cart contents
   updateCartDrawer();
+
+    $('#add-to-bag').on('click', function() {
+      //var spanElement = document.getElementById('total-cart-quantity');
+      //var textValue = spanElement.textContent;
+      //if(textValue > 0){
+       setTimeout(() => {
+         $("#nav-bag").addClass('is-on');
+      }, 1000);
+      //}      
+   });
   
 </script>
 <script>
 function updateWindowHeight() {
   const windowWidth = window.innerWidth;
   //console.log(windowWidth);  
-   if (windowWidth > 580 ) {
+   if (windowWidth > 580 ) {5
     const windowHeight = window.innerHeight; // Get window height
     document.documentElement.style.setProperty('--window-height', `${windowHeight}px`);
-    //console.log("window height:",windowHeight);
+    console.log("window height:",windowHeight);
     const element = document.querySelector('.pdp-info-body-secondary-get-height'); // Replace with your element's selector
     const elementHeight = element.offsetHeight;  
-    //console.log('Element height:', elementHeight);
+    console.log('Element height:', elementHeight);
     //var elementHeight_new = elementHeight + 72 + 70 + 30 + 15;
      var elementHeight_new = elementHeight + 54 + 50;
     var new_height = windowHeight - elementHeight_new;
-    //console.log('new height:', new_height);
+    console.log('new height:', new_height);
       const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
       elements.forEach((element) => {
         element.style.maxHeight = `${new_height}px`; // Apply the height to each element

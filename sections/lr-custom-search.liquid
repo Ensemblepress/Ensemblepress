@@ -9,7 +9,9 @@
 <div class="plp-container">
   <div class="product-grid product-grid-4col product-grid-background product-grid-gap product-grid-search" id="myUL">
       {%- for item in search.results -%}
-      <a class="item" href="{{ item.url }}">
+        {%- case item.object_type -%}
+        {%- when 'product' -%}  
+          <a class="item" href="{{ item.url }}">
         {%- if item.featured_media -%}
           <div class="image ">
               <svg viewBox="0 0 1500 2000"></svg>
@@ -47,7 +49,8 @@
           </div>
         </div>
       </a>
-    {% endfor %}
+        {%- endcase -%}  
+      {% endfor %}
     
   </div>
 </div>
