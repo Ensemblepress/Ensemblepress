@@ -225,7 +225,6 @@
         font-size: calc(var(--font-body-scale) * 62.5%);
         height: 100%;
       }
-
       body {
         display: grid;
         grid-template-rows: auto auto 1fr auto;
@@ -247,9 +246,11 @@
       }
     {% endstyle %}
 
+    {% comment %}
     {% if template.name == 'reset_password' %}  
       {{ 'base.css' | asset_url | stylesheet_tag }}
     {% endif %}
+    {% endcomment %}
     
 
     
