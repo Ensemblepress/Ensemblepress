@@ -625,6 +625,17 @@
       margin: 0 0 0 -27px;
   }  
 }
+.pdp-description li {
+  margin: 0 0 0 -24px;
+  list-style: none;
+  position: relative;
+}
+.pdp-description li::before {
+  content: ".";
+  position: absolute;
+  left: -12px;
+  top: -4px;
+}
 .pdp-keywords li.is-off {
   display: none;
 }

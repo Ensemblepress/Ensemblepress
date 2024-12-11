@@ -3,7 +3,7 @@
   max-width: 33.4rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 @media screen and (min-width: 750px) {
@@ -17,16 +17,12 @@
   margin-top: 0;
 }
 
-.customer form {
-  margin-top: 4rem;
-}
-
 .customer button {
-  margin: 4rem 0 1.5rem;
+  margin: 30px 0 0;
 }
 
 .customer ul {
-  line-height: calc(1 + 0.6 / var(--font-body-scale));
+  line-height: 1.3em;
   padding-left: 4.4rem;
   text-align: left;
   margin-bottom: 4rem;
@@ -91,7 +87,7 @@
 .customer th,
 .customer td {
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.3em;
   border: none;
   padding: 0;
 }
@@ -546,7 +542,7 @@
 
 .order .item-props > span {
   word-break: break-all;
-  line-height: calc(1 + 0.2 / var(--font-body-scale));
+  line-height: 1.3em;
 }
 
 .order .fulfillment {
@@ -595,7 +591,7 @@
 }
 
 .order table a {
-  line-height: calc(1 + 0.3 / var(--font-body-scale));
+  line-height: 1.3em;
 }
 
 .order tbody tr:first-of-type td:first-of-type > div {
@@ -617,7 +613,7 @@
 
 .order .properties span {
   display: block;
-  line-height: calc(1 + 0.2 / var(--font-body-scale));
+  line-height: 1.3em;
 }
 
 .order svg {
@@ -632,7 +628,7 @@
 
 .order dd {
   margin-left: 0;
-  line-height: calc(1 + 0.3 / var(--font-body-scale));
+  line-height: 1.3em;
 }
 
 .order dd s {
@@ -642,7 +638,7 @@
 .order .unit-price {
   font-size: 1.1rem;
   letter-spacing: 0.07rem;
-  line-height: calc(1 + 0.2 / var(--font-body-scale));
+  line-height: 1.3em;
   margin-top: 0.2rem;
   text-transform: uppercase;
   color: rgba(var(--color-foreground), 0.7);
