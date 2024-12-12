@@ -19,8 +19,8 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
     if($("#nwsl_chckbk").is(":checked")){
         //console.log('IS CHECKED');
     } else {
-        $('#fiels_row_1').css("color", "red"); 
-        $('.error_color').css("color", "red"); 
+        // $('#fiels_row_1').css("color", "red"); 
+        // $('.error_color').css("color", "red"); 
         //console.log('NOT CHECKED');
         return false;
     }
