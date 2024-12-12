@@ -821,6 +821,7 @@ function updateCartDrawer() {
   $('.add-to-cart-on_mobile').on('click', function() {
      setTimeout(() => {
        $("#nav-bag").addClass('is-on-mobile'); 
+       $(".header-mobile").addClass('is-off');
        $(".header-background").addClass('is-on');
        $(".header-close-button").addClass('is-on');
     }, 1200);
