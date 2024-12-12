@@ -58,7 +58,7 @@ document.querySelectorAll('.save-address').forEach(saveButton => {
   saveButton.addEventListener('click', function () {
     const addressId = this.getAttribute('data-address-id');
     const form = document.querySelector(`.site-system[data-address-id="${addressId}"] form`);
-    //console.log(saveButton);
+    console.log(saveButton);
     if (!form) {
       console.error('Form not found for address ID:', addressId);
       return;
@@ -69,10 +69,10 @@ document.querySelectorAll('.save-address').forEach(saveButton => {
     
     // Define fields with IDs and error elements dynamically
     const fields = [
-      { id: `AddressFirstName_${addressId}`, errorId: `editaddress_firstname_error_${addressId}`, message: 'Please enter your first name.' },
+     /* { id: `AddressFirstName_${addressId}`, errorId: `editaddress_firstname_error_${addressId}`, message: 'Please enter your first name.' }, */
       { id: `AddressLastName_${addressId}`, errorId: `editaddress_lastname_error_${addressId}`, message: 'Please enter your last name.' },
       { id: `AddressAddress1_${addressId}`, errorId: `editaddress_address1_error_${addressId}`, message: 'Please enter your street address.' },
-      { id: `AddressAddress2_${addressId}`, errorId: `editaddress_address2_error_${addressId}`, message: 'Please enter your Apt, Suite, Building, Company.' },
+      /* { id: `AddressAddress2_${addressId}`, errorId: `editaddress_address2_error_${addressId}`, message: 'Please enter your Apt, Suite, Building, Company.' }, */
       { id: `AddressProvince_${addressId}`, errorId: `editaddress_province_error_${addressId}`, message: 'Please enter your state or province.' },
       { id: `AddressCity_${addressId}`, errorId: `editaddress_city_error_${addressId}`, message: 'Please enter your city.' },
       { id: `AddressZip_${addressId}`, errorId: `editaddress_zip_error_${addressId}`, message: 'Please enter your ZIP code.' },
@@ -122,10 +122,10 @@ document.addEventListener('DOMContentLoaded', function () {
         let isValid = true; // Track form validity
         // List of input fields to validate
         const fields = [
-            { id: 'first_name', errorId: 'first_name_error', message: 'Please enter your first name.' },
+           /* { id: 'first_name', errorId: 'first_name_error', message: 'Please enter your first name.' }, */
             { id: 'last_name', errorId: 'last_name_error', message: 'Please enter your last name.' },
             { id: 'address1', errorId: 'address1_error', message: 'Please enter your street address.' },
-            { id: 'address2', errorId: 'address2_error', message: 'Please enter your Apt, Suite, Building, Company' }, // Optional field
+           /* { id: 'address2', errorId: 'address2_error', message: 'Please enter your Apt, Suite, Building, Company' }, */ // Optional field
             { id: 'country', errorId: 'country_error', message: 'Please enter your country' }, // Optional field
             { id: 'province', errorId: 'province_error', message: 'Please enter your state or province.' },  
             { id: 'city', errorId: 'city_error', message: 'Please enter your city.' },

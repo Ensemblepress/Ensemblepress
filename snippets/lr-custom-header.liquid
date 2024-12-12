@@ -22,6 +22,7 @@
   body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
   }
+  
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
@@ -82,20 +83,31 @@ var menu = document.getElementById("custom-menu");
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
-            <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0">
+            <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0"> 
+               {% if search.terms %}
+                   <form action="{{ routes.search_url }}" method="get" role="search" class="search">               
+                       <input type="text" 
+                        id="Search-In-Template"   
+                        name="q"
+                        class="input-search-display"                     
+                        placeholder="Enter search term..."
+                        fdprocessedid="oy9mr" value="{{ search.terms }}" >                     
+                  </form>
+                {% else %}   
                 <div class="header-search-title is-active" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
                   <a><span>Search</span></a>
                  </div>
-              <form action="{{ routes.search_url }}" method="get" role="search" class="search">
-                 <div class="header-search-field">
-                   <input type="text" 
-                id="Search-In-Template"   
-                name="q"
-                class="input-search-display"                     
-                placeholder="Enter search term..."
-                fdprocessedid="oy9mr">
-                 </div>
-              </form> 
+                  <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+                     <div class="header-search-field">
+                       <input type="text" 
+                    id="Search-In-Template"   
+                    name="q"
+                    class="input-search-display"                     
+                    placeholder="Enter search term..."
+                    fdprocessedid="oy9mr">
+                     </div>
+                  </form> 
+                 {% endif %}
             </li>
             <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account" tabindex="0">
               <a><span>Account</span></a>
@@ -107,9 +119,9 @@ var menu = document.getElementById("custom-menu");
             </li>
           </ul>
         </div>
-      </div>
-      
-      <div id="search-form" class="header-search" data-title="nav-search" style="display:none;">
+      </div>      
+
+      <div id="search-form" class="header-search header-search-mobile {% if search.terms %} is-on {% endif %}" data-title="nav-search" style="display:{% if search.terms %}block{% else%}none{% endif %};">
         <div class="header-search-inner">
            <script src="{{ 'lr_custom-search.js' | asset_url }}" defer="defer"></script>
           <form id="search-form" action="/search" method="get">
@@ -340,7 +352,7 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
           <div class="caption-option promo_input">
             <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
             <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
->OK</button>
+>Apply</button>
             <div id="discount-message"></div>
           </div>
         </div>
@@ -684,7 +696,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   <div class="caption-option promo_input is-off" id="promo_input">
                     <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
                     <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
->Ok</button>
+>Apply</button>
                   </div>
                 </div>
             </div>
