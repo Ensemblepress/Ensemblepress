@@ -110,42 +110,47 @@
       </ul>
     {% endif %}
   </div>
+<style>
+  .button-next-footer.pos_class::before{
+    display: none; /* Hidden completely */
+  }
+</style>
 <script type="text/javascript">
   jQuery(function() {  
     jQuery("#footer-signup").click(function() {
-       jQuery(".widget-newsletter-footer").addClass('is-active');
-       jQuery(".widget-newsletter-footer").addClass('is-focus');
-       jQuery(".footer-form-field").addClass('is-on');
-       jQuery(".cancel").addClass('is-on');
-       jQuery("#footer-signup-cancel").show();
-       //jQuery("#footer-signup").css('position', 'unset');
-       jQuery("#footer-signup").addClass('pos_class');
-       //console.log('footer news latter click');
+     jQuery(".widget-newsletter-footer").addClass('is-active');
+     jQuery(".widget-newsletter-footer").addClass('is-focus');
+     jQuery(".footer-form-field").addClass('is-on');
+     jQuery(".cancel").addClass('is-on');
+     jQuery("#footer-signup-cancel").show();
+     //jQuery("#footer-signup").css('position', 'unset');
+     jQuery("#footer-signup").addClass('pos_class');
+     //console.log('footer news latter click');
     });
     
     jQuery("#footer-signup-cancel").click(function() {
-       jQuery(".widget-newsletter-footer").removeClass('is-active');
-       jQuery(".widget-newsletter-footer").removeClass('is-focus');
-       jQuery(".footer-form-field").removeClass('is-on');
-       jQuery(".cancel").removeClass('is-on');
-       jQuery("#footer_fiels_row_0").addClass('is-on');
-       jQuery("#footer-signup-cancel").hide();
-       jQuery("#footer-signup").css('position', 'absolute');  
-       jQuery("#footer-signup").removeClass('pos_class');
-       //console.log('footer news latter cancel click');
+     jQuery(".widget-newsletter-footer").removeClass('is-active');
+     jQuery(".widget-newsletter-footer").removeClass('is-focus');
+     jQuery(".footer-form-field").removeClass('is-on');
+     jQuery(".cancel").removeClass('is-on');
+     jQuery("#footer_fiels_row_0").addClass('is-on');
+     jQuery("#footer-signup-cancel").hide();
+     jQuery("#footer-signup").css('position', 'absolute');  
+     jQuery("#footer-signup").removeClass('pos_class');
+     //console.log('footer news latter cancel click');
     });
-
+    
     jQuery("#footer-message-close").click(function() {
-       jQuery("#footer-signup-cancel").removeClass('is-on');
-       jQuery(".footer-newsletter-success").removeClass('is-on');
-       jQuery("#footer_fiels_row_0").addClass('is-on');
-       jQuery('#footer-signup').css('opacity', '1');
-       jQuery("#footer-signup-cancel").hide();
-       jQuery("#footer-signup").css('position', 'absolute');  
-       jQuery('#footer_email').val('');
-       jQuery(".widget-newsletter-footer").removeClass('is-active');
-       jQuery(".widget-newsletter-footer").removeClass('is-focus');
-       jQuery("#footer-signup").removeClass('pos_class');
+    jQuery("#footer-signup-cancel").removeClass('is-on');
+    jQuery(".footer-newsletter-success").removeClass('is-on');
+    jQuery("#footer_fiels_row_0").addClass('is-on');
+    jQuery('#footer-signup').css('opacity', '1');
+    jQuery("#footer-signup-cancel").hide();
+    jQuery("#footer-signup").css('position', 'absolute');  
+    jQuery('#footer_email').val('');
+    jQuery(".widget-newsletter-footer").removeClass('is-active');
+    jQuery(".widget-newsletter-footer").removeClass('is-focus');
+    jQuery("#footer-signup").removeClass('pos_class');
        
        //console.log('footer news latter message cancel click');
     });

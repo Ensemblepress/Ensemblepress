@@ -80,8 +80,21 @@
               </div>
             {% endfor %}
             <div class="item item-pricing divider">
-                <div class="caption">Ground shipping <span class="dot">•</span>5 days<span class="dot">•</span></div>
-                <div class="price">{{ order.line_items_subtotal_price | money }}</div>
+              {% if order.shipping_lines.size > 0 %}
+                {% for shipping_line in order.shipping_lines %}  
+                {% if shipping_line.title == "Economy" %}  
+                  <div class="caption">
+                    Ground shipping <span class="dot">•</span>5 to 8 days<span class="dot">•</span>
+                  </div>
+                  {% elsif shipping_line.title == "Standard" %}
+                    <div class="caption">
+                      Ground shipping <span class="dot">•</span>3 to 4 days<span class="dot">•</span>
+                    </div>
+                {% endif %}
+                <div class="price">{{ shipping_line.price | money }}</div>  
+                {% endfor %}    
+              {% endif %}
+                
             </div>
             <div class="item item-pricing">
                 <div class="caption">Sales tax</div>
@@ -95,7 +108,7 @@
            {% endif %}   
             <div class="item item-total divider">
               <div class="caption">Total</div>
-              <div class="price"> {{ order.line_items_subtotal_price | money }}</div>
+              <div class="price"> {{ order.total_price | money }}</div>
             </div>
             
             <div class="item item-hd divider spacer-larger">{{ 'customer.order.shipping_address' | t }}<span class="dot">•</span></div>
