@@ -44,14 +44,17 @@
                     {{ product.price | money }}
                   </div>
               </div>
-              <div class="caption-additional">
+              {% comment %}
+                <div class="caption-additional">
                   <div class="caption-additional-default">
                       <div class="label">Runway</div>
                   </div>
                   <div class="caption-additional-hover">
                       <div class="cta">Add to bag</div>
                   </div>
-              </div>
+              </div>  
+              {% endcomment %}
+              
           </div>
         </a>
       {% endfor %}

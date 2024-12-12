@@ -19,8 +19,8 @@ document.getElementById('footer-newsletter-form').addEventListener('submit', fun
     if($("#footer_nwsl_chckbk").is(":checked")){
         //console.log('IS CHECKED');
     } else {
-        $('#footer_fiels_row_1').css("color", "red"); 
-        $('.footer_error_color').css("color", "red"); 
+        // $('#footer_fiels_row_1').css("color", "red"); 
+        // $('.footer_error_color').css("color", "red"); 
         //console.log('NOT CHECKED');
         return false;
     }
@@ -54,7 +54,7 @@ document.getElementById('footer-newsletter-form').addEventListener('submit', fun
     xhr.onerror = function() {
         var responseMessage = document.getElementById('newsletter-message');
         responseMessage.textContent = 'Network error. Please try again.';
-        responseMessage.style.color = 'red';
+        //responseMessage.style.color = 'red';
     };
 
     // Send the data
