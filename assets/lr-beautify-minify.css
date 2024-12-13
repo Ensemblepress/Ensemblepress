@@ -5040,7 +5040,7 @@ header {
 }
 @media (min-width: 835px) {
   .header-background {
-    display: none;
+    display: none !important;
   }
 }
 .header-background .header-background-bg,
