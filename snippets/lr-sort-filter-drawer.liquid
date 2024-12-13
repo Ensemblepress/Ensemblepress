@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 $(document).on("click", function(e) {
-  if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input") === false) {
+  if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input, .filter-option-title") === false) {
     $("#sort_by_filter").hide();
     jQuery('body').css('overflow-y', 'visible');
   }

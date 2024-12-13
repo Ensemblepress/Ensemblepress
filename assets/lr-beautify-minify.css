@@ -97,7 +97,7 @@
 /* subset */
 body {
   color: #000;
-  background-color: #fff;
+  /*background-color: #fff;*/
   margin: 0;
   font-family: "LR-Geigy", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
@@ -3619,7 +3619,7 @@ body.is-maintenance main {
   overflow: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  transition: transform 0.6s steps(4);
+  transition: transform .6s ease-in-out;
 }
 @media (min-width: 576px) {
   #menu {
@@ -4606,7 +4606,7 @@ ul.nav-menu li .tooltip {
   top: 0;
   width: 100%;
   z-index: 1;
-  transition: opacity 0.4s 0.4s ease-in-out;
+  transition: opacity .4s .4s ease-in-out;
 }
 .header-mobile:before {
   content: "";
@@ -4618,7 +4618,7 @@ ul.nav-menu li .tooltip {
   height: 44px;
   background-color: #fff;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity .3s ease-in-out;
 }
 @media (min-width: 835px) {
   .header-mobile {
@@ -4652,7 +4652,7 @@ ul.nav-menu li .tooltip {
 .header-mobile.is-off {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity .4s ease-in-out;
 }
 .header-mobile ul.header-mobile-icons {
   list-style: none;
@@ -4898,7 +4898,7 @@ ul.nav-menu li .tooltip {
   width: 100%;
   height: 142px;
   background-color: #fff;
-  transition: transform 0.6s steps(4), box-shadow 0.6s steps(4);
+  transition: transform .6s ease-in-out, box-shadow .6s ease-in-out;
   transform: translate3d(0, -100%, 0);
 }
 @media (min-width: 835px) {
@@ -5040,7 +5040,7 @@ header {
 }
 @media (min-width: 835px) {
   .header-background {
-    display: none;
+    display: none !important;
   }
 }
 .header-background .header-background-bg,
@@ -5052,14 +5052,14 @@ header {
   width: 100%;
 }
 .header-background .header-background-close {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0,0,0,.1);
   opacity: 0;
-  transition: opacity 0.6s steps(4);
+  transition: opacity .6s ease-in-out;
 }
 .header-background .header-background-bg {
   left: -100%;
   background-color: #fff;
-  transition: transform 0.6s steps(4);
+  transition: transform .6s ease-in-out;
 }
 @media (min-width: 576px) {
   .header-background .header-background-bg {
@@ -5089,7 +5089,7 @@ header {
   cursor: pointer;
   z-index: 110;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity .4s ease-in-out;
   pointer-events: none;
 }
 @media (min-width: 576px) {
@@ -5104,7 +5104,7 @@ header {
 }
 .header-close-button.is-on {
   opacity: 1;
-  transition: opacity 0.4s 0.4s ease-in-out;
+  transition: opacity .4s .4s ease-in-out;
   pointer-events: auto;
 }
 footer .links ul li.links-title-copyright a {
@@ -12010,7 +12010,7 @@ body.collection .header-logo .logotype svg .cls-1 {
   height: 16px;
   border: 1px solid #000;
   border-radius: 50%;
-  background-image: url(https://lr-1.dennybackhaus.com/assets/images/c4755113a0394c1f2d193d580c790082.svg);
+  background-image: url(https://cdn.shopify.com/s/files/1/0649/9932/5835/files/c4755113a0394c1f2d193d580c790082.svg?v=1734074665);
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -12028,7 +12028,7 @@ body.collection .header-logo .logotype svg .cls-1 {
 }
 .pdp-keywords .pdp-details {
   list-style: none;
-  margin: 12px 0px -4px 0px;;
+  margin: 12px 0px 0px 0px;;
 }
 .pdp-keywords .pdp-details::before {
   display: none; 
