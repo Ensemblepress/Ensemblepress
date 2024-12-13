@@ -22,11 +22,16 @@
   body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
   }
-  
+  .remove-discount-button.lr-wrong-apply {
+    width: 18px !important;
+    margin: 13px 0 4px 0px !important;
+    min-height: 18px !important;
+    padding: 0 0 0 !important;
+  }
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () { 
 var menu = document.getElementById("custom-menu");    
     if (menu) {
       var headroom = new Headroom(menu, {
@@ -47,13 +52,17 @@ var menu = document.getElementById("custom-menu");
     } else {
       console.error("Menu element not found");
     }
-});        
+
+  document.querySelector('.header-background').style.display = 'block';
+  document.querySelector('.headroom-wrapper').style.display = 'block';
+  
+});   
 </script>
-<div class="header-background ">
+<div class="header-background" style="display:none;">
   <div class="header-background-close"></div>
   <div class="header-background-bg"></div>
 </div>
-<div class="headroom-wrapper" style="height: 54px;">
+<div class="headroom-wrapper" style="height: 54px;display:none;">
   <div id="custom-menu"
     class="headroom headroom--unfixed headroom-disable-animation"
     style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);"
@@ -64,7 +73,9 @@ var menu = document.getElementById("custom-menu");
         <ul class="header-mobile-icons">
           <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
           <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
+          {% comment %}
           <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          {% endcomment %}
           <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
         </ul>
       </div>
@@ -83,6 +94,7 @@ var menu = document.getElementById("custom-menu");
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
+            {% comment %}
             <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0"> 
                {% if search.terms %}
                    <form action="{{ routes.search_url }}" method="get" role="search" class="search">               
@@ -109,6 +121,7 @@ var menu = document.getElementById("custom-menu");
                   </form> 
                  {% endif %}
             </li>
+            {% endcomment %}
             <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account" tabindex="0">
               <a><span>Account</span></a>
             </li>
@@ -510,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => { 
        if (response.ok) { 
           //console.log(cart)
-          document.getElementById('discount-message').innerText = 'Discount applied!';
+          //document.getElementById('discount-message').innerText = 'Discount applied!';
           jQuery(".is-discount").removeClass('is-off');
           // Optionally, you could refresh the cart to show updated totals
           //updateCartDrawer();
@@ -522,6 +535,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => response.json())
       .then(cart => {
+        console.log('appply');
         //updateCartDrawer(cart);
         // Log the latest cart data
         if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
@@ -534,12 +548,20 @@ document.addEventListener('DOMContentLoaded', function() {
           jQuery("#item-total-promo").removeClass('item-total');
           discount_code = cart.items[0].discounts[0].title;
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
+          //jQuery("#remove-discount").show();
+          //jQuery("#cart_total_discount").show();
+          //jQuery("#remove-discount").removeClass('lr-wrong-apply');
+          document.getElementById("remove-discount").classList.remove("lr-wrong-apply");
         }else{
           document.getElementById('discount-message').style.display = 'block';
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
-          document.getElementById('discount-message').innerText = 'Wrong Discount applied!';
+          document.getElementById('discount-message').innerText = 'Wrong Promo Code applied!';
           jQuery(".is-discount").show();
-          jQuery(".is-discount").removeClass('is-off');
+          //jQuery(".is-discount").removeClass('is-off');
+          //jQuery("#remove-discount").hide();
+          //jQuery("#cart_total_discount").hide();
+          //jQuery("#remove-discount").addClass('lr-wrong-apply');
+          document.getElementById("remove-discount").classList.add("lr-wrong-apply");
         }
       })
       .catch(error => {
