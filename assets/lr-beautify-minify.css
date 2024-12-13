@@ -4207,7 +4207,7 @@ ul.nav-menu li .tooltip {
 @media (max-width: calc(835px - 1px)) {
   #nav-bag {
     left: -50%;
-    transition: transition: transform .6s ease-in-out, opacity .6s ease-in-out;;
+    transition: transform .6s ease-in-out, opacity .6s ease-in-out;;
   }
   #nav-bag.is-on-mobile {
     transform: translate3d(100%, 0, 0);
