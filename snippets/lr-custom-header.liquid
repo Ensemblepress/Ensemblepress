@@ -22,11 +22,16 @@
   body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
   }
-  .remove-discount-button.lr-wrong-apply {
-    width: 18px !important;
-    margin: 13px 0 4px 0px !important;
-    min-height: 18px !important;
-    padding: 0 0 0 !important;
+  @media (min-width: 835px) {
+    .remove-discount-button.lr-wrong-apply {
+      width: 18px !important;
+      margin: 10px 0 0 0px !important;
+      height: 18px !important;
+      padding: 0 0 0 !important;
+    }
+    .site-system-minibag .item-total-final .lr-price-apply {
+      margin: 12px 0 0 0;
+    }
   }
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
@@ -552,6 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
           //jQuery("#cart_total_discount").show();
           //jQuery("#remove-discount").removeClass('lr-wrong-apply');
           document.getElementById("remove-discount").classList.remove("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.remove("lr-price-apply");
         }else{
           document.getElementById('discount-message').style.display = 'block';
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
@@ -562,6 +568,7 @@ document.addEventListener('DOMContentLoaded', function() {
           //jQuery("#cart_total_discount").hide();
           //jQuery("#remove-discount").addClass('lr-wrong-apply');
           document.getElementById("remove-discount").classList.add("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.add("lr-price-apply");
         }
       })
       .catch(error => {
