@@ -79,8 +79,22 @@
                 </div>
               </div>
             {% endfor %}
+          {% for line_item in order.line_items %}
+                {% assign line_total = line_item.original_line_price %}
+                {% assign subtotal_without_discounts = subtotal_without_discounts | plus: line_total %}
+                
+              
+            {% endfor %}
+
+          
+            <div class="item item-pricing">
+                <div class="caption">Subtotal</div>
+                <div class="price">{{ subtotal_without_discounts | money }}</div>
+              </div>
             <div class="item item-pricing divider">
+              
               {% if order.shipping_lines.size > 0 %}
+                
                 {% for shipping_line in order.shipping_lines %}  
                 {% if shipping_line.title == "Economy" %}  
                   <div class="caption">
@@ -103,14 +117,15 @@
             {% if order.total_discounts %}
               <div class="item item-pricing">
                 <div class="caption">Promotion</div>
-                <div class="price">{{ order.total_discounts | minus: 0 | money }}</div>
+                <div class="price">-{{ order.total_discounts | minus: 0 | money }}</div>
               </div>
            {% endif %}   
             <div class="item item-total divider">
               <div class="caption">Total</div>
               <div class="price"> {{ order.total_price | money }}</div>
+              
+              
             </div>
-            
             <div class="item item-hd divider spacer-larger">{{ 'customer.order.shipping_address' | t }}<span class="dot">•</span></div>
             {{ order.shipping_address | format_address }}
             <p>
