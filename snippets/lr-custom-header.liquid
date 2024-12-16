@@ -86,9 +86,9 @@ var menu = document.getElementById("custom-menu");
         <ul class="header-mobile-icons">
           <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
           <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
-          {% comment %}
-          <li class="header-mobile-icon header-mobile-icon-search">Search</li>
-          {% endcomment %}
+          {% if search_bar == false %}
+            <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          {% endif %}
           <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
         </ul>
       </div>
@@ -107,7 +107,7 @@ var menu = document.getElementById("custom-menu");
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
-            {% comment %}
+            {% if search_bar == false %}
             <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0"> 
                {% if search.terms %}
                    <form action="{{ routes.search_url }}" method="get" role="search" class="search">               
@@ -134,7 +134,7 @@ var menu = document.getElementById("custom-menu");
                   </form> 
                  {% endif %}
             </li>
-            {% endcomment %}
+            {% endif %}
             <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account" tabindex="0">
               <a><span>Account</span></a>
             </li>

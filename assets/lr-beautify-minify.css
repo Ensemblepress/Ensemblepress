@@ -95,6 +95,9 @@
   font-weight: 700;
 }
 /* subset */
+
+
+
 body {
   color: #000;
   /*background-color: #fff;*/
@@ -107,6 +110,22 @@ body {
   text-transform: none;
   letter-spacing: 0 !important;
 }
+
+/* Iphone css comment start*/
+button,
+[type="button"] {
+  -webkit-appearance: button;
+}
+.site-system .item-product .info .tools .icon-quantity.icon-quantity-minus {
+    margin-right: 8px !important;
+}
+body {
+    -webkit-text-size-adjust: 100%;
+}  
+/* Iphone css comment End */  
+/* PDP End */
+
+
 @media (min-width: 576px) {
   body {
     font-size: 14px;
@@ -1102,6 +1121,7 @@ textarea.has-error {
   padding-top: 5px;
   display: flex;
   flex-direction: column;
+  /* border: 1px solid; */
 }
 @media (min-width: 576px) {
   .site-system .item-product .info .tools {
@@ -1125,6 +1145,9 @@ textarea.has-error {
   border-radius: 9px;
   box-sizing: border-box;
   margin-right: 8px;
+  line-height: 16px !important;
+  vertical-align: middle;
+  
 }
 .site-system .item-product .info .tools .icon-quantity.icon-quantity-minus,
 .site-system .item-product .info .tools .icon-quantity.icon-quantity-plus {
@@ -1133,6 +1156,8 @@ textarea.has-error {
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+  line-height: 16px;
+  margin: 0px;
 }
 .site-system
   .item-product
@@ -12069,5 +12094,4 @@ div#error {
   .lr_pdp_mobile_detail {
     display: block !important; /* Show on mobile */
   }
-}  
-/* PDP End */
+}

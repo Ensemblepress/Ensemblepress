@@ -49,7 +49,8 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
             $('#fiels_row_1').removeClass('is-on');
             $('#fiels_row_2').removeClass('is-on');
             $('.newsletter-success').addClass('is-on');
-
+            const checkbox = document.getElementById('nwsl_chckbk');
+            checkbox.checked = false;          
        } else {
             // Error :(
             responseMessage.textContent = 'There was an error. Please try again.';
