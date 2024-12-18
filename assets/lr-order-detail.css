@@ -1,3 +1,9 @@
+.page-account .button {
+    font-weight: 500;
+}
+.site-system .item-product.item-product-horizontal .info .title {
+    font-weight: 500;
+}
 .site-system .widget-tracking {
     width: 100%;
     background-color: #f0f0f0;

@@ -1,8 +1,10 @@
+{% if section.settings.heading_label != blank or section.settings.sub_heading !=blank %}
 <div class="item item-text">
-    <div class="item-inner">{{ section.settings.heading_label }}
-        <br>{{ section.settings.sub_heading }}
+    <div class="item-inner"> {% if section.settings.heading_label != blank %} {{ section.settings.heading_label }} {% endif %}
+        {% if section.settings.sub_heading != blank %} <br>{{ section.settings.sub_heading }} {% endif %}
     </div>
 </div>
+{% endif %}
 {% schema %}
   {
     "name": "LR Custom Rich Text",

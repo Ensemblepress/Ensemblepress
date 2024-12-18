@@ -1,0 +1,25 @@
+.page-error {
+    margin: 0 20px;
+    font-size: 18px;
+    line-height: 1.2em;
+    font-weight: 400;
+    text-align: left;
+    text-transform: none;
+}
+.page-error a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+}
+@media (min-width: 994px) {
+    .page-error {
+        font-size: 24px;
+        line-height: 1.1em;
+    }
+}
+@media (min-width: 835px) {
+    .page-error {
+        margin: 0 40px 0 140px;
+        width: 50%;
+    }
+}
