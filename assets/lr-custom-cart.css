@@ -14,18 +14,3 @@
         width: 100%;
     }
 }
-@media (min-width: 835px) {
-    .site-system .item-product.item-product-minibag {
-        height: 78px;
-    }
-}
-@media (min-width: 835px) {
-    .site-system .item-product.item-product-minibag {
-        height: 78px;
-    }
-    .site-system .item-product.item-product-minibag .image {
-        position: absolute;
-        left: 8px;
-        top: 8px;
-    }
-}

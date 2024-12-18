@@ -22,11 +22,29 @@
   body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
   }
-  
+  @media (min-width: 835px) {
+    .remove-discount-button.lr-wrong-apply {
+      width: 18px !important;
+      margin: 10px 0 0 0px !important;
+      height: 18px !important;
+      padding: 0 0 0 !important;
+    }
+    .site-system-minibag .item-total-final .lr-price-apply {
+      margin: 12px 0 0 0;
+    }
+  }
+  @media (max-width: calc(835px - 1px)) {
+    .remove-discount-button.lr-wrong-apply {
+      margin: 12px 0 0 0;
+    }
+    .site-system-minibag .item-total-final .lr-price-apply {
+        margin: 12px 0 0 0;
+    }
+  }   
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () { 
 var menu = document.getElementById("custom-menu");    
     if (menu) {
       var headroom = new Headroom(menu, {
@@ -47,13 +65,17 @@ var menu = document.getElementById("custom-menu");
     } else {
       console.error("Menu element not found");
     }
-});        
+
+  document.querySelector('.header-background').style.display = 'block';
+  document.querySelector('.headroom-wrapper').style.display = 'block';
+  
+});   
 </script>
-<div class="header-background ">
+<div class="header-background" style="display:none;">
   <div class="header-background-close"></div>
   <div class="header-background-bg"></div>
 </div>
-<div class="headroom-wrapper" style="height: 54px;">
+<div class="headroom-wrapper" style="height: 54px;display:none;">
   <div id="custom-menu"
     class="headroom headroom--unfixed headroom-disable-animation"
     style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);"
@@ -64,7 +86,9 @@ var menu = document.getElementById("custom-menu");
         <ul class="header-mobile-icons">
           <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
           <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
-          <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          {% if search_bar == false %}
+            <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          {% endif %}
           <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
         </ul>
       </div>
@@ -83,6 +107,7 @@ var menu = document.getElementById("custom-menu");
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
+            {% if search_bar == false %}
             <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0"> 
                {% if search.terms %}
                    <form action="{{ routes.search_url }}" method="get" role="search" class="search">               
@@ -109,6 +134,7 @@ var menu = document.getElementById("custom-menu");
                   </form> 
                  {% endif %}
             </li>
+            {% endif %}
             <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account" tabindex="0">
               <a><span>Account</span></a>
             </li>
@@ -307,10 +333,13 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
                  {% assign author_name = item.product.metafields.custom.author_name %}
                 <span class="title-author" id="author_name_{{ item.id }}">{{ author_name }}</span>
                 <span class="title-title">{{ item.title }}</span>
+                <span class="title-type">Paperback</span>
               </span>
               <span class="title-favorite">Favorite </span>
             </div>
+            {% comment %}
             <div class="values"><span class="value-material">Paperback</span></div>
+            {% endcomment %}
             <div class="tools">
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
@@ -473,12 +502,12 @@ jQuery(function() {
   });  
 });
 
-  
 //cart drower
 document.addEventListener('DOMContentLoaded', function() {
   
   var totalCartQuantityElement = document.getElementById('total-cart-quantity');
-  
+  var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+
   document.addEventListener('click', function(event) {
 
   //promo code input open
@@ -510,7 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => { 
        if (response.ok) { 
           //console.log(cart)
-          document.getElementById('discount-message').innerText = 'Discount applied!';
+          //document.getElementById('discount-message').innerText = 'Discount applied!';
           jQuery(".is-discount").removeClass('is-off');
           // Optionally, you could refresh the cart to show updated totals
           //updateCartDrawer();
@@ -522,6 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => response.json())
       .then(cart => {
+        console.log('appply');
         //updateCartDrawer(cart);
         // Log the latest cart data
         if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
@@ -534,12 +564,22 @@ document.addEventListener('DOMContentLoaded', function() {
           jQuery("#item-total-promo").removeClass('item-total');
           discount_code = cart.items[0].discounts[0].title;
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
+          //jQuery("#remove-discount").show();
+          //jQuery("#cart_total_discount").show();
+          //jQuery("#remove-discount").removeClass('lr-wrong-apply');
+          document.getElementById("remove-discount").classList.remove("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.remove("lr-price-apply");
         }else{
           document.getElementById('discount-message').style.display = 'block';
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
-          document.getElementById('discount-message').innerText = 'Wrong Discount applied!';
+          document.getElementById('discount-message').innerText = 'Wrong Promo Code applied!';
           jQuery(".is-discount").show();
-          jQuery(".is-discount").removeClass('is-off');
+          //jQuery(".is-discount").removeClass('is-off');
+          //jQuery("#remove-discount").hide();
+          //jQuery("#cart_total_discount").hide();
+          //jQuery("#remove-discount").addClass('lr-wrong-apply');
+          document.getElementById("remove-discount").classList.add("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.add("lr-price-apply");
         }
       })
       .catch(error => {
@@ -590,6 +630,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
       });      
   }
+
+    // apply code code Event listener for the Enter key in the input box
+    document.getElementById("promo-code-input").addEventListener("keydown", function(event) {
+       if (event.key === "Enter") { // Check if the Enter key is pressed
+            event.preventDefault(); // Prevent default form submission (if any)
+            document.getElementById("apply-promo-code").click(); // Trigger button click
+       }
+    });
     
 });
 
@@ -619,7 +667,7 @@ document.addEventListener('DOMContentLoaded', function() {
              authorName = authorName_title;
            }              
           var cartItem = `  
-          <div class="cart-item item item-product item-product-minibag " data-line="${index + 1}">
+          <div class="cart-item item item-product item-product-minibag is-addedtobag" data-line="${index + 1}">
             <div class="image">
               <a href="${ item.url }">
                 <img src="${ item.image }" alt="${ productName }">
@@ -632,10 +680,13 @@ document.addEventListener('DOMContentLoaded', function() {
                    
                     <span class="title-author" author-title="">${ authorName }</span>
                     <span class="title-title">${ productName }</span>
+                    <span class="title-type">${ variantName }</span>
                   </span>
                   <span class="title-favorite">Favorite </span>
                 </div>
+                {% comment %}
                 <div class="values"><span class="value-material">${ variantName }</span></div>
+                {% endcomment %}
                 <div class="tools">
                    <div class="tool tool-quantity">
                       <div class="quantity">× <span class="quantity-value">1</span></div>
@@ -655,9 +706,9 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
                 <div class="quantity-modifiers quantity-controls">
-                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity mobile-decrease-quantity" data-line="${index + 1}"></button>
                   <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
-                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity mobile-increase-quantity" data-line="${index + 1}"></button>
                 </div>
               </div>
             </div>
@@ -729,6 +780,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var totalQuantity = calculateTotalQuantity(cart.items);
         document.getElementById('total-quantity').textContent = totalQuantity;
         totalCartQuantityElement.textContent = totalQuantity;
+        totalCartQuantityElementMobile.textContent = totalQuantity; 
+           
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
@@ -808,6 +861,7 @@ document.addEventListener('DOMContentLoaded', function() {
          document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
          document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
          totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+         totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
       });
     }
   }
@@ -836,14 +890,44 @@ document.addEventListener('DOMContentLoaded', function() {
             const removeLinkDrover = item.querySelector('.remove-item');
             if (removeLinkDrover) {
                 removeLinkDrover.setAttribute('data-line', newLine);
-            } 
+            }
+
+            // Update the corresponding decrease link if it exists
+            const decreaseLinkDrover = item.querySelector('.decrease-quantity');
+            if (decreaseLinkDrover) {
+                decreaseLinkDrover.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDrover = item.querySelector('.increase-quantity');
+            if (increaseDrover) {
+                increaseDrover.setAttribute('data-line', newLine);
+            }
+
+            //mobile
+            const decreaseLinkDroverMobile = item.querySelector('.mobile-decrease-quantity');
+            if (decreaseLinkDroverMobile) {
+                decreaseLinkDroverMobile.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDroverMobile = item.querySelector('.mobile-increase-quantity');
+            if (increaseDroverMobile) {
+                increaseDroverMobile.setAttribute('data-line', newLine);
+            }
+          
         });
       
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+        
         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
+
+      
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';

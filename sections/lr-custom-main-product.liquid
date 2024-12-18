@@ -31,13 +31,21 @@
   .lr_pdp_desktop_detail {
     display: none !important; 
   }
+
+  .swiper-pdp .swiper-slide video {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: fill;
+    display: block;
+  }
+  
 }
 </style>  
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
       <div class="pdp-image-set">
-        <div class="pdp-image-set-grid gallery">
+        <div class="pdp-image-set-grid gallery pdp-desktop">
           {% for media in product.media %}
             <div class="pdp-image-set-img">
               <a
@@ -63,7 +71,7 @@
                 </div>
           
                 <div class="pdp-image-set-tiktok-video">
-                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="">
+                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="" autoplay muted>
                       <source src="{{ tiktok_video }}" type="video/mp4">
                     </video>
                 </div>
@@ -72,7 +80,7 @@
           {% assign video_url = product.metafields.custom.video_url %}
             {% if video_url %}
               <div class="pdp-image-set-video">
-                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="">
+                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="" autoplay muted>
                   <source src="{{ video_url }}" type="video/mp4">
                 </video>
               </div>
@@ -86,7 +94,7 @@
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
-          <div class="pdp-info-swiper pdp-main-swiper">
+          <div class="pdp-info-swiper pdp-main-swiper pdp-mobile">
             <div class="swiper-container swiper-pdp">
               <div class="swiper-wrapper">
                 {% for media in product.media %}
@@ -95,7 +103,14 @@
                       <img src="{{ media.src | img_url:'master' }}" al="{{ media.alt }}">
                     </a>
                   </div>
-                 {% endfor %}   
+                 {% endfor %}
+                  <div class="swiper-slide" data-type="video">
+                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
+                  </div>
+                  <div class="swiper-slide" data-type="video">
+                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
+                  </div>
+                  
                 </div>
               <div class="swiper-pagination"></div>
               <div class="swiper-button-next"></div>
@@ -597,10 +612,10 @@ function updateCartDrawer() {
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
                 <div class="quantity-modifiers quantity-controls">
-                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity mobile-decrease-quantity" data-line="${index + 1}" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
 ></button>
                   <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
-                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+                  <button class="icon-quantity icon-quantity-plus increase-quantity mobile-increase-quantity" data-line="${index + 1}" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
 ></button>
                 </div>
               </div>
@@ -640,7 +655,7 @@ function updateCartDrawer() {
                 <div class="caption-option promo_input is-off" id="promo_input">
                   <input type="text" id="promo-code-input" placeholder="Enter promotion code" class="input-promo">
                   <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
->Ok</button>
+>Apply</button>
                 </div>
               </div>
             </div>
@@ -673,6 +688,9 @@ function updateCartDrawer() {
         document.getElementById('total-quantity').textContent = totalQuantity;
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
         totalCartQuantityElement.textContent = totalQuantity;
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');  
+        totalCartQuantityElementMobile.textContent = totalQuantity; 
+          
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
@@ -714,6 +732,7 @@ function updateCartDrawer() {
 
   function updateCartItemQuantity(line, delta) {
     var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
+    console.log(quantityElement);
     var newQuantity = parseInt(quantityElement.textContent) + delta;
     
     if (newQuantity < 1) {
@@ -756,6 +775,8 @@ function updateCartDrawer() {
          document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
          var totalCartQuantityElement = document.getElementById('total-cart-quantity');
          totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+         var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+         totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
       });
     }
   }
@@ -774,11 +795,50 @@ function updateCartDrawer() {
       //console.log(cart);
       //updateCartDrawer();
         document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        const remainingItemsDrover = document.querySelectorAll('.cart-item');
+        remainingItemsDrover.forEach((item, index) => {
+            //item.setAttribute('data-line', index + 1); // Shopify uses 1-based line numbers
+            const newLine = index + 1;
+            item.setAttribute('data-line', newLine);
+
+            // Update the corresponding remove link if it exists
+            const removeLinkDrover = item.querySelector('.remove-item');
+            if (removeLinkDrover) {
+                removeLinkDrover.setAttribute('data-line', newLine);
+            }
+            // Update the corresponding decrease link if it exists
+            const decreaseLinkDrover = item.querySelector('.decrease-quantity');
+            if (decreaseLinkDrover) {
+                decreaseLinkDrover.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDrover = item.querySelector('.increase-quantity');
+            if (increaseDrover) {
+                increaseDrover.setAttribute('data-line', newLine);
+            }
+          
+            //mobile
+            const decreaseLinkDroverMobile = item.querySelector('.mobile-decrease-quantity');
+            if (decreaseLinkDroverMobile) {
+                decreaseLinkDroverMobile.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDroverMobile = item.querySelector('.mobile-increase-quantity');
+            if (increaseDroverMobile) {
+                increaseDroverMobile.setAttribute('data-line', newLine);
+            }
+        });
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+        
         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
+
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';
@@ -821,6 +881,7 @@ function updateCartDrawer() {
   $('.add-to-cart-on_mobile').on('click', function() {
      setTimeout(() => {
        $("#nav-bag").addClass('is-on-mobile'); 
+       $(".header-mobile").addClass('is-off');
        $(".header-background").addClass('is-on');
        $(".header-close-button").addClass('is-on');
     }, 1200);
@@ -834,14 +895,14 @@ function updateWindowHeight() {
    if (windowWidth > 580 ) {5
     const windowHeight = window.innerHeight; // Get window height
     document.documentElement.style.setProperty('--window-height', `${windowHeight}px`);
-    console.log("window height:",windowHeight);
+    //console.log("window height:",windowHeight);
     const element = document.querySelector('.pdp-info-body-secondary-get-height'); // Replace with your element's selector
     const elementHeight = element.offsetHeight;  
-    console.log('Element height:', elementHeight);
+    //console.log('Element height:', elementHeight);
     //var elementHeight_new = elementHeight + 72 + 70 + 30 + 15;
      var elementHeight_new = elementHeight + 54 + 50;
     var new_height = windowHeight - elementHeight_new;
-    console.log('new height:', new_height);
+    //console.log('new height:', new_height);
       const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
       elements.forEach((element) => {
         element.style.maxHeight = `${new_height}px`; // Apply the height to each element
