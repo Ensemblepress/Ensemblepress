@@ -107,8 +107,8 @@
             </div>
         </div>
         <div class="item item-total item-total-final is-discount {{ class_add }}">
-          <div class="caption_cust"><span id="promo_code_text" class="cart-page-promo_code_text">Discount Promo Code : {{ cart.items[0].discounts[0].title }}</span><span class="note"><div id="discount-message"></div></span></div>
-          <button id="remove-discount" class="remove-discount-button"></button>
+          <div class="caption_cust"><span id="promo_code_text" class="cart-page-promo_code_text">Discount Promo Code : {{ cart.items[0].discounts[0].title }}</span><span class="note"><div id="cart-discount-message"></div></span></div>
+          <button id="remove-discount" class="remove-discount-button remove-discount-button-align"></button>
           <div class="price cart-page-cart_total_discount" id="cart_total_discount">{{ cart.total_discount | money }}</div>
         </div>
         <div class="item item-total item-total-final">
@@ -180,6 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
         //updateCartDrawer(cart);
         // Log the latest cart data
         if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") { 
+          document.querySelector('.cart-page-promo_code_text').textContent = "";
+          
           // Update the cart UI with the latest data
           document.querySelector('#cart_total_discount').textContent = `${formatMoney(cart.total_discount, cart.currency)}`;
           document.querySelector('.cart-page-cart_total_discount').textContent = `${formatMoney(cart.total_discount, cart.currency)}`;
@@ -194,12 +196,29 @@ document.addEventListener('DOMContentLoaded', function() {
           discount_code = cart.items[0].discounts[0].title;
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
           document.querySelector('.cart-page-promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
+          document.getElementById('cart-discount-message').style.display = 'none';
+          
         }else{
+          
+          document.getElementById('discount-message').innerText = "";
+          document.querySelector('.cart-page-promo_code_text').textContent = 'Discount Promo Code :';
+          
           document.getElementById('discount-message').style.display = 'block';
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
-          document.getElementById('discount-message').innerText = 'Wrong Discount applied!';
+          document.getElementById('discount-message').innerText = 'Wrong Promo Code applied!';
           jQuery(".is-discount").show();
-          jQuery(".is-discount").removeClass('is-off');
+ 
+          document.getElementById('cart-discount-message').innerText = 'Wrong Promo Code applied!';
+          document.getElementById('cart-discount-message').style.display = 'block';
+          //jQuery(".is-discount").show();
+          
+          //jQuery(".is-discount").removeClass('is-off');
+          document.getElementById("remove-discount").classList.add("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.add("lr-price-apply");
+
+          document.querySelector(".remove-discount-button-align").classList.add("lr-wrong-apply");
+          document.querySelector(".cart-page-cart_total_discount").classList.add("lr-price-apply");
+          
         }
       })
       .catch(error => {
@@ -257,6 +276,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
       });      
   }
+
+    // apply code code Event listener for the Enter key in the input box
+    document.getElementById("cart-page-promo-code-input").addEventListener("keydown", function(event) { 
+       if (event.key === "Enter") { // Check if the Enter key is pressed
+            event.preventDefault(); // Prevent default form submission (if any)
+            document.getElementById("apply-promo-code").click(); // Trigger button click
+       }
+    });
     
 });
 

@@ -42,6 +42,9 @@ document.getElementById('footer-newsletter-form').addEventListener('submit', fun
             $('#footer_fiels_row_1').removeClass('is-on');
             $('#footer_fiels_row_2').removeClass('is-on');
             $('.footer-newsletter-success').addClass('is-on');
+            
+            const checkbox = document.getElementById('footer_nwsl_chckbk');
+            checkbox.checked = false;
 
        } else {
             // Error :(
