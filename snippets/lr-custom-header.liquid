@@ -333,10 +333,13 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
                  {% assign author_name = item.product.metafields.custom.author_name %}
                 <span class="title-author" id="author_name_{{ item.id }}">{{ author_name }}</span>
                 <span class="title-title">{{ item.title }}</span>
+                <span class="title-type">Paperback</span>
               </span>
               <span class="title-favorite">Favorite </span>
             </div>
+            {% comment %}
             <div class="values"><span class="value-material">Paperback</span></div>
+            {% endcomment %}
             <div class="tools">
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
@@ -499,12 +502,12 @@ jQuery(function() {
   });  
 });
 
-  
 //cart drower
 document.addEventListener('DOMContentLoaded', function() {
   
   var totalCartQuantityElement = document.getElementById('total-cart-quantity');
-  
+  var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+
   document.addEventListener('click', function(event) {
 
   //promo code input open
@@ -627,6 +630,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
       });      
   }
+
+    // apply code code Event listener for the Enter key in the input box
+    document.getElementById("promo-code-input").addEventListener("keydown", function(event) {
+       if (event.key === "Enter") { // Check if the Enter key is pressed
+            event.preventDefault(); // Prevent default form submission (if any)
+            document.getElementById("apply-promo-code").click(); // Trigger button click
+       }
+    });
     
 });
 
@@ -669,10 +680,13 @@ document.addEventListener('DOMContentLoaded', function() {
                    
                     <span class="title-author" author-title="">${ authorName }</span>
                     <span class="title-title">${ productName }</span>
+                    <span class="title-type">${ variantName }</span>
                   </span>
                   <span class="title-favorite">Favorite </span>
                 </div>
+                {% comment %}
                 <div class="values"><span class="value-material">${ variantName }</span></div>
+                {% endcomment %}
                 <div class="tools">
                    <div class="tool tool-quantity">
                       <div class="quantity">× <span class="quantity-value">1</span></div>
@@ -766,6 +780,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var totalQuantity = calculateTotalQuantity(cart.items);
         document.getElementById('total-quantity').textContent = totalQuantity;
         totalCartQuantityElement.textContent = totalQuantity;
+        totalCartQuantityElementMobile.textContent = totalQuantity; 
+           
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
@@ -845,6 +861,7 @@ document.addEventListener('DOMContentLoaded', function() {
          document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
          document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
          totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+         totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
       });
     }
   }
@@ -880,7 +897,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+        
         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
+
+      
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';

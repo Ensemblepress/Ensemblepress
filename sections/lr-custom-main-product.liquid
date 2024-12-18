@@ -31,13 +31,21 @@
   .lr_pdp_desktop_detail {
     display: none !important; 
   }
+
+  .swiper-pdp .swiper-slide video {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+  }
+  
 }
 </style>  
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
       <div class="pdp-image-set">
-        <div class="pdp-image-set-grid gallery">
+        <div class="pdp-image-set-grid gallery pdp-desktop">
           {% for media in product.media %}
             <div class="pdp-image-set-img">
               <a
@@ -63,7 +71,7 @@
                 </div>
           
                 <div class="pdp-image-set-tiktok-video">
-                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="">
+                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="" autoplay muted>
                       <source src="{{ tiktok_video }}" type="video/mp4">
                     </video>
                 </div>
@@ -72,7 +80,7 @@
           {% assign video_url = product.metafields.custom.video_url %}
             {% if video_url %}
               <div class="pdp-image-set-video">
-                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="">
+                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="" autoplay muted>
                   <source src="{{ video_url }}" type="video/mp4">
                 </video>
               </div>
@@ -86,7 +94,7 @@
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
-          <div class="pdp-info-swiper pdp-main-swiper">
+          <div class="pdp-info-swiper pdp-main-swiper pdp-mobile">
             <div class="swiper-container swiper-pdp">
               <div class="swiper-wrapper">
                 {% for media in product.media %}
@@ -95,7 +103,14 @@
                       <img src="{{ media.src | img_url:'master' }}" al="{{ media.alt }}">
                     </a>
                   </div>
-                 {% endfor %}   
+                 {% endfor %}
+                  <div class="swiper-slide" data-type="video">
+                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok" loop="" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
+                  </div>
+                  <div class="swiper-slide" data-type="video">
+                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video"loop="" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
+                  </div>
+                  
                 </div>
               <div class="swiper-pagination"></div>
               <div class="swiper-button-next"></div>
@@ -835,14 +850,14 @@ function updateWindowHeight() {
    if (windowWidth > 580 ) {5
     const windowHeight = window.innerHeight; // Get window height
     document.documentElement.style.setProperty('--window-height', `${windowHeight}px`);
-    console.log("window height:",windowHeight);
+    //console.log("window height:",windowHeight);
     const element = document.querySelector('.pdp-info-body-secondary-get-height'); // Replace with your element's selector
     const elementHeight = element.offsetHeight;  
-    console.log('Element height:', elementHeight);
+    //console.log('Element height:', elementHeight);
     //var elementHeight_new = elementHeight + 72 + 70 + 30 + 15;
      var elementHeight_new = elementHeight + 54 + 50;
     var new_height = windowHeight - elementHeight_new;
-    console.log('new height:', new_height);
+    //console.log('new height:', new_height);
       const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
       elements.forEach((element) => {
         element.style.maxHeight = `${new_height}px`; // Apply the height to each element
