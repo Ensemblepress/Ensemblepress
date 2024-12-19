@@ -6,10 +6,14 @@
 }
 .page-account.page-account-register .item-button button {
     width: 100%;
+    font-weight: 500;
 }
 @media (min-width: 576px) {
   div#page-account-register-success {
       padding: 0;
+  }
+  .page-account.page-account-register .item-button button {
+    padding: 10px 20px 8px;
   }
 }
 .page-account.page-account-register .error-message.item-error:before {
@@ -33,4 +37,7 @@
 
 .page-account.page-account-register .error-message.item-error.visible {
     display: block; /* Show when there's an error */
+}
+div#page-account-register-success .item-button .button {
+    font-weight: 500;
 }

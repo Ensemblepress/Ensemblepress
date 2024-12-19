@@ -17,53 +17,60 @@
                     </div>
                  </li>-->
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="az">
-                        <span class="filter-option-title">Title A-Z</span>
-                      </span>
-                    </div>
+                    <label class="filter-option" tabindex="0">
+                      <div class="sort_option">
+                       <input class="sort_option_input" type="radio" name="sort" value="az"  onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                          <span class="filter-option-title">Title A-Z</span>                  
+                        </div>
+                    </label>
                  </li>
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="za">
-                        <span class="filter-option-title">Title Z-A</span>
-                      </span>
-                    </div>
+                   <label class="filter-option" tabindex="0">
+                      <div class="sort_option">
+                        <input class="sort_option_input" type="radio" name="sort" value="za" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                          <span class="filter-option-title">Title Z-A</span>                    
+                      </div>
+                     </label>
                  </li>
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="lowprice">
-                        <span class="filter-option-title">Price ascending</span>
-                      </span>
+                   <label class="filter-option" tabindex="0">
+                    <div class="sort_option">
+                      <input class="sort_option_input" type="radio" name="sort" value="lowprice" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                        <span class="filter-option-title">Price ascending</span>                     
                     </div>
+                   </label>
                  </li>
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="highprice">
-                        <span class="filter-option-title">Price descendeing</span>
-                      </span>
-                    </div>
+                   <label class="filter-option" tabindex="0">
+                      <div class="sort_option">
+                        <input class="sort_option_input" type="radio" name="sort" value="highprice" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                          <span class="filter-option-title">Price descendeing</span>
+                      </div>
+                   </label>
                  </li>
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="newold">
-                        <span class="filter-option-title">Newest</span>
-                      </span>
-                    </div>
+                   <label class="filter-option" tabindex="0">
+                      <div class="sort_option">
+                        <input class="sort_option_input" type="radio" name="sort" value="newold" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                          <span class="filter-option-title">Newest</span>                      
+                      </div>
+                     </label>
                  </li>
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="oldnew">
+                   <label class="filter-option" tabindex="0">
+                    <div class="sort_option">
+                      <input class="sort_option_input" type="radio" name="sort" value="oldnew" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
                         <span class="filter-option-title">Oldest</span>
-                      </span>
                       </div>
+                     </label>
                  </li>
                  <li>
-                    <div class="filter-option ">
-                      <span class="sort_option"><input class="sort_option_input" type="radio" name="sort" value="instock">
+                   <label class="filter-option" tabindex="0" >
+                    <div class="sort_option">
+                      <input class="sort_option_input" type="radio" name="sort" value="instock" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
                         <span class="filter-option-title">In Stock</span>
-                      </span>
                       </div>
+                    </label>
                  </li>
                </ul>  
             </div>
@@ -78,9 +85,9 @@
   </div>
 </div>  
 <script>
-  // Sort Filter Start Work
-document.addEventListener("DOMContentLoaded", function() {
-  const sortRadios = document.querySelectorAll('input[name="sort"]');
+// Sort Filter Start Work
+document.addEventListener("DOMContentLoaded", function() { 
+  const sortRadios = document.querySelectorAll('.filter-option');
   const applyButton = document.getElementById('apply-sort');
   const clearButton = document.getElementById('clear-sort');
   const productList = document.getElementById('product-list');
@@ -166,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 $(document).on("click", function(e) {
-  if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input") === false) {
+  if ($(e.target).is(".ReactModal__Content, .plp-header-tools-filter-title ,.plp-header-secondary, .plp-header-tools-filter-sort, .filter-panel, .filter-option, .overlay-outer-title, .filter-selector, .sort_option, .sort_option_input, .filter-option-title") === false) {
     $("#sort_by_filter").hide();
     jQuery('body').css('overflow-y', 'visible');
   }

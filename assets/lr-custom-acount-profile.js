@@ -86,9 +86,28 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then((response) => {
             if (response.ok) {
-                window.location.href = "/account?updated";
+              window.location.href = "/account?updated";
+            } else if(response.status === 403){      
+              errorMessageElement.textContent = 'You do not have permission to access this resource.';
+              errorMessageElement.style.display = 'flex';
+              recoverEmailInput.style.borderBottom = '1px solid #c00'; // Highlight on error          
+            } else if(response.status === 405){          
+              current_password_error.textContent = 'Method Not Allowed. Check the HTTP method used.';
+              current_password_error.style.display = 'flex';
+            } else if(response.status === 500){          
+              current_password_error.textContent = 'Internal Server Error. Retrying...';
+              current_password_error.style.display = 'flex';            
+            } else if(response.status === 502){
+              current_password_error.textContent = 'The server is experiencing issues. Please try again later.';
+              current_password_error.style.display = 'flex';            
+            } else if(response.status === 503){          
+              current_password_error.textContent = 'Service Unavailable.';
+              current_password_error.style.display = 'flex';            
+            } else if(response.status === 504){          
+              current_password_error.textContent = 'The server is temporarily unavailable. Please try again later.';
+              current_password_error.style.display = 'flex';           
             } else {
-                return response.json().then((data) => {
+              return response.json().then((data) => {
                     if (data.errors) {
                         current_password_error.textContent = data.errors.map(error => error.message).join(', ');
                         current_password_error.style.display = 'block';
