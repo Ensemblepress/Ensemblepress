@@ -86,7 +86,7 @@ var menu = document.getElementById("custom-menu");
         <ul class="header-mobile-icons">
           <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
           <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
-          {% if search_bar == false %}
+          {% if search_bar == true %}
             <li class="header-mobile-icon header-mobile-icon-search">Search</li>
           {% endif %}
           <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
@@ -107,7 +107,7 @@ var menu = document.getElementById("custom-menu");
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
-            {% if search_bar == false %}
+            {% if search_bar == true %}
             <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0"> 
                {% if search.terms %}
                    <form action="{{ routes.search_url }}" method="get" role="search" class="search">               
@@ -416,18 +416,30 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
 <script type="text/javascript">
   
 jQuery(function() {  
-  $('.main-nav-menu-item').hover(
-        function () {
+  $('.main-nav-menu-item').hover( 
+        function () {   
+           $('.main-nav-menu-item').removeClass('is-on');
            $('.nav-primary').removeClass('is-on');
            $('.nav-secondary').removeClass('is-on');
-          var submenucls = document.getElementsByClassName(this.id+'-cls');
-          $('.'+this.id+'-cls').addClass('is-on'); 
+          
+           var submenucls = document.getElementsByClassName(this.id+'-cls');
+           $('#'+this.id).addClass('is-on'); 
+           $('.'+this.id+'-cls').addClass('is-on'); 
         }
   );
   $('main').on('mouseenter', function(event) {
+    $('.main-nav-menu-item').removeClass('is-on');
     $('.nav-primary').removeClass('is-on');
     $('.nav-secondary').removeClass('is-on');
   });
+
+  $('.header-item-brand').hover( 
+    function () { 
+      $('.main-nav-menu-item').removeClass('is-on');
+      $('.nav-primary').removeClass('is-on');
+      $('.nav-secondary').removeClass('is-on');
+    }
+  ); 
 });
   
 jQuery(function() {  
