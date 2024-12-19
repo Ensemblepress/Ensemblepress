@@ -667,7 +667,7 @@ document.addEventListener('DOMContentLoaded', function() {
              authorName = authorName_title;
            }              
           var cartItem = `  
-          <div class="cart-item item item-product item-product-minibag " data-line="${index + 1}">
+          <div class="cart-item item item-product item-product-minibag is-addedtobag" data-line="${index + 1}">
             <div class="image">
               <a href="${ item.url }">
                 <img src="${ item.image }" alt="${ productName }">
@@ -706,9 +706,9 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
                 <div class="quantity-modifiers quantity-controls">
-                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity mobile-decrease-quantity" data-line="${index + 1}"></button>
                   <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
-                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity mobile-increase-quantity" data-line="${index + 1}"></button>
                 </div>
               </div>
             </div>
@@ -890,7 +890,32 @@ document.addEventListener('DOMContentLoaded', function() {
             const removeLinkDrover = item.querySelector('.remove-item');
             if (removeLinkDrover) {
                 removeLinkDrover.setAttribute('data-line', newLine);
-            } 
+            }
+
+            // Update the corresponding decrease link if it exists
+            const decreaseLinkDrover = item.querySelector('.decrease-quantity');
+            if (decreaseLinkDrover) {
+                decreaseLinkDrover.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDrover = item.querySelector('.increase-quantity');
+            if (increaseDrover) {
+                increaseDrover.setAttribute('data-line', newLine);
+            }
+
+            //mobile
+            const decreaseLinkDroverMobile = item.querySelector('.mobile-decrease-quantity');
+            if (decreaseLinkDroverMobile) {
+                decreaseLinkDroverMobile.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDroverMobile = item.querySelector('.mobile-increase-quantity');
+            if (increaseDroverMobile) {
+                increaseDroverMobile.setAttribute('data-line', newLine);
+            }
+          
         });
       
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
