@@ -56,8 +56,8 @@
   });  
   
   $(document).on("click", function(e) {
-    console.log(e.target);
-      if ($(e.target).is(".item, .button-submit, .checkbox-single, .button-next, #email, .form, .hd,  .Typewriter, .hd-intro-title, .hd-intro, .form-field, .error_color") === false) {
+    //console.log(e.target);
+      if ($(e.target).is(".item, .button-submit, .checkbox-single, .button-next, #email, .form, .hd,  .is-active, .Typewriter, .hd-intro-title, .hd-intro, .form-field, .error_color") === false) {
         $(".widget-newsletter").removeClass("is-focus");
       }
   });
