@@ -45,7 +45,7 @@
         </ul>
     </div>
   {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%} 
-    <div class="ReactModalPortal ReactModal__Body--open" id="sort_by_filter">
+    <div class="ReactModalPortal ReactModal__Body--open overlay" id="sort_by_filter">
       {% render 'lr-sort-filter-drawer', 
          sort_by: sort_by, %}
     </div>

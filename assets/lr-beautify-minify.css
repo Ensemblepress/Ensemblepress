@@ -4946,7 +4946,7 @@ body.is-search-open .header-mobile:before {
     left: 0px;
     right: 0px;
     transform: translate3d(0, 0, 0) !important;
-    background-color: #fff;
+    background-color: #fff !important;
   }
 }
 header {
@@ -5402,6 +5402,10 @@ footer .links ul .icon-social-linkedin {
 footer .links.links-tertiary {
   padding-bottom: 23px;
 }
+.product-grid .item .image img {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
 @media (max-width: calc(835px - 1px)) {
   footer .links.links-primary {
     padding-bottom: 0;
@@ -5412,6 +5416,7 @@ footer .links.links-tertiary {
   footer .links.links-secondary {
     border-top: none;
     order: 5;
+    padding-bottom: 0px;
   }
   footer
     .widget-newsletter.widget-newsletter-footer
@@ -6045,7 +6050,24 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   border: 1px solid #000;
   position: relative;
   top: 4px;
-  margin-right: 8px;
+  appearance: none;
+  cursor: pointer;
+  /* margin-right: 8px; */
+}
+.filter-panel .filter-selector li .filter-option input[type="radio"]:checked{
+  opacity: 1;
+}
+.filter-panel .filter-selector li .filter-option input[type='radio']:checked:before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    opacity: 1;
 }
 .product-grid .item .caption-default .price-sale-original,
   .product-grid .item .caption-additional .price-sale-original {
@@ -6465,6 +6487,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
 .filter-panel .filter-button button {
   width: 100%;
   margin-bottom: 2px;
+  font-weight: 500;
 }
 .filter-panel .filter-button button.button-filters-clearall.is-on {
   display: inline-block;
@@ -6496,7 +6519,7 @@ footer .footer-contact .footer-contact-item .footer-contact-caption {
   margin-bottom: 2px;
   box-sizing: border-box;
   background-color: #f5f5f5;
-  padding: 5px 0 0 10px;
+  padding: 5px 0 0 5px;
 }
 .filter-panel .filter-selector li .filter-option .filter-option-input {
   display: block;
@@ -9929,7 +9952,7 @@ ul.toolbar-categories li.li-category {
   }
 }
 .widget-newsletter .form-field a {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid #000;
   color: #000;
   text-decoration: none;
 }
@@ -10294,7 +10317,7 @@ button.button-next-footer:hover:before{
 @media (min-width: 835px) {
   .widget-newsletter-strip .form-field button.button-newsletter-submit {
     font-size: 20px;
-    line-height: 1.2em;
+    line-height: 1.3em;
   }
 }
 .widget-newsletter-strip .form-field .interested {

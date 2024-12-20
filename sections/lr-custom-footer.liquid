@@ -3,6 +3,9 @@
   .lr-custom-footer-scroll {
      padding-bottom: 42px;  
   }
+  .lr-add-pos{
+    position: fixed;
+  }
 }
 </style>
 <footer>
@@ -38,7 +41,7 @@
               </form>  
               <div class="form-field form-field-copy form-field-padding footer-newsletter-success">
                   <p>Thank you. You have successfully been subscribed to the newsletter. We will email you shortly.</p>
-                  <p>
+                  <p class="lr-custom-footer lr-add-pos">
                       <button class="button footer-message-close" id="footer-message-close">Close</button>
                   </p>
               </div>
@@ -126,6 +129,7 @@
      jQuery("#footer-signup-cancel").show();
      //jQuery("#footer-signup").css('position', 'unset');
      jQuery("#footer-signup").addClass('pos_class');
+     jQuery(".lr-custom-footer").addClass('lr-add-pos'); 
      //console.log('footer news latter click');
       //jQuery(".links-secondary").removeClass('lr-custom-footer-scroll');
       //jQuery("#lr-custom-footer").addClass('footer-is-scroll-active');
@@ -157,19 +161,28 @@
       const links = document.querySelector(".lr-custom-footer");
       links.style.paddingBottom = "0px";
     });
-    
+  
   jQuery("#footer-message-close").click(function() {
     jQuery("#footer-signup-cancel").removeClass('is-on');
     jQuery(".footer-newsletter-success").removeClass('is-on');
     jQuery("#footer_fiels_row_0").addClass('is-on');
     jQuery('#footer-signup').css('opacity', '1');
     jQuery("#footer-signup-cancel").hide();
-    jQuery("#footer-signup").css('position', 'absolute');  
+    //jQuery("#footer-signup").css('position', 'absolute');  
     jQuery('#footer_email').val('');
     jQuery(".widget-newsletter-footer").removeClass('is-active');
     jQuery(".widget-newsletter-footer").removeClass('is-focus');
-    jQuery("#footer-signup").removeClass('pos_class');
+    //jQuery("#footer-signup").removeClass('pos_class');
        //console.log('footer news latter message cancel click');
+    });
+
+    $('.footer_error_color').click(function(){
+      const radioButton = document.getElementById('footer_nwsl_chckbk');
+      radioButton.checked = true;
+   }); 
+
+    $(document).on("click", function(e) {
+      console.log(e.target);
     });
 });
 </script>
