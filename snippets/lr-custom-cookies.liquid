@@ -1,5 +1,14 @@
 <script src="{{ 'lr-custom-cookies.js' | asset_url }}" defer></script>
 {{ 'lr-custom-cookies.css' | asset_url | stylesheet_tag }}
+
+{% if customer.metafields.custom.custom_cookies %}
+  <input type="hidden" id="custom_cookies" name="custom.custom_cookies" value="{{ customer.metafields.custom.custom_cookies }}"> 
+  <input type="hidden" id="customer_id" name="customer_id" value="{{ customer.id }}">
+{% else %}
+  <input type="hidden" id="custom_cookies" name="custom.custom_cookies" value="0">
+  <input type="hidden" id="customer_id" name="customer_id" value="{{ customer.id }}">
+{% endif %}
+
 <div class="custom_cookies" id="cookie-consent-popup" style="display:none;">
     <div class="ReactModal__Overlay ReactModal__Overlay--after-open overlay overlay-cookiemessage">
         <div class="ReactModal__Content ReactModal__Content--after-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
@@ -8,8 +17,9 @@
                 <div class="site-system">
                     <div class="item item-hd">We value your privacy</div>
                     <div class="item item-copy item-copy-longtext spacer-larger">
-                        <p>We use cookies and other technologies to personalize your experience, perform marketing, and collect analytics. Learn more in our <a href="/">Privacy Policy</a> </p>
+                        <p>We use cookies and other technologies to personalize your experience, perform marketing, and collect analytics. Learn more in our <a href="/pages/privacy-policy">Privacy Policy</a> </p>
                     </div>
+               
                     <div class="item item-button item-button-right spacer-larger">
                         <button class="button" id="manage-preferences">Manage preferences</button>
                         <button class="button" id="decline-cookies">Decline</button>
@@ -20,11 +30,15 @@
         </div>
     </div>
 </div>
+
+
 <script>
 $(document).ready(function() {
   $('#manage-preferences').click(function(){
       //Some code      
-      var new_html =`<div class="item item-hd">Cookie preferences</div>
+      
+    var new_html =`<div class="item item-hd">Cookie preferences</div>
+      
       <form id="preferences-form">
       <div class="item item-checkbox item-input-spaced item-copy item-copy-longtext spacer-larger">
           <input type="checkbox" class="checkbox-single cookie-preferences" id="cookie-Required" value="cookie-Required" checked disabled>
@@ -52,8 +66,8 @@ $(document).ready(function() {
           <button type="submit" class="button button-inverted"  id="save_my_choices">Save my choices</button>
       </div> 
       </form>`;
-     $(".site-system").html("");
-     $(".site-system").html(new_html);
+     $(".custom_cookies .site-system").html("");
+     $(".custom_cookies .site-system").html(new_html);
   });
 });      
 </script>

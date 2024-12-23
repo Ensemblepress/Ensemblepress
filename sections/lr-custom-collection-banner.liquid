@@ -39,13 +39,13 @@
     <div class="plp-header-secondary">
         <ul class="plp-header-tools">
             <li class="plp-header-tools-filter plp-header-tools-filter-sort" id="sortButton">
-              <span class="plp-header-tools-filter-title">{{ 'products.facets.sort_by_label' | t }}</span>
-              <span class="plp-header-tools-filter-icon"></span>
+              <span class="plp-header-tools-filter-title" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">{{ 'products.facets.sort_by_label' | t }}</span>
+              <span class="plp-header-tools-filter-icon plp-header-tools-filter-title" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"></span>
             </li>
         </ul>
     </div>
   {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%} 
-    <div class="ReactModalPortal ReactModal__Body--open" id="sort_by_filter">
+    <div class="ReactModalPortal ReactModal__Body--open overlay" id="sort_by_filter">
       {% render 'lr-sort-filter-drawer', 
          sort_by: sort_by, %}
     </div>

@@ -1,4 +1,4 @@
-document.getElementById('registerForm').addEventListener('submit', function (event) {
+document.getElementById('registerForm').addEventListener('submit', async function (event) {
   event.preventDefault(); // Prevent default form submission
 
   // Retrieve input values and state
@@ -10,7 +10,8 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
   const confirmPassword = document.getElementById('confirmPassword').value.trim();
   const newsletter = document.getElementById('newsletter').checked;
   const terms = document.getElementById('terms').checked;
-
+  const customer_id = document.getElementById("customer_id").value;
+  const errorMessageElement = document.getElementById('error');  
   const passwordCriteria = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   let isValid = true;
 
@@ -48,7 +49,25 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
   }
   if (!firstName) showError('firstName', 'Please enter your first name.');
   if (!lastName) showError('lastName', 'Please enter your last name.');
-  if (!email) showError('email', 'Please enter your email.');
+  if (!email){
+    showError('email', 'Please enter your email.');
+  } else{
+    // Check if email is already registered
+    const response = await fetch('/account', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customer: {
+          email: email,
+          password: password,
+        },
+      }),
+    }); 
+    //console.log(response);
+    if (response.url.includes('register')) {
+       showError('email', 'This email is already registered. Please use a different email.');
+    }
+  }
   if (!password) showError('password', 'Please enter your Password.');
   else if (!passwordCriteria.test(password)) {
     showError('password', 'Password must contain at least one uppercase, one lowercase, one number, one special character, and be at least 8 characters long.');
@@ -89,9 +108,27 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
         //window.location.href = '/account';   
         document.getElementById('page-account-register-form').style.display = 'none';
         document.getElementById('page-account-register-success').style.display = 'flex';
+      } else if(response.status === 403){      
+        errorMessageElement.textContent = 'You do not have permission to access this resource.';
+        errorMessageElement.style.display = 'flex';    
+      } else if(response.status === 405){    
+        errorMessageElement.textContent = 'Method Not Allowed. Check the HTTP method used.';
+        errorMessageElement.style.display = 'flex';
+      } else if(response.status === 500){    
+        errorMessageElement.textContent = 'Internal Server Error. Retrying...';
+        errorMessageElement.style.display = 'flex';    
+      } else if(response.status === 502){    
+        errorMessageElement.textContent = 'The server is experiencing issues. Please try again later.';
+        errorMessageElement.style.display = 'flex';    
+      } else if(response.status === 503){
+        errorMessageElement.textContent = 'Service Unavailable.';
+        errorMessageElement.style.display = 'flex';
+      } else if(response.status === 504){    
+        errorMessageElement.textContent = 'The server is temporarily unavailable. Please try again later.';
+        errorMessageElement.style.display = 'flex';
       } else {
         document.querySelector('#error').textContent =
-          'There has been an error while submitting the form. Please try again.';
+        'There has been an error while submitting the form. Please try again.';
       }
     })
     .catch((error) => {

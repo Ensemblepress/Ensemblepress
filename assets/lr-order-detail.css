@@ -1,3 +1,9 @@
+.page-account .button {
+    font-weight: 500;
+}
+.site-system .item-product.item-product-horizontal .info .title {
+    font-weight: 500;
+}
 .site-system .widget-tracking {
     width: 100%;
     background-color: #f0f0f0;
@@ -34,6 +40,9 @@
 .page-account.page-account-orders-detail .item.item-total.divider .caption {
     margin: 0;
 }
+.page-account.page-account-orders-detail .title {
+    max-width: 300px;
+}
 @media (min-width: 576px) {
   .page-account.page-account-orders-detail .item-product {
       margin-bottom: 22px;
@@ -56,10 +65,16 @@
     .page-account.page-account-orders-detail {
         padding: 35px 24px 0;
     }
-  .page-account.page-account-orders-detail .item-product .image{
-    width: 55%;
-  }
   .page-account.page-account-orders-detail .item-product .info {
     display: inline-block;
+  }
+  .site-system .item-product .image {
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .site-system .item-product .image img {
+    width: 100px !important;
+    height: auto;
   }
 }
