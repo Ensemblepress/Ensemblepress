@@ -1459,6 +1459,7 @@ textarea.has-error {
     padding-left: 24px;
     color: #000;
     min-height: auto;
+    font-weight: 500;
 }
 .site-system .item-total .caption-option .button-promo:hover{
   color: #f90;
@@ -5076,6 +5077,7 @@ footer {
   z-index: 1000;
   pointer-events: auto;
 }
+
 button.button-next-footer.pos_class {
     position: unset !important;
 }
@@ -10000,22 +10002,15 @@ ul.toolbar-categories li.li-category {
   box-shadow: none;
 }
 .widget-newsletter .form-field input[type="checkbox"]:checked:after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 5px;
+  content: '';
+  width: 7px;
+  height: 7px;
   background-color: #000;
-  width: 6px;
-  height: 6px;
-  display: block;
-  border-radius: 0;
-}
-@media (min-width: 835px) {
-  .widget-newsletter .form-field input[type="checkbox"]:checked:after {
-    width: 7px;
-    height: 7px;
-  }
-}
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}  
 .widget-newsletter .form-field button {
   width: 100%;
 }

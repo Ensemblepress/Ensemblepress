@@ -40,6 +40,12 @@
   }
   
 }
+@media (max-width: calc(834px)) {  
+  button.button-addtobag.Xis-disabled.add-to-cart-on_mobile.add-to-cart-btn-mobile {
+      padding: 2px 12px 0;
+      text-transform: uppercase;
+  }
+}  
 </style>  
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
@@ -104,13 +110,16 @@
                     </a>
                   </div>
                  {% endfor %}
+                 {% if tiktok_video != blank %} 
                   <div class="swiper-slide" data-type="video">
                       <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
                   </div>
+                  {% endif %}
+                  {% if video_url !=blank %}
                   <div class="swiper-slide" data-type="video">
                       <video id="lr-custom-mobile-video" class="lr-custom-mobile-video"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
                   </div>
-                  
+                  {% endif %}
                 </div>
               <div class="swiper-pagination"></div>
               <div class="swiper-button-next"></div>
@@ -233,9 +242,9 @@
          </div>
           <div class="pdp-info-body-secondary mobile">
           <div class="pdp-buttons " id="pdp-button-addtobag">
-              <button class="button-addtobag  Xis-disabled add-to-cart-on_mobile" id="add-to-bag">
+              <button class="button-addtobag  Xis-disabled add-to-cart-on_mobile add-to-cart-btn-mobile" id="add-to-bag">
                 <span class="button-addtobag-cta">                    
-                  <span class="button-addtobag-cta-title" id="add-to-cart-btn">Add to bag </span>
+                  <span class="button-addtobag-cta-title add-to-cart-btn-mobile" id="add-to-cart-btn">Add to bag </span>
                   <span class="button-addtobag-cta-price">USD 22.00</span></span>
                 <span class="button-addtobag-help">Select a variant</span>
               </button>

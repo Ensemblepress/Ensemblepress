@@ -29,9 +29,17 @@ document.addEventListener("DOMContentLoaded", function() {
         //addToCartButton.disabled = false;
         //addToCartDiv.removeAttribute('disabled'); // Remove disabled attribute
    } else {
+        //console.log('bbb');
         addToCartButton.innerText = "Out of Stock";
         addToCartButton.disabled = true;
         addToCartDiv.setAttribute('disabled', 'disabled'); // Add disabled attribute
+
+        const mobileAddToCartButton = document.querySelector('.add-to-cart-btn-mobile');
+        if (mobileAddToCartButton) {
+            mobileAddToCartButton.innerText = "Out of Stock";
+            mobileAddToCartButton.disabled = true; // Disable the button
+        }
+     
    }
 
    // End  button label add to cart to out of stock 

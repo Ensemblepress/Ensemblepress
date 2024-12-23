@@ -41,6 +41,11 @@
         margin: 12px 0 0 0;
     }
   }   
+  @media (min-width: 835px) {
+        .is-mobile-back-menu {
+            display: none;
+        }
+    }
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
@@ -175,6 +180,7 @@ var menu = document.getElementById("custom-menu");
         <path class="logo-color logo-color-0" id="logo-element_4" data-state="0" d="M5.7,177.2v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L7.7,175.9c-.9-.4-2,.3-2,1.3Z" fill="#fff" onMouseEnter="randomizeColor(4)"></path>
       </svg>
     </span>
+    
     <span class="logotype logotype-horizontal logotype-pdp">
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 402.5 62.4">
         <rect class="cls-1" x="62.4" y="5.7" width="107.7" height="51" rx="1.4" ry="1.4" fill="#000"></rect>
@@ -183,6 +189,7 @@ var menu = document.getElementById("custom-menu");
         </path><path class="cls-1" d="M289.1,7.1v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L291.1,5.8c-.9-.4-2,.3-2,1.3Z" fill="#000"></path>
       </svg>
     </span>
+
     <span class="brand">Lost River</span>
   </a>
 </div>
@@ -240,8 +247,8 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
           {% endif %}          {%- endfor -%}
         </ul>
       </div>
-      <div class="nav-icon-back">
-        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>
+      <div class="nav-icon-back is-mobile-back-menu">
+        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>-->
       </div>
     </div>
   </nav>
