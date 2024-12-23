@@ -69,7 +69,8 @@
 
    $('.error_color').click(function(){
       const radioButton = document.getElementById('nwsl_chckbk');
-      radioButton.checked = true;
+      //radioButton.checked = true;
+      radioButton.checked = !radioButton.checked; // Toggle the checked state
   }); 
   // @ sign covert to .(dot) symbole
   // document.getElementById('email').addEventListener('input', function(event) {

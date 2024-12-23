@@ -25,7 +25,8 @@
                 <input type="hidden" name="utf8" value="✓">
                 <input type="hidden" name="contact[tags]" id="footer_tags" value="Newsletter-Footer-{{ page_title }}">
                 <input type="email" class="input-email" id="footer_email" placeholder="Enter your email" style="outline:none;">
-                <button class="button-next-footer" id="footer-signup">Sign up</button>
+                <button class="button-next-footer" id="footer-signup">
+                  Sign up</button>
                 <span class="cancel" id="footer-signup-cancel" style="display:none;">Cancel</span>
               </div>
               <div class="form-field footer-form-field" id="footer_fiels_row_1">
@@ -165,6 +166,7 @@
   jQuery("#footer-message-close").click(function() {
     jQuery("#footer-signup-cancel").removeClass('is-on');
     jQuery(".footer-newsletter-success").removeClass('is-on');
+    jQuery("#footer-signup").removeClass('pos_class');
     jQuery("#footer_fiels_row_0").addClass('is-on');
     jQuery('#footer-signup').css('opacity', '1');
     jQuery("#footer-signup-cancel").hide();
@@ -178,12 +180,10 @@
 
     $('.footer_error_color').click(function(){
       const radioButton = document.getElementById('footer_nwsl_chckbk');
-      radioButton.checked = true;
+      //radioButton.checked = true;
+      radioButton.checked = !radioButton.checked; // Toggle the checked state
    }); 
-
-    $(document).on("click", function(e) {
-      console.log(e.target);
-    });
+    
 });
 </script>
 </footer>

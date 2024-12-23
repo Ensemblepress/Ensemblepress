@@ -14,7 +14,8 @@
     "header": {
       "type": "lr-custom-header",
       "settings": {
-        "menu": "main-menu"
+        "menu": "lr_header_top_left_menu",
+        "default_search_content": false
       }
     }
   },
