@@ -1,5 +1,7 @@
 <script src="{{ 'lr-variants-selected.js' | asset_url }}" defer="defer"></script>
 {{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
+{{ 'lr-custom-main-product.css' | asset_url | stylesheet_tag }}
+
 <script>
   window.product = {
     variants: [
@@ -14,11 +16,42 @@
     ]
   };
 </script>
+<style>
+
+/* Styles for desktop (above 835px) */
+@media screen and (min-width: 836px) {
+  /* Add your desktop-specific styles here */
+  .lr_pdp_mobile_detail {
+    display: none !important; 
+  }
+}
+/* Styles for mobile (below 835px) */
+@media screen and (max-width: 835px) {
+  /* Add your mobile-specific styles here */
+  .lr_pdp_desktop_detail {
+    display: none !important; 
+  }
+
+  .swiper-pdp .swiper-slide video {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: fill;
+    display: block;
+  }
+  
+}
+@media (max-width: calc(834px)) {  
+  button.button-addtobag.Xis-disabled.add-to-cart-on_mobile.add-to-cart-btn-mobile {
+      padding: 2px 12px 0;
+      text-transform: uppercase;
+  }
+}  
+</style>  
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
     <div class="pdp-main-visuals">
       <div class="pdp-image-set">
-        <div class="pdp-image-set-grid gallery">
+        <div class="pdp-image-set-grid gallery pdp-desktop">
           {% for media in product.media %}
             <div class="pdp-image-set-img">
               <a
@@ -44,7 +77,7 @@
                 </div>
           
                 <div class="pdp-image-set-tiktok-video">
-                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="">
+                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="" autoplay muted>
                       <source src="{{ tiktok_video }}" type="video/mp4">
                     </video>
                 </div>
@@ -53,7 +86,7 @@
           {% assign video_url = product.metafields.custom.video_url %}
             {% if video_url %}
               <div class="pdp-image-set-video">
-                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="">
+                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="" autoplay muted>
                   <source src="{{ video_url }}" type="video/mp4">
                 </video>
               </div>
@@ -61,13 +94,13 @@
         </div>
       </div>
     </div>
-    <div class="Plx Plx--below Plx-effect-pdp" style="">
+    <div class="Plx Plx--above Plx-effect-pdp" style="">
       <div class="pdp-scroller"></div>
     </div>
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
-          <div class="pdp-info-swiper pdp-main-swiper">
+          <div class="pdp-info-swiper pdp-main-swiper pdp-mobile">
             <div class="swiper-container swiper-pdp">
               <div class="swiper-wrapper">
                 {% for media in product.media %}
@@ -76,7 +109,17 @@
                       <img src="{{ media.src | img_url:'master' }}" al="{{ media.alt }}">
                     </a>
                   </div>
-                 {% endfor %}   
+                 {% endfor %}
+                 {% if tiktok_video != blank %} 
+                  <div class="swiper-slide" data-type="video">
+                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
+                  </div>
+                  {% endif %}
+                  {% if video_url !=blank %}
+                  <div class="swiper-slide" data-type="video">
+                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
+                  </div>
+                  {% endif %}
                 </div>
               <div class="swiper-pagination"></div>
               <div class="swiper-button-next"></div>
@@ -94,28 +137,33 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
+
           
-          {% if product.variants.size %}
+          {% if product.variants.size  %}
+          
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
+
                 {% assign short_des = variant.metafields.custom.short_descriptions %}
                   {% if short_des %}
                     <div class="pdp-description">
                       <p>{{ short_des }}</p>
                     </div>
                   {% else %}
-                    {{ product.description }}
-                  {% endif %}
-                  
+                    <div class="pdp-description"> {{ product.description }} </div>
+                  {% endif %}    
                   <ul class="pdp-keywords">    
                       {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
-                    <li class="pdp-details" id="variant_detail_{{ variant.id }}">
-                      <span class="pdp-link pdp-link-chevron"><span>Details</span></span>
-                    </li>
-                  </ul>
-              </div> 
-            {% endfor %}  
+                      <li class="pdp-details lr_pdp_mobile_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
+                        <span class="pdp-link pdp-link-chevron">
+                        <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
+                        </span>
+                      </li>
+                  </ul>                 
+              </div>            
+              <!-- Back in stock end -->
+              {% endfor %}  
           {% else %}
             {% comment %}
             <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
@@ -128,8 +176,7 @@
               </ul>  
             </div>
             {% endcomment %}  
-          {% endif %}
-          
+          {% endif %}          
           <!-- start Back in stock -->
           {% for collection in product.collections %}
             {% if collection.handle == 'forthcoming' %}
@@ -137,9 +184,25 @@
                 <div id="omnisend-embedded-v2-66e423b7b1d6e266fd3a7a1c"></div>
               {% endif %}
           {% endfor %}
-          <!-- Back in stock end -->
-          
-          <div class="pdp-info-header-tertiary">
+                      
+                     
+          <div class="pdp-info-body-secondary desktop pdp-info-body-secondary-get-height"> 
+           
+            {% if product.variants.size  %}
+            <!-- Loop through the variants -->
+            {% for variant in product.variants %}
+                <ul class="pdp-keywords">
+                    <li class="pdp-details lr_pdp_desktop_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
+                      <span class="pdp-link pdp-link-chevron">
+                        <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
+                      </span>
+                    </li>
+                 </ul>  
+            {% endfor %}
+          {% endif %}
+            
+          <div class="pdp-info-body-tertiary">
+            <div class="pdp-info-header-tertiary">
             <div class="pdp-product-variants ">
               <div class="pdp-product-variants-list is-on">
                 <div class="pdp-product-variants-list-scroll">
@@ -161,10 +224,9 @@
               </div>
             </div>
           </div>
-          <div class="pdp-buttons-triangle">
-            <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
-          </div>
-          <div class="pdp-info-body-secondary">
+            <div class="pdp-buttons-triangle">
+              <img src="{{ 'shape-triangle-1px.svg' | asset_url }}">
+            </div>
             <div class="pdp-buttons " id="pdp-button-addtobag">
               <button class="button-addtobag  Xis-disabled" id="add-to-bag">
                 <span class="button-addtobag-cta">                    
@@ -177,7 +239,17 @@
               <button class="button-italic button-xlarge button-notifyme">Notify me when available</button>
             </div>
           </div>
-          <div class="pdp-info-body-tertiary"></div>
+         </div>
+          <div class="pdp-info-body-secondary mobile">
+          <div class="pdp-buttons " id="pdp-button-addtobag">
+              <button class="button-addtobag  Xis-disabled add-to-cart-on_mobile add-to-cart-btn-mobile" id="add-to-bag">
+                <span class="button-addtobag-cta">                    
+                  <span class="button-addtobag-cta-title add-to-cart-btn-mobile" id="add-to-cart-btn">Add to bag </span>
+                  <span class="button-addtobag-cta-price">USD 22.00</span></span>
+                <span class="button-addtobag-help">Select a variant</span>
+              </button>
+            </div>
+          </div>  
         </div>
         <div class="pdp-info-footer">
           <ul class="pdp-keywords pdp-keywords-blank">
@@ -216,7 +288,8 @@
 {% for variant in product.variants %}
   <div id="model_id_{{ variant.id }}" class="ReactModalPortal ReactModal__Overlay ReactModal__Overlay--before-open overlay overlay-pdp">
     <div id="model_contect_id_{{ variant.id }}" class="ReactModal__Content ReactModal__Content--before-open overlay-panel" tabindex="-1" role="dialog" aria-modal="true">
-  	<div class="overlay-close"><span>×</span></div>
+  	<div class="overlay-close" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span>×</span></div>
   		<div class="overlay-panel-inner">
   		<div class="overlay-outer-title">Details</div>
   		<div class="panel-content">
@@ -265,7 +338,6 @@
   	</div>
   </div> 
 {% endfor %}
-
 <!-- PDP Gallery -->
 <!-- PhotoSwipe HTML -->
 <!-- Root element of PhotoSwipe. Must have class pswp -->
@@ -454,9 +526,9 @@ document.addEventListener("DOMContentLoaded", function() {
        $(this).addClass("is-active");
        $(this).addClass("selected");
     });
-    
-    $('#add-to-bag').on('click', function() {
-        
+
+      
+    $('.pdp-buttons').on('click', function() {
         // Your existing code logic here
         var selectedVariantId = $('.variant_li.selected').data('id');
         
@@ -549,9 +621,11 @@ function updateCartDrawer() {
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
                 <div class="quantity-modifiers quantity-controls">
-                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity mobile-decrease-quantity" data-line="${index + 1}" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+></button>
                   <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
-                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity mobile-increase-quantity" data-line="${index + 1}" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+></button>
                 </div>
               </div>
             </div>
@@ -585,10 +659,12 @@ function updateCartDrawer() {
         var cart_footer = ` <div id="cart_footer"> 
             <div class="item item-total item-total-first item-total-promo" id="item-total-promo">
               <div class="caption" id="caption">
-                <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+                <div class="caption-option promo_label" id="icon-promo-symbol" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                 <div class="caption-option promo_input is-off" id="promo_input">
                   <input type="text" id="promo-code-input" placeholder="Enter promotion code" class="input-promo">
-                  <button class="button-promo" id="apply-promo-code">Ok</button>
+                  <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>Apply</button>
                 </div>
               </div>
             </div>
@@ -621,12 +697,15 @@ function updateCartDrawer() {
         document.getElementById('total-quantity').textContent = totalQuantity;
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
         totalCartQuantityElement.textContent = totalQuantity;
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');  
+        totalCartQuantityElementMobile.textContent = totalQuantity; 
+          
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
         } 
         }
-        $("#nav-bag").addClass('is-on');
+        //$("#nav-bag").addClass('is-on');
         attachCartItemEvents();  
         
       });
@@ -636,7 +715,7 @@ function updateCartDrawer() {
     var increaseButtons = document.querySelectorAll('.increase-quantity');
     var decreaseButtons = document.querySelectorAll('.decrease-quantity');
     var removeButtons = document.querySelectorAll('.remove-item');
-    
+        
     increaseButtons.forEach(button => {
       button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -657,12 +736,14 @@ function updateCartDrawer() {
         removeCartItem(button.dataset.line);
       });
     });
+
   }
 
   function updateCartItemQuantity(line, delta) {
     var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
+    console.log(quantityElement);
     var newQuantity = parseInt(quantityElement.textContent) + delta;
-
+    
     if (newQuantity < 1) {
       removeCartItem(line);
     } else {
@@ -703,6 +784,8 @@ function updateCartDrawer() {
          document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
          var totalCartQuantityElement = document.getElementById('total-cart-quantity');
          totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+         var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+         totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
       });
     }
   }
@@ -721,11 +804,50 @@ function updateCartDrawer() {
       //console.log(cart);
       //updateCartDrawer();
         document.querySelector(`.cart-item[data-line="${line}"]`).remove();
+        const remainingItemsDrover = document.querySelectorAll('.cart-item');
+        remainingItemsDrover.forEach((item, index) => {
+            //item.setAttribute('data-line', index + 1); // Shopify uses 1-based line numbers
+            const newLine = index + 1;
+            item.setAttribute('data-line', newLine);
+
+            // Update the corresponding remove link if it exists
+            const removeLinkDrover = item.querySelector('.remove-item');
+            if (removeLinkDrover) {
+                removeLinkDrover.setAttribute('data-line', newLine);
+            }
+            // Update the corresponding decrease link if it exists
+            const decreaseLinkDrover = item.querySelector('.decrease-quantity');
+            if (decreaseLinkDrover) {
+                decreaseLinkDrover.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDrover = item.querySelector('.increase-quantity');
+            if (increaseDrover) {
+                increaseDrover.setAttribute('data-line', newLine);
+            }
+          
+            //mobile
+            const decreaseLinkDroverMobile = item.querySelector('.mobile-decrease-quantity');
+            if (decreaseLinkDroverMobile) {
+                decreaseLinkDroverMobile.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDroverMobile = item.querySelector('.mobile-increase-quantity');
+            if (increaseDroverMobile) {
+                increaseDroverMobile.setAttribute('data-line', newLine);
+            }
+        });
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+        
         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
+
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';
@@ -754,7 +876,51 @@ function updateCartDrawer() {
   document.addEventListener('cart:updated', updateCartDrawer);
   // Call updateCartDrawer initially to load the cart contents
   updateCartDrawer();
+
+    $('#add-to-bag').on('click', function() {
+      //var spanElement = document.getElementById('total-cart-quantity');
+      //var textValue = spanElement.textContent;
+      //if(textValue > 0){
+       setTimeout(() => {
+         $("#nav-bag").addClass('is-on');
+      }, 1000);
+      //}       
+   });
+
+  $('.add-to-cart-on_mobile').on('click', function() {
+     setTimeout(() => {
+       $("#nav-bag").addClass('is-on-mobile'); 
+       $(".header-mobile").addClass('is-off');
+       $(".header-background").addClass('is-on');
+       $(".header-close-button").addClass('is-on');
+    }, 1200);
+  });  
   
+</script>
+<script>
+function updateWindowHeight() {
+  const windowWidth = window.innerWidth;
+  //console.log(windowWidth);  
+   if (windowWidth > 580 ) {5
+    const windowHeight = window.innerHeight; // Get window height
+    document.documentElement.style.setProperty('--window-height', `${windowHeight}px`);
+    //console.log("window height:",windowHeight);
+    const element = document.querySelector('.pdp-info-body-secondary-get-height'); // Replace with your element's selector
+    const elementHeight = element.offsetHeight;  
+    //console.log('Element height:', elementHeight);
+    //var elementHeight_new = elementHeight + 72 + 70 + 30 + 15;
+     var elementHeight_new = elementHeight + 54 + 50;
+    var new_height = windowHeight - elementHeight_new;
+    //console.log('new height:', new_height);
+      const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
+      elements.forEach((element) => {
+        element.style.maxHeight = `${new_height}px`; // Apply the height to each element
+      });
+    }
+}
+// Call on page load and whenever the window resizes
+  updateWindowHeight(); // Initial call
+  window.addEventListener('resize', updateWindowHeight); // Update on window resize
 </script>
 {% schema %}
 {
