@@ -10374,6 +10374,10 @@ button.button-next-footer:hover:before{
   width: 7px;
   height: 7px;
   background-color: #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .widget-newsletter-strip .form-field input[type="checkbox"]:checked:after,
 .widget-newsletter-strip .form-field input[type="checkbox"]:active:after {

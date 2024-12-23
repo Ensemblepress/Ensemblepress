@@ -4,7 +4,7 @@
   <div class="product-grid product-grid-4col product-grid-background product-grid-recommended">
     {%- for product in recommendations.products -%}
       <a class="item" href="{{ product.url }}">
-        {%- if product.featured_media -%}
+        
           <div class="image ">
               <svg viewBox="0 0 1500 2000"></svg>
               <img src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt | escape }}" class="img-default undefined">
@@ -12,7 +12,7 @@
               <img src="{{ product.media[1] | img_url: 'master' }}" alt="{{ product.title }}" class="img-alt">
              {% endif %}   
           </div>
-        {% endif %}  
+        
         <div class="caption">
 		
             <div class="caption-default">
