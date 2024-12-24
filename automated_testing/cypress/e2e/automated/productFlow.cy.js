@@ -22,7 +22,7 @@ describe('Shopify Full Cart Flow', () => {
 	//mouseover
 	cy.get('.pdp-image-set-img').eq(1).trigger('mouseover');
 	
-	cy.get('.pdp-details').first().click();
+	cy.get('.pdp-details-click-auto').first().click();
 	
 	cy.wait(2000); // Wait briefly to simulate user behavior
 	

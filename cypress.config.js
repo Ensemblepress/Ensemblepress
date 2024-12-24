@@ -6,4 +6,5 @@ const { defineConfig } = require("cypress");
 		baseUrl: 'https://dev-store-lost-river-press.myshopify.com',
 		supportFile: false, // Disable support file
 	  },
-});
+	});
+		
