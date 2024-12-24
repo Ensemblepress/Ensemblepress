@@ -2,7 +2,8 @@ describe('Shopify Full checkout Flow', () => {
   it('Adds it to the cart, and proceeds to checkout', () => {
     
 	// Visit the homepage
-    cy.visit('https://staging-lost-river-press.myshopify.com/');
+    cy.visit('https://dev-store-lost-river-press.myshopify.com');
+	//cy.visit('https://staging-lost-river-press.myshopify.com');
 	
 	//enter store password
 	//cy.get('.password-link').click();
