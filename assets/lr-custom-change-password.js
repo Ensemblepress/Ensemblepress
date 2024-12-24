@@ -28,14 +28,23 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById('current-password').style.borderBottom = '1px solid #c00';
       isValid = false;
     }
-
-    
+ 
     if (!newPassword) {
       new_password_error.textContent = 'Please confirm your new password.';
       new_password_error.style.display = 'block';
       document.getElementById('new-password').style.borderBottom = '1px solid #c00';
       isValid = false;
     }
+
+    if (currentPassword == newPassword) {
+
+      confirm_password_error.textContent = 'Your new password cannot be the same as your current password. Please choose a different password.';
+      confirm_password_error.style.display = 'block';
+      document.getElementById('confirm-password').style.borderBottom = '1px solid #c00';
+      isValid = false;
+      return;
+    }
+    
     if (!confirmPassword) {
       confirm_password_error.textContent = 'Please confirm your Confirm new password.';
       confirm_password_error.style.display = 'block';
