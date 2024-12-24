@@ -33,12 +33,14 @@
                   <div class="widget-orders-item">
                     <div class="widget-orders-image">
                     {% for line_item in order.line_items %}
-                       {% if line_item.product.featured_image or line_item.variant.image %}
-                          <img src="{{ line_item.product.featured_image | img_url: 'master' }}" alt="{{ line_item.product.title }}">                
-                      {% else %}               
-                        <img src="{{ line_item.variant.image | img_url: 'master' }}" alt="{{ line_item.product.title }}">
-                      {% endif %}                      
-                    {% endfor %}   
+                      {% if forloop.first %}
+                        {% if line_item.product.featured_image or line_item.variant.image %}
+                          <img src="{{ line_item.product.featured_image | img_url: 'master' }}" alt="{{ line_item.title }}">
+                        {% else %}
+                          <img src="{{ line_item.variant.image | img_url: 'master' }}" alt="{{ line_item.title }}">
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}  
                     </div>  
                     <div class="widget-orders-details">
                       <div class="details details-title">Order {{ order.name }}

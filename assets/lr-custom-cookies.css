@@ -66,3 +66,10 @@
   text-decoration: none;
   cursor: pointer;
 }
+.custom_cookies .spacer-larger input[type="checkbox"]:checked {
+  border: 1px solid grey !important;
+}
+
+.custom_cookies .spacer-larger input[type="checkbox"]:checked:after {
+  background-color: grey !important;
+}

@@ -22,10 +22,34 @@
   body.is-home:has(.headroom--unfixed) .header-logo{
     mix-blend-mode: normal;
   }
+  @media (min-width: 835px) {
+    .remove-discount-button.lr-wrong-apply {
+      width: 18px !important;
+      margin: 10px 0 0 0px !important;
+      height: 18px !important;
+      padding: 0 0 0 !important;
+    }
+    .site-system-minibag .item-total-final .lr-price-apply {
+      margin: 12px 0 0 0;
+    }
+  }
+  @media (max-width: calc(835px - 1px)) {
+    .remove-discount-button.lr-wrong-apply {
+      margin: 12px 0 0 0;
+    }
+    .site-system-minibag .item-total-final .lr-price-apply {
+        margin: 12px 0 0 0;
+    }
+  }   
+  @media (min-width: 835px) {
+        .is-mobile-back-menu {
+            display: none;
+        }
+    }
 </style>
 <script src="{{ 'headroom.min.js' | asset_url }}" defer="defer"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () { 
 var menu = document.getElementById("custom-menu");    
     if (menu) {
       var headroom = new Headroom(menu, {
@@ -46,13 +70,17 @@ var menu = document.getElementById("custom-menu");
     } else {
       console.error("Menu element not found");
     }
-});        
+
+  document.querySelector('.header-background').style.display = 'block';
+  document.querySelector('.headroom-wrapper').style.display = 'block';
+  
+});   
 </script>
-<div class="header-background ">
+<div class="header-background" style="display:none;">
   <div class="header-background-close"></div>
   <div class="header-background-bg"></div>
 </div>
-<div class="headroom-wrapper" style="height: 54px;">
+<div class="headroom-wrapper" style="height: 54px;display:none;">
   <div id="custom-menu"
     class="headroom headroom--unfixed headroom-disable-animation"
     style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 1; transform: translate3d(0px, 0px, 0px);"
@@ -63,7 +91,9 @@ var menu = document.getElementById("custom-menu");
         <ul class="header-mobile-icons">
           <li class="header-mobile-icon header-mobile-icon-logotype"><a href="/">Lost River</a></li>
           <li class="header-mobile-icon header-mobile-icon-menu">Menu</li>
-          <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          {% if search_bar == true %}
+            <li class="header-mobile-icon header-mobile-icon-search">Search</li>
+          {% endif %}
           <li class="header-mobile-icon header-mobile-icon-bag false">Bag <span class="amount" id="total-quantity">0</span></li>
         </ul>
       </div>
@@ -76,40 +106,53 @@ var menu = document.getElementById("custom-menu");
             </a>
             {%  assign i = 0 %}
             {%- for link in section.settings.menu.links -%}
-              <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}">
-                  <span>{{- link.title | escape -}}</span>
+              <li class="header-item header-item-{{ link.title | downcase }} nav_{% increment i %} main-nav-menu-item" id="li-nav-{{ link.title | downcase }}" data-title="nav-{{ link.title | downcase }}" tabindex="0">
+                  <a><span>{{- link.title | escape -}}</span></a>
               </li>
             {%- endfor -%}
           </ul>
           <ul class="header-secondary">
-            <li class="header-item header-item-search nav_3" data-title="nav-search">
-                 <div class="header-search-title is-active">
-                   <span>Search</span>
+            {% if search_bar == true %}
+            <li class="header-item header-item-search nav_3" data-title="nav-search" tabindex="0"> 
+               {% if search.terms %}
+                   <form action="{{ routes.search_url }}" method="get" role="search" class="search">               
+                       <input type="text" 
+                        id="Search-In-Template"   
+                        name="q"
+                        class="input-search-display"                     
+                        placeholder="Enter search term..."
+                        fdprocessedid="oy9mr" value="{{ search.terms }}" >                     
+                  </form>
+                {% else %}   
+                <div class="header-search-title is-active" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">
+                  <a><span>Search</span></a>
                  </div>
-              <form action="{{ routes.search_url }}" method="get" role="search" class="search">
-                 <div class="header-search-field">
-                   <input type="text" 
-                id="Search-In-Template"   
-                name="q"
-                class="input-search-display"                     
-                placeholder="Enter search term..."
-                fdprocessedid="oy9mr">
-                 </div>
-              </form> 
+                  <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+                     <div class="header-search-field">
+                       <input type="text" 
+                    id="Search-In-Template"   
+                    name="q"
+                    class="input-search-display"                     
+                    placeholder="Enter search term..."
+                    fdprocessedid="oy9mr">
+                     </div>
+                  </form> 
+                 {% endif %}
             </li>
-            <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account">
-              <span>Account</span>
+            {% endif %}
+            <li class="header-item header-item-clean header-item-account nav_4 main-nav-menu-item" id="li-nav-account" data-title="nav-account" tabindex="0">
+              <a><span>Account</span></a>
             </li>
-            <li class="header-item header-item-bag  false false nav_5 main-nav-menu-item" id="li-nav-bag" data-title="nav-bag">
+            <li class="header-item header-item-bag  false false nav_5 main-nav-menu-item" id="li-nav-bag" data-title="nav-bag" tabindex="0">
                 {%- if cart.item_count < 100 -%}
-                  <span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span>
+                  <a><span>Bag <span class="amount" id="total-cart-quantity">{{ cart.item_count }}</span></span></a>
                 {% endif %}  
             </li>
           </ul>
         </div>
-      </div>
-      
-      <div id="search-form" class="header-search" data-title="nav-search" style="display:none;">
+      </div>      
+
+      <div id="search-form" class="header-search header-search-mobile {% if search.terms %} is-on {% endif %}" data-title="nav-search" style="display:{% if search.terms %}block{% else%}none{% endif %};">
         <div class="header-search-inner">
            <script src="{{ 'lr_custom-search.js' | asset_url }}" defer="defer"></script>
           <form id="search-form" action="/search" method="get">
@@ -137,6 +180,7 @@ var menu = document.getElementById("custom-menu");
         <path class="logo-color logo-color-0" id="logo-element_4" data-state="0" d="M5.7,177.2v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L7.7,175.9c-.9-.4-2,.3-2,1.3Z" fill="#fff" onMouseEnter="randomizeColor(4)"></path>
       </svg>
     </span>
+    
     <span class="logotype logotype-horizontal logotype-pdp">
       <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 402.5 62.4">
         <rect class="cls-1" x="62.4" y="5.7" width="107.7" height="51" rx="1.4" ry="1.4" fill="#000"></rect>
@@ -145,6 +189,7 @@ var menu = document.getElementById("custom-menu");
         </path><path class="cls-1" d="M289.1,7.1v48.2c0,.8.6,1.4,1.4,1.4h104.9c1.5,0,2-2.1.6-2.7L291.1,5.8c-.9-.4-2,.3-2,1.3Z" fill="#000"></path>
       </svg>
     </span>
+
     <span class="brand">Lost River</span>
   </a>
 </div>
@@ -153,7 +198,7 @@ var menu = document.getElementById("custom-menu");
   <nav
     id="nav-{{ link.title | downcase }}"
     class="nav nav-primary nav_{% increment j %} nav-sub-menu-item li-nav-{{ link.title | downcase }}-cls"
-data-titlesub="nav-{{ link.title | downcase }}">
+data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
     <a class="nav-logo" href="/"></a>
     <div class="nav-layout nav-layout-horizontal">
       <div class="nav-layout-item">
@@ -202,13 +247,13 @@ data-titlesub="nav-{{ link.title | downcase }}">
           {% endif %}          {%- endfor -%}
         </ul>
       </div>
-      <div class="nav-icon-back">
-        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>
+      <div class="nav-icon-back is-mobile-back-menu">
+        <svg viewBox="0 0 510.2 510.2"><polygon class="cls-1" points="325.9 368.5 325.9 141.7 155.9 255.1 325.9 368.5" fill="black"></polygon></svg>-->
       </div>
     </div>
   </nav>
 {%- endfor -%}
-  <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls">
+  <nav id="nav-account" class="nav nav-secondary nav_4 nav-sub-menu-item li-nav-account-cls" tabindex="0">
     <div class="nav-layout nav-layout-horizontal nav-layout-secondary">
   <div class="nav-layout-item">
     <ul class="nav-menu">
@@ -267,7 +312,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
 </div>
 </nav>
  
-<nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls">
+<nav id="nav-bag" class="nav nav-secondary nav_5 nav-sub-menu-item li-nav-bag-cls" tabindex="">
   <script>
   window.productMetafields = {
     {% for item in cart.items %}
@@ -278,7 +323,7 @@ data-titlesub="nav-{{ link.title | downcase }}">
   };
 </script>  
   <div class="nav-layout">   
-      <div class="site-system site-system-minibag cart-drawer-body">
+      <div class="site-system site-system-minibag cart-drawer-body" tabindex="0">
       {%- for item in cart.items -%}
         <div class="item item-product item-product-minibag " data-line="{{ forloop.index }}">
          {% if item.image %}  
@@ -295,10 +340,13 @@ data-titlesub="nav-{{ link.title | downcase }}">
                  {% assign author_name = item.product.metafields.custom.author_name %}
                 <span class="title-author" id="author_name_{{ item.id }}">{{ author_name }}</span>
                 <span class="title-title">{{ item.title }}</span>
+                <span class="title-type">Paperback</span>
               </span>
               <span class="title-favorite">Favorite </span>
             </div>
+            {% comment %}
             <div class="values"><span class="value-material">Paperback</span></div>
+            {% endcomment %}
             <div class="tools">
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
@@ -335,10 +383,12 @@ data-titlesub="nav-{{ link.title | downcase }}">
       {% endfor %}
       <div class="item item-total item-total-first item-total-promo">
         <div class="caption">
-          <div class="caption-option promo_label is-off"><span class="icon-promo"></span> Add promotion code</div>
+          <div class="caption-option promo_label is-off" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo"></span> Add promotion code</div>
           <div class="caption-option promo_input">
             <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-            <button class="button-promo" id="apply-promo-code">OK</button>
+            <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>Apply</button>
             <div id="discount-message"></div>
           </div>
         </div>
@@ -373,18 +423,30 @@ data-titlesub="nav-{{ link.title | downcase }}">
 <script type="text/javascript">
   
 jQuery(function() {  
-  $('.main-nav-menu-item').hover(
-        function () {
+  $('.main-nav-menu-item').hover( 
+        function () {   
+           $('.main-nav-menu-item').removeClass('is-on');
            $('.nav-primary').removeClass('is-on');
            $('.nav-secondary').removeClass('is-on');
-          var submenucls = document.getElementsByClassName(this.id+'-cls');
-          $('.'+this.id+'-cls').addClass('is-on'); 
+          
+           var submenucls = document.getElementsByClassName(this.id+'-cls');
+           $('#'+this.id).addClass('is-on'); 
+           $('.'+this.id+'-cls').addClass('is-on'); 
         }
   );
   $('main').on('mouseenter', function(event) {
+    $('.main-nav-menu-item').removeClass('is-on');
     $('.nav-primary').removeClass('is-on');
     $('.nav-secondary').removeClass('is-on');
   });
+
+  $('.header-item-brand').hover( 
+    function () { 
+      $('.main-nav-menu-item').removeClass('is-on');
+      $('.nav-primary').removeClass('is-on');
+      $('.nav-secondary').removeClass('is-on');
+    }
+  ); 
 });
   
 jQuery(function() {  
@@ -459,12 +521,12 @@ jQuery(function() {
   });  
 });
 
-  
 //cart drower
 document.addEventListener('DOMContentLoaded', function() {
   
   var totalCartQuantityElement = document.getElementById('total-cart-quantity');
-  
+  var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+
   document.addEventListener('click', function(event) {
 
   //promo code input open
@@ -496,7 +558,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(response => { 
        if (response.ok) { 
           //console.log(cart)
-          document.getElementById('discount-message').innerText = 'Discount applied!';
+          //document.getElementById('discount-message').innerText = 'Discount applied!';
           jQuery(".is-discount").removeClass('is-off');
           // Optionally, you could refresh the cart to show updated totals
           //updateCartDrawer();
@@ -508,6 +570,7 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => response.json())
       .then(cart => {
+        console.log('appply');
         //updateCartDrawer(cart);
         // Log the latest cart data
         if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") {
@@ -520,12 +583,22 @@ document.addEventListener('DOMContentLoaded', function() {
           jQuery("#item-total-promo").removeClass('item-total');
           discount_code = cart.items[0].discounts[0].title;
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
+          //jQuery("#remove-discount").show();
+          //jQuery("#cart_total_discount").show();
+          //jQuery("#remove-discount").removeClass('lr-wrong-apply');
+          document.getElementById("remove-discount").classList.remove("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.remove("lr-price-apply");
         }else{
           document.getElementById('discount-message').style.display = 'block';
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
-          document.getElementById('discount-message').innerText = 'Wrong Discount applied!';
+          document.getElementById('discount-message').innerText = 'Wrong Promo Code applied!';
           jQuery(".is-discount").show();
-          jQuery(".is-discount").removeClass('is-off');
+          //jQuery(".is-discount").removeClass('is-off');
+          //jQuery("#remove-discount").hide();
+          //jQuery("#cart_total_discount").hide();
+          //jQuery("#remove-discount").addClass('lr-wrong-apply');
+          document.getElementById("remove-discount").classList.add("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.add("lr-price-apply");
         }
       })
       .catch(error => {
@@ -576,6 +649,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
       });      
   }
+
+    // apply code code Event listener for the Enter key in the input box
+    document.getElementById("promo-code-input").addEventListener("keydown", function(event) {
+       if (event.key === "Enter") { // Check if the Enter key is pressed
+            event.preventDefault(); // Prevent default form submission (if any)
+            document.getElementById("apply-promo-code").click(); // Trigger button click
+       }
+    });
     
 });
 
@@ -605,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
              authorName = authorName_title;
            }              
           var cartItem = `  
-          <div class="cart-item item item-product item-product-minibag " data-line="${index + 1}">
+          <div class="cart-item item item-product item-product-minibag is-addedtobag" data-line="${index + 1}">
             <div class="image">
               <a href="${ item.url }">
                 <img src="${ item.image }" alt="${ productName }">
@@ -618,10 +699,13 @@ document.addEventListener('DOMContentLoaded', function() {
                    
                     <span class="title-author" author-title="">${ authorName }</span>
                     <span class="title-title">${ productName }</span>
+                    <span class="title-type">${ variantName }</span>
                   </span>
                   <span class="title-favorite">Favorite </span>
                 </div>
+                {% comment %}
                 <div class="values"><span class="value-material">${ variantName }</span></div>
+                {% endcomment %}
                 <div class="tools">
                    <div class="tool tool-quantity">
                       <div class="quantity">× <span class="quantity-value">1</span></div>
@@ -641,9 +725,9 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="tool tool-quantity">
                 <div class="quantity">× <span class="quantity-value">1</span></div>
                 <div class="quantity-modifiers quantity-controls">
-                  <button class="icon-quantity icon-quantity-minus decrease-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-minus decrease-quantity mobile-decrease-quantity" data-line="${index + 1}"></button>
                   <span class="icon-quantity icon-quantity-amount quantity_upd" id="qty_${ item.id }">${item.quantity}</span>
-                  <button class="icon-quantity icon-quantity-plus increase-quantity" data-line="${index + 1}"></button>
+                  <button class="icon-quantity icon-quantity-plus increase-quantity mobile-increase-quantity" data-line="${index + 1}"></button>
                 </div>
               </div>
             </div>
@@ -677,10 +761,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var cart_footer = ` <div id="cart_footer"> 
               <div class="item ${add_disc} item-total-first item-total-promo" id="item-total-promo">
                 <div class="caption ${code_apply}" id="caption">
-                  <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+                  <div class="caption-option promo_label" id="icon-promo-symbol" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                   <div class="caption-option promo_input is-off" id="promo_input">
                     <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-                    <button class="button-promo" id="apply-promo-code">Ok</button>
+                    <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>Apply</button>
                   </div>
                 </div>
             </div>
@@ -703,7 +789,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_footer);
 
         var cart_empty_message = `<div class="nav-layout" id="cart-empty-message" style="display: none;">  
-                    <a href="/collections/all" class="button">Continue shopping</a>   
+                    <a tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();" href="/collections/all" class="button" 
+>Continue shopping</a>   
         </div>`;
 
         cartDrawerBody.insertAdjacentHTML('beforeend', cart_empty_message);
@@ -712,6 +799,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var totalQuantity = calculateTotalQuantity(cart.items);
         document.getElementById('total-quantity').textContent = totalQuantity;
         totalCartQuantityElement.textContent = totalQuantity;
+        totalCartQuantityElementMobile.textContent = totalQuantity; 
+           
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
@@ -791,6 +880,7 @@ document.addEventListener('DOMContentLoaded', function() {
          document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
          document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
          totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+         totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
       });
     }
   }
@@ -819,14 +909,44 @@ document.addEventListener('DOMContentLoaded', function() {
             const removeLinkDrover = item.querySelector('.remove-item');
             if (removeLinkDrover) {
                 removeLinkDrover.setAttribute('data-line', newLine);
-            } 
+            }
+
+            // Update the corresponding decrease link if it exists
+            const decreaseLinkDrover = item.querySelector('.decrease-quantity');
+            if (decreaseLinkDrover) {
+                decreaseLinkDrover.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDrover = item.querySelector('.increase-quantity');
+            if (increaseDrover) {
+                increaseDrover.setAttribute('data-line', newLine);
+            }
+
+            //mobile
+            const decreaseLinkDroverMobile = item.querySelector('.mobile-decrease-quantity');
+            if (decreaseLinkDroverMobile) {
+                decreaseLinkDroverMobile.setAttribute('data-line', newLine);
+            }
+
+          // Update the corresponding increaseDrover link if it exists
+            const increaseDroverMobile = item.querySelector('.mobile-increase-quantity');
+            if (increaseDroverMobile) {
+                increaseDroverMobile.setAttribute('data-line', newLine);
+            }
+          
         });
       
         var cart_total_price_value = cart.original_total_price - cart.total_discount;
         document.querySelector('#cart_total_discount').textContent = formatMoney(cart.total_discount, cart.currency);
         document.querySelector('.cart-drawer-footer').textContent = formatMoney(cart_total_price_value, cart.currency);
         var totalCartQuantityElement = document.getElementById('total-cart-quantity');
+        var totalCartQuantityElementMobile = document.getElementById('total-quantity');
+        
         totalCartQuantityElement.textContent = calculateTotalQuantity(cart.items);
+        totalCartQuantityElementMobile.textContent = calculateTotalQuantity(cart.items);
+
+      
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';
@@ -857,5 +977,58 @@ document.addEventListener('DOMContentLoaded', function() {
   // Call updateCartDrawer initially to load the cart contents
   updateCartDrawer();    
 });
-//cart drower end      
+//cart drower end   
+// start accessibility code
+document.querySelectorAll('.header-primary .main-nav-menu-item, .header-secondary .header-item-search, .header-secondary .main-nav-menu-item').forEach((menuItem, index, menuItems) => {
+  menuItem.addEventListener('keydown', (event) => {
+    // Close all other submenus
+    document.querySelectorAll('.nav-primary, .nav-secondary').forEach((nav) => {
+      nav.classList.remove('is-on');
+    });
+
+    if (event.key === 'Enter') {
+      const targetMenuId = menuItem.getAttribute('data-title'); // Get submenu ID
+      const submenu = document.getElementById(targetMenuId);
+
+      if (submenu) {
+        // Toggle submenu visibility
+        const isVisible = submenu.classList.contains('is-on');
+        submenu.classList.toggle('is-on', !isVisible);
+
+        if (!isVisible) {
+          // Focus on the first focusable child in the submenu
+          const focusableItems = submenu.querySelectorAll('a, button, [tabindex="0"]');
+          if (focusableItems.length > 0) {
+            focusableItems[0].focus();
+          }
+
+          // Handle Tab navigation within the submenu
+          submenu.addEventListener('keydown', (subEvent) => {
+            const focusableArray = Array.from(focusableItems);
+            const currentIndex = focusableArray.indexOf(document.activeElement);
+
+            if (subEvent.key === 'Tab') {
+              if (subEvent.shiftKey && currentIndex === 0) {
+                // Shift+Tab on the first item: move back to the main menu item
+                subEvent.preventDefault();
+                menuItem.focus();
+              } else if (!subEvent.shiftKey && currentIndex === focusableArray.length - 1) {
+                // Tab on the last item: move to the next main menu item
+                subEvent.preventDefault();
+				submenu.classList.remove('is-on');	
+                // Find the next main menu item
+                const nextMenuItem = menuItems[index + 1] || menuItems[0]; // Loop back to the first if at the last item
+                console.log(nextMenuItem);
+				if (nextMenuItem) {
+                  nextMenuItem.focus();				  
+                }
+              }
+            }
+          });
+        }
+      }
+    }
+  });
+});
+// end accessibility code
 </script>  

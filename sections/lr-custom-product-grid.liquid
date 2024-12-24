@@ -17,15 +17,16 @@
     {%- else -%}
       {%- for product in collection.products -%}  
         <a class="product item" href="{{ product.url }}"  data-name="{{ product.title | escape }}" data-price="{{ product.price }}" data-date="{{ product.created_at }}" data-quantity="{% if product.selected_or_first_available_variant.inventory_quantity > 0 %}{{ product.variants.first.inventory_quantity }}{% endif %}">
-          {%- if product.featured_media -%}
+
             <div class="image ">
               <svg viewBox="0 0 1500 2000"></svg>
               <img src="{{ product.featured_media | img_url: 'master' }}" alt="{{ product.featured_media.alt | escape }}" class="img-default undefined">
               {%- if product.media[1] != null and section.settings.show_secondary_image -%}
                 <img src="{{ product.media[1] | img_url: 'master' }}" alt="{{ product.title }}" class="img-alt">
               {% endif %}  
-          </div>
-          {% endif %}  
+            </div>
+ 
+          
           <div class="caption">
               <div class="caption-default">
                 <div class="name">
@@ -44,14 +45,17 @@
                     {{ product.price | money }}
                   </div>
               </div>
-              <div class="caption-additional">
+              {% comment %}
+                <div class="caption-additional">
                   <div class="caption-additional-default">
                       <div class="label">Runway</div>
                   </div>
                   <div class="caption-additional-hover">
                       <div class="cta">Add to bag</div>
                   </div>
-              </div>
+              </div>  
+              {% endcomment %}
+              
           </div>
         </a>
       {% endfor %}
@@ -66,9 +70,9 @@
         "type": "range",
         "id": "products_per_page",
         "min": 8,
-        "max": 36,
+        "max": 100,
         "step": 4,
-        "default": 16,
+        "default": 32,
         "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
       },
       {
