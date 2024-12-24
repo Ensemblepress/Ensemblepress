@@ -18,7 +18,14 @@ describe('Shopify user account flow', () => {
 	cy.get('#salutation').select('Mrs.').should('have.value', 'Mrs.');
 	cy.get('#firstName').type('Abc').trigger('keydown', { keyCode: 9, which: 9 });
 	cy.get('#lastName').type('Cde').trigger('keydown', { keyCode: 9, which: 9 });
-	cy.get('#email').type('xojig67475@anypng.com').trigger('keydown', { keyCode: 9, which: 9 });
+	
+	const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	let result = '';
+	for (let i = 0; i < 7; i++) {
+		result += characters.charAt(Math.floor(Math.random() * characters.length));
+	}
+ 
+	cy.get('#email').type(result+'@gmail.com').trigger('keydown', { keyCode: 9, which: 9 });
 	cy.get('#password').type('Xojig67475@%').trigger('keydown', { keyCode: 9, which: 9 });
 	cy.get('#confirmPassword').type('Xojig67475@%').trigger('keydown', { keyCode: 9, which: 9 });
 	cy.get('#terms').check();
