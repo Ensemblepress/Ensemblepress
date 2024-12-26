@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then( response => { //console.log(cart);
         if (response.ok) {
           document.getElementById('discount-message').innerText = 'Discount code removed';
+          
            return fetch('/cart.js');
           // Optionally, you could refresh the cart to show updated totals
           //updateCartDrawer();
@@ -423,6 +424,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
+          
         }
         }      
         attachCartItemEvents();   
@@ -631,6 +642,15 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('cart-empty-message').style.display = 'flex';
             document.getElementById('cart_page_footer').style.display = 'none';
             document.getElementById('cart-page-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
         }
     });
   }
