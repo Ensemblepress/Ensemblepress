@@ -106,7 +106,7 @@
                 {% for media in product.media %}
                   <div class="swiper-slide">
                     <a href="{{ media.src | img_url:'master' }}" data-pswp-width="{{ media.width }}" data-pswp-height="{{ media.height }}" class="image-zoomable">
-                      <img src="{{ media.src | img_url:'master' }}" al="{{ media.alt }}">
+                      <img src="{{ media.src | img_url:'master' }}" alt="{{ media.alt }}">
                     </a>
                   </div>
                  {% endfor %}
@@ -194,7 +194,6 @@
                 <ul class="pdp-keywords">
                     <li class="pdp-details lr_pdp_desktop_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
                       <span class="pdp-link pdp-link-chevron">
-					  <!-- updated class -->
                         <span class="pdp-details-click-auto" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
                       </span>
                     </li>
@@ -707,8 +706,18 @@ function updateCartDrawer() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
+          
         } 
-        }
+       }
         //$("#nav-bag").addClass('is-on');
         attachCartItemEvents();  
         
@@ -855,6 +864,16 @@ function updateCartDrawer() {
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
+          
         }        
     });
   }
