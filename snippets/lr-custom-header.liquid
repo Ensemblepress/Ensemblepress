@@ -392,7 +392,7 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
             <div id="discount-message"></div>
           </div>
         </div>
-      </div>
+      </div>  
       <div class="item item-total item-total-final">
         <div class="caption">Total <span class="note">Taxes and duties incl.</span></div>
         <div class="price">{{ cart.total_price | money_with_currency }}</div>
@@ -404,6 +404,7 @@ data-titlesub="nav-{{ link.title | downcase }}" tabindex="0">
     </div>       
   </div>
 </nav>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
   function randomizeColor(id) {
@@ -542,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     //apply prommo code 
     if (event.target && event.target.id === 'apply-promo-code') {
-     //alert('aaa');
+     //console.log('aaa');
       var discountCode = document.getElementById('promo-code-input').value;
       if (discountCode === '') {
         document.getElementById('discount-message').innerText = 'Please enter a discount code.';
@@ -804,6 +805,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
+          
           }
         }      
         attachCartItemEvents();   
@@ -950,6 +961,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cart.item_count == 0) {
             document.getElementById('cart_footer').style.display = 'none';
             document.getElementById('cart-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
         }
     });
   }
