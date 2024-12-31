@@ -77,7 +77,7 @@
                 </div>
           
                 <div class="pdp-image-set-tiktok-video">
-                    <video id="myVideo" width="100%" height="100%" loop="" playsinline="" autoplay muted>
+                    <video id="myVideo" class="myVideodesktop" width="100%" height="100%" loop="" playsinline="" autoplay muted>
                       <source src="{{ tiktok_video }}" type="video/mp4">
                     </video>
                 </div>
@@ -86,7 +86,7 @@
           {% assign video_url = product.metafields.custom.video_url %}
             {% if video_url %}
               <div class="pdp-image-set-video">
-                <video id="myVideo" width="100%" height="100%"  loop="" playsinline="" autoplay muted>
+                <video id="myVideo" class="myVideodesktop" width="100%" height="100%"  loop="" playsinline="" autoplay muted>
                   <source src="{{ video_url }}" type="video/mp4">
                 </video>
               </div>
@@ -111,13 +111,13 @@
                   </div>
                  {% endfor %}
                  {% if tiktok_video != blank %} 
-                  <div class="swiper-slide" data-type="video">
-                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
+                  <div class="swiper-slide myVideoMobile" data-type="video">
+                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok lr-mobile-video" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
                   </div>
                   {% endif %}
                   {% if video_url !=blank %}
-                  <div class="swiper-slide" data-type="video">
-                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
+                  <div class="swiper-slide myVideoMobile" data-type="video">
+                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video lr-mobile-video lr-mobile-view-2"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
                   </div>
                   {% endif %}
                 </div>
@@ -503,9 +503,56 @@ document.addEventListener("DOMContentLoaded", function() {
   window.onload = function() {
     var video = document.getElementById("myVideo");
     video.autoplay = true;
-    video.muted = true; // This is necessary for autoplay to work in some browsers
+    //video.muted = true; // This is necessary for autoplay to work in some browsers
     video.play();
   };
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+  // desktop video on click muted and unmuted start "myVideodesktop"
+  const videos = document.querySelectorAll('.myVideodesktop');
+    // Add a click event listener to each video
+    videos.forEach(video => {
+      video.addEventListener('click', () => {
+        // Toggle the muted property
+        video.muted = !video.muted;
+      });
+    });
+  //video on click play end
+
+  //mobile video muted and unmuted "lr-mobile-video"  
+    const videosmobile = document.querySelectorAll('.lr-mobile-video');
+    // Add event listeners to each video
+    videosmobile.forEach(video => {
+      // Handle click for toggling mute
+      video.addEventListener('click', () => {
+        video.muted = !video.muted;
+      });
+    });
+  
+    // Add functionality for Swiper navigation buttons
+    const nextButton = document.querySelector('.swiper-button-next');
+    const prevButton = document.querySelector('.swiper-button-prev');  
+    // Function to mute all videos
+    function muteAllVideos() {
+      videosmobile.forEach(video => {
+        video.muted = true;
+        //video.pause(); // Optionally pause the video when navigating
+      });
+    } 
+    //Add click event to Swiper navigation buttons
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        muteAllVideos();
+      });
+    }    
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        muteAllVideos();
+      });
+    }
+    //mobile video on click muted and unmuted end
+});    
 </script>
 <!---- Video End -->
 <script>
