@@ -29,7 +29,7 @@
     "custom_video_section_JbFXpi": {
       "type": "lr-custom-video-section",
       "settings": {
-        "video": "shopify://files/videos/88c5861c66794756a3d66b61fb9b7f10.mp4",
+        "video": "",
         "heading_label": "Summer Books",
         "sub_heading": "Watch now",
         "button_link": "shopify://collections/summer-books"
