@@ -3,7 +3,7 @@ describe('Shopify Full Product Flow', () => {
     
 	// Visit the homepage
     	//cy.visit('https://dev-store-lost-river-press.myshopify.com');
-	cy.visit('https://staging-lost-river-press.myshopify.com');
+	cy.visit('https://8b47fd-7d.myshopify.com/');
 	
 	//enter store password
 	//cy.get('.password-link').click();
