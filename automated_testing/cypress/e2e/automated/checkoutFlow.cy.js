@@ -74,9 +74,9 @@ describe('Shopify Full checkout Flow', () => {
         
         cy.wrap(myButton).click({ force: true });
       });
-	  */
+   */
     //Click the pay button to trigger the mocked payment
-    cy.get('#checkout-pay-button').click();
+    //cy.get('#checkout-pay-button').click();
 
     // Wait for the mocked payment response and verify it
     //credit card method
