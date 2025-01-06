@@ -3,12 +3,12 @@ describe('Shopify Full Cart Flow', () => {
     
 	// Visit the homepage
     	//cy.visit('https://dev-store-lost-river-press.myshopify.com/');
-	cy.visit('https://staging-lost-river-press.myshopify.com/');
+	cy.visit('https://8b47fd-7d.myshopify.com/');
 	  
 	//enter store password
-	//cy.get('.password-link').click();
-	//cy.get('[type="password"]').type('ontats');
-	//cy.get('.password-button').click();
+	cy.get('.password-link').click();
+	cy.get('[type="password"]').type('nowyoh');
+	cy.get('.password-button').click();
 	cy.get('#accept-cookies').click();
 	
 	//home page
