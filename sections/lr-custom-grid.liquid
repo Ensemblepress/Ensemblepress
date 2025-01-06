@@ -1,32 +1,21 @@
-<div class="item item-double">
-  {% comment %}
-    <a class="item-inner" href="#">
-      <div class="image is-sm is-sm-translate">
-        <div class="caption-sticky caption-sticky-bottom none">
-          <div class="caption-primary">Andrea Smith</div>
-          <div class="caption-secondary">Read now</div>
-        </div>
+{{ 'lr-widget-dts.css' | asset_url | stylesheet_tag }}
+{{ 'lr-swiper-components.css' | asset_url | stylesheet_tag }}
 
-        <picture>
-          <source
-            media="(min-width:835px)"
-            srcset="//8b47fd-7d.myshopify.com/cdn/shop/files/andrea-smith-4.jpg?v=1721048407"
-          >
-          <img src="//8b47fd-7d.myshopify.com/cdn/shop/files/andrea-smith-4.jpg?v=1721048407" alt="">
-        </picture>
-      </div>
-    </a>
-  {% endcomment %}
+<div class="item item-double">
   {% for block in section.blocks %}
     <a class="item-inner" href="{{ block.settings.button_link | default:'#' }}">
       <div class="image is-sm is-sm-translate">
+        {% if block.settings.default_image_or_content == false %}
         <div class="caption-sticky caption-sticky-bottom {{ block.settings.vertical_alignment }}">
-          <div class="caption-primary">{{ block.settings.heading_label }}</div>
-          <div class="caption-secondary">{{ block.settings.sub_heading }}</div>
+          {% if block.settings.heading_label != blank %}
+            <div class="caption-primary">{{ block.settings.heading_label }}</div>
+          {% endif %}    
+          {% if block.settings.sub_heading != blank %}   
+            <div class="caption-secondary">{{ block.settings.sub_heading }}</div>
+          {% endif %}  
         </div>
-
-        {% if block.settings.image != blank %}
           <picture>
+            {% if block.settings.image != blank %}
             <source
               media="(min-width:835px)"
               srcset="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}"
@@ -35,14 +24,162 @@
               <img src="{{ block.settings.mobile_image | img_url:'master' }}" alt="{{ block.settings.mobile_image.alt }}">
             {% else %}  
               <img src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.image.alt }}">
-            {% endif %}  
+            {% endif %}
+          {% endif %}  
           </picture>
+        {% else %}        
+          
+        {% if block.settings.image !=blank or block.settings.content != blank %}          
+          <div class="custom_content">
+            {% if block.settings.typography_title != blank %}
+            <script src="{{ 'lr-widget-dts.js' | asset_url }}" defer="defer"></script>  
+            <div class="plp-header">
+              <div class="plp-header-primary">
+                  <div class="widget-dts">
+                    <div class="widget-dts-text widget-dts-text-ghost">
+                        {{ block.settings.typography_title }}
+                    </div>
+                
+                    <!-- Foreground Text -->
+                    <div id="foreground" class="widget-dts-text">
+                        {{ block.settings.typography_title }}
+                    </div>
+                
+                    <!-- Middleground Text -->
+                    <div id="middleground" class="widget-dts-text">
+                        {{ block.settings.typography_title }}
+                    </div>
+                
+                    <!-- Background Text -->
+                    <div id="background" class="widget-dts-text">
+                        {{ block.settings.typography_title }}
+                    </div>
+                  </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if block.settings.custom_title != blank %}
+            <div class="custom_title">{{ block.settings.custom_title }}</div>
+            {% endif %}
+            {% if block.settings.content != blank %}
+              {{ block.settings.content }}
+            {% endif %}
+          </div>
+          
+          <div class="main_title">
+            <div class="custom-main-title">
+              {% if block.settings.heading_label_text != blank %}
+                <div class="caption-primary">{{ block.settings.heading_label_text }}</div>
+              {% endif %}    
+              {% if block.settings.sub_heading_content != blank %}   
+                <div class="caption-secondary">{{ block.settings.sub_heading_content }}</div>
+              {% endif %}  
+            </div>
+          </div>  
+        {% endif %}
+       
         {% endif %}
       </div>
     </a>
   {% endfor %}
 </div>
-
+<style>
+@media (min-width: 835px) {  
+  .site-grid .item-double .item-inner .custom_content {
+    padding: 30px 40px;
+    font-size: 20px;
+    line-height: 1.3em;
+    font-weight: 400;
+    text-align: justify;
+  }
+  .site-grid .item-double .item-inner .main_title {
+    padding: 0 40px;
+    font-size: 18px;
+    line-height: 1.3em;
+  }
+  .site-grid .item-double .item-inner .custom-main-title .caption-primary {
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    width: 25%;
+    padding: 15px 14px 13px;
+  }
+  .site-grid .item-double .item-inner .custom-main-title .caption-secondary {
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 6px;
+    border-radius: 3px 30px 30px 3px;
+    width: 20%;
+    padding: 15px 14px 13px;
+  }
+  body.index .plp-header {
+    padding: 0px 0px;
+  }
+  
+  body.index .plp-header-primary {
+    padding: 0 0px;
+  }
+  body.index .widget-dts {
+    min-height: 8rem;
+  }
+  .custom_content .custom_title {
+    font-weight: 500;
+  }
+}  
+@media (max-width: calc(835px - 1px)) {
+  .site-grid .item-double .item-inner .custom_content {
+    padding: 35px 20px;
+    font-size: 20px;
+    line-height: 1.3em;
+    text-align: justify;
+  }
+  .site-grid .item-double .item-inner .main_title {
+    padding: 0 20px;
+    font-size: 18px;
+    line-height: 1.3em;
+    padding-bottom: 20px;
+  }
+  .site-grid .item-double .item-inner .custom-main-title .caption-primary {
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 6px;
+    border-radius: 3px;
+    width: 25%;
+    padding: 9px 10px 8px;
+  }
+  .site-grid .item-double .item-inner .custom-main-title .caption-secondary {
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 6px;
+    border-radius: 3px 30px 30px 3px;
+    width: 20%;
+    padding: 9px 10px 8px;
+  }
+  body.index .plp-header {
+    padding: 20px 0px;
+    margin-left: -25px;
+  }
+  
+  body.index .plp-header-primary {
+    padding: 0 30px;
+  }
+  body.index .widget-dts {
+    min-height: 8rem;
+  }
+  .custom_content .custom_title {
+    font-weight: 500;
+  }
+}
+  @media (max-width: calc(501px - 1px)) {
+    .site-grid .item-double .item-inner .custom-main-title .caption-primary {
+      width: 30%;
+    }
+  .site-grid .item-double .item-inner .custom-main-title .caption-secondary {
+    width: 30%;
+  }
+}
+</style>
 {% schema %}
 {
   "name": "LR Custom Grid",
@@ -88,8 +225,42 @@
         {
           "type": "text",
           "id": "sub_heading",
-          "label": "Sub Heading",
+          "label": "Button Label",
           "default": "Shop now"
+        },
+        {
+          "type": "checkbox",
+          "id": "default_image_or_content",
+          "label": "Default Image or Content",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "typography_title",
+          "label": "Typography Label",
+          "default": "Paperbook"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Heading Label",
+          "default": "Todos Deberiamos Ser Feministas"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content Text",
+          "default": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer</p>"
+        },
+        {
+          "type": "text",
+          "id": "heading_label_text",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "sub_heading_content",
+          "label": "Button Label"
         },
         {
           "type": "url",

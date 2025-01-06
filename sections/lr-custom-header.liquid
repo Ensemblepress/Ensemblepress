@@ -1,8 +1,6 @@
 {%- liquid
-  render 'lr-custom-header'
+  render 'lr-custom-header', search_bar: section.settings.default_search_content
 %}
-
-
 {% schema %}
   {
     "name": "Custom Header",
@@ -12,6 +10,12 @@
         "id": "menu",
         "default": "main-menu",
         "label": "t:sections.header.settings.menu.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "default_search_content",
+        "label": "Search Bar Enable Or Disbale",
+        "default": false
       }
     ]
   }

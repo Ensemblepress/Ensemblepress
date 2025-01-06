@@ -48,3 +48,9 @@
     line-height: 1.3em;
   }
 }
+@media (min-width: 576px) and (max-width: calc(701px - 1px)) {
+  .pdp-main-visuals .pdp-image-set-grid .pdp-image-set-tiktok .pdp-image-set-tiktok-content{
+    font-size:14px;
+    padding: 10px 10px; 
+  }
+}

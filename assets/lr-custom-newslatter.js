@@ -19,8 +19,8 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
     if($("#nwsl_chckbk").is(":checked")){
         //console.log('IS CHECKED');
     } else {
-        $('#fiels_row_1').css("color", "red"); 
-        $('.error_color').css("color", "red"); 
+        // $('#fiels_row_1').css("color", "red"); 
+        // $('.error_color').css("color", "red"); 
         //console.log('NOT CHECKED');
         return false;
     }
@@ -49,7 +49,8 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
             $('#fiels_row_1').removeClass('is-on');
             $('#fiels_row_2').removeClass('is-on');
             $('.newsletter-success').addClass('is-on');
-
+            const checkbox = document.getElementById('nwsl_chckbk');
+            checkbox.checked = false;          
        } else {
             // Error :(
             responseMessage.textContent = 'There was an error. Please try again.';

@@ -97,16 +97,18 @@
       <div id="cart_page_footer" style="display:{{ cusnti_cart_footer }}">
         <div class="cart-item item {{ add_disc }} item-total-first item-total-promo apply_promocode" id="item-total-promo">
            <div class="caption_cust {{ code_apply }}" id="caption">
-             <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
+             <div class="caption-option promo_label" id="icon-promo-symbol" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
              <div class="caption-option promo_input is-off" id="promo_input">
                     <input type="email" id="cart-page-promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-                    <button class="button-promo" id="apply-promo-code">Ok</button>
+                    <button class="button-promo" id="apply-promo-code" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();"
+>Apply</button>
               </div>
             </div>
         </div>
         <div class="item item-total item-total-final is-discount {{ class_add }}">
-          <div class="caption_cust"><span id="promo_code_text" class="cart-page-promo_code_text">Discount Promo Code : {{ cart.items[0].discounts[0].title }}</span><span class="note"><div id="discount-message"></div></span></div>
-          <button id="remove-discount" class="remove-discount-button"></button>
+          <div class="caption_cust"><span id="promo_code_text" class="cart-page-promo_code_text">Discount Promo Code : {{ cart.items[0].discounts[0].title }}</span><span class="note"><div id="cart-discount-message"></div></span></div>
+          <button id="remove-discount" class="remove-discount-button remove-discount-button-align"></button>
           <div class="price cart-page-cart_total_discount" id="cart_total_discount">{{ cart.total_discount | money }}</div>
         </div>
         <div class="item item-total item-total-final">
@@ -178,6 +180,8 @@ document.addEventListener('DOMContentLoaded', function() {
         //updateCartDrawer(cart);
         // Log the latest cart data
         if (cart.items[0].discounts[0] && cart.items[0].discounts[0].length != "") { 
+          document.querySelector('.cart-page-promo_code_text').textContent = "";
+          
           // Update the cart UI with the latest data
           document.querySelector('#cart_total_discount').textContent = `${formatMoney(cart.total_discount, cart.currency)}`;
           document.querySelector('.cart-page-cart_total_discount').textContent = `${formatMoney(cart.total_discount, cart.currency)}`;
@@ -192,12 +196,29 @@ document.addEventListener('DOMContentLoaded', function() {
           discount_code = cart.items[0].discounts[0].title;
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
           document.querySelector('.cart-page-promo_code_text').textContent = 'Discount Promo Code :'+discount_code;
+          document.getElementById('cart-discount-message').style.display = 'none';
+          
         }else{
+          
+          document.getElementById('discount-message').innerText = "";
+          document.querySelector('.cart-page-promo_code_text').textContent = 'Discount Promo Code :';
+          
           document.getElementById('discount-message').style.display = 'block';
           document.querySelector('#promo_code_text').textContent = 'Discount Promo Code :';
-          document.getElementById('discount-message').innerText = 'Wrong Discount applied!';
+          document.getElementById('discount-message').innerText = 'Wrong Promo Code applied!';
           jQuery(".is-discount").show();
-          jQuery(".is-discount").removeClass('is-off');
+ 
+          document.getElementById('cart-discount-message').innerText = 'Wrong Promo Code applied!';
+          document.getElementById('cart-discount-message').style.display = 'block';
+          //jQuery(".is-discount").show();
+          
+          //jQuery(".is-discount").removeClass('is-off');
+          document.getElementById("remove-discount").classList.add("lr-wrong-apply");
+          document.getElementById("cart_total_discount").classList.add("lr-price-apply");
+
+          document.querySelector(".remove-discount-button-align").classList.add("lr-wrong-apply");
+          document.querySelector(".cart-page-cart_total_discount").classList.add("lr-price-apply");
+          
         }
       })
       .catch(error => {
@@ -219,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .then( response => { //console.log(cart);
         if (response.ok) {
           document.getElementById('discount-message').innerText = 'Discount code removed';
+          
            return fetch('/cart.js');
           // Optionally, you could refresh the cart to show updated totals
           //updateCartDrawer();
@@ -255,6 +277,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('discount-message').innerText = 'Something went wrong. Please try again.';
       });      
   }
+
+    // apply code code Event listener for the Enter key in the input box
+    document.getElementById("cart-page-promo-code-input").addEventListener("keydown", function(event) { 
+       if (event.key === "Enter") { // Check if the Enter key is pressed
+            event.preventDefault(); // Prevent default form submission (if any)
+            document.getElementById("apply-promo-code").click(); // Trigger button click
+       }
+    });
     
 });
 
@@ -359,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   <div class="caption-option promo_label" id="icon-promo-symbol"><span class="icon-promo" id="icon-promo-text"></span> Add promotion code</div>
                   <div class="caption-option promo_input is-off" id="promo_input">
                     <input type="email" id="promo-code-input" placeholder="Enter promotion code" class="input-promo" style="outline: none;">
-                    <button class="button-promo" id="apply-promo-code">Ok</button>
+                    <button class="button-promo" id="apply-promo-code">Apply</button>
                   </div>
                 </div>
             </div>
@@ -394,6 +424,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if(totalQuantity == 0){  
           document.getElementById('cart_footer').style.display = 'none';
           document.getElementById('cart-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
+          
         }
         }      
         attachCartItemEvents();   
@@ -602,6 +642,15 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('cart-empty-message').style.display = 'flex';
             document.getElementById('cart_page_footer').style.display = 'none';
             document.getElementById('cart-page-empty-message').style.display = 'flex';
+
+          // Remove Promo code
+          const removeDiscountButton = document.getElementById("remove-discount");
+          if (removeDiscountButton) {
+            // Automatically trigger a click on the button
+            removeDiscountButton.click();
+          } else {
+            console.error("Element with ID 'remove-discount' not found.");
+          }
         }
     });
   }

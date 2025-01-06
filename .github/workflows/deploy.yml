@@ -1,6 +1,8 @@
-name: Deployment shopify theme code
+name: Deploy Shopify Theme code 
+
 on:
   workflow_dispatch:
+
 
 jobs:
   deploy:
@@ -17,8 +19,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Ruby
-        uses: actions/setup-ruby@v1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'
 
@@ -34,9 +36,9 @@ jobs:
       - name: Authenticate and Deploy shopify Theme  
         uses: pgrimaud/action-shopify@master
         env:
-          SHOPIFY_PASSWORD: ${{ secrets.SHOPIFY_PASSWORD }}
-          SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
-          SHOPIFY_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
-          THEME_PATH: ${{ secrets.SHOPIFY_THEME_PATH }}
+          SHOPIFY_PASSWORD: ${{ secrets.STAGING_STORE_SHOPIFY_PASSWORD }}
+          SHOPIFY_STORE_URL: ${{ secrets.STAGING_STORE_SHOPIFY_STORE_URL }}
+          SHOPIFY_THEME_ID: ${{ secrets.STAGING_STORE_SHOPIFY_THEME_ID }}
+          THEME_PATH: ${{ secrets.STAGING_STORE_SHOPIFY_THEME_PATH }}
         with:
-          args: --ignored-file=config/settings_data.json --ignored-file=locales/* --ignored-file=automated_testing/* --ignored-file=Gemfile --ignored-file=package.json --ignored-file=cypress.config.js  
+          args: --ignored-file=config/settings_data.json --ignored-file=locales/* --ignored-file=automated_testing/* --ignored-file=Gemfile --ignored-file=package.json --ignored-file=cypress.config.js

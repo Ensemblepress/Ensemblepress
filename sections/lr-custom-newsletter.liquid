@@ -6,7 +6,7 @@
       <span class="hd-intro">
         <span class="hd-intro-title">Newsletter</span>
         <div class="Typewriter" data-testid="typewriter-wrapper">
-          <span class="Typewriter__wrapper">Private sales</span>
+          <span class="Typewriter__wrapper" id="typewriter"></span>
           <span class="Typewriter__cursor"></span>
         </div>
       </span>
@@ -24,8 +24,8 @@
       <div class="form-field" id="fiels_row_1">
         <input type="checkbox" id="nwsl_chckbk" class="checkbox-single" id="widget-newsletter-strip-newsletter-confirm">
         <label for="widget-newsletter-strip-newsletter-confirm" class="error_color">
-          I have read, understood and accepted the <a class="error_color" href="/legal/termsofuse">terms and conditions</a> and the
-          <a href="/legal/privacy" class="error_color">privacy policy</a>
+          Yes, I have read, understood and accepted the <a class="error_color" href="/pages/terms-and-conditions">terms and conditions</a> and the
+          <a href="/pages/privacy-policy" class="error_color">privacy policy</a> 
         </label>
       </div>
 
@@ -54,9 +54,10 @@
   $('#email').click(function(){
       $('.widget-newsletter-strip').addClass('is-focus');     
   });  
-
+  
   $(document).on("click", function(e) {
-      if ($(e.target).is(".item, .button-submit, .checkbox-single, .button-next, #email") === false) {
+    //console.log(e.target);
+      if ($(e.target).is(".item, .button-submit, .checkbox-single, .button-next, #email, .form, .hd,  .is-active, .Typewriter, .hd-intro-title, .hd-intro, .form-field, .error_color") === false) {
         $(".widget-newsletter").removeClass("is-focus");
       }
   });
@@ -65,12 +66,19 @@
       $('.widget-newsletter-strip').addClass('is-active');
       $('.widget-newsletter-strip').addClass('is-focus');   
   });  
+
+   $('.error_color').click(function(){
+      const radioButton = document.getElementById('nwsl_chckbk');
+      //radioButton.checked = true;
+      radioButton.checked = !radioButton.checked; // Toggle the checked state
+  }); 
   // @ sign covert to .(dot) symbole
   // document.getElementById('email').addEventListener('input', function(event) {
   // // Replace all instances of "@" with "."
   // event.target.value = event.target.value.replace(/@/g, '.');
   // });
   // End
+  /*
   const text = document.querySelector(".Typewriter__wrapper");
   const textLoad = () => {
    setTimeout(() => {
@@ -89,6 +97,50 @@
   };
   textLoad();
   setInterval(textLoad, 11000);
+  */
+ 
+  function typewriterEffect(element, strings) {
+      let currentStringIndex = 0;
+      let isDeleting = false;
+      let text = '';
+      let charIndex = 0;
+    
+      function type() {
+        const currentString = strings[currentStringIndex];
+
+        if (isDeleting) {
+          text = currentString.substring(0, charIndex--); // Remove characters
+        } else {
+          text = currentString.substring(0, charIndex++); // Add characters
+        }
+
+        element.textContent = text;
+
+        if (!isDeleting && charIndex === currentString.length) {
+          // Pause after typing
+          setTimeout(() => {
+            isDeleting = true;
+            type();
+          }, 3000);
+          return;
+        }
+
+        if (isDeleting && charIndex === 0) {
+          // Move to the next string after deleting
+          isDeleting = false;
+          currentStringIndex = (currentStringIndex + 1) % strings.length;
+        }
+        // Adjust speed for typing and deleting
+        const typingSpeed = isDeleting ? 20 : 100;
+        setTimeout(type, typingSpeed);
+      }
+      type();
+    }
+
+    // Initialize the typewriter effect
+    const typewriterElement = document.getElementById('typewriter');
+    const strings = ['New collections ', 'Collaborations ', 'Exclusive events ', 'Private sales '];
+    typewriterEffect(typewriterElement, strings);
 </script>
 
 {% schema %}

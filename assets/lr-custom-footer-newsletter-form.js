@@ -1,6 +1,6 @@
 document.getElementById('footer-newsletter-form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
-    
+     
     // add js 04-08-2024
     var email_req = document.getElementById('footer_email');
 
@@ -19,8 +19,8 @@ document.getElementById('footer-newsletter-form').addEventListener('submit', fun
     if($("#footer_nwsl_chckbk").is(":checked")){
         //console.log('IS CHECKED');
     } else {
-        $('#footer_fiels_row_1').css("color", "red"); 
-        $('.footer_error_color').css("color", "red"); 
+        // $('#footer_fiels_row_1').css("color", "red"); 
+        // $('.footer_error_color').css("color", "red"); 
         //console.log('NOT CHECKED');
         return false;
     }
@@ -42,6 +42,10 @@ document.getElementById('footer-newsletter-form').addEventListener('submit', fun
             $('#footer_fiels_row_1').removeClass('is-on');
             $('#footer_fiels_row_2').removeClass('is-on');
             $('.footer-newsletter-success').addClass('is-on');
+            $(".lr-custom-footer").removeClass('lr-add-pos');
+           
+            const checkbox = document.getElementById('footer_nwsl_chckbk');
+            checkbox.checked = false;
 
        } else {
             // Error :(
@@ -54,7 +58,7 @@ document.getElementById('footer-newsletter-form').addEventListener('submit', fun
     xhr.onerror = function() {
         var responseMessage = document.getElementById('newsletter-message');
         responseMessage.textContent = 'Network error. Please try again.';
-        responseMessage.style.color = 'red';
+        //responseMessage.style.color = 'red';
     };
 
     // Send the data
