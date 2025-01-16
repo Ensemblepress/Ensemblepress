@@ -28,6 +28,20 @@ document.addEventListener("DOMContentLoaded", function() {
         //addToCartButton.innerText = "Add to Bag";
         //addToCartButton.disabled = false;
         //addToCartDiv.removeAttribute('disabled'); // Remove disabled attribute
+        
+        const mobileAddToCartButton = document.querySelector('.add-to-cart-btn-mobile');
+        if (mobileAddToCartButton) {
+            mobileAddToCartButton.innerText = "Add to Bag";
+            mobileAddToCartButton.disabled = false; // Disable the button
+        }
+
+      const outofstockElement = document.getElementById('check-verient-stock');
+      if (outofstockElement) {
+        outofstockElement.setAttribute('data-available', 'false');
+        const isOutOfStock = outofstockElement.getAttribute('data-available') === "false";
+        //console.log("isOutOfStock", isOutOfStock);
+      }
+     
    } else {
         //console.log('bbb');
         addToCartButton.innerText = "Out of Stock";
@@ -39,6 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
             mobileAddToCartButton.innerText = "Out of Stock";
             mobileAddToCartButton.disabled = true; // Disable the button
         }
+
+      const outofstockElement = document.getElementById('check-verient-stock');
+      if (outofstockElement) {
+         outofstockElement.setAttribute('data-available', 'true');
+         const isOutOfStock = outofstockElement.getAttribute('data-available') === "true";
+         //console.log("isOutOfStock", isOutOfStock);
+      }
      
    }
 

@@ -1,7 +1,7 @@
 <script src="{{ 'lr-variants-selected.js' | asset_url }}" defer="defer"></script>
 {{ 'lr-tiktok_video.css' | asset_url | stylesheet_tag }}
 {{ 'lr-custom-main-product.css' | asset_url | stylesheet_tag }}
-
+{{ 'lr-custom-omnisend-back-in-stock.css' | asset_url | stylesheet_tag }}
 <script>
   window.product = {
     variants: [
@@ -17,7 +17,6 @@
   };
 </script>
 <style>
-
 /* Styles for desktop (above 835px) */
 @media screen and (min-width: 836px) {
   /* Add your desktop-specific styles here */
@@ -46,6 +45,12 @@
       text-transform: uppercase;
   }
 }  
+  
+.pdp-main-visuals .pdp-image-set-grid .pdp-image-set-tiktok .pdp-image-set-tiktok-content a {
+    text-decoration: none;
+    color: #000;
+}
+  
 </style>  
 <div class="pdp-container" id="pdp">
   <div class="pdp-main">
@@ -67,26 +72,37 @@
           {% endfor %}
           
           {% assign tiktok_video = product.metafields.custom.tiktok_link %}
+          {% assign tiktok_title = product.metafields.custom.tiktok_title %}
+          {% assign tiktok_title_link = product.metafields.custom.tiktok_title_link %}
+                    
           {% if tiktok_video %}
             <div class="pdp-image-set-tiktok">
                 <div class="pdp-image-set-tiktok-content">
                   <strong>Lost River</strong>
-                  <br>TikTok
-                  <br>
+                  {% if tiktok_title != blank %}
+                    <br>
+                    <a href="{{ tiktok_title_link | default: '#' }}" target="_blank">{{ tiktok_title }}</a>
+                    <br>                  
+                  {% else %}
+                    <br>
+                    <a href="https://8b47fd-7d.myshopify.com/products/crying-in-h-mart" target="_blank">TikTok</a>
+                    <br>
+                  {% endif %}
                   <br>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </div>
-          
-                <div class="pdp-image-set-tiktok-video">
-                    <video id="myVideo" class="myVideodesktop" width="100%" height="100%" loop="" playsinline="" autoplay muted>
-                      <source src="{{ tiktok_video }}" type="video/mp4">
-                    </video>
-                </div>
+                  <div class="pdp-image-set-tiktok-video">
+                  <a href="{{ tiktok_title_link | default: '#' }}" target="_blank">  
+                      <video id="myVideo" class="myVideodesktop" width="100%" height="100%" loop="" playsinline="" autoplay muted controls>
+                        <source src="{{ tiktok_video }}" type="video/mp4">
+                      </video>  
+                  </a>
+               </div>
             </div>
           {% endif %}
           {% assign video_url = product.metafields.custom.video_url %}
             {% if video_url %}
               <div class="pdp-image-set-video">
-                <video id="myVideo" class="myVideodesktop" width="100%" height="100%"  loop="" playsinline="" autoplay muted>
+                <video id="myVideo" class="myVideodesktop" width="100%" height="100%"  loop="" playsinline="" autoplay muted controls>
                   <source src="{{ video_url }}" type="video/mp4">
                 </video>
               </div>
@@ -97,6 +113,11 @@
     <div class="Plx Plx--above Plx-effect-pdp" style="">
       <div class="pdp-scroller"></div>
     </div>
+    
+    <div class="side-bar" id="side-bar" data-height=""></div>
+    <div class="side-bar-omnisend-height" id="side-bar-omnisend-height" data-height=""></div>
+    <div class="check-verient-stock" id="check-verient-stock" data-available="false"></div>
+    
     <div class="pdp-main-info">
       <div class="pdp-info-container">
         <div class="pdp-info">
@@ -104,7 +125,7 @@
             <div class="swiper-container swiper-pdp">
               <div class="swiper-wrapper">
                 {% for media in product.media %}
-                  <div class="swiper-slide">
+                  <div class="swiper-slide mobile">
                     <a href="{{ media.src | img_url:'master' }}" data-pswp-width="{{ media.width }}" data-pswp-height="{{ media.height }}" class="image-zoomable">
                       <img src="{{ media.src | img_url:'master' }}" alt="{{ media.alt }}">
                     </a>
@@ -112,12 +133,17 @@
                  {% endfor %}
                  {% if tiktok_video != blank %} 
                   <div class="swiper-slide myVideoMobile" data-type="video">
-                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok lr-mobile-video" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%"></video>
-                  </div>
+                    <div style="position: relative; width: 100%; height: 100%;">
+                     <a id="lr-custom-mobile-tiktok-atag" href="{{ tiktok_title_link | default: '#' }}" target="_blank" rel="noopener noreferrer">
+                      <video id="lr-custom-mobile-tiktok" class="lr-custom-mobile-tiktok lr-mobile-video" loop="true" playsinline="" autoplay muted src="{{ tiktok_video }}" width="100%" height="100%" controls></video>
+                     </a>
+                      <div id="video-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;"></div>
+                      </div>
+                   </div>
                   {% endif %}
                   {% if video_url !=blank %}
                   <div class="swiper-slide myVideoMobile" data-type="video">
-                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video lr-mobile-video lr-mobile-view-2"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%"></video>
+                      <video id="lr-custom-mobile-video" class="lr-custom-mobile-video lr-mobile-video lr-mobile-view-2"loop="true" playsinline="" autoplay muted src="{{ video_url }}" width="100%" height="100%" controls></video>
                   </div>
                   {% endif %}
                 </div>
@@ -137,10 +163,8 @@
               <div class="pdp-labels"></div>
             </div>
           </div>
-
           
-          {% if product.variants.size  %}
-          
+          {% if product.variants.size  %}         
           <!-- Loop through the variants -->
             {% for variant in product.variants %}
               <div class="pdp-info-header-secondary" current_variants_id="{{ variant.id }}">
@@ -152,18 +176,20 @@
                     </div>
                   {% else %}
                     <div class="pdp-description"> {{ product.description }} </div>
-                  {% endif %}    
-                  <ul class="pdp-keywords">    
-                      {{ variant.metafields.custom.product_bullet_points | metafield_tag }}
+                  {% endif %}  
+                  
+                  <ul class="pdp-keywords"> 
+                    {{ variant.metafields.custom.product_bullet_points | metafield_tag }} 
                       <li class="pdp-details lr_pdp_mobile_detail" current_variants_id="{{ variant.id }}" id="variant_detail_{{ variant.id }}">
                         <span class="pdp-link pdp-link-chevron">
-                        <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details</span>
+                        <span tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') this.click();">Details </span>
                         </span>
                       </li>
                   </ul>                 
-              </div>            
-              <!-- Back in stock end -->
+              </div>  
+              
               {% endfor %}  
+            
           {% else %}
             {% comment %}
             <!-- Display product description when no variants are available or only the "Default Title" variant exists -->
@@ -177,17 +203,26 @@
             </div>
             {% endcomment %}  
           {% endif %}          
-          <!-- start Back in stock -->
-          {% for collection in product.collections %}
-            {% if collection.handle == 'forthcoming' %}
-              <!-- Your specific code here -->
-                <div id="omnisend-embedded-v2-66e423b7b1d6e266fd3a7a1c"></div>
-              {% endif %}
-          {% endfor %}
-                      
-                     
-          <div class="pdp-info-body-secondary desktop pdp-info-body-secondary-get-height"> 
-           
+      
+          <div class="pdp-info-body-secondary desktop pdp-info-body-secondary-get-height">
+            <!-- start Back in stock -->
+            {% assign omnisend_form_available = false %}
+                {% for collection in product.collections %}
+                    {% if collection.handle == 'forthcoming' %}
+                      <!-- Your specific code here -->
+                      <div class="omnisend_height" id="omnisend_height" style="">
+                         <!-- dev store id-->
+                         <div id="omnisend-embedded-v2-677e509aef3ff98a1103c138"></div>
+                         <!-- Staging store id -->
+                         <!--<div id="omnisend-embedded-v2-677e50a3622d57947244e294"></div>-->
+                         <!-- Production id -->
+                         <!--<div id="omnisend-embedded-v2-66e423b7b1d6e266fd3a7a1c"></div>-->    
+                      </div>
+                     {% assign omnisend_form_available = true %}
+                    {% endif %}
+                {% endfor %} 
+                <div class="omnisend_form_available" id="omnisend_form_available" data-form="{{ omnisend_form_available }}"></div>
+                <!-- End Back in stock -->
             {% if product.variants.size  %}
             <!-- Loop through the variants -->
             {% for variant in product.variants %}
@@ -398,7 +433,7 @@
   // Initialize the PhotoSwipe lightbox
   const lightbox = new PhotoSwipeLightbox({
     gallery: '.gallery',          // Target the gallery container
-    children: 'a',               // Target child <a> elements for each image
+    children: '.pdp-image-set-img',               // Target child <a> elements for each image
     pswpModule: PhotoSwipe,      // The PhotoSwipe module
     bgOpacity: 1,                // Background opacity
     loop: true,                  // Loop through images
@@ -520,6 +555,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   //video on click play end
 
+  document.getElementById('video-overlay').addEventListener('click', function () {
+    //alert('Overlay clicked!');
+    const video = document.getElementById('lr-custom-mobile-tiktok-atag');
+      //window.open(video.href, '_blank'); // Opens video URL in a new tab
+    var url = video.href
+    const videoId = url.split('/video/')[1].split('?')[0];
+
+    //const deepLink = 'fb://';
+    //const fallbackUrl = 'https://www.facebook.com';
+    
+    // Define the TikTok deep link and fallback URL
+    const deepLink = "tiktok://video/"+videoId; // Replace with your video deep link
+    //console.log(deepLink);  
+    const fallbackUrl = video.href; // Use the original href as the fallback
+    //console.log(fallbackUrl);
+    
+        // Create an invisible iframe to attempt opening the deep link
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = deepLink;
+        document.body.appendChild(iframe);
+
+        // If the app doesn't open within 1 second, redirect to the fallback URL
+        setTimeout(() => {
+            //window.location.href = fallbackUrl;
+            window.open(fallbackUrl, '_blank'); // Open fallback URL in a new tab
+            document.body.removeChild(iframe); // Clean up the iframe
+        }, 1000);
+    
+  });
+ 
   //mobile video muted and unmuted "lr-mobile-video"  
     const videosmobile = document.querySelectorAll('.lr-mobile-video');
     // Add event listeners to each video
@@ -527,8 +593,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Handle click for toggling mute
       video.addEventListener('click', () => {
         video.muted = !video.muted;
+        // Open the video in a new tab
+        //window.open("https://www.google.com", "_blank");
       });
     });
+  
   
     // Add functionality for Swiper navigation buttons
     const nextButton = document.querySelector('.swiper-button-next');
@@ -597,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         } else {
-            console.log('Please select a variant.');
+            //console.log('Please select a variant.');
         }
     });
 });
@@ -767,7 +836,7 @@ function updateCartDrawer() {
        }
         //$("#nav-bag").addClass('is-on');
         attachCartItemEvents();  
-        
+    
       });
   }
 
@@ -801,7 +870,7 @@ function updateCartDrawer() {
 
   function updateCartItemQuantity(line, delta) {
     var quantityElement = document.querySelector(`.cart-item[data-line="${line}"] .quantity_upd`);
-    console.log(quantityElement);
+    //console.log(quantityElement);
     var newQuantity = parseInt(quantityElement.textContent) + delta;
     
     if (newQuantity < 1) {
@@ -967,11 +1036,25 @@ function updateCartDrawer() {
   });  
   
 </script>
-<script>
-function updateWindowHeight() {
+<script>  
+
+  
+function updateWindowHeight() { 
   const windowWidth = window.innerWidth;
   //console.log(windowWidth);  
-   if (windowWidth > 580 ) {5
+  //var omni_height = 150;
+   if (windowWidth > 580 ) {
+    // Get the first element with the class "omnisend_height"
+     const variantLiCount = document.querySelectorAll('.variant_li').length;
+     //alert(variantLiCount);
+     if(variantLiCount == 1){
+       var add_pad = 70;
+     }else if(variantLiCount == 3){
+        var add_pad = 20;
+     }else{
+        var add_pad = 0;
+     }
+     //alert(add_pad);
     const windowHeight = window.innerHeight; // Get window height
     document.documentElement.style.setProperty('--window-height', `${windowHeight}px`);
     //console.log("window height:",windowHeight);
@@ -979,18 +1062,155 @@ function updateWindowHeight() {
     const elementHeight = element.offsetHeight;  
     //console.log('Element height:', elementHeight);
     //var elementHeight_new = elementHeight + 72 + 70 + 30 + 15;
-     var elementHeight_new = elementHeight + 54 + 50;
+    var elementHeight_new = elementHeight + 54 + 60 + add_pad;
     var new_height = windowHeight - elementHeight_new;
     //console.log('new height:', new_height);
       const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
+      const sideBar = document.getElementById("side-bar");
+     var pad = 0;
+     if(variantLiCount == 1){
+       var add_pad = 0;
+     }else if(variantLiCount == 2){
+        var add_pad = +16;
+     }else if(variantLiCount == 3){
+        var add_pad = 0;
+     }else{
+        var add_pad = -16;
+     }
+      new_height_omnisend = windowHeight - elementHeight - 54 - 70 - 10 - add_pad;
+      //console.log(new_height_omnisend);
       elements.forEach((element) => {
         element.style.maxHeight = `${new_height}px`; // Apply the height to each element
+        
+        sideBar.setAttribute("data-height", new_height_omnisend);
+        
       });
     }
 }
 // Call on page load and whenever the window resizes
   updateWindowHeight(); // Initial call
   window.addEventListener('resize', updateWindowHeight); // Update on window resize
+
+  window.onload = function () {
+  //console.log('on load');
+  setTimeout(function () {
+    const element = document.querySelector("#omnisend_height"); // Replace with your element's ID or selector
+    if (element) {     
+      const verientStock = document.getElementById("check-verient-stock");
+      const verientStock_value = verientStock.getAttribute("data-available");
+      //console.log("verientStock_value",verientStock_value);
+      const form_available = document.getElementById("omnisend_form_available");
+      const dataForm = form_available.getAttribute("data-form");
+      //console.log("form_available",dataForm);
+      
+      if (verientStock_value === 'true' && dataForm === 'true') {
+
+        const selectedElement = document.querySelector('.selected');
+        // Check if the element exists and get its 'data-id' attribute
+        if (selectedElement) {
+          const variantId = selectedElement.getAttribute('data-id');
+          //console.log('Selected Element Data ID:', variantId);
+          const url = new URL(window.location.href);
+          // Add or update the `variant` parameter in the URL
+          url.searchParams.set('variant', variantId);
+          // Update the browser URL without reloading the page
+          window.history.replaceState({}, '', url.toString());
+              
+        } else {
+          //console.log('No element with the "selected" class found.');
+        }
+        
+        //var omni_height = element.offsetHeight;
+        //console.log("Element height:", omni_height);
+        var omni_height = 76;
+        const scroll_elements = document.querySelectorAll('.pdp-info-header-secondary');
+         if (scroll_elements.length > 0) {
+         let maxHeight = 0;
+         scroll_elements.forEach((element) => {
+          const height = element.offsetHeight; // Get the height of each element
+          if (height > maxHeight) {
+            maxHeight = height; // Update maxHeight if current element's height is larger
+          }
+        });
+        const sideBar = document.getElementById("side-bar");
+        const dataHeight = sideBar.getAttribute("data-height");
+        const new_info_height = dataHeight - omni_height;
+        //console.log('new_height', new_info_height);
+        const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
+        //setTimeout(function () { 
+        elements.forEach((element) => {
+           element.style.maxHeight = `${new_info_height}px`; // Apply the height to each element
+        });   
+        //element.style.visibility = "visible";   
+        //console.log("Maximum height:", maxHeight);
+       }   
+     }
+    } else {
+      //console.log("Element not found");
+    }
+    //element.style.display = "block";
+    }, 5000); // Delay of 5000ms (5 seconds)
+  };
+
+  $('.variant_li').on('click', function() { 
+    //updateWindowHeight();                                       
+    // dev store
+    const element = document.getElementById("omnisend-embedded-v2-677e509aef3ff98a1103c138");
+    // staging store
+    //const element = document.getElementById("omnisend-embedded-v2-677e50a3622d57947244e294");
+    //production store
+    //const element = document.getElementById("omnisend-embedded-v2-66e423b7b1d6e266fd3a7a1c");
+   setTimeout(function () {
+    if (element) {
+      //const isHidden = getComputedStyle(element).display === "none"; // Check if the element is hidden
+      //const style = window.getComputedStyle(element);
+      //const isHidden = style.display === "none" || style.visibility === "hidden" || element.offsetHeight === 0;
+      //console.log(isHidden);
+      const verientStock = document.getElementById("check-verient-stock");
+      const verientStock_value = verientStock.getAttribute("data-available");
+      //console.log("verientStock_value",verientStock_value);
+      const form_available = document.getElementById("omnisend_form_available");
+      const dataForm = form_available.getAttribute("data-form");
+      //console.log("form_available",dataForm);
+      
+      if (verientStock_value === 'true' && dataForm === 'true') {      
+        //console.log("The element is visible.");       
+        // Perform actions for hidden element (e.g., setting height to 0 or other logic)
+        //element.style.height = "0px"; // Optional: explicitly set height to 0
+         const element = document.querySelector("#omnisend_height"); // Replace with your element's ID or selector
+         if (element) {
+          var omni_height = 76;
+          //console.log("Element height:", omni_height);
+          const sideBar = document.getElementById("side-bar");
+          const dataHeight = sideBar.getAttribute("data-height");
+          //console.log(dataHeight); 
+          const new_info_height = dataHeight - omni_height;
+          //console.log('new_height', new_info_height);
+          const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
+          elements.forEach((element) => {
+            element.style.maxHeight = `${new_info_height}px`; // Apply the height to each element
+          }); 
+        }   
+      } else {
+        //console.log("The element is hidden (display: none).");
+        //const height = element.offsetHeight; // Get the height if it's visible
+        //console.log("Visible element height:", height);
+        // Perform actions for visible element
+        const sideBar = document.getElementById("side-bar");
+        const dataHeight = sideBar.getAttribute("data-height");
+        //console.log('new_height', dataHeight);
+        const elements = document.querySelectorAll('.pdp-info-header-secondary'); // Returns a NodeList
+          elements.forEach((element) => {
+            element.style.maxHeight = `${dataHeight}px`; // Apply the height to each element
+          });
+                
+      }
+    } else {
+      //console.log("Element not found.");
+    }
+   }, 1000); // Delay of 5000ms (5 seconds)  
+});  
+  
 </script>
 {% schema %}
 {

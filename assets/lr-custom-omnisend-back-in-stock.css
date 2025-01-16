@@ -1,0 +1,74 @@
+/* dev store */
+#omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-emailField-input.omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-input {
+    border: 1px solid #000 !important;
+    padding-left: 11px !important;
+    padding-right: 16px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    color: #000 !important;
+}  
+#omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-required {
+    padding-top: 5px !important;
+    padding-bottom: 0px !important;
+}
+
+/* omnisent form input type start*/    
+.omnisend_height #omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-emailField-input.omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-input{
+    border-radius: 2px !important;
+    /* border-radius: 2px 19px 19px 2px !important; */
+    font-family: LR-Geigy, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+/* omnisent form Type END*/    
+  
+/* omnisent form title start*/
+.omnisend_height .omnisend-form-677e509aef3ff98a1103c138-text-624ab2f927652f651edfd0b0 p{
+  font-size: 13px !important;
+  padding-left: 1px !important;
+  font-family: LR-Geigy, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+/* omnisent form title END*/
+
+/* omnisent button title Start*/  
+.omnisend_height #omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51.omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51{
+  font-family: LR-Geigy, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  padding: 2px 12px 0 !important;
+  text-transform: uppercase !important;
+  font-weight: 500;
+}
+/* omnisent button title END*/    
+  
+/* omnisent form input reqire field title Start*/      
+.omnisend_height #omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-required{
+  font-family: LR-Geigy, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}  
+/* omnisent form input reqire field title END*/      
+/* omnisent button hover start*/  
+button#omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51:hover {
+    background-color: #f90;
+    color: #000;
+}
+/* omnisent button hover End*/
+  
+/* omnisent button title Start*/    
+@media (max-width: calc(600px)) {  
+ .omnisend_height #omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51.omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51{
+  text-align: left;
+  }
+  
+  .omnisend_height .omnisend-form-677e509aef3ff98a1103c138-content{
+    max-width: none;
+  }
+  .omnisend_height #omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-emailField-input.omnisend-form-677e509aef3ff98a1103c138-field-container-62a3147776d81914aa87ed98-input
+  {
+    width: 89vw !important;
+  }
+  .omnisend_height #omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51.omnisend-form-677e509aef3ff98a1103c138-action-627932485028ebd8c6660c51
+  {   
+    padding: 0px 43px 0 !important;
+    width:414px !important; 
+    margin: 0px 0px 20px 0px !important;
+  }
+}  
+/* omnisent button title END*/    
+  
+
