@@ -40,7 +40,7 @@
     "lr_custom_product_grid_q7qdyj": {
       "type": "lr-custom-product-grid",
       "settings": {
-        "products_per_page": 16,
+        "products_per_page": 100,
         "show_secondary_image": true,
         "show_vendor": true,
         "filter_type": "horizontal"
